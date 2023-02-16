@@ -9,6 +9,9 @@ public class Players : MonoBehaviour
     public Enemies enemies_script;
     GameController game_controller_script;
 
+    const string win = "_buff_001";
+    const string hit_range = "_buff_002";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +50,7 @@ public class Players : MonoBehaviour
         for (int i = 0; i < list_active_warriors.Count; i++)
         {
             //set animation
-            list_active_warriors[i].animate_warrior("hit");
+            list_active_warriors[i].animate_warrior(hit_range);
         }
         //get_active_monster().set_destination(enemies_script.get_active_monster().transform);
     }
@@ -150,12 +153,12 @@ public class Players : MonoBehaviour
 
         for (int i = 0; i < list_active_monsters.Count; i++)
         {
-            list_active_monsters[i].animate_monster("win");
+            list_active_monsters[i].animate_monster(win);
         }
         //warrior
         for (int i = 0; i < list_active_warriors.Count; i++)
         {
-            list_active_warriors[i].animate_warrior("win");
+            list_active_warriors[i].animate_warrior(win);
         }
     }
 

@@ -22,7 +22,12 @@ public class Monster : MonoBehaviour
     public TMPro.TextMeshPro text_pref;
 
     public int hit_coin;
-    public string current_anim = "idle";
+    public string current_anim = "_idle";
+
+    const string run = "_body";
+    const string death = "_dead";
+    const string hit = "_short_003_new";
+    const string win = "_buff_001";
 
     // Start is called before the first frame update
     void Start()
@@ -112,6 +117,7 @@ public class Monster : MonoBehaviour
                 print("reached");
                 agent.enabled = false;
                 StartCoroutine(fighting(target.gameObject));
+                //anim.SetFloat("Velocity", 0);
             }
             else if(!fight)
             {
@@ -143,7 +149,7 @@ public class Monster : MonoBehaviour
                 enemies_script.remove_from_active_monsters(this);
             }
             agent.enabled = false;
-            animate_monster("die");
+            animate_monster(death);
         }
     }
 
@@ -151,7 +157,7 @@ public class Monster : MonoBehaviour
     {
         agent.enabled = true;
         // make animation
-        animate_monster("run");
+        animate_monster(run);
 
         target = tar;
         agent.SetDestination(target.position);
@@ -162,7 +168,7 @@ public class Monster : MonoBehaviour
         WaitForSeconds wt= new WaitForSeconds(time_between_hit);
 
         // make animation
-        animate_monster("hit");
+        animate_monster(hit);
         print("hit");
         
         
@@ -228,7 +234,7 @@ public class Monster : MonoBehaviour
                     }
 
                     // make animation for enemy
-                    enemy.GetComponent<Monster>().animate_monster("die");
+                    enemy.GetComponent<Monster>().animate_monster(death);
 
                     fight = false;
                 }
@@ -285,7 +291,7 @@ public class Monster : MonoBehaviour
                     }
 
                     // make animation for enemy
-                    enemy.GetComponent<Warrior>().animate_warrior("die");
+                    enemy.GetComponent<Warrior>().animate_warrior(death);
 
                     fight = false;
                 }
@@ -303,6 +309,7 @@ public class Monster : MonoBehaviour
         if(name_anim != current_anim)
         {
             anim.Play(name_anim);
+            anim.SetFloat("Velocity", 1);
             current_anim = name_anim;
         }
     }

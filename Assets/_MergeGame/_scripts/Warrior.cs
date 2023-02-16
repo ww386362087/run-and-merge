@@ -25,14 +25,24 @@ public class Warrior : MonoBehaviour
 
     public TMPro.TextMeshPro text_pref;
     public int hit_coin;
-    string current_anim = "idle";
+    string current_anim = "_idle";
+
+    //const string run = "_body";
+    const string death = "_dead";
+    const string hit = "_buff_002";
+    const string win = "_buff_001";
+
     // Start is called before the first frame update
     void Start()
     {
         //hit_coin = 10;
 
         active = true;
-        anim = GetComponent<Animator>();
+        if(anim == null)
+        {
+            anim = GetComponent<Animator>();
+        }
+
         max_health = health;
 
         game_controller_script = FindObjectOfType<GameController>();
@@ -87,7 +97,7 @@ public class Warrior : MonoBehaviour
                 enemies_script.remove_from_active_warriors(this);
             }
 
-            animate_warrior("die");
+            animate_warrior(death);
         }
     }
 
@@ -96,6 +106,7 @@ public class Warrior : MonoBehaviour
         if (name_anim != current_anim)
         {
             anim.Play(name_anim);
+            anim.SetFloat("Velocity", 1);
             current_anim = name_anim;
         }
     }
@@ -305,12 +316,12 @@ public class Warrior : MonoBehaviour
 
                 for (int i = 0; i < Players_script.list_active_warriors.Count; i++)
                 {
-                    Players_script.list_active_warriors[i].animate_warrior("win");
+                    Players_script.list_active_warriors[i].animate_warrior(win);
                 }
 
                 for (int i = 0; i < enemies_script.list_active_warriors.Count; i++)
                 {
-                    enemies_script.list_active_warriors[i].animate_warrior("die");
+                    enemies_script.list_active_warriors[i].animate_warrior(death);
                 }
 
             }

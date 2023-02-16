@@ -16,8 +16,10 @@ namespace HyperCasual.Runner
         public static PlayerController Instance => s_Instance;
         static PlayerController s_Instance;
 
+        //[SerializeField]
+        //Animator m_Animator;
         [SerializeField]
-        Animator m_Animator;
+        GameObject m_Character;
 
         [SerializeField]
         SkinnedMeshRenderer m_SkinnedMeshRenderer;
@@ -196,6 +198,28 @@ namespace HyperCasual.Runner
         }
 
         /// <summary>
+        /// Adjust the player's current number
+        /// </summary>
+        public void AdjustNumber(int numberAdd)
+        {
+            if(numberAdd > 0)
+            {
+                Debug.Log(numberAdd);
+                var currentPosition = m_Character.transform.position;
+                for (int i = 0; i < numberAdd; i++)
+                {
+                    var newPos = currentPosition;
+                    newPos.x += Random.Range(0.5f, 1) * (Random.Range(0f, 1f) < .5f ? -1 : 1);
+                    newPos.z += Random.Range(0.5f, 1) * (Random.Range(0f, 1f) < .5f ? -1 : 1);
+                    Instantiate(m_Character.gameObject, newPos, Quaternion.identity, transform);
+                }
+
+            }
+            //m_TargetScale += Vector3.one * scale;
+            //m_TargetScale = Vector3.Max(m_TargetScale, Vector3.one * k_MinimumScale);
+        }
+
+        /// <summary>
         /// Returns the player's transform component
         /// </summary>
         public Vector3 GetPlayerTop()
@@ -261,27 +285,27 @@ namespace HyperCasual.Runner
 
             // Update Scale
 
-            if (!Approximately(m_Transform.localScale, m_TargetScale))
-            {
-                m_Scale = Vector3.Lerp(m_Scale, m_TargetScale, deltaTime * m_ScaleVelocity);
-                m_Transform.localScale = m_Scale;
-            }
+            //if (!Approximately(m_Transform.localScale, m_TargetScale))
+            //{
+            //    m_Scale = Vector3.Lerp(m_Scale, m_TargetScale, deltaTime * m_ScaleVelocity);
+            //    m_Transform.localScale = m_Scale;
+            //}
 
-            // Update Speed
+            //// Update Speed
 
-            if (!m_AutoMoveForward && !m_HasInput)
-            {
-                Decelerate(deltaTime, 0.0f);
-            }
-            else if (m_TargetSpeed < m_Speed)
-            {
-                Decelerate(deltaTime, m_TargetSpeed);
-            }
-            else if (m_TargetSpeed > m_Speed)
-            {
-                Accelerate(deltaTime, m_TargetSpeed);
-            }
-
+            //if (!m_AutoMoveForward && !m_HasInput)
+            //{
+            //    Decelerate(deltaTime, 0.0f);
+            //}
+            //else if (m_TargetSpeed < m_Speed)
+            //{
+            //    Decelerate(deltaTime, m_TargetSpeed);
+            //}
+            //else if (m_TargetSpeed > m_Speed)
+            //{
+            //    Accelerate(deltaTime, m_TargetSpeed);
+            //}
+            m_Speed = m_CustomPlayerSpeed;
             float speed = m_Speed * deltaTime;
 
             // Update position
@@ -302,37 +326,21 @@ namespace HyperCasual.Runner
 
             m_Transform.position = new Vector3(m_XPos, m_Transform.position.y, m_ZPos);
 
-            if (m_Animator != null && deltaTime > 0.0f)
-            {
-                float distanceTravelledSinceLastFrame = (m_Transform.position - m_LastPosition).magnitude;
-                float distancePerSecond = distanceTravelledSinceLastFrame / deltaTime;
+            //if (m_Animator != null && deltaTime > 0.0f)
+            //{
+            //    float distanceTravelledSinceLastFrame = (m_Transform.position - m_LastPosition).magnitude;
+            //    float distancePerSecond = distanceTravelledSinceLastFrame / deltaTime;
 
-                m_Animator.SetFloat(s_Speed, distancePerSecond);
-            }
+            //    //m_Animator.SetFloat(s_Speed, distancePerSecond);
+            //}
 
-            if (m_Transform.position != m_LastPosition)
-            {
-                m_Transform.forward = Vector3.Lerp(m_Transform.forward, (m_Transform.position - m_LastPosition).normalized, speed);
-            }
+            //if (m_Transform.position != m_LastPosition)
+            //{
+            //    m_Transform.forward = Vector3.Lerp(m_Transform.forward, (m_Transform.position - m_LastPosition).normalized, speed);
+            //}
 
             m_LastPosition = m_Transform.position;
         }
 
-        void Accelerate(float deltaTime, float targetSpeed)
-        {
-            m_Speed += deltaTime * m_AccelerationSpeed;
-            m_Speed = Mathf.Min(m_Speed, targetSpeed);
-        }
-
-        void Decelerate(float deltaTime, float targetSpeed)
-        {
-            m_Speed -= deltaTime * m_DecelerationSpeed;
-            m_Speed = Mathf.Max(m_Speed, targetSpeed);
-        }
-
-        bool Approximately(Vector3 a, Vector3 b)
-        {
-            return Mathf.Approximately(a.x, b.x) && Mathf.Approximately(a.y, b.y) && Mathf.Approximately(a.z, b.z);
-        }
     }
 }

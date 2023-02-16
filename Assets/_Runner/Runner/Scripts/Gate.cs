@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 namespace HyperCasual.Runner
@@ -28,6 +29,7 @@ namespace HyperCasual.Runner
         {
             ChangeSpeed,
             ChangeSize,
+            ChangeNumber,
         }
 
         /// <summary>
@@ -84,11 +86,15 @@ namespace HyperCasual.Runner
             {
                 case GateType.ChangeSpeed:
                     PlayerController.Instance.AdjustSpeed(m_Value);
-                break;
+                    break;
 
                 case GateType.ChangeSize:
                     PlayerController.Instance.AdjustScale(m_Value);
-                break;
+                    break;
+
+                case GateType.ChangeNumber:
+                    PlayerController.Instance.AdjustNumber((int)m_Value);
+                    break;
             }
 
             m_Applied = true;

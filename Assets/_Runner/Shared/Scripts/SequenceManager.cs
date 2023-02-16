@@ -95,6 +95,7 @@ namespace HyperCasual.Gameplay
                 IState state = null;
                 if (level is SceneRef sceneLevel)
                 {
+                    Debug.Log(sceneLevel.m_ScenePath);
                     state = CreateLevelState(sceneLevel.m_ScenePath);
                 }
                 else

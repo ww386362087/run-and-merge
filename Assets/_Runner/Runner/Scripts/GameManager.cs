@@ -92,10 +92,10 @@ namespace HyperCasual.Runner
                 PlayerController.Instance.ResetPlayer();
             }
 
-            if (CameraManager.Instance != null)
-            {
-                CameraManager.Instance.ResetCamera();
-            }
+            //if (CameraManager.Instance != null)
+            //{
+            //    CameraManager.Instance.ResetCamera();
+            //}
 
             if (LevelManager.Instance != null)
             {

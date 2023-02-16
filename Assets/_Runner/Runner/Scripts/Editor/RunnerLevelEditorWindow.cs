@@ -496,30 +496,31 @@ namespace HyperCasual.Runner
 
             if (m_AutoSaveCamera)
             {
-                CameraManager[] cameraManagers = (CameraManager[])Object.FindObjectsOfType(typeof(CameraManager));
-                if (cameraManagers.Length == 1)
-                {
-                    GameObject cameraManagerPrefab = PrefabUtility.GetCorrespondingObjectFromOriginalSource(cameraManagers[0].gameObject);
-                    if (cameraManagerPrefab != null)
-                    {
-                        PrefabUtility.ApplyPrefabInstance(cameraManagers[0].gameObject, InteractionMode.UserAction);
-                    }
-                    else
-                    {
-                        Debug.LogError("CameraManager could not be found on a prefab instance. Changes could not be saved.");
-                    }
-                }
-                else
-                {
-                    if (cameraManagers.Length == 0)
-                    {
-                        Debug.LogWarning("No instance of CameraManager found in the scene. No changes saved!");
-                    }
-                    else 
-                    {
-                        Debug.LogWarning("More than two instances of CameraManager found in the scene. No changes saved!");
-                    }
-                }
+                //CameraManager[] cameraManagers = (CameraManager[])Object.FindObjectsOfType(typeof(CameraManager));
+                //if (cameraManagers.Length == 1)
+                //{
+                //    GameObject cameraManagerPrefab = PrefabUtility.GetCorrespondingObjectFromOriginalSource(cameraManagers[0].gameObject);
+                //    if (cameraManagerPrefab != null)
+                //    {
+                //        Debug.LogError("CameraManager could not be found on a prefab instance. Changes could not be saved.");
+                //        //PrefabUtility.ApplyPrefabInstance(cameraManagers[0].gameObject, InteractionMode.UserAction);
+                //    }
+                //    else
+                //    {
+                //        Debug.LogError("CameraManager could not be found on a prefab instance. Changes could not be saved.");
+                //    }
+                //}
+                //else
+                //{
+                //    if (cameraManagers.Length == 0)
+                //    {
+                //        Debug.LogWarning("No instance of CameraManager found in the scene. No changes saved!");
+                //    }
+                //    else 
+                //    {
+                //        Debug.LogWarning("More than two instances of CameraManager found in the scene. No changes saved!");
+                //    }
+                //}
             }
 
             // Set level definition dirty so the changes will be written to disk

@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.U))
         {
-            setcoin(5000);
+            setcoin(9999999);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 

@@ -281,7 +281,7 @@ public class Monster : MonoBehaviour
                         else if (enemies_script.get_active_warrior() != null)
                         {
                             //set destination
-                            set_destination(Players_script.get_active_warrior().transform);
+                            set_destination(enemies_script.get_active_warrior().transform);
                         }
                         else
                         {

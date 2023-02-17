@@ -33,4 +33,23 @@ public class ManageLevel : MonoBehaviour
             enemies_script.list_active_warriors = new List<Warrior>(list_warrior);
         }
     }
+
+    [ContextMenu("Populate List")]
+    void PopulateList()
+    {
+        list_monster.Clear();
+        list_warrior.Clear();
+
+        foreach (Transform go in transform)
+        {
+            if (go.GetComponent<Monster>() != null)
+            {
+                list_monster.Add(go.GetComponent<Monster>());
+            }
+            else
+            {
+                list_warrior.Add(go.GetComponent<Warrior>());
+            }
+        }
+    }
 }

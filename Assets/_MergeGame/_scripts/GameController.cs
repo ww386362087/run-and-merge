@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -54,7 +55,7 @@ public class GameController : MonoBehaviour
         //    SoundManager.instance.Play("deploy");
 
         //    add_monster_to_scene();
-            
+
         //}
         //fight
         //if (Input.GetKeyDown(KeyCode.F))
@@ -63,7 +64,6 @@ public class GameController : MonoBehaviour
 
         //    enemies_script.choose_player_for_fight_start();
         //}
-
         if (Input.GetMouseButtonDown(0))
         {
             active_move();

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+
 using UnityEditor;
 using UnityEngine;
 
@@ -257,8 +259,17 @@ namespace HyperCasual.Runner
             }
 
             float fullWidth = m_MaxXPosition * 2.0f;
+            var limit = new Vector2(-m_MaxXPosition, m_MaxXPosition);
+            if (Characters.Count > 0)
+            {
+                var pos = m_Character.transform.position.x;
+                limit.x = limit.x - Characters.Min(c => c.transform.position.x) + pos;
+                limit.y = limit.y - Characters.Max(c => c.transform.position.x) + pos;
+            }
+
+
             m_TargetPosition = m_TargetPosition + fullWidth * normalizedDeltaPosition;
-            m_TargetPosition = Mathf.Clamp(m_TargetPosition, -m_MaxXPosition, m_MaxXPosition);
+            m_TargetPosition = Mathf.Clamp(m_TargetPosition, limit.x, limit.y);
             m_HasInput = true;
         }
 

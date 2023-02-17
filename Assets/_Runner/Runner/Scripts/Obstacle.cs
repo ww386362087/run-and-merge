@@ -47,23 +47,18 @@ namespace HyperCasual.Runner
         {
             if (col.CompareTag(k_PlayerTag))
             {
-                Collide();
+                Collide(col);
             }
         }
 
-        void Collide()
+        void Collide(Collider col)
         {
             if (m_Event != null)
             {
                 m_Event.Raise();
             }
 
-            PlayerController.Instance.AdjustHealth(-1);
-
-            if (PlayerController.Instance.Health < 1)
-            {
-                GameManager.Instance.Lose();
-            }
+            PlayerController.Instance.RemoveCharacter(col.gameObject);
 
             AudioManager.Instance.PlayEffect(m_Sound);
         }

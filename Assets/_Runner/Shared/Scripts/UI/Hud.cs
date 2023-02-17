@@ -17,6 +17,8 @@ namespace HyperCasual.Gameplay
         [SerializeField]
         TextMeshProUGUI m_GoldText;
         [SerializeField]
+        TextMeshProUGUI m_KeysText;
+        [SerializeField]
         Slider m_XpSlider;
         [SerializeField]
         HyperCasualButton m_PauseButton;
@@ -43,6 +45,25 @@ namespace HyperCasual.Gameplay
                 {
                     m_GoldValue = value;
                     m_GoldText.text = GoldValue.ToString();
+                }
+            }
+        }
+
+        int m_KeysValue;
+
+        /// <summary>
+        /// The amount of gold to display on the hud.
+        /// The setter method also sets the hud text.
+        /// </summary>
+        public int KeysValue
+        {
+            get => m_KeysValue;
+            set
+            {
+                if (m_KeysValue != value)
+                {
+                    m_KeysValue = value;
+                    m_KeysText.text = KeysValue.ToString();
                 }
             }
         }

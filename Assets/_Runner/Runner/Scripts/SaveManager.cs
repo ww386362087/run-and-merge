@@ -19,8 +19,11 @@ namespace HyperCasual.Runner
         static SaveManager s_Instance;
 
         const string k_LevelProgress = "LevelProgress";
+
         const string k_Currency = "Currency";
+        const string k_Keys = "Keys";
         const string k_Xp = "Xp";
+        
         const string k_AudioSettings = "AudioSettings";
         const string k_QualityLevel = "QualityLevel";
 
@@ -45,6 +48,15 @@ namespace HyperCasual.Runner
         { 
             get => PlayerPrefs.GetInt(k_Currency); 
             set => PlayerPrefs.SetInt(k_Currency, value);
+        }
+
+        /// <summary>
+        /// Save and load keys as an integer
+        /// </summary>
+        public int Keys
+        {
+            get => PlayerPrefs.GetInt(k_Keys);
+            set => PlayerPrefs.SetInt(k_Keys, value);
         }
 
         public float XP

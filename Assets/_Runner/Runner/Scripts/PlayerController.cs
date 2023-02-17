@@ -108,8 +108,18 @@ namespace HyperCasual.Runner
         /// <summary> The player's maximum X position. </summary>
         public float MaxXPosition => m_MaxXPosition;
 
-        public List<GameObject> Characters => characters ?? (characters = new List<GameObject>());
-
+        public List<GameObject> Characters
+        {
+            get 
+            {
+                if(characters == null)
+                {
+                    characters = new List<GameObject>();
+                    characters.Add(m_Character);
+                }
+                return characters;
+            }
+        }
         void Awake()
         {
             if (s_Instance != null && s_Instance != this)

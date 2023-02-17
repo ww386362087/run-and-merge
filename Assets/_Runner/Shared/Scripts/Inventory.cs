@@ -24,9 +24,10 @@ namespace HyperCasual.Runner
 
         int m_TempGold;
         int m_TotalGold;
+        int m_TempKeys;
+        int m_TotalKeys;
         float m_TempXp;
         float m_TotalXp;
-        int m_TempKeys;
 
         /// <summary>
         /// Temporary const
@@ -49,9 +50,10 @@ namespace HyperCasual.Runner
 
             m_TempGold = 0;
             m_TotalGold = SaveManager.Instance.Currency;
+            m_TempKeys = 0;
+            m_TotalKeys = SaveManager.Instance.Keys;
             m_TempXp = 0;
             m_TotalXp = SaveManager.Instance.XP;
-            m_TempKeys = 0;
 
             m_LevelCompleteScreen = UIManager.Instance.GetView<LevelCompleteScreen>();
             m_Hud = UIManager.Instance.GetView<Hud>();
@@ -91,6 +93,7 @@ namespace HyperCasual.Runner
             if (m_KeyEventListener.m_Event is ItemPickedEvent keyPickedEvent)
             {
                 m_TempKeys += keyPickedEvent.Count;
+                m_Hud.KeysValue = m_TempKeys;
             }
             else
             {
@@ -100,9 +103,15 @@ namespace HyperCasual.Runner
 
         void OnWin()
         {
+            // Gold.
             m_TotalGold += m_TempGold;
             m_TempGold = 0;
             SaveManager.Instance.Currency = m_TotalGold;
+
+            // Keys.
+            m_TotalKeys += m_TempKeys;
+            m_TempKeys = 0;
+            SaveManager.Instance.Keys = m_TotalKeys;
 
             m_LevelCompleteScreen.GoldValue = m_TotalGold;
             m_LevelCompleteScreen.XpSlider.minValue = m_TotalXp;
@@ -119,6 +128,7 @@ namespace HyperCasual.Runner
         void OnLose()
         {
             m_TempGold = 0;
+            m_TempKeys = 0;
             m_TotalXp += m_TempXp;
             m_TempXp = 0f;
             SaveManager.Instance.XP = m_TotalXp;

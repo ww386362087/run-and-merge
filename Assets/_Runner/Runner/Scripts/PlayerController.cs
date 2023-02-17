@@ -224,21 +224,29 @@ namespace HyperCasual.Runner
                 for(int i  = 0; i < Mathf.Abs(numberAdd); i++)
                 {
                     var indexRemove = Characters.Count - 1;
-                    if(indexRemove >= 0)
-                    {
-                        Destroy(Characters[indexRemove].gameObject);
-                        Characters.RemoveAt(indexRemove);
-                    }
-                    else
-                    {
-                        GameManager.Instance.Lose();
-                        break;
-                    }
+                    RemoveCharacter(Characters[indexRemove]);
                 }
             }
             //m_TargetScale += Vector3.one * scale;
             //m_TargetScale = Vector3.Max(m_TargetScale, Vector3.one * k_MinimumScale);
         }
+
+        public void RemoveCharacter(GameObject characterRemove)
+        {
+            if (Characters.Contains(characterRemove))
+            {
+                Characters.Remove(characterRemove);
+                Destroy(characterRemove);
+
+                if (Characters.Count <= 0)
+                    GameManager.Instance.Lose();
+            }
+            else
+            {
+                Debug.LogWarning("Don't found characeter ");
+            }
+        }
+
 
         /// <summary>
         /// Returns the player's transform component

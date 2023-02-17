@@ -24,7 +24,7 @@ public class Monster : MonoBehaviour
     public int hit_coin;
     public string current_anim = "_idle";
 
-    const string run = "_body";
+    const string run = "Locomotion";
     const string death = "_dead";
     const string hit = "_short_003_new";
     const string win = "_buff_001";
@@ -306,6 +306,11 @@ public class Monster : MonoBehaviour
 
     public void animate_monster(string name_anim)
     {
+        if(current_anim == run)
+        {
+            Debug.Log($"Override run by {name_anim}");
+        }
+
         if(name_anim != current_anim)
         {
             anim.Play(name_anim);

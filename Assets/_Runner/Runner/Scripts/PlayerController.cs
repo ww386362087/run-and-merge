@@ -72,6 +72,8 @@ namespace HyperCasual.Runner
         Vector3 m_TargetScale;
         Vector3 m_DefaultScale;
 
+        List<GameObject> characters;
+
         const float k_HalfWidth = 0.5f;
 
         /// <summary> The player's root Transform component. </summary>
@@ -103,6 +105,8 @@ namespace HyperCasual.Runner
 
         /// <summary> The player's maximum X position. </summary>
         public float MaxXPosition => m_MaxXPosition;
+
+        public List<GameObject> Characters => characters ?? (characters = new List<GameObject>());
 
         void Awake()
         {
@@ -204,16 +208,31 @@ namespace HyperCasual.Runner
         {
             if(numberAdd > 0)
             {
-                Debug.Log(numberAdd);
                 var currentPosition = m_Character.transform.position;
                 for (int i = 0; i < numberAdd; i++)
                 {
                     var newPos = currentPosition;
                     newPos.x += Random.Range(0.5f, 1) * (Random.Range(0f, 1f) < .5f ? -1 : 1);
                     newPos.z += Random.Range(0.5f, 1) * (Random.Range(0f, 1f) < .5f ? -1 : 1);
-                    Instantiate(m_Character.gameObject, newPos, Quaternion.identity, transform);
+                    Characters.Add(Instantiate(m_Character.gameObject, newPos, Quaternion.identity, transform));
                 }
-
+            }
+            else if (numberAdd < 0)
+            {
+                for(int i  = 0; i < Mathf.Abs(numberAdd); i++)
+                {
+                    var indexRemove = Characters.Count - 1;
+                    if(indexRemove >= 0)
+                    {
+                        Destroy(Characters[indexRemove].gameObject);
+                        Characters.RemoveAt(indexRemove);
+                    }
+                    else
+                    {
+                        GameManager.Instance.Lose();
+                        break;
+                    }
+                }
             }
             //m_TargetScale += Vector3.one * scale;
             //m_TargetScale = Vector3.Max(m_TargetScale, Vector3.one * k_MinimumScale);

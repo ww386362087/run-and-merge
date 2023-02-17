@@ -14,6 +14,7 @@ namespace HyperCasual.Runner
     public class Gate : Spawnable
     {
         const string k_PlayerTag = "Player";
+        const string k_GateTag = "Gate";
 
         [SerializeField]
         GateType m_GateType;
@@ -24,6 +25,7 @@ namespace HyperCasual.Runner
 
         bool m_Applied;
         Vector3 m_TextInitialScale;
+        Gate pair;
 
         enum GateType
         {
@@ -78,6 +80,16 @@ namespace HyperCasual.Runner
             {
                 ActivateGate();
             }
+
+            if (col.CompareTag(k_GateTag))
+            {
+                pair = col.GetComponent<Gate>();
+            }
+        }
+
+        public void SetApplyed()
+        {
+            m_Applied = true;
         }
 
         void ActivateGate()
@@ -97,7 +109,8 @@ namespace HyperCasual.Runner
                     break;
             }
 
-            m_Applied = true;
+            SetApplyed();
+            pair?.SetApplyed();
         }
     }
 }

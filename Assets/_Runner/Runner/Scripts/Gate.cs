@@ -31,7 +31,7 @@ namespace HyperCasual.Runner
         {
             ChangeSpeed,
             ChangeSize,
-            ChangeNumber,
+            ChangeQuantity,
         }
 
         /// <summary>
@@ -104,8 +104,8 @@ namespace HyperCasual.Runner
                     PlayerController.Instance.AdjustScale(m_Value);
                     break;
 
-                case GateType.ChangeNumber:
-                    PlayerController.Instance.AdjustNumber((int)m_Value);
+                case GateType.ChangeQuantity:
+                    PlayerController.Instance.AdjustQuantity((int)m_Value);
                     break;
             }
 

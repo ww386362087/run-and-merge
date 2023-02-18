@@ -23,8 +23,11 @@ namespace HyperCasual.Runner
         [SerializeField]
         GameObject m_Character;
 
+        /*[SerializeField]
+        SkinnedMeshRenderer m_SkinnedMeshRenderer;*/
+
         [SerializeField]
-        SkinnedMeshRenderer m_SkinnedMeshRenderer;
+        GameObject m_StartingPoint;
 
         [SerializeField]
         PlayerSpeedPreset m_PlayerSpeed = PlayerSpeedPreset.Medium;
@@ -74,7 +77,8 @@ namespace HyperCasual.Runner
         Vector3 m_TargetScale;
         Vector3 m_DefaultScale;
 
-        List<GameObject> characters;
+        GameObject m_FirstCharacter;
+        [SerializeField] List<GameObject> m_Characters;
 
         const float k_HalfWidth = 0.5f;
 
@@ -108,16 +112,20 @@ namespace HyperCasual.Runner
         /// <summary> The player's maximum X position. </summary>
         public float MaxXPosition => m_MaxXPosition;
 
+        /// <summary> Default character. </summary>
+        public GameObject FirstCharacter => m_FirstCharacter;
+
         public List<GameObject> Characters
         {
             get 
             {
-                if(characters == null)
+                // NOTE: m_character list doesn't actually get populated.
+                if(m_Characters == null)
                 {
-                    characters = new List<GameObject>();
-                    characters.Add(m_Character);
+                    m_Characters = new List<GameObject>();
+                    m_Characters.Add(Instantiate(m_Character.gameObject, m_StartingPoint.transform.localPosition, Quaternion.identity, m_Transform));
                 }
-                return characters;
+                return m_Characters;
             }
         }
         void Awake()
@@ -144,15 +152,16 @@ namespace HyperCasual.Runner
             m_Scale = m_DefaultScale;
             m_TargetScale = m_Scale;
 
-            if (m_SkinnedMeshRenderer != null)
+            /*if (m_SkinnedMeshRenderer != null)
             {
                 m_StartHeight = m_SkinnedMeshRenderer.bounds.size.y;
             }
             else 
             {
                 m_StartHeight = 1.0f;
-            }
+            }*/
 
+            ResetQuantity();
             ResetSpeed();
         }
 
@@ -214,13 +223,13 @@ namespace HyperCasual.Runner
         }
 
         /// <summary>
-        /// Adjust the player's current number
+        /// Adjust the player's current character quantity.
         /// </summary>
-        public void AdjustNumber(int numberAdd)
+        public void AdjustQuantity(int numberAdd)
         {
             if(numberAdd > 0)
             {
-                var currentPosition = m_Character.transform.position;
+                var currentPosition = m_StartingPoint.transform.position;
                 for (int i = 0; i < numberAdd; i++)
                 {
                     var newPos = currentPosition;
@@ -231,7 +240,7 @@ namespace HyperCasual.Runner
             }
             else if (numberAdd < 0)
             {
-                for(int i  = 0; i < Mathf.Abs(numberAdd); i++)
+                for(int i = 0; i < Mathf.Abs(numberAdd); i++)
                 {
                     var indexRemove = Characters.Count - 1;
                     RemoveCharacter(Characters[indexRemove]);
@@ -241,6 +250,9 @@ namespace HyperCasual.Runner
             //m_TargetScale = Vector3.Max(m_TargetScale, Vector3.one * k_MinimumScale);
         }
 
+        /// <summary>
+        /// Remove character gameobject and call Lose event when the number of characters reach 0.
+        /// </summary>
         public void RemoveCharacter(GameObject characterRemove)
         {
             if (Characters.Contains(characterRemove))
@@ -253,10 +265,18 @@ namespace HyperCasual.Runner
             }
             else
             {
-                Debug.LogWarning("Don't found characeter ");
+                Debug.LogWarning("Can't find character");
             }
         }
 
+        /// <summary>
+        /// Reset the player's character quantity to default.
+        /// </summary>
+        public void ResetQuantity()
+        {
+            m_FirstCharacter = Instantiate(m_Character.gameObject, m_StartingPoint.transform.localPosition, Quaternion.identity, m_Transform);
+            m_Characters.Add(m_FirstCharacter);
+        }
 
         /// <summary>
         /// Returns the player's transform component
@@ -323,6 +343,7 @@ namespace HyperCasual.Runner
 
             m_HasInput = false;
 
+            ResetQuantity();
             ResetSpeed();
             ResetScale();
         }

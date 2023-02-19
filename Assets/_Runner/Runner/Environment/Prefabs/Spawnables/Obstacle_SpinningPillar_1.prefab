@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 1021949262770465885}
   - component: {fileID: 4807591157659393222}
   - component: {fileID: 5928528988436547237}
-  - component: {fileID: 626904456358833320}
+  - component: {fileID: 3558418781853425409}
   - component: {fileID: 915978298818265044}
-  - component: {fileID: 2064828596693581957}
+  - component: {fileID: 6421290526123597650}
   m_Layer: 0
-  m_Name: Obstacle_SpinningRectangular
+  m_Name: Obstacle_SpinningPillar_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314387739941697089}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: 0}
-  m_LocalScale: {x: 5, y: 0.7, z: 0.7}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314387739941697089}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &5928528988436547237
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eac89a328a691f04f853a239fd105290, type: 2}
+  - {fileID: 2100000, guid: bf39c38b7ee8341249aecd2609925601, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,8 +86,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &626904456358833320
-BoxCollider:
+--- !u!136 &3558418781853425409
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -96,9 +96,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 2.73, y: 0, z: 0}
+  m_Radius: 0.52
+  m_Height: 2.52
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &915978298818265044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,8 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SnapToGrid: 1
   m_Sound: 0
-  m_Event: {fileID: 11400000, guid: d99d98a5d2086e8459c8609d09ea5a57, type: 2}
---- !u!114 &2064828596693581957
+  m_Event: {fileID: 11400000, guid: ae8554b39378aef44923581b03f32cdf, type: 2}
+--- !u!114 &6421290526123597650
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,4 +133,5 @@ MonoBehaviour:
   BobSpeed: 5
   BobHeight: 0.2
   Spin: 1
+  m_Axis: 1
   SpinSpeed: 180

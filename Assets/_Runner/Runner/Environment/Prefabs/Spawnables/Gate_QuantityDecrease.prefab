@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4877652770548064436}
   - component: {fileID: 5188771275561931684}
   m_Layer: 0
-  m_Name: Gate_CharacterRemove
+  m_Name: Gate_QuantityDecrease
   m_TagString: Gate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

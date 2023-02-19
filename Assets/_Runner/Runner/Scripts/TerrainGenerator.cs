@@ -16,10 +16,10 @@ namespace HyperCasual.Runner
         /// </summary>
         public struct TerrainDimensions
         {
-            /// <summary>
+            /*/// <summary>
             /// Width of the terrain to generate.
             /// </summary>
-            public float Width;
+            public float Width;*/
             
             /// <summary>
             /// Length of the terrain to generate.
@@ -36,10 +36,10 @@ namespace HyperCasual.Runner
             /// </summary>
             public float EndBuffer;
 
-            /// <summary>
+            /*/// <summary>
             /// Thickness of the terrain to generate.
             /// </summary>
-            public float Thickness;
+            public float Thickness;*/
         }
 
         /// <summary>
@@ -55,13 +55,13 @@ namespace HyperCasual.Runner
         /// <param name="terrainGameObject">
         /// A new GameObject that is created to hold the terrain.
         /// </param>
-        public static GameObject CreateTerrain(TerrainDimensions terrainDimensions, Material terrainMaterial/*, GameObject terrainGameObject*/)
+        public static GameObject CreateTerrain(TerrainDimensions terrainDimensions, Material terrainMaterial, float LevelWidth, float LevelThickness/*, GameObject terrainGameObject*/)
         {
-            float width = terrainDimensions.Width;
+            float width = LevelWidth;
             float length = terrainDimensions.Length;
             float startBuffer = terrainDimensions.StartBuffer;
             float endBuffer = terrainDimensions.EndBuffer;
-            float thickness = terrainDimensions.Thickness;
+            float thickness = LevelThickness;
 
             Mesh mesh = new Mesh();
             mesh.name = "Terrain";

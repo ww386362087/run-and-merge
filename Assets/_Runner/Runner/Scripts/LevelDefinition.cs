@@ -15,9 +15,9 @@ namespace HyperCasual.Runner
         /// <summary>
         /// The Length of the level.
         /// </summary>
-        public float LevelLength = 100.0f;
+        public float LevelLength;
 
-        /// <summary>
+        /*/// <summary>
         /// The amount of extra terrain to be added before the start of the level.
         /// </summary>
         public float LevelLengthBufferStart = 5.0f;
@@ -25,7 +25,7 @@ namespace HyperCasual.Runner
         /// <summary>
         /// The amount of extra terrain to be added after the end of the level.
         /// </summary>
-        public float LevelLengthBufferEnd = 5.0f;
+        public float LevelLengthBufferEnd = 5.0f;*/
 
         /// <summary>
         /// The width of the level.
@@ -115,27 +115,27 @@ namespace HyperCasual.Runner
             /// <summary>
             /// The Length of the level.
             /// </summary>
-            public float LevelLength = 100.0f;
+            public float MeshLength = 100.0f;
 
             /// <summary>
             /// The amount of extra terrain to be added before the start of the level.
             /// </summary>
-            public float LevelLengthBufferStart = 5.0f;
+            public float MeshLengthBufferStart = 5.0f;
 
             /// <summary>
             /// The amount of extra terrain to be added after the end of the level.
             /// </summary>
-            public float LevelLengthBufferEnd = 5.0f;
+            public float MeshLengthBufferEnd = 5.0f;
 
-            /// <summary>
+            /*/// <summary>
             /// The width of the level.
             /// </summary>
-            public float LevelWidth = 5.0f;
+            public float LevelWidth = 5.0f;*/
 
-            /// <summary>
+            /*/// <summary>
             /// The thickness of the level.
             /// </summary>
-            public float LevelThickness = 0.1f;
+            public float MeshThickness = 0.1f;*/
         }
 
         /// <summary>
@@ -147,11 +147,17 @@ namespace HyperCasual.Runner
         public void SaveValues(LevelDefinition updatedLevel)
         {
             // TODO - Add Tests for this!
-            LevelLength = updatedLevel.LevelLength;
+            /*LevelLength = updatedLevel.LevelLength;
             LevelLengthBufferStart = updatedLevel.LevelLengthBufferStart;
-            LevelLengthBufferEnd = updatedLevel.LevelLengthBufferEnd;
+            LevelLengthBufferEnd = updatedLevel.LevelLengthBufferEnd;*/
             LevelWidth = updatedLevel.LevelWidth;
             LevelThickness = updatedLevel.LevelThickness;
+            LevelLength = 0;
+            foreach (MeshToCreate mesh in updatedLevel.ListMeshToCreate)
+            {
+                LevelLength += mesh.MeshLength + mesh.MeshLengthBufferStart + mesh.MeshLengthBufferEnd;
+            }
+
             SnapToGrid = updatedLevel.SnapToGrid;
             GridSize = updatedLevel.GridSize;
             TerrainMaterial = updatedLevel.TerrainMaterial;

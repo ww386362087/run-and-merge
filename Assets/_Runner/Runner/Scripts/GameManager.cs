@@ -295,19 +295,34 @@ namespace HyperCasual.Runner
             }
             terrainGameObjectList.Clear();
 
+            //var
+            float startBuffer = 0;
+            float endBuffer = 0;
+
             for (int i = 0; i < levelDefinition.ListMeshToCreate.Count; i++)
             {
-                //GameObject go = terrainGameObjectList[i];
+                if (i == 0)
+                {
+                    startBuffer = levelDefinition.ListMeshToCreate[i].MeshLengthBufferStart;
+                    endBuffer = 0;
+                }
+                else
+                {
+                    startBuffer -= levelDefinition.ListMeshToCreate[i - 1].MeshLength;
+                    endBuffer += levelDefinition.ListMeshToCreate[i].MeshLengthBufferEnd;
+                }
 
                 TerrainGenerator.TerrainDimensions terrainDimensions = new TerrainGenerator.TerrainDimensions()
                 {
-                    Width = levelDefinition.ListMeshToCreate[i].LevelWidth,
-                    Length = levelDefinition.ListMeshToCreate[i].LevelLength,
-                    StartBuffer = levelDefinition.ListMeshToCreate[i].LevelLengthBufferStart,
-                    EndBuffer = levelDefinition.ListMeshToCreate[i].LevelLengthBufferEnd,
-                    Thickness = levelDefinition.ListMeshToCreate[i].LevelThickness
+                    /*Length = levelDefinition.ListMeshToCreate[i].MeshLength,
+                    StartBuffer = levelDefinition.ListMeshToCreate[i].MeshLengthBufferStart,
+                    EndBuffer = levelDefinition.ListMeshToCreate[i].MeshLengthBufferEnd,*/
+
+                    Length = levelDefinition.ListMeshToCreate[i].MeshLength,
+                    StartBuffer = startBuffer,
+                    EndBuffer =  endBuffer
                 };
-                terrainGameObjectList.Add(TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.TerrainMaterial));
+                terrainGameObjectList.Add(TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.TerrainMaterial, levelDefinition.LevelWidth, levelDefinition.LevelThickness));
             }
         }
 

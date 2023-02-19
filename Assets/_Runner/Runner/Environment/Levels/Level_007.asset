@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998452e8577ff4bb78b32585432cf5a3, type: 3}
   m_Name: Level_007
   m_EditorClassIdentifier: 
-  LevelLength: 150
-  LevelLengthBufferStart: 20
-  LevelLengthBufferEnd: 50
+  LevelLength: 110
   LevelWidth: 20
-  LevelThickness: 0.5
+  ListMeshToCreate:
+  - MeshLength: 100
+    MeshLengthBufferStart: 5
+    MeshLengthBufferEnd: 5
+    MeshThickness: 0.1
   SnapToGrid: 1
   GridSize: 1
   TerrainMaterial: {fileID: 2100000, guid: e2d13250d13954c7991517c511efc6be, type: 2}

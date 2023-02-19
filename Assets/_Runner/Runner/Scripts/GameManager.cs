@@ -39,7 +39,7 @@ namespace HyperCasual.Runner
         public bool IsPlaying => m_IsPlaying;
         bool m_IsPlaying;
         GameObject m_CurrentLevelGO;
-        GameObject m_CurrentTerrainGO;
+        List<GameObject> m_CurrentTerrainGOList = new List<GameObject>();
         GameObject m_LevelMarkersGO;
 
         List<Spawnable> m_ActiveSpawnables = new List<Spawnable>();
@@ -76,7 +76,7 @@ namespace HyperCasual.Runner
         {
             m_CurrentLevel = levelDefinition;
             LoadLevel(m_CurrentLevel, ref m_CurrentLevelGO);
-            CreateTerrain(m_CurrentLevel, ref m_CurrentTerrainGO);
+            CreateTerrain(m_CurrentLevel, ref m_CurrentTerrainGOList);
             PlaceLevelMarkers(m_CurrentLevel, ref m_LevelMarkersGO);
             StartGame();
         }
@@ -201,10 +201,23 @@ namespace HyperCasual.Runner
                 GameObject.Destroy(m_LevelMarkersGO);
             }
 
-            if (m_CurrentTerrainGO != null)
+            /*if (m_CurrentTerrainGO != null)
             {
                 GameObject.Destroy(m_CurrentTerrainGO);
+            }*/
+
+            foreach (GameObject go in m_CurrentTerrainGOList)
+            {
+                if (Application.isPlaying)
+                {
+                    Destroy(go);
+                }
+                else
+                {
+                    DestroyImmediate(go);
+                }
             }
+            m_CurrentTerrainGOList.Clear();
 
             m_CurrentLevel = null;
         }
@@ -267,17 +280,35 @@ namespace HyperCasual.Runner
         /// <param name="terrainGameObject">
         /// A new GameObject that is created to hold the terrain.
         /// </param>
-        public static void CreateTerrain(LevelDefinition levelDefinition, ref GameObject terrainGameObject)
+        public static void CreateTerrain(LevelDefinition levelDefinition, ref List<GameObject> terrainGameObjectList)
         {
-            TerrainGenerator.TerrainDimensions terrainDimensions = new TerrainGenerator.TerrainDimensions()
+            foreach (GameObject go in terrainGameObjectList)
             {
-                Width = levelDefinition.LevelWidth,
-                Length = levelDefinition.LevelLength,
-                StartBuffer = levelDefinition.LevelLengthBufferStart,
-                EndBuffer = levelDefinition.LevelLengthBufferEnd,
-                Thickness = levelDefinition.LevelThickness
-            };
-            TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.TerrainMaterial, ref terrainGameObject);
+                if (Application.isPlaying)
+                {
+                    Destroy(go);
+                }
+                else
+                {
+                    DestroyImmediate(go);
+                }
+            }
+            terrainGameObjectList.Clear();
+
+            for (int i = 0; i < levelDefinition.ListMeshToCreate.Count; i++)
+            {
+                //GameObject go = terrainGameObjectList[i];
+
+                TerrainGenerator.TerrainDimensions terrainDimensions = new TerrainGenerator.TerrainDimensions()
+                {
+                    Width = levelDefinition.ListMeshToCreate[i].LevelWidth,
+                    Length = levelDefinition.ListMeshToCreate[i].LevelLength,
+                    StartBuffer = levelDefinition.ListMeshToCreate[i].LevelLengthBufferStart,
+                    EndBuffer = levelDefinition.ListMeshToCreate[i].LevelLengthBufferEnd,
+                    Thickness = levelDefinition.ListMeshToCreate[i].LevelThickness
+                };
+                terrainGameObjectList.Add(TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.TerrainMaterial));
+            }
         }
 
         public void Win()

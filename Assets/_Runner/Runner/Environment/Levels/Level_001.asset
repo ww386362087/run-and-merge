@@ -17,6 +17,12 @@ MonoBehaviour:
   LevelLengthBufferEnd: 50
   LevelWidth: 10
   LevelThickness: 0.5
+  ListMeshToCreate:
+  - LevelLength: 150
+    LevelLengthBufferStart: 20
+    LevelLengthBufferEnd: 50
+    LevelWidth: 10
+    LevelThickness: 0.5
   SnapToGrid: 1
   GridSize: 1
   TerrainMaterial: {fileID: 2100000, guid: e2d13250d13954c7991517c511efc6be, type: 2}

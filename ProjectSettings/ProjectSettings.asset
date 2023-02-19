@@ -800,7 +800,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
     Android: MOREMOUNTAINS_NICEVIBRATIONS;USE_UNITYADS;MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
-    Standalone: MOREMOUNTAINS_NICEVIBRATIONS
+    Standalone: MOREMOUNTAINS_NICEVIBRATIONS;MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
     Windows Store Apps: 
     iPhone: 
   additionalCompilerArguments: {}

@@ -22,7 +22,7 @@ namespace HyperCasual.Runner
 
         GameObject m_LevelParentGO;
         GameObject m_LoadedLevelGO;
-        GameObject m_TerrainGO;
+        List<GameObject> m_TerrainGOList;
         GameObject m_LevelMarkersGO;
 
         List<Spawnable> m_SelectedSpawnables = new List<Spawnable>();
@@ -328,10 +328,14 @@ namespace HyperCasual.Runner
             m_LoadedLevelDefinition.LevelLengthBufferEnd = Mathf.Max(0.0f, EditorGUILayout.FloatField("End Buffer", m_LoadedLevelDefinition.LevelLengthBufferEnd));
             m_LoadedLevelDefinition.LevelThickness = Mathf.Max(EditorGUILayout.FloatField("Level Thickness", m_LoadedLevelDefinition.LevelThickness));
             m_LoadedLevelDefinition.TerrainMaterial = (Material)EditorGUILayout.ObjectField("Terrain Material", m_LoadedLevelDefinition.TerrainMaterial, typeof(Material), false, null);
-            if (EditorGUI.EndChangeCheck() && m_TerrainGO != null && m_LevelParentGO != null)
+            if (EditorGUI.EndChangeCheck() && m_TerrainGOList != null && m_LevelParentGO != null)
             {
-                GameManager.CreateTerrain(m_LoadedLevelDefinition, ref m_TerrainGO);
-                m_TerrainGO.transform.SetParent(m_LevelParentGO.transform);
+                GameManager.CreateTerrain(m_LoadedLevelDefinition, ref m_TerrainGOList);
+                //m_TerrainGOList.transform.SetParent(m_LevelParentGO.transform);
+                foreach (GameObject go in m_TerrainGOList)
+                {
+                    go.transform.SetParent(m_LevelParentGO.transform);
+                }
             }
             EditorGUILayout.Space();
 
@@ -392,7 +396,7 @@ namespace HyperCasual.Runner
 
         bool LevelNotLoaded()
         {
-            return m_LoadedLevelDefinition == null || m_LevelParentGO == null || m_LoadedLevelGO == null || m_TerrainGO == null || m_LevelMarkersGO == null;
+            return m_LoadedLevelDefinition == null || m_LevelParentGO == null || m_LoadedLevelGO == null || m_TerrainGOList == null || m_LevelMarkersGO == null;
         }
 
         void LoadLevel(LevelDefinition levelDefinition)
@@ -409,11 +413,15 @@ namespace HyperCasual.Runner
             m_LevelParentGO.tag = s_LevelParentTag;
 
             GameManager.LoadLevel(m_LoadedLevelDefinition, ref m_LoadedLevelGO);
-            GameManager.CreateTerrain(m_LoadedLevelDefinition, ref m_TerrainGO);
+            GameManager.CreateTerrain(m_LoadedLevelDefinition, ref m_TerrainGOList);
             GameManager.PlaceLevelMarkers(m_LoadedLevelDefinition, ref m_LevelMarkersGO);
 
             m_LoadedLevelGO.transform.SetParent(m_LevelParentGO.transform);
-            m_TerrainGO.transform.SetParent(m_LevelParentGO.transform);
+            //m_TerrainGOList.transform.SetParent(m_LevelParentGO.transform);
+            foreach (GameObject go in m_TerrainGOList)
+            {
+                go.transform.SetParent(m_LevelParentGO.transform);
+            }
             m_LevelMarkersGO.transform.SetParent(m_LevelParentGO.transform);
             HasLoadedLevel = true;
 

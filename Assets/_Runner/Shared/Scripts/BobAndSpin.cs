@@ -11,6 +11,7 @@ namespace HyperCasual.Core
 
         [Header("--- Bob")]
         public bool Bob = true;
+        [SerializeField] Direction m_Direction;
         public float BobSpeed = 5.0f;
         public float BobHeight = 0.2f;
 
@@ -19,11 +20,18 @@ namespace HyperCasual.Core
         [SerializeField] Axis m_Axis;
         public float SpinSpeed = 180.0f;
 
+        enum Direction
+        {
+            Sideways   = 0,
+            UpNDown    = 1,
+            BackNForth = 2
+        }
+
         enum Axis
         {
-            X = 0,
-            Y = 1,
-            Z = 2
+            X          = 3,
+            Y          = 4,
+            Z          = 5
         }
 
         // internal.
@@ -42,7 +50,18 @@ namespace HyperCasual.Core
 
             if (Bob)
             {
-                m_Transform.position = m_StartPosition + Vector3.up * Mathf.Sin(offset * BobSpeed) * BobHeight;
+                switch (m_Direction)
+                {
+                    case Direction.Sideways:
+                        Move(offset, Vector3.right);
+                        break;
+                    case Direction.UpNDown:
+                        Move(offset, Vector3.up);
+                        break;
+                    case Direction.BackNForth:
+                        Move(offset, Vector3.forward);
+                        break;
+                }
             }
 
             if (Spin)
@@ -72,6 +91,11 @@ namespace HyperCasual.Core
         void Rotate(float _offset, Vector3 _axis)
         {
             m_Transform.rotation = m_StartRotation * Quaternion.AngleAxis(_offset * SpinSpeed, _axis);
+        }
+
+        void Move(float _offset, Vector3 _axis)
+        {
+            m_Transform.position = m_StartPosition + _axis * Mathf.Sin(_offset * BobSpeed) * BobHeight;
         }
     }
 }

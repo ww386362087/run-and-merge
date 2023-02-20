@@ -260,12 +260,14 @@ namespace HyperCasual.Runner
             if (start != null)
             {
                 GameObject go = GameObject.Instantiate(start, new Vector3(start.transform.position.x, start.transform.position.y, 0.0f), Quaternion.identity);
+                go.GetComponent<BoxCollider>().isTrigger = true;
                 go.transform.SetParent(levelMarkersGameObject.transform);
             }
 
             if (end != null)
             {
                 GameObject go = GameObject.Instantiate(end, new Vector3(end.transform.position.x, end.transform.position.y, levelDefinition.GetLevelBufferEnd()), Quaternion.identity);
+                go.GetComponent<BoxCollider>().isTrigger = true;
                 go.transform.SetParent(levelMarkersGameObject.transform);
             }
         }
@@ -311,6 +313,9 @@ namespace HyperCasual.Runner
                 };
 
                 GameObject terrain = TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.TerrainMaterial, levelDefinition.LevelWidth, levelDefinition.LevelThickness);
+
+                terrain.AddComponent(typeof(BoxCollider));
+                //terrain.GetComponent<BoxCollider>().isTrigger = true;
 
                 if (i != 0)
                 {

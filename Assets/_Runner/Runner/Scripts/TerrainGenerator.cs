@@ -40,6 +40,11 @@ namespace HyperCasual.Runner
             /// Thickness of the terrain to generate.
             /// </summary>
             public float Thickness;*/
+
+            /// <summary>
+            /// Space between terrain.
+            /// </summary>
+            public float SpaceBetweenTerrain;
         }
 
         /// <summary>

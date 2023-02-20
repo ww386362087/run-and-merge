@@ -265,7 +265,7 @@ namespace HyperCasual.Runner
 
             if (end != null)
             {
-                GameObject go = GameObject.Instantiate(end, new Vector3(end.transform.position.x, end.transform.position.y, levelDefinition.LevelLength), Quaternion.identity);
+                GameObject go = GameObject.Instantiate(end, new Vector3(end.transform.position.x, end.transform.position.y, levelDefinition.GetLevelBufferEnd()), Quaternion.identity);
                 go.transform.SetParent(levelMarkersGameObject.transform);
             }
         }
@@ -296,33 +296,32 @@ namespace HyperCasual.Runner
             terrainGameObjectList.Clear();
 
             //var
-            float startBuffer = 0;
-            float endBuffer = 0;
+            float lastHalfTerrainLength = 0;
 
             for (int i = 0; i < levelDefinition.ListMeshToCreate.Count; i++)
             {
-                if (i == 0)
-                {
-                    startBuffer = levelDefinition.ListMeshToCreate[i].MeshLengthBufferStart;
-                    endBuffer = 0;
-                }
-                else
-                {
-                    startBuffer -= levelDefinition.ListMeshToCreate[i - 1].MeshLength;
-                    endBuffer += levelDefinition.ListMeshToCreate[i].MeshLengthBufferEnd;
-                }
+                LevelDefinition.MeshToCreate meshToCreate = levelDefinition.ListMeshToCreate[i];
 
                 TerrainGenerator.TerrainDimensions terrainDimensions = new TerrainGenerator.TerrainDimensions()
                 {
-                    /*Length = levelDefinition.ListMeshToCreate[i].MeshLength,
-                    StartBuffer = levelDefinition.ListMeshToCreate[i].MeshLengthBufferStart,
-                    EndBuffer = levelDefinition.ListMeshToCreate[i].MeshLengthBufferEnd,*/
-
-                    Length = levelDefinition.ListMeshToCreate[i].MeshLength,
-                    StartBuffer = startBuffer,
-                    EndBuffer =  endBuffer
+                    Length = meshToCreate.MeshLength,
+                    StartBuffer = meshToCreate.MeshLengthBufferStart,
+                    EndBuffer = meshToCreate.MeshLengthBufferEnd,
+                    SpaceBetweenTerrain = levelDefinition.SpaceBetweenTerrain
                 };
-                terrainGameObjectList.Add(TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.TerrainMaterial, levelDefinition.LevelWidth, levelDefinition.LevelThickness));
+
+                GameObject terrain = TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.TerrainMaterial, levelDefinition.LevelWidth, levelDefinition.LevelThickness);
+
+                if (i != 0)
+                {
+                    terrain.transform.localPosition = new Vector3(terrain.transform.localPosition.x,
+                                                                  terrain.transform.localPosition.y,
+                                                                  lastHalfTerrainLength + levelDefinition.SpaceBetweenTerrain*i + (meshToCreate.MeshLength/2)*i);
+                }
+
+                terrainGameObjectList.Add(terrain);
+
+                lastHalfTerrainLength += meshToCreate.MeshLength / 2;
             }
         }
 

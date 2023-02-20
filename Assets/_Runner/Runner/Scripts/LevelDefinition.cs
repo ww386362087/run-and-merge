@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using HyperCasual.Core;
 using UnityEngine;
+using System.Linq;
 
 namespace HyperCasual.Runner
 {
@@ -36,6 +37,11 @@ namespace HyperCasual.Runner
         /// The thickness of the level.
         /// </summary>
         public float LevelThickness = 0.1f;
+
+        /// <summary>
+        /// Space between terrain.
+        /// </summary>
+        public float SpaceBetweenTerrain;
 
         // List of MeshToCreate
         public List<MeshToCreate> ListMeshToCreate = new List<MeshToCreate>();
@@ -155,8 +161,9 @@ namespace HyperCasual.Runner
             LevelLength = 0;
             foreach (MeshToCreate mesh in updatedLevel.ListMeshToCreate)
             {
-                LevelLength += mesh.MeshLength + mesh.MeshLengthBufferStart + mesh.MeshLengthBufferEnd;
+                LevelLength += mesh.MeshLength + mesh.MeshLengthBufferEnd;
             }
+            LevelLength += (ListMeshToCreate.Count - 1) * SpaceBetweenTerrain;
 
             SnapToGrid = updatedLevel.SnapToGrid;
             GridSize = updatedLevel.GridSize;
@@ -165,6 +172,17 @@ namespace HyperCasual.Runner
             EndPrefab = updatedLevel.EndPrefab;
             Spawnables = updatedLevel.Spawnables;
             ListMeshToCreate = updatedLevel.ListMeshToCreate;
+        }
+
+        public float GetLevelBufferEnd()
+        {
+            float bufferEnd = 0;
+            foreach (MeshToCreate mesh in ListMeshToCreate)
+            {
+                bufferEnd += mesh.MeshLengthBufferEnd;
+            }
+
+            return LevelLength /*+ ListMeshToCreate.Last().MeshLength/2*/ - bufferEnd;
         }
     }
 }

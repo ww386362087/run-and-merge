@@ -12,16 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998452e8577ff4bb78b32585432cf5a3, type: 3}
   m_Name: Level_Test
   m_EditorClassIdentifier: 
-  LevelLength: 220
+  LevelLength: 380
   LevelWidth: 20
   LevelThickness: 0.1
+  SpaceBetweenTerrain: 30
   ListMeshToCreate:
   - MeshLength: 100
     MeshLengthBufferStart: 5
-    MeshLengthBufferEnd: 5
+    MeshLengthBufferEnd: 0
   - MeshLength: 100
-    MeshLengthBufferStart: 5
-    MeshLengthBufferEnd: 5
+    MeshLengthBufferStart: 0
+    MeshLengthBufferEnd: 0
+  - MeshLength: 100
+    MeshLengthBufferStart: 0
+    MeshLengthBufferEnd: 20
   SnapToGrid: 1
   GridSize: 1
   TerrainMaterial: {fileID: 2100000, guid: e2d13250d13954c7991517c511efc6be, type: 2}
@@ -31,7 +35,7 @@ MonoBehaviour:
     type: 3}
   Spawnables:
   - SpawnablePrefab: {fileID: 0}
-    Position: {x: 0, y: -0.49, z: 220}
+    Position: {x: 0, y: -0.49, z: 360}
     EulerAngles: {x: -0, y: 0, z: 0}
     Scale: {x: 8, y: 1, z: 1}
     BaseColor: {r: 1, g: 1, b: 1, a: 1}

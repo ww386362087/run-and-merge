@@ -326,6 +326,7 @@ namespace HyperCasual.Runner
             m_LoadedLevelDefinition.LevelWidth = Mathf.Max(0.0f, EditorGUILayout.FloatField("Width", m_LoadedLevelDefinition.LevelWidth));
             //m_LoadedLevelDefinition.LevelLengthBufferStart = Mathf.Max(0.0f, EditorGUILayout.FloatField("Start Buffer", m_LoadedLevelDefinition.LevelLengthBufferStart));
             //m_LoadedLevelDefinition.LevelLengthBufferEnd = Mathf.Max(0.0f, EditorGUILayout.FloatField("End Buffer", m_LoadedLevelDefinition.LevelLengthBufferEnd));
+            m_LoadedLevelDefinition.SpaceBetweenTerrain = Mathf.Max(0.0f, EditorGUILayout.FloatField("SpaceBetweenTerrain", m_LoadedLevelDefinition.SpaceBetweenTerrain));
             m_LoadedLevelDefinition.LevelThickness = Mathf.Max(EditorGUILayout.FloatField("Level Thickness", m_LoadedLevelDefinition.LevelThickness));
             m_LoadedLevelDefinition.TerrainMaterial = (Material)EditorGUILayout.ObjectField("Terrain Material", m_LoadedLevelDefinition.TerrainMaterial, typeof(Material), false, null);
             if (EditorGUI.EndChangeCheck() && m_TerrainGOList != null && m_LevelParentGO != null)

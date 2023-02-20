@@ -15,9 +15,11 @@ namespace HyperCasual.Runner
     public class PlayerController : MonoBehaviour
     {
         /// <summary> Returns the PlayerController. </summary>
+        #region Variable Declaration
         public static PlayerController Instance => s_Instance;
         static PlayerController s_Instance;
 
+          #region Local
         //[SerializeField]
         //Animator m_Animator;
         [SerializeField]
@@ -28,6 +30,9 @@ namespace HyperCasual.Runner
 
         [SerializeField]
         GameObject m_StartingPoint;
+
+        [SerializeField]
+        GameObject m_CharacterHolder;
 
         [SerializeField]
         PlayerSpeedPreset m_PlayerSpeed = PlayerSpeedPreset.Medium;
@@ -81,7 +86,9 @@ namespace HyperCasual.Runner
         [SerializeField] List<GameObject> m_Characters;
 
         const float k_HalfWidth = 0.5f;
+        #endregion
 
+          #region Public
         /// <summary> The player's root Transform component. </summary>
         public Transform Transform => m_Transform;
 
@@ -119,15 +126,18 @@ namespace HyperCasual.Runner
         {
             get 
             {
-                // NOTE: m_character list doesn't actually get populated.
                 if(m_Characters == null)
                 {
                     m_Characters = new List<GameObject>();
-                    m_Characters.Add(Instantiate(m_Character.gameObject, m_StartingPoint.transform.localPosition, Quaternion.identity, m_Transform));
+                    m_Characters.Add(Instantiate(m_Character.gameObject, m_StartingPoint.transform.localPosition, Quaternion.identity, m_CharacterHolder.transform));
                 }
                 return m_Characters;
             }
         }
+          #endregion
+
+        #endregion
+
         void Awake()
         {
             if (s_Instance != null && s_Instance != this)
@@ -156,12 +166,11 @@ namespace HyperCasual.Runner
             {
                 m_StartHeight = m_SkinnedMeshRenderer.bounds.size.y;
             }
-            else 
+            else
             {
                 m_StartHeight = 1.0f;
             }*/
 
-            ResetQuantity();
             ResetSpeed();
         }
 
@@ -235,7 +244,7 @@ namespace HyperCasual.Runner
                     var newPos = currentPosition;
                     newPos.x += Random.Range(0.5f, 1) * (Random.Range(0f, 1f) < .5f ? -1 : 1);
                     newPos.z += Random.Range(0.5f, 1) * (Random.Range(0f, 1f) < .5f ? -1 : 1);
-                    Characters.Add(Instantiate(m_Character.gameObject, newPos, Quaternion.identity, transform));
+                    Characters.Add(Instantiate(m_Character.gameObject, newPos, Quaternion.identity, m_CharacterHolder.transform));
                 }
             }
             else if (numberAdd < 0)
@@ -274,7 +283,7 @@ namespace HyperCasual.Runner
         /// </summary>
         public void ResetQuantity()
         {
-            m_FirstCharacter = Instantiate(m_Character.gameObject, m_StartingPoint.transform.localPosition, Quaternion.identity, m_Transform);
+            m_FirstCharacter = Instantiate(m_Character.gameObject, m_StartingPoint.transform.localPosition, Quaternion.identity, m_CharacterHolder.transform);
             m_Characters.Add(m_FirstCharacter);
         }
 

@@ -81,9 +81,11 @@ MonoBehaviour:
   UsePositionBasedOffset: 0
   PositionBasedScale: 2
   Bob: 1
+  m_Direction: 1
   BobSpeed: 5
   BobHeight: 0.2
   Spin: 1
+  m_Axis: 4
   SpinSpeed: 360
 --- !u!1 &1461338227402330506
 GameObject:

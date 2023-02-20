@@ -130,8 +130,9 @@ MonoBehaviour:
   UsePositionBasedOffset: 1
   PositionBasedScale: 2
   Bob: 0
+  m_Direction: 0
   BobSpeed: 5
   BobHeight: 0.2
   Spin: 1
-  m_Axis: 1
+  m_Axis: 4
   SpinSpeed: 180

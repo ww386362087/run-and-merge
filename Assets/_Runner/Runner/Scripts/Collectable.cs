@@ -9,7 +9,7 @@ namespace HyperCasual.Runner
     /// A class representing a Spawnable object.
     /// If a GameObject tagged "Player" collides
     /// with this object, it will be collected, 
-    // incrementing the player's amount of this item.
+    /// incrementing the player's amount of this item.
     /// </summary>
     public class Collectable : Spawnable
     {

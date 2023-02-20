@@ -260,12 +260,14 @@ namespace HyperCasual.Runner
             if (start != null)
             {
                 GameObject go = GameObject.Instantiate(start, new Vector3(start.transform.position.x, start.transform.position.y, 0.0f), Quaternion.identity);
+                go.GetComponent<BoxCollider>().isTrigger = true;
                 go.transform.SetParent(levelMarkersGameObject.transform);
             }
 
             if (end != null)
             {
                 GameObject go = GameObject.Instantiate(end, new Vector3(end.transform.position.x, end.transform.position.y, levelDefinition.GetLevelBufferEnd()), Quaternion.identity);
+                go.GetComponent<BoxCollider>().isTrigger = true;
                 go.transform.SetParent(levelMarkersGameObject.transform);
             }
         }
@@ -282,18 +284,21 @@ namespace HyperCasual.Runner
         /// </param>
         public static void CreateTerrain(LevelDefinition levelDefinition, ref List<GameObject> terrainGameObjectList)
         {
-            foreach (GameObject go in terrainGameObjectList)
+            if (terrainGameObjectList != null)
             {
-                if (Application.isPlaying)
+                foreach (GameObject go in terrainGameObjectList)
                 {
-                    Destroy(go);
+                    if (Application.isPlaying)
+                    {
+                        Destroy(go);
+                    }
+                    else
+                    {
+                        DestroyImmediate(go);
+                    }
                 }
-                else
-                {
-                    DestroyImmediate(go);
-                }
+                terrainGameObjectList.Clear();
             }
-            terrainGameObjectList.Clear();
 
             //var
             float lastHalfTerrainLength = 0;
@@ -311,6 +316,9 @@ namespace HyperCasual.Runner
                 };
 
                 GameObject terrain = TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.TerrainMaterial, levelDefinition.LevelWidth, levelDefinition.LevelThickness);
+
+                terrain.AddComponent(typeof(BoxCollider));
+                //terrain.GetComponent<BoxCollider>().isTrigger = true;
 
                 if (i != 0)
                 {

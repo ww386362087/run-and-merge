@@ -20,6 +20,7 @@ namespace HyperCasual.Runner
 
         LevelDefinition m_LevelDefinition;
         Vector3 m_Position;
+        Vector3 m_Scale;
         Color m_BaseColor;
         bool m_SnappedThisFrame;
         float m_PreviousGridSize;
@@ -34,6 +35,11 @@ namespace HyperCasual.Runner
         /// This value does not factor in any snapping.
         /// </summary>
         public Vector3 SavedPosition => m_Position;
+
+        /// <summary>
+        /// The scale of this Spawnable, as it is saved.
+        /// </summary>
+        public Vector3 SavedScale => m_Scale;
 
         /// <summary>
         /// The base color to be applied to this Spawnable's
@@ -97,6 +103,17 @@ namespace HyperCasual.Runner
         }
 
         /// <summary>
+        /// Sets the world position of this spawnable object.
+        /// </summary>
+        /// <param name="position">
+        /// The position to apply to this spawnable object.
+        /// </param>
+        public virtual void SetPosition(Vector3 position)
+        {
+            m_Transform.position = position;
+        }
+
+        /// <summary>
         /// Sets the local scale of this spawnable object.
         /// </summary>
         /// <param name="scale">
@@ -134,6 +151,7 @@ namespace HyperCasual.Runner
         {
             m_Transform = transform;
             m_Position = m_Transform.position;
+            m_Scale = m_Transform.localScale;
             m_Transform.hasChanged = false;
 
             if (LevelManager.Instance != null && !Application.isPlaying)

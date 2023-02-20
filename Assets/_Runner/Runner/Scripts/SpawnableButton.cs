@@ -14,10 +14,9 @@ namespace HyperCasual.Runner
     public class SpawnableButton : Spawnable
     {
         [SerializeField]
-        SoundID m_Sound = SoundID.None;
+        SoundID m_Sound = SoundID.ButtonSound;
 
         const string k_PlayerTag = "Player";
-        //const string k_ButtonTag = "Button";
 
         [SerializeField]
         ButtonType m_ButtonType = ButtonType.BombTrapSpawner;

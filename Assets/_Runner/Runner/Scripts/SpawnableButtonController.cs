@@ -14,7 +14,7 @@ namespace HyperCasual.Runner
     /// </summary>
     public class SpawnableButtonController : MonoBehaviour
     {
-        /// <summary> Returns the RunnerButtonController. </summary>
+        /// <summary> Returns the SpawnableButtonController. </summary>
         #region Variable Declaration
         public static SpawnableButtonController Instance => s_Instance;
         static SpawnableButtonController s_Instance;

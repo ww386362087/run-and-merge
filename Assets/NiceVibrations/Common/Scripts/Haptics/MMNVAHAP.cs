@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR 
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 #endif
 
 namespace MoreMountains.NiceVibrations
@@ -88,7 +88,7 @@ namespace MoreMountains.NiceVibrations
         /// <returns></returns>
         public static MMNVAndroidWaveForm AHAPtoAndroidWaveForm(string AHAPasString, float intensityMultiplier, float sharpnessMultiplier)
         {
-            MMNVAHAP ahap = JsonConvert.DeserializeObject<MMNVAHAP>(AHAPasString);
+            MMNVAHAP ahap = new MMNVAHAP();// JsonConvert.DeserializeObject<MMNVAHAP>(AHAPasString);
 
             List<long> patterns = new List<long>();
             List<int> amplitudes = new List<int>();
@@ -132,7 +132,7 @@ namespace MoreMountains.NiceVibrations
         /// <returns></returns>
         public static MMNVRumbleWaveForm AHAPtoRumbleWaveForm(string AHAPasString, float intensityMultiplier, float sharpnessMultiplier)
         {
-            MMNVAHAP ahap = JsonConvert.DeserializeObject<MMNVAHAP>(AHAPasString);
+            MMNVAHAP ahap = new MMNVAHAP();// JsonConvert.DeserializeObject<MMNVAHAP>(AHAPasString);
 
             List<long> patterns = new List<long>();
             List<int> lowFreqAmplitudes = new List<int>();

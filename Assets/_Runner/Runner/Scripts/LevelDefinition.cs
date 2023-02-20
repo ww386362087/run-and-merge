@@ -182,7 +182,7 @@ namespace HyperCasual.Runner
                 bufferEnd += mesh.MeshLengthBufferEnd;
             }
 
-            return LevelLength /*+ ListMeshToCreate.Last().MeshLength/2*/ - bufferEnd;
+            return LevelLength - bufferEnd;
         }
     }
 }

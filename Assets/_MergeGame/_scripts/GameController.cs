@@ -38,6 +38,12 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (GameSceneLoad.Instance != null)
+        {
+            if (!GameSceneLoad.Instance.isFinishRun)
+                return;
+        }
         if (!game_run) return;
 
         // test add monster

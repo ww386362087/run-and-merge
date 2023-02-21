@@ -351,6 +351,7 @@ MonoBehaviour:
   mainCam: {fileID: 0}
   camTarget: {fileID: 647894575}
   objMerge: {fileID: 1421108400}
+  isFinishRun: 0
 --- !u!4 &1392527163
 Transform:
   m_ObjectHideFlags: 0

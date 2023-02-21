@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using HyperCasual.Core;
 using UnityEngine;
+using System;
+using System.Linq;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -39,7 +41,7 @@ namespace HyperCasual.Runner
         public bool IsPlaying => m_IsPlaying;
         bool m_IsPlaying;
         GameObject m_CurrentLevelGO;
-        GameObject m_CurrentTerrainGO;
+        List<GameObject> m_CurrentTerrainGOList =  new List<GameObject>();
         GameObject m_LevelMarkersGO;
 
         List<Spawnable> m_ActiveSpawnables = new List<Spawnable>();
@@ -76,7 +78,7 @@ namespace HyperCasual.Runner
         {
             m_CurrentLevel = levelDefinition;
             LoadLevel(m_CurrentLevel, ref m_CurrentLevelGO);
-            CreateTerrain(m_CurrentLevel, ref m_CurrentTerrainGO);
+            CreateTerrain(m_CurrentLevel, ref m_CurrentTerrainGOList);
             PlaceLevelMarkers(m_CurrentLevel, ref m_LevelMarkersGO);
             StartGame();
         }
@@ -207,12 +209,12 @@ namespace HyperCasual.Runner
                 GameObject.Destroy(m_LevelMarkersGO);
             }
 
-            if (m_CurrentTerrainGO != null)
+            /*if (m_CurrentTerrainGOList != null)
             {
-                GameObject.Destroy(m_CurrentTerrainGO);
-            }
+                GameObject.Destroy(m_CurrentTerrainGOList);
+            }*/
 
-            /*foreach (GameObject go in m_CurrentTerrainGO)
+            foreach (GameObject go in m_CurrentTerrainGOList)
             {
                 if (Application.isPlaying)
                 {
@@ -223,7 +225,7 @@ namespace HyperCasual.Runner
                     DestroyImmediate(go);
                 }
             }
-            m_CurrentTerrainGO.Clear();*/
+            m_CurrentTerrainGOList.Clear();
 
             m_CurrentLevel = null;
         }
@@ -288,8 +290,38 @@ namespace HyperCasual.Runner
         /// <param name="terrainGameObject">
         /// A new GameObject that is created to hold the terrain.
         /// </param>
-        public static void CreateTerrain(LevelDefinition levelDefinition, ref GameObject terrainGameObject)
+        /*public static void CreateTerrain(LevelDefinition levelDefinition, ref GameObject terrainGameObject)
         {
+            List<LevelDefinition.SpawnableObject> bridgeList = Array.FindAll(levelDefinition.Spawnables,
+                                                     x => x.SpawnablePrefab != null && x.SpawnablePrefab.GetComponent<MonoBehaviour>() is IBridge).ToList();
+
+            bridgeList =  bridgeList.OrderBy(x => x.Position.z).ToList();
+
+            Debug.Log("bridgeeeee " + bridgeList.Count);
+
+            float width = 0;
+            float length = 0;
+            float startBuffer = 0;
+            float endBuffer = 0;
+            float thickness = 0;
+
+            *//*for (int i = 0; i < bridgeList.Count; i++)
+            {
+                Debug.Log("z pos: " + bridgeList[i].Position);
+
+
+
+                TerrainGenerator.TerrainDimensions terrainDimensions = new TerrainGenerator.TerrainDimensions()
+                {
+                    Width = width,
+                    Length = length,
+                    StartBuffer = startBuffer,
+                    EndBuffer = endBuffer,
+                    Thickness = thickness
+                };
+                TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.TerrainMaterial, ref terrainGameObject);
+            }*//*
+
             TerrainGenerator.TerrainDimensions terrainDimensions = new TerrainGenerator.TerrainDimensions()
             {
                 Width = levelDefinition.LevelWidth,
@@ -299,6 +331,80 @@ namespace HyperCasual.Runner
                 Thickness = levelDefinition.LevelThickness
             };
             TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.TerrainMaterial, ref terrainGameObject);
+        }*/
+
+        public static void CreateTerrain(LevelDefinition levelDefinition, ref List<GameObject> terrainGameObjectList)
+        {
+            if (terrainGameObjectList != null)
+            {
+                foreach (GameObject go in terrainGameObjectList)
+                {
+                    if (Application.isPlaying)
+                    {
+                        Destroy(go);
+                    }
+                    else
+                    {
+                        DestroyImmediate(go);
+                    }
+                }
+                terrainGameObjectList.Clear();
+            }
+            else terrainGameObjectList = new List<GameObject>();
+
+            // get list of bridge
+            List<LevelDefinition.SpawnableObject> bridgeList = Array.FindAll(levelDefinition.Spawnables,
+                                                     x => x.SpawnablePrefab != null && x.SpawnablePrefab.GetComponent<IBridge>() != null).ToList();
+
+            bridgeList = bridgeList.OrderBy(x => x.Position.z).ToList();
+            
+            float startPosition = 0;
+            float endPosition = 0;
+            var len = 0f;
+
+            // spawn terrain
+            for (int i = 0; i < bridgeList.Count + 1; i++)
+            {
+                if (i < bridgeList.Count)
+                {
+                    endPosition = bridgeList[i].Position.z;
+                }
+                else if (i == bridgeList.Count)
+                {
+                    endPosition = levelDefinition.LevelLength + levelDefinition.LevelLengthBufferEnd;
+                }
+
+                if (i == 0)
+                {
+                    startPosition = -levelDefinition.LevelLengthBufferStart;
+                }
+
+                len = endPosition - startPosition;
+                TerrainGenerator.TerrainDimensions terrainDimensions = new TerrainGenerator.TerrainDimensions()
+                {
+                    Width = levelDefinition.LevelWidth,
+                    Length = len,
+                    StartBuffer = 0,
+                    EndBuffer = 0,
+                    Thickness = levelDefinition.LevelThickness
+                };
+                GameObject terrain = TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.TerrainMaterial);
+                terrain.transform.position = new Vector3(0, 0, startPosition);
+
+
+                if (i < bridgeList.Count)
+                {
+                    var ibridge = bridgeList[i].SpawnablePrefab.GetComponent<IBridge>();
+                    startPosition = ibridge.Length + endPosition;
+                }
+
+                //terrain.AddComponent(typeof(BoxCollider));
+
+                if (terrainGameObjectList != null)
+                {
+                    terrainGameObjectList.Add(terrain);
+                }
+            }
         }
 
         public void Win()

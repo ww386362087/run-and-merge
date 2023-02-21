@@ -60,7 +60,7 @@ namespace HyperCasual.Runner
         /// <param name="terrainGameObject">
         /// A new GameObject that is created to hold the terrain.
         /// </param>
-        public static GameObject CreateTerrain(TerrainDimensions terrainDimensions, Material terrainMaterial, ref GameObject terrainGameObject)
+        public static GameObject CreateTerrain(TerrainDimensions terrainDimensions, Material terrainMaterial/*, ref GameObject terrainGameObject*/)
         {
             float width = terrainDimensions.Width;
             float length = terrainDimensions.Length;
@@ -281,12 +281,12 @@ namespace HyperCasual.Runner
                 }
             }*/
 
-            terrainGameObject = new GameObject("Terrain");
+            GameObject terrainGameObject = new GameObject("Terrain");
             MeshFilter meshFilter = terrainGameObject.AddComponent<MeshFilter>();
             meshFilter.sharedMesh = mesh;
             MeshRenderer meshRenderer = terrainGameObject.AddComponent<MeshRenderer>();
             meshRenderer.sharedMaterial = terrainMaterial;
-
+            meshRenderer.gameObject.AddComponent<BoxCollider>();
             return terrainGameObject;
         }
     }

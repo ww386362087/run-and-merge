@@ -1,40 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace HyperCasual.Runner
 {
-    public class Bridge : Spawnable, IBridge
+    public class Bridge : Spawnable, IBridge, ISwitchable
     {
-        [SerializeField] float LengthBridge;
+        [Header("Reference")]
+        [SerializeField] private GameObject bridge;
+        [Header("Data modifed")]
+        [SerializeField] private Vector3 scale;
+
+        [SerializeField] float lengthBridge;
+        [SerializeField] float duration =1f;
 
         public float Length
         {
             get
             {
-                return LengthBridge;
-            }
-        }
-
-        /*Renderer[] m_Renderers;
-
-        /// <summary>
-        /// Reset the Obstacle to its initial state. Called
-        /// when a level is restarted by the GameManager.
-        /// </summary>
-        public override void ResetSpawnable()
-        {
-            for (int i = 0; i < m_Renderers.Length; i++)
-            {
-                m_Renderers[i].enabled = true;
+                return lengthBridge;
             }
         }
 
         protected override void Awake()
         {
             base.Awake();
+            bridge.transform.localScale = Vector3.zero;
+        }
 
-            m_Renderers = gameObject.GetComponents<Renderer>();
-        }*/
+
+        public override void ResetSpawnable()
+        {
+            base.ResetSpawnable();
+            bridge.transform.localScale = Vector3.zero;
+        }
+
+        public void Active()
+        {
+            ScaleBridge();
+        }
+
+        void ScaleBridge()
+        {
+            DOVirtual.Float(0, Length, duration, value => {
+                var targetScale = value;
+
+                bridge.transform.localScale = new Vector3(scale.x, scale.y, targetScale);
+                bridge.transform.localPosition = new Vector3(0, -.5f, targetScale/2);
+            });
+        }
+
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3558418781853425409}
   - component: {fileID: 760274776033821475}
   m_Layer: 0
-  m_Name: Interactable_Button
+  m_Name: Interactable_ButtonBridge
   m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,5 +113,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SnapToGrid: 1
   m_Sound: 3
-  m_ButtonType: 0
+  m_ButtonType: 2
   m_SpawnDistance: 0

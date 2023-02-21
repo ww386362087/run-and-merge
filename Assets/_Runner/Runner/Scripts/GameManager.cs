@@ -284,7 +284,7 @@ namespace HyperCasual.Runner
         /// </param>
         public static void CreateTerrain(LevelDefinition levelDefinition, ref List<GameObject> terrainGameObjectList)
         {
-            if(terrainGameObjectList != null)
+            if (terrainGameObjectList != null)
             {
                 foreach (GameObject go in terrainGameObjectList)
                 {
@@ -299,8 +299,7 @@ namespace HyperCasual.Runner
                 }
                 terrainGameObjectList.Clear();
             }
-
-            
+            else terrainGameObjectList = new List<GameObject>();
 
             //var
             float lastHalfTerrainLength = 0;
@@ -329,7 +328,10 @@ namespace HyperCasual.Runner
                                                                   lastHalfTerrainLength + levelDefinition.SpaceBetweenTerrain*i + (meshToCreate.MeshLength/2)*i);
                 }
 
-                terrainGameObjectList.Add(terrain);
+                if (terrainGameObjectList != null)
+                {
+                    terrainGameObjectList.Add(terrain);
+                }
 
                 lastHalfTerrainLength += meshToCreate.MeshLength / 2;
             }

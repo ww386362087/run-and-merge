@@ -61,8 +61,7 @@ namespace HyperCasual.Gameplay
             CreateLevelSequences();
             SetStartingLevel(0);
 
-            if (GameSceneLoad.Instance != null)
-                GameSceneLoad.Instance.sceneRuns.Add(this.gameObject);
+           
 
         }
 
@@ -73,7 +72,8 @@ namespace HyperCasual.Gameplay
                 Instantiate(asset,transform);
             }
 
-            
+            if (GameSceneLoad.Instance != null)
+                GameSceneLoad.Instance.sceneRuns.Add(this.gameObject);
         }
 
         void CreateMenuNavigationSequence()

@@ -290,4 +290,9 @@ namespace HyperCasual.Runner
             return terrainGameObject;
         }
     }
+
+    public interface IBridge
+    {
+        float Length { get; }
+    }
 }

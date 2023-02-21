@@ -148,6 +148,12 @@ namespace HyperCasual.Runner
                 {
                     continue;
                 }
+                // uncomment later
+                /*MonoBehaviour script = spawnableObject.SpawnablePrefab.GetComponent<MonoBehaviour>();
+                if (script is IBridge)
+                {
+                    continue;
+                }*/
 
                 Vector3 position = spawnableObject.Position;
                 Vector3 eulerAngles = spawnableObject.EulerAngles;

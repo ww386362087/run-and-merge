@@ -39,7 +39,7 @@ namespace HyperCasual.Runner
         public bool IsPlaying => m_IsPlaying;
         bool m_IsPlaying;
         GameObject m_CurrentLevelGO;
-        List<GameObject> m_CurrentTerrainGOList = new List<GameObject>();
+        GameObject m_CurrentTerrainGO;
         GameObject m_LevelMarkersGO;
 
         List<Spawnable> m_ActiveSpawnables = new List<Spawnable>();
@@ -76,7 +76,7 @@ namespace HyperCasual.Runner
         {
             m_CurrentLevel = levelDefinition;
             LoadLevel(m_CurrentLevel, ref m_CurrentLevelGO);
-            CreateTerrain(m_CurrentLevel, ref m_CurrentTerrainGOList);
+            CreateTerrain(m_CurrentLevel, ref m_CurrentTerrainGO);
             PlaceLevelMarkers(m_CurrentLevel, ref m_LevelMarkersGO);
             StartGame();
         }
@@ -207,12 +207,12 @@ namespace HyperCasual.Runner
                 GameObject.Destroy(m_LevelMarkersGO);
             }
 
-            /*if (m_CurrentTerrainGO != null)
+            if (m_CurrentTerrainGO != null)
             {
                 GameObject.Destroy(m_CurrentTerrainGO);
-            }*/
+            }
 
-            foreach (GameObject go in m_CurrentTerrainGOList)
+            /*foreach (GameObject go in m_CurrentTerrainGO)
             {
                 if (Application.isPlaying)
                 {
@@ -223,7 +223,7 @@ namespace HyperCasual.Runner
                     DestroyImmediate(go);
                 }
             }
-            m_CurrentTerrainGOList.Clear();
+            m_CurrentTerrainGO.Clear();*/
 
             m_CurrentLevel = null;
         }
@@ -272,7 +272,7 @@ namespace HyperCasual.Runner
 
             if (end != null)
             {
-                GameObject go = GameObject.Instantiate(end, new Vector3(end.transform.position.x, end.transform.position.y, levelDefinition.GetLevelBufferEnd()), Quaternion.identity);
+                GameObject go = GameObject.Instantiate(end, new Vector3(end.transform.position.x, end.transform.position.y, levelDefinition.LevelLength), Quaternion.identity);
                 go.GetComponent<BoxCollider>().isTrigger = true;
                 go.transform.SetParent(levelMarkersGameObject.transform);
             }
@@ -288,59 +288,17 @@ namespace HyperCasual.Runner
         /// <param name="terrainGameObject">
         /// A new GameObject that is created to hold the terrain.
         /// </param>
-        public static void CreateTerrain(LevelDefinition levelDefinition, ref List<GameObject> terrainGameObjectList)
+        public static void CreateTerrain(LevelDefinition levelDefinition, ref GameObject terrainGameObject)
         {
-            if (terrainGameObjectList != null)
+            TerrainGenerator.TerrainDimensions terrainDimensions = new TerrainGenerator.TerrainDimensions()
             {
-                foreach (GameObject go in terrainGameObjectList)
-                {
-                    if (Application.isPlaying)
-                    {
-                        Destroy(go);
-                    }
-                    else
-                    {
-                        DestroyImmediate(go);
-                    }
-                }
-                terrainGameObjectList.Clear();
-            }
-            else terrainGameObjectList = new List<GameObject>();
-
-            //var
-            float lastHalfTerrainLength = 0;
-
-            for (int i = 0; i < levelDefinition.ListMeshToCreate.Count; i++)
-            {
-                LevelDefinition.MeshToCreate meshToCreate = levelDefinition.ListMeshToCreate[i];
-
-                TerrainGenerator.TerrainDimensions terrainDimensions = new TerrainGenerator.TerrainDimensions()
-                {
-                    Length = meshToCreate.MeshLength,
-                    StartBuffer = meshToCreate.MeshLengthBufferStart,
-                    EndBuffer = meshToCreate.MeshLengthBufferEnd,
-                    SpaceBetweenTerrain = levelDefinition.SpaceBetweenTerrain
-                };
-
-                GameObject terrain = TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.TerrainMaterial, levelDefinition.LevelWidth, levelDefinition.LevelThickness);
-
-                terrain.AddComponent(typeof(BoxCollider));
-                //terrain.GetComponent<BoxCollider>().isTrigger = true;
-
-                if (i != 0)
-                {
-                    terrain.transform.localPosition = new Vector3(terrain.transform.localPosition.x,
-                                                                  terrain.transform.localPosition.y,
-                                                                  lastHalfTerrainLength + levelDefinition.SpaceBetweenTerrain*i + (meshToCreate.MeshLength/2)*i);
-                }
-
-                if (terrainGameObjectList != null)
-                {
-                    terrainGameObjectList.Add(terrain);
-                }
-
-                lastHalfTerrainLength += meshToCreate.MeshLength / 2;
-            }
+                Width = levelDefinition.LevelWidth,
+                Length = levelDefinition.LevelLength,
+                StartBuffer = levelDefinition.LevelLengthBufferStart,
+                EndBuffer = levelDefinition.LevelLengthBufferEnd,
+                Thickness = levelDefinition.LevelThickness
+            };
+            TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.TerrainMaterial, ref terrainGameObject);
         }
 
         public void Win()

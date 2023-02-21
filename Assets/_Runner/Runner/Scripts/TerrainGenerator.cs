@@ -16,11 +16,11 @@ namespace HyperCasual.Runner
         /// </summary>
         public struct TerrainDimensions
         {
-            /*/// <summary>
+            /// <summary>
             /// Width of the terrain to generate.
             /// </summary>
-            public float Width;*/
-            
+            public float Width;
+
             /// <summary>
             /// Length of the terrain to generate.
             /// </summary>
@@ -36,15 +36,15 @@ namespace HyperCasual.Runner
             /// </summary>
             public float EndBuffer;
 
-            /*/// <summary>
+            /// <summary>
             /// Thickness of the terrain to generate.
             /// </summary>
-            public float Thickness;*/
+            public float Thickness;
 
-            /// <summary>
+            /*/// <summary>
             /// Space between terrain.
             /// </summary>
-            public float SpaceBetweenTerrain;
+            public float SpaceBetweenTerrain;*/
         }
 
         /// <summary>
@@ -60,13 +60,13 @@ namespace HyperCasual.Runner
         /// <param name="terrainGameObject">
         /// A new GameObject that is created to hold the terrain.
         /// </param>
-        public static GameObject CreateTerrain(TerrainDimensions terrainDimensions, Material terrainMaterial, float LevelWidth, float LevelThickness/*, GameObject terrainGameObject*/)
+        public static GameObject CreateTerrain(TerrainDimensions terrainDimensions, Material terrainMaterial, ref GameObject terrainGameObject)
         {
-            float width = LevelWidth;
+            float width = terrainDimensions.Width;
             float length = terrainDimensions.Length;
             float startBuffer = terrainDimensions.StartBuffer;
             float endBuffer = terrainDimensions.EndBuffer;
-            float thickness = LevelThickness;
+            float thickness = terrainDimensions.Thickness;
 
             Mesh mesh = new Mesh();
             mesh.name = "Terrain";
@@ -281,7 +281,7 @@ namespace HyperCasual.Runner
                 }
             }*/
 
-            GameObject terrainGameObject = new GameObject("Terrain");
+            terrainGameObject = new GameObject("Terrain");
             MeshFilter meshFilter = terrainGameObject.AddComponent<MeshFilter>();
             meshFilter.sharedMesh = mesh;
             MeshRenderer meshRenderer = terrainGameObject.AddComponent<MeshRenderer>();

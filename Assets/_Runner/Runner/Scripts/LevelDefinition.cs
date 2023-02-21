@@ -18,7 +18,7 @@ namespace HyperCasual.Runner
         /// </summary>
         public float LevelLength;
 
-        /*/// <summary>
+        /// <summary>
         /// The amount of extra terrain to be added before the start of the level.
         /// </summary>
         public float LevelLengthBufferStart = 5.0f;
@@ -26,7 +26,7 @@ namespace HyperCasual.Runner
         /// <summary>
         /// The amount of extra terrain to be added after the end of the level.
         /// </summary>
-        public float LevelLengthBufferEnd = 5.0f;*/
+        public float LevelLengthBufferEnd = 5.0f;
 
         /// <summary>
         /// The width of the level.
@@ -38,13 +38,13 @@ namespace HyperCasual.Runner
         /// </summary>
         public float LevelThickness = 0.1f;
 
-        /// <summary>
+        /*/// <summary>
         /// Space between terrain.
         /// </summary>
         public float SpaceBetweenTerrain;
 
         // List of MeshToCreate
-        public List<MeshToCreate> ListMeshToCreate = new List<MeshToCreate>();
+        public List<MeshToCreate> ListMeshToCreate = new List<MeshToCreate>();*/
 
         /// <summary>
         /// True means that spawnables should snap to a grid in this level.
@@ -115,7 +115,7 @@ namespace HyperCasual.Runner
             public bool SnapToGrid = true;
         }
 
-        [System.Serializable]
+        /*[System.Serializable]
         public class MeshToCreate
         {
             /// <summary>
@@ -133,7 +133,7 @@ namespace HyperCasual.Runner
             /// </summary>
             public float MeshLengthBufferEnd = 5.0f;
 
-            /*/// <summary>
+            *//*/// <summary>
             /// The width of the level.
             /// </summary>
             public float LevelWidth = 5.0f;*/
@@ -141,8 +141,8 @@ namespace HyperCasual.Runner
             /*/// <summary>
             /// The thickness of the level.
             /// </summary>
-            public float MeshThickness = 0.1f;*/
-        }
+            public float MeshThickness = 0.1f;*//*
+        }*/
 
         /// <summary>
         /// Store all values from updatedLevel into this LevelDefinition.
@@ -153,17 +153,17 @@ namespace HyperCasual.Runner
         public void SaveValues(LevelDefinition updatedLevel)
         {
             // TODO - Add Tests for this!
-            /*LevelLength = updatedLevel.LevelLength;
+            LevelLength = updatedLevel.LevelLength;
             LevelLengthBufferStart = updatedLevel.LevelLengthBufferStart;
-            LevelLengthBufferEnd = updatedLevel.LevelLengthBufferEnd;*/
+            LevelLengthBufferEnd = updatedLevel.LevelLengthBufferEnd;
             LevelWidth = updatedLevel.LevelWidth;
             LevelThickness = updatedLevel.LevelThickness;
-            LevelLength = 0;
+            /*LevelLength = 0;
             foreach (MeshToCreate mesh in updatedLevel.ListMeshToCreate)
             {
                 LevelLength += mesh.MeshLength + mesh.MeshLengthBufferEnd;
             }
-            LevelLength += (ListMeshToCreate.Count - 1) * SpaceBetweenTerrain;
+            LevelLength += (ListMeshToCreate.Count - 1) * SpaceBetweenTerrain;*/
 
             SnapToGrid = updatedLevel.SnapToGrid;
             GridSize = updatedLevel.GridSize;
@@ -171,10 +171,10 @@ namespace HyperCasual.Runner
             StartPrefab = updatedLevel.StartPrefab;
             EndPrefab = updatedLevel.EndPrefab;
             Spawnables = updatedLevel.Spawnables;
-            ListMeshToCreate = updatedLevel.ListMeshToCreate;
+            //ListMeshToCreate = updatedLevel.ListMeshToCreate;
         }
 
-        public float GetLevelBufferEnd()
+        /*public float GetLevelBufferEnd()
         {
             float bufferEnd = 0;
             foreach (MeshToCreate mesh in ListMeshToCreate)
@@ -183,6 +183,6 @@ namespace HyperCasual.Runner
             }
 
             return LevelLength - bufferEnd;
-        }
+        }*/
     }
 }

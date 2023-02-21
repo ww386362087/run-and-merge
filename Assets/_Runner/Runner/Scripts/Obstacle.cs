@@ -34,6 +34,8 @@ namespace HyperCasual.Runner
             {
                 m_Renderers[i].enabled = true;
             }
+
+            ResetColliderSize();
         }
 
         protected override void Awake()
@@ -53,6 +55,8 @@ namespace HyperCasual.Runner
 
         void Collide(Collider col)
         {
+            ChangeColliderSize();
+
             if (m_Event != null)
             {
                 m_Event.Raise();
@@ -61,6 +65,16 @@ namespace HyperCasual.Runner
             PlayerController.Instance.RemoveCharacter(col.gameObject);
 
             AudioManager.Instance.PlayEffect(m_Sound);
+        }
+
+        protected virtual void ChangeColliderSize()
+        {
+            // override this in Explosive.cs to change collider size on impact.
+        }
+
+        protected virtual void ResetColliderSize()
+        {
+            // override this in Explosive.cs to reset size on reload.
         }
     }
 }

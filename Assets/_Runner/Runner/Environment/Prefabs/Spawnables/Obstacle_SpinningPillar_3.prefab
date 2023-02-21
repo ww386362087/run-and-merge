@@ -84,7 +84,7 @@ MonoBehaviour:
   BobHeight: 0.2
   Spin: 1
   m_Axis: 4
-  SpinSpeed: 180
+  SpinSpeed: 140
 --- !u!1 &2494698932629436051
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 2948925358490905743}
   - component: {fileID: 7238938413867654164}
   - component: {fileID: 8395909520106702455}
-  - component: {fileID: 1702384344588984275}
   m_Layer: 0
   m_Name: Spinner
   m_TagString: Untagged
@@ -169,17 +168,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1702384344588984275
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2494698932629436051}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.6
-  m_Height: 2.25
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

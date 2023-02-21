@@ -284,18 +284,23 @@ namespace HyperCasual.Runner
         /// </param>
         public static void CreateTerrain(LevelDefinition levelDefinition, ref List<GameObject> terrainGameObjectList)
         {
-            foreach (GameObject go in terrainGameObjectList)
+            if(terrainGameObjectList != null)
             {
-                if (Application.isPlaying)
+                foreach (GameObject go in terrainGameObjectList)
                 {
-                    Destroy(go);
+                    if (Application.isPlaying)
+                    {
+                        Destroy(go);
+                    }
+                    else
+                    {
+                        DestroyImmediate(go);
+                    }
                 }
-                else
-                {
-                    DestroyImmediate(go);
-                }
+                terrainGameObjectList.Clear();
             }
-            terrainGameObjectList.Clear();
+
+            
 
             //var
             float lastHalfTerrainLength = 0;

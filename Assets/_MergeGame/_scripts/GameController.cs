@@ -853,7 +853,7 @@ public class GameController : MonoBehaviour
     {
         int nbr_lvl = GameManager.instance.getlevel();
 
-        GameObject lvl = Instantiate(levels_list[nbr_lvl]);
+        GameObject lvl = Instantiate(levels_list[nbr_lvl],transform);
 
         //lvl.GetComponent<ManageLevel>().add_to_lists_enemies();
     }

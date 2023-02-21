@@ -18,7 +18,17 @@ namespace HyperCasual.Runner
         {
             if (col.CompareTag(k_PlayerTag))
             {
-                GameManager.Instance.Win();
+                //GameManager.Instance.Win();
+                GameSceneLoad.Instance.Action_FinishRunGame();
+            }
+        }
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            if (GameSceneLoad.Instance != null)
+            {
+                GameSceneLoad.Instance.SetPositionMergeGame(this.transform.position);
             }
         }
     }

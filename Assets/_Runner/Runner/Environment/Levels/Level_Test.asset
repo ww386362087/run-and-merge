@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998452e8577ff4bb78b32585432cf5a3, type: 3}
   m_Name: Level_Test
   m_EditorClassIdentifier: 
-  LevelLength: 380
+  LevelLength: 60
   LevelWidth: 20
   LevelThickness: 0.1
   SpaceBetweenTerrain: 30

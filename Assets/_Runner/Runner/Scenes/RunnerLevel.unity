@@ -341,16 +341,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1392527161}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88c64beb9e73a1845807a09eb3ddcbe0, type: 3}
+  m_Script: {fileID: 11500000, guid: dda0fb8f996f5d441b55a840dc92deca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sceneRuns: []
   sceneMerges:
   - {fileID: 2126927985}
   - {fileID: 347359790}
-  objMergeGame: {fileID: 1421108400}
-  camMain: {fileID: 0}
-  trCam: {fileID: 647894575}
+  mainCam: {fileID: 0}
+  camTarget: {fileID: 647894575}
+  objMerge: {fileID: 1421108400}
 --- !u!4 &1392527163
 Transform:
   m_ObjectHideFlags: 0

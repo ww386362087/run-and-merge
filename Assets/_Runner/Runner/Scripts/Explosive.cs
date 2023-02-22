@@ -15,7 +15,7 @@ namespace HyperCasual.Runner
     /// </summary>
     [ExecuteInEditMode]
     [RequireComponent(typeof(Collider))]
-    public class Explosive : Obstacle
+    public class Explosive : Obstacle, ISwitchable
     {
         #region Variable Declaration
         [Header("___DaBomb___")]
@@ -32,12 +32,11 @@ namespace HyperCasual.Runner
         float m_OriginalSphereColliderRadius;
 
         [SerializeField]
+        ColliderType m_ColliderType = ColliderType.BoxCollider;
+        [SerializeField]
         Vector3 m_TargetBoxColliderSize = new Vector3(2.5f, 2.5f, 2.5f);
         [SerializeField]
         float m_TargetSphereColliderRadius = 2.5f;
-
-        [SerializeField]
-        ColliderType m_ColliderType = ColliderType.BoxCollider;
 
         enum ColliderType
         {
@@ -51,8 +50,7 @@ namespace HyperCasual.Runner
         {
             base.ResetSpawnable();
 
-            m_MeshNMaterial.SetActive(true);
-            m_VFX.SetActive(false);
+            DefaultState();
         }
 
         protected override void Awake()
@@ -78,8 +76,7 @@ namespace HyperCasual.Runner
 
         protected override void ChangeColliderSize()
         {
-            m_MeshNMaterial.SetActive(false);
-            m_VFX.SetActive(true);
+            BombTriggeredState();
 
             switch (m_ColliderType)
             {
@@ -109,6 +106,29 @@ namespace HyperCasual.Runner
                     SetSphereColliderSize(m_OriginalSphereColliderRadius);
                     break;
             }
+        }
+
+        public void Active()
+        {
+            SwitchTriggeredState();
+        }
+
+        void DefaultState()
+        {
+            m_MeshNMaterial.SetActive(false);
+            m_VFX.SetActive(false);
+        }
+
+        void SwitchTriggeredState()
+        {
+            m_MeshNMaterial.SetActive(true);
+            m_VFX.SetActive(false);
+        }
+
+        void BombTriggeredState()
+        {
+            m_MeshNMaterial.SetActive(false);
+            m_VFX.SetActive(true);
         }
 
         /// <summary>

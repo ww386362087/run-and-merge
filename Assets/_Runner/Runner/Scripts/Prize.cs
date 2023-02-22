@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace HyperCasual.Runner
 {
@@ -13,7 +14,10 @@ namespace HyperCasual.Runner
         [SerializeField]
         PrizeType m_PrizeType = PrizeType.Coin;
         [SerializeField]
-        int m_Value;
+        int m_ValueQuantity;
+        [SerializeField]
+        TextMeshProUGUI m_TextQuantity;
+
 
         enum PrizeType
         {
@@ -22,8 +26,12 @@ namespace HyperCasual.Runner
             RangeNeko
         }
 
-        public int Value => m_Value;
+        public int Quantity => m_ValueQuantity;
 
+        private void Awake()
+        {
+            m_TextQuantity.text = m_ValueQuantity.ToString();
+        }
         // write function to add prize to inventory.
     }
 }

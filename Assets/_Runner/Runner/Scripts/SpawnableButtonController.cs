@@ -8,13 +8,13 @@ using UnityEngine;
 namespace HyperCasual.Runner
 {
     /// <summary>
-    /// A class used to control buttons in a Runner
-    /// game. Includes button functions and other
-    /// logics.
+    /// A class used to control spawnable buttons 
+    /// in a Runner game. Includes button functions
+    /// and other logics.
     /// </summary>
     public class SpawnableButtonController : MonoBehaviour
     {
-        /// <summary> Returns the RunnerButtonController. </summary>
+        /// <summary> Returns the SpawnableButtonController. </summary>
         #region Variable Declaration
         public static SpawnableButtonController Instance => s_Instance;
         static SpawnableButtonController s_Instance;

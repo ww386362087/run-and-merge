@@ -38,6 +38,12 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (GameSceneLoad.Instance != null)
+        {
+            if (!GameSceneLoad.Instance.isFinishRun)
+                return;
+        }
         if (!game_run) return;
 
         // test add monster
@@ -853,7 +859,7 @@ public class GameController : MonoBehaviour
     {
         int nbr_lvl = GameManager.instance.getlevel();
 
-        GameObject lvl = Instantiate(levels_list[nbr_lvl]);
+        GameObject lvl = Instantiate(levels_list[nbr_lvl],transform);
 
         //lvl.GetComponent<ManageLevel>().add_to_lists_enemies();
     }

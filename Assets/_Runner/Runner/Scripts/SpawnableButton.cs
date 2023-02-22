@@ -14,10 +14,9 @@ namespace HyperCasual.Runner
     public class SpawnableButton : Spawnable
     {
         [SerializeField]
-        SoundID m_Sound = SoundID.None;
+        SoundID m_Sound = SoundID.ButtonSound;
 
         const string k_PlayerTag = "Player";
-        //const string k_ButtonTag = "Button";
 
         [SerializeField]
         ButtonType m_ButtonType = ButtonType.BombTrapSpawner;
@@ -26,7 +25,7 @@ namespace HyperCasual.Runner
 
         bool m_Triggered;
 
-        readonly float m_ObjectHeight = 2; // button prefab is created from cylinder mesh with hight 2.
+        readonly float m_ObjectHeight = 2; // button prefab is created from cylinder mesh with height 2.
         Vector3 m_OriginalPosition;
         Vector3 m_TargetPosition;
         Vector3 m_OriginalScale;

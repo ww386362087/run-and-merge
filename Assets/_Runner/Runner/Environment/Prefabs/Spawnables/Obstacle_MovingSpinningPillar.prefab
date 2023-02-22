@@ -132,7 +132,7 @@ MonoBehaviour:
   Bob: 1
   m_Direction: 0
   BobSpeed: 2.5
-  BobHeight: 5
+  BobHeight: 4
   Spin: 0
   m_Axis: 1
   SpinSpeed: 180

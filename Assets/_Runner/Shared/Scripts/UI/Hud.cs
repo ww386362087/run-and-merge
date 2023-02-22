@@ -21,7 +21,9 @@ namespace HyperCasual.Gameplay
         [SerializeField]
         Slider m_XpSlider;
         [SerializeField]
-        HyperCasualButton m_PauseButton;
+        HyperCasualButton m_ButtonPause;
+        [SerializeField]
+        HyperCasualButton m_ButtonLuckySpin;
         [SerializeField]
         AbstractGameEvent m_PauseEvent;
 
@@ -89,17 +91,24 @@ namespace HyperCasual.Gameplay
 
         void OnEnable()
         {
-            m_PauseButton.AddListener(OnPauseButtonClick);
+            m_ButtonPause.AddListener(OnPauseButtonClick);
+            m_ButtonLuckySpin.AddListener(OnLuckySpinButtonClick);
         }
 
         void OnDisable()
         {
-            m_PauseButton.RemoveListener(OnPauseButtonClick);
+            m_ButtonPause.RemoveListener(OnPauseButtonClick);
+            m_ButtonLuckySpin.RemoveListener(OnLuckySpinButtonClick);
         }
 
         void OnPauseButtonClick()
         {
             m_PauseEvent.Raise();
+        }
+
+        void OnLuckySpinButtonClick()
+        {
+            UIManager.Instance.Show<LuckySpinView>();
         }
     }
 }

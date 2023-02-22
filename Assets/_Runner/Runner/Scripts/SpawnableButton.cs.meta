@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/_Runner/Runner/Scripts/CamSetInit.cs.meta
-guid: 4702629e421a93143bc09218169b310c
-========
-guid: 77b9322bb018e8b42957d1d3971d97df
->>>>>>>> main:Assets/_Runner/Runner/Scripts/SpawnableButton.cs.meta
+guid: 2f2811c4845cd4002aaf7eee2381ac62
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

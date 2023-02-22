@@ -84,7 +84,7 @@ MonoBehaviour:
   BobHeight: 0.2
   Spin: 1
   m_Axis: 4
-  SpinSpeed: 140
+  SpinSpeed: 500
 --- !u!1 &2494698932629436051
 GameObject:
   m_ObjectHideFlags: 0

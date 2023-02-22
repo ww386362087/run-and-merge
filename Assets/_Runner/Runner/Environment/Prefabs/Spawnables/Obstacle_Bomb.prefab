@@ -109,6 +109,8 @@ MonoBehaviour:
   m_Event: {fileID: 11400000, guid: 461b03f0bf79c0b49a82d57263f3f1d4, type: 2}
   m_MeshNMaterial: {fileID: 5177038789345726059}
   m_VFX: {fileID: 1000034760791686809}
+  m_TargetBoxColliderSize: {x: 1.7, y: 1.7, z: 1.7}
+  m_TargetSphereColliderRadius: 2.5
   m_ColliderType: 0
   m_TargetBoxColliderSize: {x: 1.7, y: 1.7, z: 1.7}
   m_TargetSphereColliderRadius: 2.5

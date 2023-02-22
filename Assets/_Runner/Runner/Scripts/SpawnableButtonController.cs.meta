@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/_Runner/Shared/Scripts/GameSceneLoad.cs.meta
-guid: 26c7fcdbc45de0847b292d189149569c
-========
-guid: ff8b7fe20c8ae7a48b83cdef44e2d156
->>>>>>>> main:Assets/_Runner/Runner/Scripts/SpawnableButtonController.cs.meta
+guid: d930cb022c80048488fc70e1c2c6edff
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

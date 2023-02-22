@@ -1819,6 +1819,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prize (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4603510005195119362, guid: 07cd57407aaf30442a7a6fb6da91d484,
+        type: 3}
+      propertyPath: m_ValueQuantity
+      value: 36
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07cd57407aaf30442a7a6fb6da91d484, type: 3}
 --- !u!224 &370240843148752417 stripped
@@ -2093,6 +2098,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prize (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4603510005195119362, guid: 07cd57407aaf30442a7a6fb6da91d484,
+        type: 3}
+      propertyPath: m_ValueQuantity
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07cd57407aaf30442a7a6fb6da91d484, type: 3}
 --- !u!224 &1769964140454107556 stripped
@@ -2230,6 +2240,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prize (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4603510005195119362, guid: 07cd57407aaf30442a7a6fb6da91d484,
+        type: 3}
+      propertyPath: m_ValueQuantity
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07cd57407aaf30442a7a6fb6da91d484, type: 3}
 --- !u!114 &2108496752606420589 stripped
@@ -2366,6 +2381,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Prize (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603510005195119362, guid: 07cd57407aaf30442a7a6fb6da91d484,
+        type: 3}
+      propertyPath: m_ValueQuantity
+      value: 85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07cd57407aaf30442a7a6fb6da91d484, type: 3}
@@ -2641,6 +2661,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prize (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4603510005195119362, guid: 07cd57407aaf30442a7a6fb6da91d484,
+        type: 3}
+      propertyPath: m_ValueQuantity
+      value: 790
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07cd57407aaf30442a7a6fb6da91d484, type: 3}
 --- !u!224 &6161914225405329825 stripped
@@ -2783,6 +2808,11 @@ PrefabInstance:
       propertyPath: m_PrizeType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4603510005195119362, guid: 07cd57407aaf30442a7a6fb6da91d484,
+        type: 3}
+      propertyPath: m_ValueQuantity
+      value: 54
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07cd57407aaf30442a7a6fb6da91d484, type: 3}
 --- !u!224 &6696110725678914695 stripped
@@ -2920,6 +2950,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prize (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4603510005195119362, guid: 07cd57407aaf30442a7a6fb6da91d484,
+        type: 3}
+      propertyPath: m_ValueQuantity
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07cd57407aaf30442a7a6fb6da91d484, type: 3}
 --- !u!224 &6537569383089044644 stripped
@@ -3056,6 +3091,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Prize (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603510005195119362, guid: 07cd57407aaf30442a7a6fb6da91d484,
+        type: 3}
+      propertyPath: m_ValueQuantity
+      value: 1425
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07cd57407aaf30442a7a6fb6da91d484, type: 3}

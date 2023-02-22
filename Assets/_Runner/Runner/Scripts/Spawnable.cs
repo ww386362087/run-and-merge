@@ -25,8 +25,6 @@ namespace HyperCasual.Runner
         bool m_SnappedThisFrame;
         float m_PreviousGridSize;
 
-        MeshRenderer[] m_MeshRenderers;
-
         [SerializeField]
         bool m_SnapToGrid = true;
 
@@ -80,26 +78,6 @@ namespace HyperCasual.Runner
         public virtual void SetBaseColor(Color baseColor)
         {
             m_BaseColor = baseColor;
-
-            if (m_MeshRenderers == null || m_MeshRenderers.Length == 0)
-            {
-                m_MeshRenderers = gameObject.GetComponentsInChildren<MeshRenderer>();
-            }
-
-            if (m_MeshRenderers != null)
-            {
-                for (int i = 0; i < m_MeshRenderers.Length; i++)
-                {
-                    MeshRenderer meshRenderer = m_MeshRenderers[i];
-
-                    if (meshRenderer != null)
-                    {
-                        Material material = new Material(meshRenderer.sharedMaterial);
-                        material.color = m_BaseColor;
-                        meshRenderer.sharedMaterial = material;
-                    }
-                }
-            }
         }
 
         /// <summary>

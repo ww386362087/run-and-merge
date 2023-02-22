@@ -47,8 +47,8 @@ namespace HyperCasual.Core
 
         void Update()
         {
-            float offset = (UsePositionBasedOffset) ? m_StartPosition.z * PositionBasedScale + Time.time : Time.time;
-
+            float offset = (UsePositionBasedOffset) ? (m_StartPosition.z * PositionBasedScale + Time.time) : Time.time;
+            //TODO: add more offsets for different rotations.
             if (Bob)
             {
                 switch (m_Direction)

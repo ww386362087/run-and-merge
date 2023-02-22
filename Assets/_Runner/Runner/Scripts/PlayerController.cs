@@ -149,6 +149,11 @@ namespace HyperCasual.Runner
             s_Instance = this;
 
             Initialize();
+
+            if (GameSceneLoad.Instance != null)
+            {
+                GameSceneLoad.Instance.sceneRuns.Add(this.gameObject);
+            }
         }
 
         /// <summary>

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Runner/Runner/Scripts/CamSetInit.cs.meta
+guid: 5363e1927154f0d45a6279fd76154ee9
+========
+guid: 77b9322bb018e8b42957d1d3971d97df
+>>>>>>>> main:Assets/_Runner/Runner/Scripts/SpawnableButton.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

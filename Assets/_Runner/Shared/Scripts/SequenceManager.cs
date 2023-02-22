@@ -60,14 +60,20 @@ namespace HyperCasual.Gameplay
             CreateMenuNavigationSequence();
             CreateLevelSequences();
             SetStartingLevel(0);
+
+           
+
         }
 
         void InstantiatePreloadedAssets()
         {
             foreach (var asset in m_PreloadedAssets)
             {
-                Instantiate(asset);
+                Instantiate(asset,transform);
             }
+
+            if (GameSceneLoad.Instance != null)
+                GameSceneLoad.Instance.sceneRuns.Add(this.gameObject);
         }
 
         void CreateMenuNavigationSequence()

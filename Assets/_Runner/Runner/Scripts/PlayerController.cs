@@ -60,6 +60,7 @@ namespace HyperCasual.Runner
 
         const float k_MinimumScale = 0.1f;
         static readonly string s_Speed = "Speed";
+        static readonly string characterLayer = "Main Character";
 
         enum PlayerSpeedPreset
         {
@@ -129,7 +130,7 @@ namespace HyperCasual.Runner
                 if(m_Characters == null)
                 {
                     m_Characters = new List<GameObject>();
-                    m_Characters.Add(Instantiate(m_Character.gameObject, m_StartingPoint.transform.localPosition, Quaternion.identity, m_CharacterHolder.transform));
+                    AddCharacter(Instantiate(m_Character.gameObject, m_StartingPoint.transform.localPosition, Quaternion.identity, m_CharacterHolder.transform));
                 }
                 return m_Characters;
             }
@@ -249,7 +250,7 @@ namespace HyperCasual.Runner
                     var newPos = currentPosition;
                     newPos.x += Random.Range(0.5f, 1) * (Random.Range(0f, 1f) < .5f ? -1 : 1);
                     newPos.z += Random.Range(0.5f, 1) * (Random.Range(0f, 1f) < .5f ? -1 : 1);
-                    Characters.Add(Instantiate(m_Character.gameObject, newPos, Quaternion.identity, m_CharacterHolder.transform));
+                    AddCharacter(Instantiate(m_Character.gameObject, newPos, Quaternion.identity));
                 }
             }
             else if (numberAdd < 0)
@@ -264,15 +265,44 @@ namespace HyperCasual.Runner
             //m_TargetScale = Vector3.Max(m_TargetScale, Vector3.one * k_MinimumScale);
         }
 
+        public GameObject GetClosest(Vector3 positionTarget)
+        {
+            var target = Characters.OrderBy(go => Vector3.Distance(go.transform.position, positionTarget)).FirstOrDefault();
+
+            RemoveCharacter(target,false);
+
+            return target;
+        }
+
+        public void AddCharacter(GameObject newCharacter)
+        {
+            if (Characters.Contains(newCharacter))
+            {
+                Debug.LogWarning("This character was added");
+            }
+            else
+            {
+                newCharacter.layer = LayerMask.NameToLayer(characterLayer);
+                newCharacter.transform.SetParent(m_CharacterHolder.transform);
+                var anim = newCharacter.GetComponentInChildren<Animator>();
+                if (anim)
+                {
+                    anim.SetFloat("Velocity", 1);
+                }
+                Characters.Add(newCharacter);
+            }
+        }
+
         /// <summary>
         /// Remove character gameobject and call Lose event when the number of characters reach 0.
         /// </summary>
-        public void RemoveCharacter(GameObject characterRemove)
+        public void RemoveCharacter(GameObject characterRemove, bool isRemove =true)
         {
             if (Characters.Contains(characterRemove))
             {
                 Characters.Remove(characterRemove);
-                Destroy(characterRemove);
+                if(isRemove)
+                    Destroy(characterRemove);
 
                 if (Characters.Count <= 0)
                     GameManager.Instance.Lose();
@@ -288,8 +318,8 @@ namespace HyperCasual.Runner
         /// </summary>
         public void ResetQuantity()
         {
-            m_FirstCharacter = Instantiate(m_Character.gameObject, m_StartingPoint.transform.localPosition, Quaternion.identity, m_CharacterHolder.transform);
-            m_Characters.Add(m_FirstCharacter);
+            m_FirstCharacter = Instantiate(m_Character.gameObject, m_StartingPoint.transform.localPosition, Quaternion.identity);
+            AddCharacter(m_FirstCharacter);
         }
 
         /// <summary>

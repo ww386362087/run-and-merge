@@ -31,7 +31,7 @@ public class Switch : MonoBehaviour
     {
         target = gameObject.GetComponentInParent<ISwitchable>();
 
-        ResetSwitch();
+        ResetSwitch(); // this should've been in ResetSpawnable() but switch can't inherit from spawnables.
     }
 
     void ResetSwitch()
@@ -46,12 +46,12 @@ public class Switch : MonoBehaviour
     {
         if (col.CompareTag(k_PlayerTag) && !m_Triggered)
         {
-            ButtonTriggered();
+            TriggerButton();
             target?.Active();
         }
     }
 
-    void ButtonTriggered()
+    void TriggerButton()
     {
         // Change switch position.
         float offset = m_ObjectHeight * (m_OriginalScale.y - m_TargetScale.y) / 2;

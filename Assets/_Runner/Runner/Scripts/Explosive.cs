@@ -20,9 +20,9 @@ namespace HyperCasual.Runner
         #region Variable Declaration
         [Header("___DaBomb___")]
         [SerializeField]
-        GameObject m_MeshNMaterial;
+        GameObject[] m_MeshNMaterial;
         [SerializeField]
-        GameObject m_VFX;
+        GameObject[] m_VFX;
 
         BoxCollider m_BoxCollider;
         CapsuleCollider m_CapsuleCollider;
@@ -115,20 +115,26 @@ namespace HyperCasual.Runner
 
         void DefaultState()
         {
-            m_MeshNMaterial.SetActive(false);
-            m_VFX.SetActive(false);
+            SetState(false, false);
         }
 
         void SwitchTriggeredState()
         {
-            m_MeshNMaterial.SetActive(true);
-            m_VFX.SetActive(false);
+            SetState(true, false);
         }
 
         void BombTriggeredState()
         {
-            m_MeshNMaterial.SetActive(false);
-            m_VFX.SetActive(true);
+            SetState(false, true);
+        }
+
+        void SetState(bool _mat, bool _vfx)
+        {
+            for (var i = 0; i < m_MeshNMaterial.Length; i++)
+            {
+                m_MeshNMaterial[i].SetActive(_mat);
+                m_VFX[i].SetActive(_vfx);
+            }
         }
 
         /// <summary>

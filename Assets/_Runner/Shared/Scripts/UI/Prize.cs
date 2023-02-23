@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,8 +15,7 @@ namespace HyperCasual.Runner
         [SerializeField]
         PrizeType m_PrizeType = PrizeType.Coin;
         [SerializeField]
-        int m_ValueQuantity;
-        [SerializeField]
+        int m_Quantity;
         TextMeshProUGUI m_TextQuantity;
 
 
@@ -26,11 +26,12 @@ namespace HyperCasual.Runner
             RangeNeko
         }
 
-        public int Quantity => m_ValueQuantity;
+        public int Quantity => m_Quantity;
 
         private void Awake()
         {
-            m_TextQuantity.text = m_ValueQuantity.ToString();
+            m_TextQuantity = GetComponentInChildren<TextMeshProUGUI>();
+            m_TextQuantity.text = m_Quantity.ToString();
         }
         // write function to add prize to inventory.
     }

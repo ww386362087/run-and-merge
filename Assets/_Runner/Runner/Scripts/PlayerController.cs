@@ -257,8 +257,11 @@ namespace HyperCasual.Runner
             {
                 for(int i = 0; i < Mathf.Abs(numberAdd); i++)
                 {
-                    var indexRemove = Characters.Count - 1;
-                    RemoveCharacter(Characters[indexRemove]);
+                    if (Characters.Count > 0)
+                    {
+                        var indexRemove = Characters.Count - 1;
+                        RemoveCharacter(Characters[indexRemove]);
+                    }
                 }
             }
             //m_TargetScale += Vector3.one * scale;

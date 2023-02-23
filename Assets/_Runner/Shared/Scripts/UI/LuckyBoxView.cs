@@ -9,7 +9,7 @@ namespace HyperCasual.Gameplay
     /// <summary>
     /// This View contains Lucky Spin minigame functionality.
     /// </summary>
-    public class LuckySpinView : View
+    public class LuckyBoxView : View
     {
         #region Variable Declaration
         [Header("Refference")]
@@ -77,7 +77,6 @@ namespace HyperCasual.Gameplay
 
         void Spin()
         {
-            //Note: the wheel always spin counter-clockwise, figure out a way to spin it clockwise.
             m_SpinEvent.Raise();
 
             int PrizeIndex = UnityEngine.Random.Range(0, m_Prizes.Length);

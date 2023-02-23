@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f13a3263021c04f8c612c9a075bc45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SnapToGrid: 1
+  m_SnapToGrid: 0
   bridge: {fileID: 2611159189620422478}
-  scale: {x: 20, y: 1, z: 0}
+  scale: {x: 5, y: 1, z: 0}
   lengthBridge: 5
   duration: 1
 --- !u!23 &5821308229260463233

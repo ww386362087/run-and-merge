@@ -18,7 +18,6 @@ namespace HyperCasual.Runner
         int m_Quantity;
         TextMeshProUGUI m_TextQuantity;
 
-
         enum PrizeType
         {
             Coin,

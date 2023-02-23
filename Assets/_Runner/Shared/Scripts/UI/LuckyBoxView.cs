@@ -14,13 +14,17 @@ namespace HyperCasual.Gameplay
         #region Variable Declaration
         [Header("Refference")]
         [SerializeField]
-        HyperCasualButton m_ButtonClose;
+        HyperCasualButton[] m_ButtonPrizeBox;
+
         [SerializeField]
-        HyperCasualButton m_ButtonSpinFree;
+        HyperCasualButton m_ButtonGetKeys;
         [SerializeField]
-        HyperCasualButton m_ButtonSpinAds;
+        HyperCasualButton m_ButtonContinue;
         [SerializeField]
-        GameObject m_Countdown;
+        HyperCasualButton m_ButtonNext;
+
+        [SerializeField]
+        GameObject[] m_Keys;
 
         [Header("Event")]
         [SerializeField]
@@ -28,70 +32,73 @@ namespace HyperCasual.Gameplay
         [SerializeField]
         AbstractGameEvent m_CloseViewEvent;
 
-        [Header("Stuff")]
+        /*[Header("Stuff")]
         [SerializeField]
         GameObject m_PrizeHolder;
         [SerializeField]
         Prize[] m_Prizes;
-        Prize m_SelectedPrize;
+        Prize[] m_SelectedPrizes;*/
 
+        /*[Header("Context Menu")]
         [SerializeField]
-        bool m_SpinClockwise = true;
-        const int m_ClockwiseValue = -1;
-
-        [Header("Context Menu")]
-        [SerializeField]
-        float m_DistanceFromCenter = 175f;
+        float m_DistanceFromCenter = 175f;*/
         #endregion
 
         private void Awake()
         {
-            m_Prizes = m_PrizeHolder.GetComponentsInChildren<Prize>();
+            
         }
 
         private void OnEnable()
         {
-            m_ButtonClose.AddListener(OnButtonCloseClicked);
-            m_ButtonSpinFree.AddListener(OnButtonSpinFreeClicked);
-            m_ButtonSpinAds.AddListener(OnButtonSpinAdsClicked);
+            for (int i = 0; i < m_ButtonPrizeBox.Length; i++)
+            {
+                m_ButtonPrizeBox[i].AddListener(OnButtonPrizeBoxClicked);
+            }
+
+            m_ButtonGetKeys.AddListener(OnButtonGetKeysClicked);
+            m_ButtonNext.AddListener(OnButtonNoThanksClicked);
+            m_ButtonContinue.AddListener(OnButtonContinueClicked);
         }
 
         private void OnDisable()
         {
-            m_ButtonClose.AddListener(OnButtonCloseClicked);
-            m_ButtonSpinFree.RemoveListener(OnButtonSpinFreeClicked);
-            m_ButtonSpinAds.RemoveListener(OnButtonSpinAdsClicked);
+            for (int i = 0; i < m_ButtonPrizeBox.Length; i++)
+            {
+                m_ButtonPrizeBox[i].RemoveListener(OnButtonPrizeBoxClicked);
+            }
+
+            m_ButtonGetKeys.RemoveListener(OnButtonGetKeysClicked);
+            m_ButtonGetKeys.RemoveListener(OnButtonNoThanksClicked);
+            m_ButtonContinue.RemoveListener(OnButtonContinueClicked);
         }
 
-        void OnButtonSpinFreeClicked()
+        void OnButtonPrizeBoxClicked()
         {
-            Spin();
+            
         }
 
-        void OnButtonSpinAdsClicked()
+        void OnButtonGetKeysClicked()
         {
             // Show ads.
             
-            Spin();
+            SelectBox();
         }
 
-        void Spin()
+        void OnButtonNoThanksClicked()
         {
-            m_BoxEvent.Raise();
 
-            int PrizeIndex = UnityEngine.Random.Range(0, m_Prizes.Length);
-            int percentage = 360 / m_Prizes.Length;
-            int targetValue = 360 * 4 + percentage * PrizeIndex;
-
-            m_PrizeHolder.transform.DORotate(new Vector3(0, 0, targetValue), 3f, RotateMode.LocalAxisAdd).SetRelative(true).SetEase(Ease.InOutCubic);
-
-            m_SelectedPrize = m_Prizes[PrizeIndex];
         }
 
-        void OnButtonCloseClicked()
+        void OnButtonContinueClicked()
         {
             m_CloseViewEvent.Raise();
             UIManager.Instance.GoBack();
+        }
+
+        void SelectBox()
+        {
+
         }
     }
 }

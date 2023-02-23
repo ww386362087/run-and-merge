@@ -1,10 +1,17 @@
-﻿using System.Collections;
+﻿using HyperCasual.Core;
+using HyperCasual.Gameplay;
+using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class GameController : Singleton<GameController> , IGameEventListener
 {
+    /*public static GameController Instance => s_Instance;
+    static GameController s_Instance;*/
+
+    public FinishRunEvent evt;
+
     public GameObject previous_object, current_object , clicked_object;
     public LayerMask cadre_layer , ground_layer;
     public Camera cam;
@@ -18,10 +25,9 @@ public class GameController : MonoBehaviour
     public Players players_scripts;
     public List<GameObject> levels_list;
 
-    private void Awake()
-    {
-        
-    }
+    int numberOfMonsterToAdd = 3;
+    int numberOfFreeMonster = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +39,8 @@ public class GameController : MonoBehaviour
 
         // get empty cadres
         //get_list_empty_cadres_start_game();
+        
+        evt.AddListener(this);
     }
 
     // Update is called once per frame
@@ -440,7 +448,23 @@ public class GameController : MonoBehaviour
         {
             //empty
             print("list is empty");
+            numberOfFreeMonster += 1;
         }
+    }
+
+    public void SetNumberOfMonSterToAdd(int num)
+    {
+        numberOfMonsterToAdd = num;
+    }
+
+    public void add_monster_needed_to_add()
+    {
+        for (int i = 0; i < numberOfMonsterToAdd; i++)
+        {
+            add_monster_to_scene();
+        }
+
+        save_details_cadres();
     }
 
     public void delete_from_list_cadres(Cadre cdr)
@@ -853,6 +877,8 @@ public class GameController : MonoBehaviour
             }
             
         }
+
+        add_monster_needed_to_add();
     }
 
     public void get_actual_level()
@@ -862,5 +888,11 @@ public class GameController : MonoBehaviour
         GameObject lvl = Instantiate(levels_list[nbr_lvl],transform);
 
         //lvl.GetComponent<ManageLevel>().add_to_lists_enemies();
+    }
+
+    public void OnEventRaised()
+    {
+        Debug.Log($"Add {evt.NumberCharacterAdd } character");
+
     }
 }

@@ -712,6 +712,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7967798624550890425, guid: ffe017938ef75e944a4e5d2976c0bc32,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8035323631103801564, guid: ffe017938ef75e944a4e5d2976c0bc32,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -791,6 +796,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9160803576570852469, guid: ffe017938ef75e944a4e5d2976c0bc32,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9160803576570852470, guid: ffe017938ef75e944a4e5d2976c0bc32,
         type: 3}
@@ -1000,6 +1010,7 @@ MonoBehaviour:
   sceneMerges:
   - {fileID: 2126927985}
   - {fileID: 347359790}
+  evt: {fileID: 11400000, guid: c27802b872b25614e85f46c60352d529, type: 2}
   mainCam: {fileID: 0}
   camTarget: {fileID: 647894575}
   objMerge: {fileID: 1421108400}

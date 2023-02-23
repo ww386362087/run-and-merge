@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 818a287135adb43b7b2081dfbdb7b2a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SnapToGrid: 1
+  m_SnapToGrid: 0
   m_Sound: 2
   m_Event: {fileID: 11400000, guid: d8fa6750a045f40cdb26e0f0442f8be5, type: 2}
   m_Count: 1

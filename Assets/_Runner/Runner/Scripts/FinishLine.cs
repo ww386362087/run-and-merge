@@ -19,7 +19,7 @@ namespace HyperCasual.Runner
             if (col.CompareTag(k_PlayerTag))
             {
                 //GameManager.Instance.Win();
-                GameSceneLoad.Instance.Action_FinishRunGame();
+                GameSceneLoad.Instance.Action_FinishRunGame(PlayerController.Instance.Characters.Count);
             }
         }
 

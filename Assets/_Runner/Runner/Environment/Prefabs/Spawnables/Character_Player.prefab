@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b6bec1a2cb200f49a2a87413893e1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SnapToGrid: 1
+  m_SnapToGrid: 0
 --- !u!1001 &6464882181388657194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -526,7 +526,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &7203708756390694911
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -543,7 +543,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!4 &6790682125194560961 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 36078ab0369161e49a29d349ae3e0739,

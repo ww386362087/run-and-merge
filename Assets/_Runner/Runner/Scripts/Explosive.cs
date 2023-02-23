@@ -15,15 +15,9 @@ namespace HyperCasual.Runner
     /// </summary>
     [ExecuteInEditMode]
     [RequireComponent(typeof(Collider))]
-    public class Explosive : Obstacle, ISwitchable
+    public class Explosive : Obstacle
     {
         #region Variable Declaration
-        [Header("___DaBomb___")]
-        [SerializeField]
-        GameObject[] m_MeshNMaterial;
-        [SerializeField]
-        GameObject[] m_VFX;
-
         BoxCollider m_BoxCollider;
         CapsuleCollider m_CapsuleCollider;
         SphereCollider m_SphereCollider;
@@ -34,7 +28,7 @@ namespace HyperCasual.Runner
         [SerializeField]
         ColliderType m_ColliderType = ColliderType.BoxCollider;
         [SerializeField]
-        Vector3 m_TargetBoxColliderSize = new Vector3(2.5f, 2.5f, 2.5f);
+        Vector3 m_TargetBoxColliderSize = new Vector3(1.7f, 1.7f, 1.7f);
         [SerializeField]
         float m_TargetSphereColliderRadius = 2.5f;
 
@@ -45,13 +39,6 @@ namespace HyperCasual.Runner
             SphereCollider
         }
         #endregion
-
-        public override void ResetSpawnable()
-        {
-            base.ResetSpawnable();
-
-            DefaultState();
-        }
 
         protected override void Awake()
         {
@@ -76,8 +63,6 @@ namespace HyperCasual.Runner
 
         protected override void ChangeColliderSize()
         {
-            BombTriggeredState();
-
             switch (m_ColliderType)
             {
                 case ColliderType.BoxCollider:
@@ -105,35 +90,6 @@ namespace HyperCasual.Runner
                 case ColliderType.SphereCollider:
                     SetSphereColliderSize(m_OriginalSphereColliderRadius);
                     break;
-            }
-        }
-
-        public void Active()
-        {
-            SwitchTriggeredState();
-        }
-
-        void DefaultState()
-        {
-            SetState(false, false);
-        }
-
-        void SwitchTriggeredState()
-        {
-            SetState(true, false);
-        }
-
-        void BombTriggeredState()
-        {
-            SetState(false, true);
-        }
-
-        void SetState(bool _mat, bool _vfx)
-        {
-            for (var i = 0; i < m_MeshNMaterial.Length; i++)
-            {
-                m_MeshNMaterial[i].SetActive(_mat);
-                m_VFX[i].SetActive(_vfx);
             }
         }
 

@@ -24,7 +24,7 @@ namespace HyperCasual.Gameplay
 
         [Header("Event")]
         [SerializeField]
-        AbstractGameEvent m_SpinEvent;
+        AbstractGameEvent m_BoxEvent;
         [SerializeField]
         AbstractGameEvent m_CloseViewEvent;
 
@@ -77,7 +77,7 @@ namespace HyperCasual.Gameplay
 
         void Spin()
         {
-            m_SpinEvent.Raise();
+            m_BoxEvent.Raise();
 
             int PrizeIndex = UnityEngine.Random.Range(0, m_Prizes.Length);
             int percentage = 360 / m_Prizes.Length;
@@ -92,24 +92,6 @@ namespace HyperCasual.Gameplay
         {
             m_CloseViewEvent.Raise();
             UIManager.Instance.GoBack();
-        }
-
-        [ContextMenu("Reorder")]
-        void ReOrderItemReward()
-        {
-            var per = 360f / m_Prizes.Length;
-            var startAngle = 90f;
-
-            for(int i = 0; i < m_Prizes.Length; i++)
-            {
-                var pos = new Vector2(Mathf.Cos(startAngle*Mathf.Deg2Rad), Mathf.Sin(startAngle * Mathf.Deg2Rad))*m_DistanceFromCenter;
-                m_Prizes[i].transform.localPosition = pos;
-                //Debug.Log(startAngle);
-                startAngle -= per;
-
-                var z_rotation = per * (m_ClockwiseValue * i);
-                m_Prizes[i].transform.localEulerAngles = new Vector3(0, 0, z_rotation);
-            }
         }
     }
 }

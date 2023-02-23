@@ -8,7 +8,7 @@ public class UiManager : MonoBehaviour
 {
     public static UiManager instance;
     public GameObject new_character_monster_panel , new_character_warrior_panel,
-                      card_panel , ingame , winpanel , lose_panel , game_control , btn_retr , btn_cadre , btn_setting , setting_panel;
+                      card_panel , remove_ad , ingame , winpanel , lose_panel , game_control , btn_retr , btn_cadre , btn_setting , setting_panel;
     public GameObject btn_warrior_ads , btn_warrior_, btn_monster_ads , btn_monster_;
 
     public TMPro.TextMeshProUGUI level_nbr_txt , txt_mmoney , txt_coin_monster , txt_coin_warrior , txt_earning_lose , txt_earning_win;
@@ -40,7 +40,10 @@ public class UiManager : MonoBehaviour
         manage_coins_start();
     }
 
-
+    public void show_remove_ad_panel()
+    {
+        remove_ad.SetActive(true);
+    }
 
     public void show_win()
     {

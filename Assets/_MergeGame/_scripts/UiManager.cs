@@ -3,15 +3,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using MoreMountains.NiceVibrations;
+using TMPro;
 
 public class UiManager : MonoBehaviour
 {
     public static UiManager instance;
     public GameObject new_character_monster_panel , new_character_warrior_panel,
                       card_panel , remove_ad , ingame , winpanel , lose_panel , game_control , btn_retr , btn_cadre , btn_setting , setting_panel;
-    public GameObject btn_warrior_ads , btn_warrior_, btn_monster_ads , btn_monster_;
+    public GameObject btn_warrior_ads , btn_warrior_, btn_monster_ads , btn_monster_ , btn_add_mons_free, btn_add_wars_free;
 
     public TMPro.TextMeshProUGUI level_nbr_txt , txt_mmoney , txt_coin_monster , txt_coin_warrior , txt_earning_lose , txt_earning_win;
+    
     GameController gamecontroller_script;
 
     //parent cadre
@@ -38,6 +40,43 @@ public class UiManager : MonoBehaviour
 
         // coins text
         manage_coins_start();
+
+        SetAddFreeStatus();
+    }
+
+    public void SetAddFreeStatus()
+    {
+        btn_add_mons_free.SetActive(PlayerPrefs.GetInt(GameManager.instance.Num_Free_Mons) > 0);
+        btn_add_wars_free.SetActive(PlayerPrefs.GetInt(GameManager.instance.Num_Free_Wars) > 0);
+
+        btn_add_mons_free.transform.GetChild(1).GetComponent<TextMeshProUGUI>().SetText("FREE " + PlayerPrefs.GetInt(GameManager.instance.Num_Free_Mons));
+        btn_add_wars_free.transform.GetChild(1).GetComponent<TextMeshProUGUI>().SetText("FREE " + PlayerPrefs.GetInt(GameManager.instance.Num_Free_Wars));
+    }
+
+    public void btn_add_monster_free()
+    {
+        gamecontroller_script.add_monster_to_scene();
+
+        //save data
+        gamecontroller_script.save_details_cadres();
+
+        PlayerPrefs.SetInt(GameManager.instance.Num_Free_Mons,
+                           PlayerPrefs.GetInt(GameManager.instance.Num_Free_Mons) - 1);
+
+        SetAddFreeStatus();
+    }
+
+    public void btn_add_warrior_free()
+    {
+        gamecontroller_script.add_warrior_to_scene();
+
+        //save data
+        gamecontroller_script.save_details_cadres();
+
+        PlayerPrefs.SetInt(GameManager.instance.Num_Free_Wars,
+                           PlayerPrefs.GetInt(GameManager.instance.Num_Free_Wars) - 1);
+
+        SetAddFreeStatus();
     }
 
     public void show_remove_ad_panel()

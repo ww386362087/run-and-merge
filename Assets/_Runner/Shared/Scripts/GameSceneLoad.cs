@@ -33,7 +33,6 @@ public class GameSceneLoad : Singleton<GameSceneLoad>
         mainCam.transform.DORotateQuaternion(camTarget.rotation,2);
         isFinishRun = true;
 
-        Debug.Log("number of monster to add: " + noOfPlayer);
         evt.NumberCharacterAdd = noOfPlayer;
         evt.Raise();
     }

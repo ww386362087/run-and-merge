@@ -7,9 +7,6 @@ using UnityEngine;
 
 public class GameController : Singleton<GameController> , IGameEventListener
 {
-    /*public static GameController Instance => s_Instance;
-    static GameController s_Instance;*/
-
     public FinishRunEvent evt;
 
     public GameObject previous_object, current_object , clicked_object;
@@ -24,9 +21,6 @@ public class GameController : Singleton<GameController> , IGameEventListener
     public Enemies enemies_script;
     public Players players_scripts;
     public List<GameObject> levels_list;
-
-    int numberOfMonsterToAdd = 3;
-    int numberOfFreeMonster = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -433,7 +427,7 @@ public class GameController : Singleton<GameController> , IGameEventListener
     // monster ---------------------------
     public void add_monster_to_scene()
     {
-        if(list_empty_cadres.Count > 0)
+        if (list_empty_cadres.Count > 0)
         {
             //add monster to scene
             list_empty_cadres[0].add_monster();
@@ -448,16 +442,21 @@ public class GameController : Singleton<GameController> , IGameEventListener
         {
             //empty
             print("list is empty");
-            numberOfFreeMonster += 1;
+
+            AddUnusedFreeMonster();
         }
     }
 
-    public void SetNumberOfMonSterToAdd(int num)
+    void AddUnusedFreeMonster()
     {
-        numberOfMonsterToAdd = num;
+        int freeMons = PlayerPrefs.GetInt(GameManager.instance.Num_Free_Mons) + 1;
+
+        Debug.Log("saved free monster: " + freeMons);
+
+        PlayerPrefs.SetInt(GameManager.instance.Num_Free_Mons, freeMons);
     }
 
-    public void add_monster_needed_to_add()
+    public void add_monster_needed_to_add(int numberOfMonsterToAdd)
     {
         for (int i = 0; i < numberOfMonsterToAdd; i++)
         {
@@ -877,8 +876,6 @@ public class GameController : Singleton<GameController> , IGameEventListener
             }
             
         }
-
-        add_monster_needed_to_add();
     }
 
     public void get_actual_level()
@@ -894,5 +891,6 @@ public class GameController : Singleton<GameController> , IGameEventListener
     {
         Debug.Log($"Add {evt.NumberCharacterAdd } character");
 
+        add_monster_needed_to_add(evt.NumberCharacterAdd);
     }
 }

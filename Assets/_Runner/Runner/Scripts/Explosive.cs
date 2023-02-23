@@ -18,6 +18,12 @@ namespace HyperCasual.Runner
     public class Explosive : Obstacle
     {
         #region Variable Declaration
+        [Header("___DaBomb___")]
+        [SerializeField]
+        GameObject[] m_MeshNMaterial;
+        [SerializeField]
+        GameObject[] m_VFX;
+
         BoxCollider m_BoxCollider;
         CapsuleCollider m_CapsuleCollider;
         SphereCollider m_SphereCollider;
@@ -32,6 +38,11 @@ namespace HyperCasual.Runner
         [SerializeField]
         float m_TargetSphereColliderRadius = 2.5f;
 
+        [SerializeField]
+        float m_ExplosionDuration = .69f;
+
+        Coroutine m_CacheRoutine;
+
         enum ColliderType
         {
             BoxCollider,
@@ -39,6 +50,17 @@ namespace HyperCasual.Runner
             SphereCollider
         }
         #endregion
+
+        public override void ResetSpawnable()
+        {
+            base.ResetSpawnable();
+
+            DefaultState();
+
+            if (m_CacheRoutine != null)
+                StopCoroutine(m_CacheRoutine);
+            StartCoroutine(SetColliders());
+        }
 
         protected override void Awake()
         {
@@ -63,6 +85,8 @@ namespace HyperCasual.Runner
 
         protected override void ChangeColliderSize()
         {
+            BombTriggeredState();
+
             switch (m_ColliderType)
             {
                 case ColliderType.BoxCollider:
@@ -75,6 +99,9 @@ namespace HyperCasual.Runner
                     SetSphereColliderSize(m_TargetSphereColliderRadius);
                     break;
             }
+
+            if (m_CacheRoutine == null)
+                m_CacheRoutine = StartCoroutine(SetColliders(false, m_ExplosionDuration));
         }
 
         protected override void ResetColliderSize()
@@ -91,6 +118,22 @@ namespace HyperCasual.Runner
                     SetSphereColliderSize(m_OriginalSphereColliderRadius);
                     break;
             }
+        }
+
+        /// <summary>
+        /// ...
+        /// </summary>
+        IEnumerator SetColliders(bool _active = true, float _duration = 0f)
+        {
+            var colliders = gameObject.GetComponents<Collider>();
+            yield return new WaitForSeconds(_duration);
+            //Debug.Log($"Set active { _active} at {transform.name}",this);
+            foreach (var col in colliders)
+            {
+                col.enabled = _active;
+            }
+
+            //m_CacheRoutine = null;
         }
 
         /// <summary>
@@ -121,6 +164,40 @@ namespace HyperCasual.Runner
         protected virtual void SetSphereColliderSize(float radius)
         {
             m_SphereCollider.radius = radius;
+        }
+
+        /// <summary>
+        /// Default state of the Explosive.
+        /// </summary>
+        protected virtual void DefaultState()
+        {
+            SetState(true, false);
+        }
+
+        /// <summary>
+        /// Triggered state of the Explosive.
+        /// </summary>
+        protected virtual void BombTriggeredState()
+        {
+            SetState(false, true);
+        }
+
+        /// <summary>
+        /// Sets the state (active/inactive) of the object.
+        /// </summary>
+        /// <param name="_mat">
+        /// The state of the object's material.
+        /// </param>
+        /// /// <param name="_vfx">
+        /// The active state of the VFX.
+        /// </param>
+        protected virtual void SetState(bool _mat, bool _vfx)
+        {
+            for (var i = 0; i < m_MeshNMaterial.Length; i++)
+            {
+                m_MeshNMaterial[i].SetActive(_mat);
+                m_VFX[i].SetActive(_vfx);
+            }
         }
     }
 }

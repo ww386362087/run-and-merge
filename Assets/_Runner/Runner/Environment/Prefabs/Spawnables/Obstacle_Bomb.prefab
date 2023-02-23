@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1021949262770465885}
   - component: {fileID: 3009171589923533162}
   - component: {fileID: 626904456358833320}
-  - component: {fileID: 7210049875860935279}
+  - component: {fileID: 7728203507731842938}
   m_Layer: 0
   m_Name: Obstacle_Bomb
   m_TagString: Untagged
@@ -89,9 +89,9 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1, z: 1}
+  m_Size: {x: 1.8, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7210049875860935279
+--- !u!114 &7728203507731842938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,16 +100,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 314387739941697089}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50ba2ef09de3c34478eeafd13ea6190d, type: 3}
+  m_Script: {fileID: 11500000, guid: 662bcb95243c8c2459dd9d1ff0b866df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_SnapToGrid: 1
   m_Sound: 0
   m_Event: {fileID: 11400000, guid: 461b03f0bf79c0b49a82d57263f3f1d4, type: 2}
+  m_MeshNMaterial:
+  - {fileID: 5177038789345726059}
+  m_VFX:
+  - {fileID: 1000034760791686809}
   m_ColliderType: 0
   m_TargetBoxColliderSize: {x: 1.7, y: 1.7, z: 1.7}
   m_TargetSphereColliderRadius: 2.5
-  m_VFX: {fileID: 1000034760791686809}
+  m_ExplosionDuration: 0.3
 --- !u!1 &1000034760791686809
 GameObject:
   m_ObjectHideFlags: 0

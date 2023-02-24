@@ -90,7 +90,7 @@ namespace HyperCasual.Gameplay
             m_LevelSelectState.AddLink(new EventLink(m_BackEvent, m_MainMenuState));
         }
 
-        void CreateLevelSequences()
+        public void CreateLevelSequences()
         {
             m_LevelStates.Clear();
             

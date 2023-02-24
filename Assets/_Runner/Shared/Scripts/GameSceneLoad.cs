@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using HyperCasual.Gameplay;
+using HyperCasual.Core;
 
 public class GameSceneLoad : Singleton<GameSceneLoad>
 {
+    [SerializeField] AbstractGameEvent m_NextLevelEvent;
     public List<GameObject> sceneRuns;
     public List<GameObject> sceneMerges;
     public FinishRunEvent evt;
@@ -17,16 +19,9 @@ public class GameSceneLoad : Singleton<GameSceneLoad>
 
     public void Action_FinishRunGame(int noOfPlayer)
     {
-        foreach (var k in sceneRuns)
-        {
-            if (k != null)
-            {
-                k.gameObject.SetActive(false);
-            }
-        }
+        SetSceneRuns(false);
 
-        foreach (var k in sceneMerges)
-            k.gameObject.SetActive(true);
+        SetSceneMerges(true);
 
 
         mainCam.transform.DOMove(camTarget.position,2);
@@ -35,6 +30,23 @@ public class GameSceneLoad : Singleton<GameSceneLoad>
 
         evt.NumberCharacterAdd = noOfPlayer;
         evt.Raise();
+    }
+
+    public void SetSceneRuns(bool set)
+    {
+        foreach (var k in sceneRuns)
+        {
+            if (k != null)
+            {
+                k.gameObject.SetActive(set);
+            }
+        }
+    }
+
+    public void SetSceneMerges(bool set)
+    {
+        foreach (var k in sceneMerges)
+            k.gameObject.SetActive(set);
     }
 
     public void SetPositionMergeGame(Vector3 _vt)

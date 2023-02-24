@@ -127,6 +127,9 @@ public class UiManager : MonoBehaviour
         txt_earning_win.text = "+" + total_coin_in_level + "M";
         yield return new WaitForSeconds(2.5f);
         winpanel.SetActive(true);
+
+        //HyperCasual.Runner.GameManager.Instance.Win();
+        //GameSceneLoad.Instance.Action_PrepareNextRunGame();
         ingame.SetActive(false);
 
         //Advertisements.Instance.ShowInterstitial();

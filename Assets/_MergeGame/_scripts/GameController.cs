@@ -38,6 +38,15 @@ public class GameController : Singleton<GameController> , IGameEventListener
         evt.AddListener(this);
     }
 
+    public void LoadNextLevel()
+    {
+        //load data
+        load_data_from_saved_cadres();
+
+        // get level
+        get_actual_level();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -892,6 +901,6 @@ public class GameController : Singleton<GameController> , IGameEventListener
     {
         Debug.Log($"Add {evt.NumberCharacterAdd } character");
 
-        add_monster_needed_to_add(evt.NumberCharacterAdd + 5);
+        add_monster_needed_to_add(evt.NumberCharacterAdd);
     }
 }

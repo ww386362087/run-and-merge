@@ -216,6 +216,17 @@ PrefabInstance:
       propertyPath: m_LocalRotation.y
       value: -0.017679866
       objectReference: {fileID: 0}
+    - target: {fileID: 9160803576599494786, guid: ffe017938ef75e944a4e5d2976c0bc32,
+        type: 3}
+      propertyPath: m_NextLevelEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: b892538bd49f3487bbedf5106c094739,
+        type: 2}
+    - target: {fileID: 9160803577129060500, guid: ffe017938ef75e944a4e5d2976c0bc32,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffe017938ef75e944a4e5d2976c0bc32, type: 3}
 --- !u!4 &647894575 stripped
@@ -299,6 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda0fb8f996f5d441b55a840dc92deca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_NextLevelEvent: {fileID: 11400000, guid: b892538bd49f3487bbedf5106c094739, type: 2}
   sceneRuns: []
   sceneMerges:
   - {fileID: 2126927985}

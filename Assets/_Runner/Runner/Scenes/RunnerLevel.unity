@@ -136,6 +136,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 74999736119277565, guid: ffe017938ef75e944a4e5d2976c0bc32,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 440725066194901862, guid: ffe017938ef75e944a4e5d2976c0bc32,
         type: 3}
       propertyPath: m_RootOrder
@@ -191,85 +196,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1680352945044835586, guid: ffe017938ef75e944a4e5d2976c0bc32,
+    - target: {fileID: 2174204489777635870, guid: ffe017938ef75e944a4e5d2976c0bc32,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680352945044835586, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2126927987}
-    - target: {fileID: 1680352945044835586, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: btn_close_new_character_warrior_panel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680352945044835586, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UiManager, Assembly-CSharp
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3809634687786561032, guid: ffe017938ef75e944a4e5d2976c0bc32,
         type: 3}
       propertyPath: m_Name
       value: MergeGame
       objectReference: {fileID: 0}
-    - target: {fileID: 7733322913701657029, guid: ffe017938ef75e944a4e5d2976c0bc32,
+    - target: {fileID: 7415168724866785357, guid: ffe017938ef75e944a4e5d2976c0bc32,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      propertyPath: m_LocalRotation.w
+      value: 0.01182983
       objectReference: {fileID: 0}
-    - target: {fileID: 7733322913701657029, guid: ffe017938ef75e944a4e5d2976c0bc32,
+    - target: {fileID: 7415168724866785357, guid: ffe017938ef75e944a4e5d2976c0bc32,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2126927987}
-    - target: {fileID: 7733322913701657029, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: btn_close_new_character_monster_panel
-      objectReference: {fileID: 0}
-    - target: {fileID: 7733322913701657029, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UiManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 9160803576363239241, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9160803576670613729, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9160803576986438219, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9160803577167276598, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9160803577649707898, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9160803577827635163, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9160803578099701224, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_LocalRotation.y
+      value: -0.017679866
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffe017938ef75e944a4e5d2976c0bc32, type: 3}
@@ -390,15 +335,3 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 609169264}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2126927987 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9160803576670613732, guid: ffe017938ef75e944a4e5d2976c0bc32,
-    type: 3}
-  m_PrefabInstance: {fileID: 609169264}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2126927985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 747c22484af68eb4697589fc133150cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

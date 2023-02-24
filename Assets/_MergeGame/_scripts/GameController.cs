@@ -21,6 +21,7 @@ public class GameController : Singleton<GameController> , IGameEventListener
     public Enemies enemies_script;
     public Players players_scripts;
     public List<GameObject> levels_list;
+    public Transform jumpPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -433,7 +434,7 @@ public class GameController : Singleton<GameController> , IGameEventListener
             list_empty_cadres[0].add_monster();
 
             //play effect
-            list_empty_cadres[0].effect_one.Play();
+            //list_empty_cadres[0].effect_one.Play();
 
             // remove fro list
             delete_from_list_cadres(list_empty_cadres[0]);
@@ -480,7 +481,7 @@ public class GameController : Singleton<GameController> , IGameEventListener
             list_empty_cadres[0].add_warrior();
 
             //play effect
-            list_empty_cadres[0].effect_one.Play();
+            //list_empty_cadres[0].effect_one.Play();
 
             // remove fro list
             delete_from_list_cadres(list_empty_cadres[0]);
@@ -891,6 +892,6 @@ public class GameController : Singleton<GameController> , IGameEventListener
     {
         Debug.Log($"Add {evt.NumberCharacterAdd } character");
 
-        add_monster_needed_to_add(evt.NumberCharacterAdd);
+        add_monster_needed_to_add(evt.NumberCharacterAdd + 5);
     }
 }

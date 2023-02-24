@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace HyperCasual.Runner
+namespace HyperCasual.Gameplay
 {
     /// <summary>
     /// A class used to hold prize data
@@ -32,6 +32,11 @@ namespace HyperCasual.Runner
             m_TextQuantity = GetComponentInChildren<TextMeshProUGUI>();
             m_TextQuantity.text = m_Quantity.ToString();
         }
-        // write function to add prize to inventory.
+
+        //TODO: write function to add prize to inventory.
+        public void AddToInventory()
+        {
+
+        }
     }
 }

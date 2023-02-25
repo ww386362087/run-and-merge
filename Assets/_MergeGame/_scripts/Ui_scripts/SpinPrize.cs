@@ -126,16 +126,16 @@ public class SpinPrize : MonoBehaviour
         SequenceManager.Instance.SetStartingLevel(SaveManager.Instance.LevelProgress);
         m_NextLevelEvent.Raise();
 
-        GameController.Instance.LoadNextLevel();
+        //GameController.Instance.LoadNextLevel();
 
-        GameSceneLoad.Instance.SetSceneMerges(false);
+        //GameSceneLoad.Instance.RestartMergeUI();
+        GameSceneLoad.Instance.RestartMergeGameObj();
     }
 
     IEnumerator no_thanks_wait()
     {
         yield return new WaitForSeconds(1.5f);
         no_thanks_btn.SetActive(true);
-        yield return new WaitForSeconds(1f);
         HyperCasual.Runner.GameManager.Instance.Win();
         GameSceneLoad.Instance.SetSceneRuns(true);
     }

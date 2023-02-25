@@ -33,8 +33,8 @@ public class UiManager : MonoBehaviour
     void Start()
     {
         gamecontroller_script = FindObjectOfType<GameController>();
-        Advertisements.Instance.Initialize();
-        Advertisements.Instance.ShowBanner(BannerPosition.BOTTOM);
+        //Advertisements.Instance.Initialize();
+        //Advertisements.Instance.ShowBanner(BannerPosition.BOTTOM);
 
         level_nbr_txt.text = "LEVEL" + (GameManager.instance.getlevel() + 1);
 

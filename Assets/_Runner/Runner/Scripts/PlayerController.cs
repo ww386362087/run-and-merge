@@ -157,6 +157,14 @@ namespace HyperCasual.Runner
             }
         }
 
+        private void OnDestroy()
+        {
+            if (GameSceneLoad.Instance != null)
+            {
+                GameSceneLoad.Instance.sceneRuns.Remove(this.gameObject);
+            }
+        }
+
         /// <summary>
         /// Set up all necessary values for the PlayerController.
         /// </summary>

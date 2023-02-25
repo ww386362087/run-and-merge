@@ -76,6 +76,12 @@ namespace HyperCasual.Gameplay
                 GameSceneLoad.Instance.sceneRuns.Add(this.gameObject);
         }
 
+
+        private void OnDestroy()
+        {
+            if (GameSceneLoad.Instance != null)
+                GameSceneLoad.Instance.sceneRuns.Remove(this.gameObject);
+        }
         void CreateMenuNavigationSequence()
         {
             //Create states

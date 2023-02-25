@@ -136,11 +136,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 74999736119277565, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 440725066194901862, guid: ffe017938ef75e944a4e5d2976c0bc32,
         type: 3}
       propertyPath: m_RootOrder
@@ -196,36 +191,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2174204489777635870, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3809634687786561032, guid: ffe017938ef75e944a4e5d2976c0bc32,
         type: 3}
       propertyPath: m_Name
       value: MergeGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 7415168724866785357, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.01182983
-      objectReference: {fileID: 0}
-    - target: {fileID: 7415168724866785357, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.017679866
-      objectReference: {fileID: 0}
-    - target: {fileID: 9160803576599494786, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_NextLevelEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: b892538bd49f3487bbedf5106c094739,
-        type: 2}
-    - target: {fileID: 9160803577129060500, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffe017938ef75e944a4e5d2976c0bc32, type: 3}
@@ -311,14 +280,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NextLevelEvent: {fileID: 11400000, guid: b892538bd49f3487bbedf5106c094739, type: 2}
+  uiManagerMerge: {fileID: 1397820772589042037, guid: cde5c1d4756e91b49b6b13ef89070840,
+    type: 3}
   sceneRuns: []
   sceneMerges:
-  - {fileID: 2126927985}
   - {fileID: 347359790}
+  - {fileID: 2126927985}
+  currentMergeGameObj: {fileID: 1421108400}
+  MergeGamePref: {fileID: 3809634687786561032, guid: ffe017938ef75e944a4e5d2976c0bc32,
+    type: 3}
   evt: {fileID: 11400000, guid: c27802b872b25614e85f46c60352d529, type: 2}
   mainCam: {fileID: 0}
   camTarget: {fileID: 647894575}
-  objMerge: {fileID: 1421108400}
   isFinishRun: 0
 --- !u!4 &1392527163
 Transform:

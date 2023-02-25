@@ -8,6 +8,7 @@ using UnityEngine;
 public class GameController : Singleton<GameController> , IGameEventListener
 {
     public FinishRunEvent evt;
+    public FinishRunEvent ev2t;
 
     public GameObject previous_object, current_object , clicked_object;
     public LayerMask cadre_layer , ground_layer;
@@ -26,14 +27,9 @@ public class GameController : Singleton<GameController> , IGameEventListener
     // Start is called before the first frame update
     void Start()
     {
-        //load data
-        load_data_from_saved_cadres();
+        GameSceneLoad.Instance.SetCamTarget(cam);
 
-        // get level
-        get_actual_level();
-
-        // get empty cadres
-        //get_list_empty_cadres_start_game();
+        LoadNextLevel();
         
         evt.AddListener(this);
     }
@@ -902,5 +898,10 @@ public class GameController : Singleton<GameController> , IGameEventListener
         Debug.Log($"Add {evt.NumberCharacterAdd } character");
 
         add_monster_needed_to_add(evt.NumberCharacterAdd);
+    }
+
+    public int GetLevelListCount()
+    {
+        return levels_list.Count;
     }
 }

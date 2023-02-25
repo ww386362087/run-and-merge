@@ -58,7 +58,7 @@ namespace HyperCasual.Gameplay
 
         private void OnDisable()
         {
-            m_ButtonClose.AddListener(OnButtonCloseClicked);
+            m_ButtonClose.RemoveListener(OnButtonCloseClicked);
             m_ButtonSpinFree.RemoveListener(OnButtonSpinFreeClicked);
             m_ButtonSpinAds.RemoveListener(OnButtonSpinAdsClicked);
         }

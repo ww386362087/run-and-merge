@@ -95,10 +95,10 @@ public class GameManager : MonoBehaviour
     }
     public int getlevel()
     {
-        if (PlayerPrefs.GetInt("level_general") >= GameController.Instance.GetLevelListCount())
+        /*if (PlayerPrefs.GetInt("level_general") >= GameController.Instance.GetLevelListCount())
         {
             PlayerPrefs.SetInt("level_general", 0);
-        }
+        }*/
 
         return PlayerPrefs.GetInt("level_general");
     }

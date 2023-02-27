@@ -70,7 +70,10 @@ public class GameSceneLoad : Singleton<GameSceneLoad>
 
     public void RestartMergeGameObj()
     {
-        Destroy(currentMergeGameObj);
+        if (currentMergeGameObj != null)
+        {
+            Destroy(currentMergeGameObj);
+        }
 
         DOVirtual.DelayedCall(0.1f, () => {
             GameObject go = Instantiate(MergeGamePref, transform);

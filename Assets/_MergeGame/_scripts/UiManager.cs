@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using MoreMountains.NiceVibrations;
 using TMPro;
+using HyperCasual.Runner;
+using HyperCasual.Gameplay;
 
 public class UiManager : MonoBehaviour
 {
@@ -122,7 +124,10 @@ public class UiManager : MonoBehaviour
 
     IEnumerator show_win_panel()
     {
-        GameManager.instance.setLevel(GameManager.instance.getlevel() + 1);
+        //GameManager.instance.setLevel(GameManager.instance.getlevel() + 1);
+
+        ProgressionManager.Instance.SetLevel(PlayerPrefs.GetInt(ProgressionManager.Instance.MERGE_LEVEL_PROGRESSION) + 1);
+        SequenceManager.Instance.SetStartingLevel(SaveManager.Instance.LevelProgress);
 
         txt_earning_win.text = "+" + total_coin_in_level + "M";
         yield return new WaitForSeconds(2.5f);
@@ -154,7 +159,7 @@ public class UiManager : MonoBehaviour
         // sound
         //SoundManager.instance.Play("click");
 
-        GameManager.instance.setLevel(GameManager.instance.getlevel() + 1);
+        //GameManager.instance.setLevel(GameManager.instance.getlevel() + 1);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

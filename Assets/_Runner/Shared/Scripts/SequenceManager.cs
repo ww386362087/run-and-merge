@@ -179,10 +179,18 @@ namespace HyperCasual.Gameplay
         /// <param name="index">Index of the level to set as starting level</param>
         public void SetStartingLevel(int index)
         {
-            m_LevelSelectState.RemoveAllLinks();
-            m_LevelSelectState.AddLink( new EventLink(m_ContinueEvent, m_LevelStates[index]));
-            m_LevelSelectState.AddLink(new EventLink(m_BackEvent, m_MainMenuState)); 
-            m_LevelSelectState.EnableLinks();
+            if (m_LevelStates.Count > index)
+            {
+                m_LevelSelectState.RemoveAllLinks();
+                m_LevelSelectState.AddLink(new EventLink(m_ContinueEvent, m_LevelStates[index]));
+                m_LevelSelectState.AddLink(new EventLink(m_BackEvent, m_MainMenuState));
+                m_LevelSelectState.EnableLinks();
+            }
+            else
+            {
+                ProgressionManager.Instance.SetLevel(0);
+                SetStartingLevel(0);
+            }
         }
 
         void ShowUI<T>() where T : View
@@ -204,9 +212,9 @@ namespace HyperCasual.Gameplay
             if (currentLevelIndex == -1)
                 throw new Exception($"{nameof(currentLevel)} is invalid!");
             
-            var levelProgress = SaveManager.Instance.LevelProgress;
+            /*var levelProgress = SaveManager.Instance.LevelProgress;
             if (currentLevelIndex == levelProgress && currentLevelIndex < m_LevelStates.Count - 1)
-                SaveManager.Instance.LevelProgress = levelProgress + 1;
+                SaveManager.Instance.LevelProgress = levelProgress + 1;*/
         }
 
         void OnLevelSelectionDisplayed()

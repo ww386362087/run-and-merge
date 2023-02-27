@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     static public GameManager instance;
-    
+
+    //internal
+    public readonly string Num_Free_Mons = "NumFreeMons";
+    public readonly string Num_Free_Wars = "NumFreeWars";
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +38,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.U))
         {
             setcoin(9999999);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -92,6 +95,11 @@ public class GameManager : MonoBehaviour
     }
     public int getlevel()
     {
+        if (PlayerPrefs.GetInt("level_general") > GameController.Instance.GetLevelListCount())
+        {
+            PlayerPrefs.SetInt("level_general", 0);
+        }
+
         return PlayerPrefs.GetInt("level_general");
     }
 

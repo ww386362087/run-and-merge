@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public enum monster_type_enum
 {
@@ -149,7 +150,17 @@ public class Cadre : MonoBehaviour
     public void add_monster()
     {
         has_din = true;
-        list_dinosaurs[0].SetActive(true);
+        //list_dinosaurs[0].SetActive(true);
+        if (list_dinosaurs[0] != null)
+        {
+            Debug.LogError(list_dinosaurs[0].name + " exsist " + gameObject.name);
+        }
+        else
+        {
+            Debug.LogError(" null " + gameObject.name);
+        }
+
+        StartCoroutine(JumpInSeq(list_dinosaurs[0]));
         active_monster = list_dinosaurs[0].GetComponent<Monster>();
         monster_type = monster_type_enum.level_1;
 
@@ -157,6 +168,23 @@ public class Cadre : MonoBehaviour
         Players_script.list_active_monsters.Add(active_monster);
 
     }
+
+    IEnumerator JumpInSeq(GameObject go)
+    {
+        Vector3 originPos = go.transform.position;
+
+        go.transform.position = GameController.Instance.jumpPoint.position;
+
+        go.SetActive(true);
+
+        yield return new WaitForSeconds(0.2f);
+
+        go.transform.DOJump(originPos, 5f, 1, 0.5f).OnComplete(() => 
+        {
+            effect_one.Play();
+        });
+    }
+
     public void active_by_type_monster( monster_type_enum tp)
     {
         if(tp == monster_type_enum.level_1)
@@ -376,7 +404,8 @@ public class Cadre : MonoBehaviour
     public void add_warrior()
     {
         has_warrior = true;
-        list_warriors[0].SetActive(true);
+        //list_warriors[0].SetActive(true);
+        StartCoroutine(JumpInSeq(list_warriors[0]));
         warrior_type = warrior_type_enum.level_1;
         active_warrior = list_warriors[0].GetComponent<Warrior>();
 

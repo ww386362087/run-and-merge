@@ -10,7 +10,7 @@ namespace HyperCasual.Core
         [SerializeField] string m_EndOfLevelIOSAdUnitId = "Interstitial_iOS";
         [SerializeField] GenericGameEventListener[] m_EndOfLevelListeners;
 
-        public void Awake()
+       /* public void Awake()
         {
             foreach (GenericGameEventListener trigger in m_EndOfLevelListeners)
             {
@@ -26,7 +26,7 @@ namespace HyperCasual.Core
                 trigger.EventHandler -= OnEndOfLevel;
                 trigger.Unsubscribe();
             }
-        }
+        }*/
 
         public void OnEndOfLevel()
         {

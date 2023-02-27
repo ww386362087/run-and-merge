@@ -37,6 +37,11 @@ public class GameController : Singleton<GameController> , IGameEventListener
         evt.AddListener(this);
     }
 
+    private void OnDestroy()
+    {
+        evt.RemoveListener(this);
+    }
+
     public void LoadNextLevel()
     {
         //load data
@@ -898,8 +903,6 @@ public class GameController : Singleton<GameController> , IGameEventListener
 
     public void OnEventRaised()
     {
-        Debug.Log($"Add {evt.NumberCharacterAdd } character");
-
         add_monster_needed_to_add(evt.NumberCharacterAdd);
     }
 

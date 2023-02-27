@@ -113,22 +113,30 @@ namespace HyperCasual.Runner
             m_TempKeys = 0;
             SaveManager.Instance.Keys = m_TotalKeys;
 
+            // EXP.
+            m_TotalXp += m_TempXp;
+            m_TempXp = 0f;
+            SaveManager.Instance.XP = m_TotalXp;
+
             m_LevelCompleteScreen.GoldValue = m_TotalGold;
             m_LevelCompleteScreen.XpSlider.minValue = m_TotalXp;
             m_LevelCompleteScreen.XpSlider.maxValue = k_MilestoneFactor * (m_TotalXp + m_TempXp);
             m_LevelCompleteScreen.XpValue = m_TotalXp + m_TempXp;
 
             m_LevelCompleteScreen.StarCount = m_TempKeys;
-
-            m_TotalXp += m_TempXp;
-            m_TempXp = 0f;
-            SaveManager.Instance.XP = m_TotalXp;
         }
 
         void OnLose()
         {
+            // Gold aquired during run is saved
+            m_TotalGold += m_TempGold;
             m_TempGold = 0;
+            SaveManager.Instance.Currency = m_TotalGold;
+
+            // Key aquired during run is reset on lost
             m_TempKeys = 0;
+
+            // EXP aquired during run is saved
             m_TotalXp += m_TempXp;
             m_TempXp = 0f;
             SaveManager.Instance.XP = m_TotalXp;

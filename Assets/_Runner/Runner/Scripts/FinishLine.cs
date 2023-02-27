@@ -14,12 +14,19 @@ namespace HyperCasual.Runner
     {
         const string k_PlayerTag = "Player";
         
+
         void OnTriggerEnter(Collider col)
         {
             if (col.CompareTag(k_PlayerTag))
             {
                 //GameManager.Instance.Win();
-                GameSceneLoad.Instance.Action_FinishRunGame(PlayerController.Instance.Characters.Count);
+                if (!GameSceneLoad.Instance.isFinishRun)
+                {
+                    GameSceneLoad.Instance.isFinishRun = true;
+                    Debug.LogError(PlayerController.Instance.Characters.Count);
+                    GameSceneLoad.Instance.Action_FinishRunGame(PlayerController.Instance.Characters.Count);
+                }
+               
             }
         }
 

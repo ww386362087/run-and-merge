@@ -8,6 +8,7 @@ using UnityEngine;
 public class GameController : Singleton<GameController> , IGameEventListener
 {
     public FinishRunEvent evt;
+    public FinishRunEvent ev2t;
 
     public GameObject previous_object, current_object , clicked_object;
     public LayerMask cadre_layer , ground_layer;
@@ -23,19 +24,26 @@ public class GameController : Singleton<GameController> , IGameEventListener
     public List<GameObject> levels_list;
     public Transform jumpPoint;
 
+    [SerializeField] List<GameObject> missingRef;
+
     // Start is called before the first frame update
     void Start()
+    {
+        GameSceneLoad.Instance.SetCamTarget(cam);
+        GameSceneLoad.Instance.SetMissingRefOnRestartMergeGame(missingRef);
+
+        LoadNextLevel();
+        
+        evt.AddListener(this);
+    }
+
+    public void LoadNextLevel()
     {
         //load data
         load_data_from_saved_cadres();
 
         // get level
         get_actual_level();
-
-        // get empty cadres
-        //get_list_empty_cadres_start_game();
-        
-        evt.AddListener(this);
     }
 
     // Update is called once per frame
@@ -892,6 +900,11 @@ public class GameController : Singleton<GameController> , IGameEventListener
     {
         Debug.Log($"Add {evt.NumberCharacterAdd } character");
 
-        add_monster_needed_to_add(evt.NumberCharacterAdd + 5);
+        add_monster_needed_to_add(evt.NumberCharacterAdd);
+    }
+
+    public int GetLevelListCount()
+    {
+        return levels_list.Count;
     }
 }

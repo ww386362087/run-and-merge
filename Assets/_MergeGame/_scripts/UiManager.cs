@@ -33,8 +33,8 @@ public class UiManager : MonoBehaviour
     void Start()
     {
         gamecontroller_script = FindObjectOfType<GameController>();
-        Advertisements.Instance.Initialize();
-        Advertisements.Instance.ShowBanner(BannerPosition.BOTTOM);
+        //Advertisements.Instance.Initialize();
+        //Advertisements.Instance.ShowBanner(BannerPosition.BOTTOM);
 
         level_nbr_txt.text = "LEVEL" + (GameManager.instance.getlevel() + 1);
 
@@ -127,6 +127,9 @@ public class UiManager : MonoBehaviour
         txt_earning_win.text = "+" + total_coin_in_level + "M";
         yield return new WaitForSeconds(2.5f);
         winpanel.SetActive(true);
+
+        //HyperCasual.Runner.GameManager.Instance.Win();
+        //GameSceneLoad.Instance.Action_PrepareNextRunGame();
         ingame.SetActive(false);
 
         //Advertisements.Instance.ShowInterstitial();

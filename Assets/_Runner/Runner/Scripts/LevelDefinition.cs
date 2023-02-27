@@ -73,6 +73,8 @@ namespace HyperCasual.Runner
         /// </summary>
         public GameObject EndPrefab;
 
+        public AreaDefinition Area;
+
         /// <summary>
         /// An array of all SpawnableObjects that exist in this level.
         /// </summary>

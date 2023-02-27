@@ -151,14 +151,6 @@ public class Cadre : MonoBehaviour
     {
         has_din = true;
         //list_dinosaurs[0].SetActive(true);
-        if (list_dinosaurs[0] != null)
-        {
-            Debug.LogError(list_dinosaurs[0].name + " exsist " + gameObject.name);
-        }
-        else
-        {
-            Debug.LogError(" null " + gameObject.name);
-        }
 
         StartCoroutine(JumpInSeq(list_dinosaurs[0]));
         active_monster = list_dinosaurs[0].GetComponent<Monster>();

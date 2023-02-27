@@ -23,7 +23,7 @@ namespace HyperCasual.Runner
                 if (!GameSceneLoad.Instance.isFinishRun)
                 {
                     GameSceneLoad.Instance.isFinishRun = true;
-                    Debug.LogError(PlayerController.Instance.Characters.Count);
+                    //Debug.LogError(PlayerController.Instance.Characters.Count);
                     GameSceneLoad.Instance.Action_FinishRunGame(PlayerController.Instance.Characters.Count);
                 }
                

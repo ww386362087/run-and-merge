@@ -8,8 +8,6 @@ using HyperCasual.Core;
 public class GameSceneLoad : Singleton<GameSceneLoad>
 {
     [SerializeField] AbstractGameEvent m_NextLevelEvent;
-    //[SerializeField] Transform mergeGame;
-    [SerializeField] GameObject uiManagerMerge;
     public List<GameObject> sceneRuns;
     public List<GameObject> sceneMerges;
     public GameObject currentMergeGameObj;
@@ -70,15 +68,6 @@ public class GameSceneLoad : Singleton<GameSceneLoad>
         posToSet = _vt;
     }
 
-    public void RestartMergeUI()
-    {
-        Destroy(sceneMerges[1]);
-
-        sceneMerges.Remove(sceneMerges[1]);
-
-        sceneMerges.Add(Instantiate(uiManagerMerge, currentMergeGameObj.transform));
-    }
-
     public void RestartMergeGameObj()
     {
         Destroy(currentMergeGameObj);
@@ -93,5 +82,10 @@ public class GameSceneLoad : Singleton<GameSceneLoad>
     public void SetCamTarget(Camera cam)
     {
         camTarget = cam.transform;
+    }
+
+    public void SetMissingRefOnRestartMergeGame(List<GameObject> objs)
+    {
+        sceneMerges = objs;
     }
 }

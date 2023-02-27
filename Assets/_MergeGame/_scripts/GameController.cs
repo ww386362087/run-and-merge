@@ -24,10 +24,13 @@ public class GameController : Singleton<GameController> , IGameEventListener
     public List<GameObject> levels_list;
     public Transform jumpPoint;
 
+    [SerializeField] List<GameObject> missingRef;
+
     // Start is called before the first frame update
     void Start()
     {
         GameSceneLoad.Instance.SetCamTarget(cam);
+        GameSceneLoad.Instance.SetMissingRefOnRestartMergeGame(missingRef);
 
         LoadNextLevel();
         

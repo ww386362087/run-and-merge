@@ -82,7 +82,7 @@ namespace HyperCasual.Gameplay
 
             int PrizeIndex = UnityEngine.Random.Range(0, m_Prizes.Length);
             int percentage = 360 / m_Prizes.Length;
-            int targetValue = 360 * 4 + percentage * PrizeIndex;
+            int targetValue = 360 * 4 + percentage * PrizeIndex + percentage / 2;
 
             m_PrizeHolder.transform.DORotate(new Vector3(0, 0, targetValue), 3f, RotateMode.LocalAxisAdd).SetRelative(true).SetEase(Ease.InOutCubic);
 
@@ -98,8 +98,9 @@ namespace HyperCasual.Gameplay
         [ContextMenu("Reorder")]
         void ReOrderItemReward()
         {
+            var offset = (float) -11.3 / 2;
             var per = 360f / m_Prizes.Length;
-            var startAngle = 90f;
+            var startAngle = 90f + offset;
 
             for(int i = 0; i < m_Prizes.Length; i++)
             {
@@ -108,7 +109,7 @@ namespace HyperCasual.Gameplay
                 //Debug.Log(startAngle);
                 startAngle -= per;
 
-                var z_rotation = per * (m_ClockwiseValue * i);
+                var z_rotation = per * (m_ClockwiseValue * i) + offset;
                 m_Prizes[i].transform.localEulerAngles = new Vector3(0, 0, z_rotation);
             }
         }

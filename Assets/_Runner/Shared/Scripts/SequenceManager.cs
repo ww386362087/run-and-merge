@@ -198,7 +198,7 @@ namespace HyperCasual.Gameplay
 
         void OnWinScreenDisplayed(IState currentLevel)
         {
-            UIManager.Instance.Show<LevelCompleteScreen>();
+            //UIManager.Instance.Show<LevelCompleteScreen>();
             var currentLevelIndex = m_LevelStates.IndexOf(currentLevel);
             
             if (currentLevelIndex == -1)
@@ -220,6 +220,8 @@ namespace HyperCasual.Gameplay
             m_CurrentLevel = current;
             ShowUI<Hud>();
             AudioManager.Instance.StopMusic();
+
+            GameSceneLoad.Instance.SetSceneRuns(true);
         }
     }
 }

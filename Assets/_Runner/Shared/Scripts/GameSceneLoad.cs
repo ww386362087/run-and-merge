@@ -62,23 +62,19 @@ public class GameSceneLoad : Singleton<GameSceneLoad>
         isFinishRun = false;
         if (currentMergeGameObj != null)
         {
-            currentMergeGameObj.transform.position = new Vector3(0, 0, _vt.z + 10);
+            currentMergeGameObj.transform.position = new Vector3(0, 0, _vt.z + 20f);
         }
-        
+
         posToSet = _vt;
     }
 
     public void RestartMergeGameObj()
     {
-        if (currentMergeGameObj != null)
+        Destroy(currentMergeGameObj);
+        DOVirtual.DelayedCall(0.1f, () =>
         {
-            Destroy(currentMergeGameObj);
-        }
-
-        DOVirtual.DelayedCall(0.1f, () => {
-            GameObject go = Instantiate(MergeGamePref, transform);
-            go.transform.position = new Vector3(0, 0, posToSet.z + 10);
-            currentMergeGameObj = go;
+            currentMergeGameObj = Instantiate(MergeGamePref, transform);
+            SetPositionMergeGame(new Vector3(0, 0, posToSet.z));
         });
     }
 

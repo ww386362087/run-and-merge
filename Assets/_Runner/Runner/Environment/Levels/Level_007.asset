@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: Level_007
   m_EditorClassIdentifier: 
   LevelLength: 160
+  LevelLengthBufferStart: 5
+  LevelLengthBufferEnd: 5
   LevelWidth: 20
   LevelThickness: 0.1
-  ListMeshToCreate:
-  - MeshLength: 150
-    MeshLengthBufferStart: 5
-    MeshLengthBufferEnd: 5
   SnapToGrid: 1
   GridSize: 1
   TerrainMaterial: {fileID: 2100000, guid: e2d13250d13954c7991517c511efc6be, type: 2}
@@ -26,6 +24,7 @@ MonoBehaviour:
     type: 3}
   EndPrefab: {fileID: 8751349750269054652, guid: 32fa2c6232c2842b9ab5998a592d00bf,
     type: 3}
+  Area: {fileID: 11400000, guid: 3a39fcf09405d94458c15821f6e1968d, type: 2}
   Spawnables:
   - SpawnablePrefab: {fileID: 0}
     Position: {x: 0, y: -0.49, z: 160}

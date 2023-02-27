@@ -8,7 +8,6 @@ using UnityEngine;
 public class GameController : Singleton<GameController> , IGameEventListener
 {
     public FinishRunEvent evt;
-    public FinishRunEvent ev2t;
 
     public GameObject previous_object, current_object , clicked_object;
     public LayerMask cadre_layer , ground_layer;

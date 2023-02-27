@@ -12,37 +12,37 @@ namespace HyperCasual.Runner
     public class SettingsMenu : View
     {
         [SerializeField]
-        HyperCasualButton m_Button;
+        HyperCasualButton m_ButtonClose;
         [SerializeField]
-        Toggle m_EnableMusicToggle;
+        Toggle m_MusicToggle;
         [SerializeField]
-        Toggle m_EnableSfxToggle;
-        [SerializeField]
+        Toggle m_SfxToggle;
+        /*[SerializeField]
         Slider m_AudioVolumeSlider;
         [SerializeField]
-        Slider m_QualitySlider;
+        Slider m_QualitySlider;*/
         
         void OnEnable()
         {
-            m_EnableMusicToggle.isOn = AudioManager.Instance.EnableMusic;
-            m_EnableSfxToggle.isOn = AudioManager.Instance.EnableSfx;
-            m_AudioVolumeSlider.value = AudioManager.Instance.MasterVolume;
-            m_QualitySlider.value = QualityManager.Instance.QualityLevel;
+            m_MusicToggle.isOn = AudioManager.Instance.EnableMusic;
+            m_SfxToggle.isOn = AudioManager.Instance.EnableSfx;
+            /*m_AudioVolumeSlider.value = AudioManager.Instance.MasterVolume;
+            m_QualitySlider.value = QualityManager.Instance.QualityLevel;*/
             
-            m_Button.AddListener(OnBackButtonClick);
-            m_EnableMusicToggle.onValueChanged.AddListener(MusicToggleChanged);
-            m_EnableSfxToggle.onValueChanged.AddListener(SfxToggleChanged);
-            m_AudioVolumeSlider.onValueChanged.AddListener(VolumeSliderChanged);
-            m_QualitySlider.onValueChanged.AddListener(QualitySliderChanged);
+            m_ButtonClose.AddListener(OnButtonCloseClick);
+            m_MusicToggle.onValueChanged.AddListener(MusicToggleChanged);
+            m_SfxToggle.onValueChanged.AddListener(SfxToggleChanged);
+            //m_AudioVolumeSlider.onValueChanged.AddListener(VolumeSliderChanged);
+            //m_QualitySlider.onValueChanged.AddListener(QualitySliderChanged);
         }
         
         void OnDisable()
         {
-            m_Button.RemoveListener(OnBackButtonClick);
-            m_EnableMusicToggle.onValueChanged.RemoveListener(MusicToggleChanged);
-            m_EnableSfxToggle.onValueChanged.RemoveListener(SfxToggleChanged);
-            m_AudioVolumeSlider.onValueChanged.RemoveListener(VolumeSliderChanged);
-            m_QualitySlider.onValueChanged.RemoveListener(QualitySliderChanged);
+            m_ButtonClose.RemoveListener(OnButtonCloseClick);
+            m_MusicToggle.onValueChanged.RemoveListener(MusicToggleChanged);
+            m_SfxToggle.onValueChanged.RemoveListener(SfxToggleChanged);
+            //m_AudioVolumeSlider.onValueChanged.RemoveListener(VolumeSliderChanged);
+            //m_QualitySlider.onValueChanged.RemoveListener(QualitySliderChanged);
         }
 
         void MusicToggleChanged(bool value)
@@ -55,17 +55,17 @@ namespace HyperCasual.Runner
             AudioManager.Instance.EnableSfx = value;
         }
 
-        void VolumeSliderChanged(float value)
+        /*void VolumeSliderChanged(float value)
         {
             AudioManager.Instance.MasterVolume = value;
-        }
+        }*/
         
-        void QualitySliderChanged(float value)
+        /*void QualitySliderChanged(float value)
         {
             QualityManager.Instance.QualityLevel = (int)value;
-        }
+        }*/
 
-        void OnBackButtonClick()
+        void OnButtonCloseClick()
         {
             UIManager.Instance.GoBack();
         }

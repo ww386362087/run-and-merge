@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc98a02990876014aac8c0f7b9af35bb, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: 
-  skybox: {fileID: 0}
-  fence: {fileID: 0}
-  boardBattleScene: {fileID: 0}
+  skybox: {fileID: 2100000, guid: 383767bcee1fe72459207f8ecb4c91ed, type: 2}
+  road: {fileID: 2100000, guid: 3708c57916e0b48409e8a8f1093882fe, type: 2}
+  fence_left: {fileID: 7845533591935339359, guid: 3d19201bcd1d20a46851ddb05aa84645,
+    type: 3}
+  fence_right: {fileID: 2275785058256265924, guid: a20b112c34802a047925cef3d442dd74,
+    type: 3}
+  boardBattleScene: {fileID: 2080470991657839841, guid: 1856790a226594947946642cfe201f6c,
+    type: 3}

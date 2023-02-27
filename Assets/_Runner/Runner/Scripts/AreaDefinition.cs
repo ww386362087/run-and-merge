@@ -6,6 +6,7 @@ using UnityEngine;
 public class AreaDefinition : ScriptableObject
 {
     [SerializeField] private Material skybox;
+    [SerializeField] private Material road;
     [SerializeField] private GameObject fence_left;
     [SerializeField] private GameObject fence_right;
     [SerializeField] private GameObject boardBattleScene;
@@ -14,4 +15,5 @@ public class AreaDefinition : ScriptableObject
     public GameObject BoardBattleScene { get => boardBattleScene; }
     public GameObject Fence_left { get => fence_left; }
     public GameObject Fence_right { get => fence_right; }
+    public Material Road { get => road; }
 }

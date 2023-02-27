@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc98a02990876014aac8c0f7b9af35bb, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: 
-  skybox: {fileID: 0}
-  fence: {fileID: 0}
-  boardBattleScene: {fileID: 0}
+  skybox: {fileID: 2100000, guid: 69a6b3fcf95643947aa7a7ca5eba8062, type: 2}
+  road: {fileID: 2100000, guid: 0e5a230b1b3749a45bd5ce2a30a4b8f5, type: 2}
+  fence_left: {fileID: 4649455793707397588, guid: 174f959a1c433314b9c59112b0f9b440,
+    type: 3}
+  fence_right: {fileID: 4548673262977688682, guid: 2d69020ed649a3b4cad50e903e3fa410,
+    type: 3}
+  boardBattleScene: {fileID: 2569495790654191172, guid: a78bfe6a112dfa74ea01bbd470db135c,
+    type: 3}

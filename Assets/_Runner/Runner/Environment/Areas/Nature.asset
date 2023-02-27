@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc98a02990876014aac8c0f7b9af35bb, type: 3}
   m_Name: Nature
   m_EditorClassIdentifier: 
-  skybox: {fileID: 0}
-  fence: {fileID: 0}
-  boardBattleScene: {fileID: 0}
+  skybox: {fileID: 2100000, guid: 835b327e4c7342542b79950d5640fe1c, type: 2}
+  road: {fileID: 2100000, guid: 2986bacd7014c2243a51e3151f100f29, type: 2}
+  fence_left: {fileID: 7046572262550356005, guid: 03efd921bc86dcb4bb2369f2ba0f4aa5,
+    type: 3}
+  fence_right: {fileID: 7582975669274180283, guid: af67ed8cc61682943aced0df64c70c95,
+    type: 3}
+  boardBattleScene: {fileID: 2606705890322652336, guid: 29ed6b404ff4584449796fa7fb403146,
+    type: 3}

@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662bcb95243c8c2459dd9d1ff0b866df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SnapToGrid: 1
+  m_SnapToGrid: 0
   m_Sound: 0
   m_Event: {fileID: 11400000, guid: 461b03f0bf79c0b49a82d57263f3f1d4, type: 2}
   m_MeshNMaterial:

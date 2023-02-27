@@ -107,9 +107,9 @@ public class SpinPrize : MonoBehaviour
         StartCoroutine(wait_ads_video());
     }
 
-    public void button_NoThanks()
+    public void button_NoThanks(bool isWon)
     {
-        //if (!active) return;
+        /*//if (!active) return;
 
         active = false;
         // ads inter
@@ -119,25 +119,41 @@ public class SpinPrize : MonoBehaviour
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         //////////////
+        GameSceneLoad.Instance.RestartMergeGameObj();
 
-        /*HyperCasual.Runner.GameManager.Instance.Win();
-        GameSceneLoad.Instance.Action_PrepareNextRunGame();*/
+        SequenceManager.Instance.SetStartingLevel(SaveManager.Instance.LevelProgress);
+        m_NextLevelEvent.Raise();*/
+        ///
+        StartCoroutine(btn_NoThanksOnClick(isWon));
+    }
+
+    IEnumerator btn_NoThanksOnClick(bool isWon)
+    {
+        if (isWon)
+        {
+            HyperCasual.Runner.GameManager.Instance.Win();
+        }
+        else
+        {
+            HyperCasual.Runner.GameManager.Instance.Lose();
+        }
+
+        yield return null;
+        yield return null;
+        yield return null;
+
+        GameSceneLoad.Instance.RestartMergeGameObj();
 
         SequenceManager.Instance.SetStartingLevel(SaveManager.Instance.LevelProgress);
         m_NextLevelEvent.Raise();
-
-        //GameController.Instance.LoadNextLevel();
-
-        //GameSceneLoad.Instance.RestartMergeUI();
-        GameSceneLoad.Instance.RestartMergeGameObj();
     }
 
     IEnumerator no_thanks_wait()
     {
         yield return new WaitForSeconds(1.5f);
         no_thanks_btn.SetActive(true);
-        HyperCasual.Runner.GameManager.Instance.Win();
-        GameSceneLoad.Instance.SetSceneRuns(true);
+        //HyperCasual.Runner.GameManager.Instance.Win();
+        //GameSceneLoad.Instance.SetSceneRuns(true);
     }
 
     private void Complete_ads_video(bool completed, string advertiser)

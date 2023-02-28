@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SnapToGrid: 0
-  bridge: {fileID: 2611159189620422478}
-  scale: {x: 5, y: 1, z: 0}
+  bridge: {fileID: 907022039951876289}
+  scale: {x: 0.85, y: 1, z: 0}
   lengthBridge: 5
   duration: 1
 --- !u!23 &5821308229260463233
@@ -356,6 +356,12 @@ PrefabInstance:
 --- !u!4 &566806017010596475 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8755586197558320103, guid: a4a895e2a0dfc1c4f9280732dc5e94c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 9106177635972456860}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &907022039951876289 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8271362013166731613, guid: a4a895e2a0dfc1c4f9280732dc5e94c1,
     type: 3}
   m_PrefabInstance: {fileID: 9106177635972456860}
   m_PrefabAsset: {fileID: 0}

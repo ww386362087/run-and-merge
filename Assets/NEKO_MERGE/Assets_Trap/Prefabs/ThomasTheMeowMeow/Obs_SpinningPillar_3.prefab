@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608713766852261955}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 3.901736}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   BobHeight: 0.2
   Spin: 1
   m_Axis: 4
-  SpinSpeed: 200
+  SpinSpeed: 400
 --- !u!1 &2280107042246441581
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,8 +198,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7770017325116474552}
-  - component: {fileID: 3298003961569914683}
   - component: {fileID: 1565227399540043401}
+  - component: {fileID: 6143050356017734125}
   m_Layer: 0
   m_Name: Obs_SpinningPillar_3
   m_TagString: Untagged
@@ -224,22 +224,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &3298003961569914683
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6962412447760293378}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1565227399540043401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +239,22 @@ MonoBehaviour:
   m_SnapToGrid: 1
   m_Sound: 0
   m_Event: {fileID: 11400000, guid: ae8554b39378aef44923581b03f32cdf, type: 2}
+--- !u!54 &6143050356017734125
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6962412447760293378}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7972548935870931301
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,9 +266,8 @@ GameObject:
   - component: {fileID: 895892161252867427}
   - component: {fileID: 6630036544212315454}
   - component: {fileID: 6222405299110547358}
-  - component: {fileID: 8138853567707022914}
-  - component: {fileID: 8873045458743793993}
   - component: {fileID: 8996452287283483740}
+  - component: {fileID: 8138853567707022914}
   m_Layer: 0
   m_Name: Obstacle_05_02
   m_TagString: Untagged
@@ -342,6 +341,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &8996452287283483740
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7972548935870931301}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.6
+  m_Height: 7.4
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.6, z: 2.2}
 --- !u!114 &8138853567707022914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,34 +376,6 @@ MonoBehaviour:
   Spin: 1
   m_Axis: 4
   SpinSpeed: 140
---- !u!136 &8873045458743793993
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7972548935870931301}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 1.3
-  m_Height: 4.85
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.6, z: 0}
---- !u!136 &8996452287283483740
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7972548935870931301}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 1.6
-  m_Height: 7.4
-  m_Direction: 2
-  m_Center: {x: 0, y: 0.6, z: 2.2}
 --- !u!1 &8465722083026689516
 GameObject:
   m_ObjectHideFlags: 0

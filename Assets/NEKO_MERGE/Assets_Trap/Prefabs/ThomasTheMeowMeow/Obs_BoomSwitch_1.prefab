@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6738359776478576720}
   - component: {fileID: 8628365761404001098}
-  - component: {fileID: 5477802003829051887}
+  - component: {fileID: 1405225548123903890}
   m_Layer: 0
   m_Name: Obs_BoomSwitch_1
   m_TagString: Untagged
@@ -118,12 +118,12 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6253430805402032874}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.9
   m_Center: {x: 0, y: 1.4, z: 0}
---- !u!114 &5477802003829051887
+--- !u!114 &1405225548123903890
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,10 +132,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6253430805402032874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 662bcb95243c8c2459dd9d1ff0b866df, type: 3}
+  m_Script: {fileID: 11500000, guid: 15a34a959709e674dbbc59388123bedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SnapToGrid: 0
+  m_SnapToGrid: 1
   m_Sound: 0
   m_Event: {fileID: 11400000, guid: 461b03f0bf79c0b49a82d57263f3f1d4, type: 2}
   m_MeshNMaterial:
@@ -258,6 +258,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6738359776478576720}
     m_Modifications:
+    - target: {fileID: 2093989615510678763, guid: e2003c95994f8454faa4cbd27bbc0e7a,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8319062295125442763, guid: e2003c95994f8454faa4cbd27bbc0e7a,
         type: 3}
       propertyPath: m_RootOrder

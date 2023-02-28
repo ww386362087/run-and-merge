@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 4442595715040073923}
   - component: {fileID: 4438008392453952875}
   - component: {fileID: 1320614495066570747}
+  - component: {fileID: 4167784623578994931}
   m_Layer: 0
   m_Name: Obstacle_04_01
   m_TagString: Untagged
@@ -166,6 +167,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4167784623578994931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4097302580104020268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba4ae32a6c4e4559afadd205d679bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UsePositionBasedOffset: 1
+  PositionBasedScale: 2
+  Bob: 1
+  m_Direction: 0
+  BobSpeed: 2.5
+  BobHeight: 4
+  Spin: 0
+  m_Axis: 4
+  SpinSpeed: 180
 --- !u!1 &7333432835059933857
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +233,7 @@ GameObject:
   - component: {fileID: 4479410213836531592}
   - component: {fileID: 4425620545338534370}
   - component: {fileID: 4075913368663990298}
+  - component: {fileID: 8398328525255756568}
   m_Layer: 0
   m_Name: Obstacle_04_02
   m_TagString: Untagged
@@ -283,3 +306,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8398328525255756568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8502817888752435970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba4ae32a6c4e4559afadd205d679bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UsePositionBasedOffset: 1
+  PositionBasedScale: 2
+  Bob: 1
+  m_Direction: 0
+  BobSpeed: 2.5
+  BobHeight: 4
+  Spin: 1
+  m_Axis: 4
+  SpinSpeed: 200

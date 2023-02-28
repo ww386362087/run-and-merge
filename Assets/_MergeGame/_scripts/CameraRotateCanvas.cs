@@ -19,6 +19,9 @@ public class CameraRotateCanvas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!Camera.main)
+            return;
+
         transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward,Camera.main.transform.rotation * Vector3.up);
         if (!BillboardX || !BillboardY || !BillboardZ)
             transform.rotation = Quaternion.Euler(BillboardX ? transform.rotation.eulerAngles.x : 0f, BillboardY ? transform.rotation.eulerAngles.y : 0f, BillboardZ ? transform.rotation.eulerAngles.z : 0f);

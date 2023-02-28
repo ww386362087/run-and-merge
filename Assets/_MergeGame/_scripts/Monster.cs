@@ -126,6 +126,16 @@ public class Monster : MonoBehaviour
             
         }
     }
+
+    [ContextMenu("Update anim")]
+    private void UpdateAnim()
+    {
+        if (anim == null)
+        {
+            anim = GetComponentInChildren<Animator>();
+        }
+    }
+
     public void decrease_health(int nbr)
     {
         health -= nbr;
@@ -158,7 +168,7 @@ public class Monster : MonoBehaviour
         agent.enabled = true;
         // make animation
         animate_monster(run);
-
+        Debug.Log(agent.enabled);
         target = tar;
         agent.SetDestination(target.position);
     }

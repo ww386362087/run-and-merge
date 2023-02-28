@@ -895,6 +895,12 @@ public class GameController : Singleton<GameController> , IGameEventListener
     {
         int nbr_lvl = GameManager.instance.getlevel();
 
+        if (levels_list[nbr_lvl] == null)
+        {
+            nbr_lvl = 0;
+            ProgressionManager.Instance.SetLevel(0);
+        }
+
         GameObject lvl = Instantiate(levels_list[nbr_lvl],transform);
 
         //lvl.GetComponent<ManageLevel>().add_to_lists_enemies();

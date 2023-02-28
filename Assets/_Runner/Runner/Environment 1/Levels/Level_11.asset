@@ -13,13 +13,10 @@ MonoBehaviour:
   m_Name: Level_11
   m_EditorClassIdentifier: 
   LevelLength: 195
-  LevelWidth: 10
+  LevelLengthBufferStart: 5
+  LevelLengthBufferEnd: 5
+  LevelWidth: 8
   LevelThickness: 0.1
-  SpaceBetweenTerrain: 0
-  ListMeshToCreate:
-  - MeshLength: 190
-    MeshLengthBufferStart: 5
-    MeshLengthBufferEnd: 5
   SnapToGrid: 1
   GridSize: 1
   TerrainMaterial: {fileID: 2100000, guid: e2d13250d13954c7991517c511efc6be, type: 2}

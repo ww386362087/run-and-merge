@@ -15,7 +15,7 @@ MonoBehaviour:
   LevelLength: 30
   LevelLengthBufferStart: 5
   LevelLengthBufferEnd: 5
-  LevelWidth: 20
+  LevelWidth: 8
   LevelThickness: 0.1
   SnapToGrid: 1
   GridSize: 1

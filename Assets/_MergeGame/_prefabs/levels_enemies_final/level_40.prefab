@@ -127,12 +127,12 @@ PrefabInstance:
     - target: {fileID: 2117787056019587766, guid: ea76adc032fba99419d0223547f96fbe,
         type: 3}
       propertyPath: damage
-      value: 216
+      value: 810
       objectReference: {fileID: 0}
     - target: {fileID: 2117787056019587766, guid: ea76adc032fba99419d0223547f96fbe,
         type: 3}
       propertyPath: health
-      value: 1929
+      value: 7680
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea76adc032fba99419d0223547f96fbe, type: 3}

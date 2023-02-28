@@ -77,10 +77,21 @@ namespace HyperCasual.Runner
         public void LoadLevel(LevelDefinition levelDefinition)
         {
             m_CurrentLevel = levelDefinition;
+
+            LoadSkyBox();
             LoadLevel(m_CurrentLevel, ref m_CurrentLevelGO);
             CreateTerrain(m_CurrentLevel, ref m_CurrentTerrainGOList);
             PlaceLevelMarkers(m_CurrentLevel, ref m_LevelMarkersGO);
             StartGame();
+        }
+
+        private void LoadSkyBox()
+        {
+            if (m_CurrentLevel.Area != null)
+            {
+                RenderSettings.skybox = m_CurrentLevel.Area.Skybox;
+                DynamicGI.UpdateEnvironment();
+            }
         }
 
         /// <summary>
@@ -371,7 +382,7 @@ namespace HyperCasual.Runner
                 }
                 else if (i == bridgeList.Count)
                 {
-                    endPosition = levelDefinition.LevelLength + levelDefinition.LevelLengthBufferEnd;
+                    endPosition = levelDefinition.LevelLength + levelDefinition.LevelLengthBufferEnd+5;
                 }
 
                 if (i == 0)
@@ -380,7 +391,7 @@ namespace HyperCasual.Runner
                 }
 
                 len = endPosition - startPosition;
-                TerrainGenerator.TerrainDimensions terrainDimensions = new TerrainGenerator.TerrainDimensions()
+                var terrainDimensions = new TerrainGenerator.TerrainDimensions()
                 {
                     Width = levelDefinition.LevelWidth,
                     Length = len,
@@ -388,9 +399,18 @@ namespace HyperCasual.Runner
                     EndBuffer = 0,
                     Thickness = levelDefinition.LevelThickness
                 };
-                GameObject terrain = TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.TerrainMaterial);
+                var terrain = TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.Area?.Road?? levelDefinition.TerrainMaterial);
                 terrain.transform.position = new Vector3(0, 0, startPosition);
 
+                var step = 8;
+                for (int j = 0; j < len- step; j += step)
+                {
+                    var positionTarget = j - 10;
+                    var positionSpawn = new Vector3(-levelDefinition.LevelWidth / 2, 0, positionTarget);
+                    Instantiate(levelDefinition.Area.Fence_left, positionSpawn, Quaternion.identity, terrain.transform);
+                    positionSpawn.x = -positionSpawn.x;
+                    Instantiate(levelDefinition.Area.Fence_right, positionSpawn, Quaternion.identity, terrain.transform);
+                }
 
                 if (i < bridgeList.Count)
                 {
@@ -404,6 +424,19 @@ namespace HyperCasual.Runner
                 {
                     terrainGameObjectList.Add(terrain);
                 }
+            }
+
+            var lastTerrian = terrainGameObjectList[terrainGameObjectList.Count - 1];
+            LoadBattltField(levelDefinition, lastTerrian.transform);
+        }
+
+        private static void LoadBattltField(LevelDefinition levelDefinition, Transform parent)
+        {
+            if (levelDefinition.Area?.BoardBattleScene)
+            {
+                var diff = 20f;
+                var board = Instantiate(levelDefinition.Area.BoardBattleScene, parent);
+                board.transform.position = new Vector3(0,0,levelDefinition.LevelLength+ diff);
             }
         }
 

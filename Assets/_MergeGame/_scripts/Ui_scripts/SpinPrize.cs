@@ -144,7 +144,8 @@ public class SpinPrize : MonoBehaviour
 
         GameSceneLoad.Instance.RestartMergeGameObj();
 
-        SequenceManager.Instance.SetStartingLevel(SaveManager.Instance.LevelProgress);
+        //SequenceManager.Instance.SetStartingLevel(SaveManager.Instance.LevelProgress);
+
         m_NextLevelEvent.Raise();
     }
 

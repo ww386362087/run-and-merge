@@ -8,7 +8,6 @@ using UnityEngine;
 public class GameController : Singleton<GameController> , IGameEventListener
 {
     public FinishRunEvent evt;
-    public FinishRunEvent ev2t;
 
     public GameObject previous_object, current_object , clicked_object;
     public LayerMask cadre_layer , ground_layer;
@@ -895,6 +894,12 @@ public class GameController : Singleton<GameController> , IGameEventListener
     public void get_actual_level()
     {
         int nbr_lvl = GameManager.instance.getlevel();
+
+        if (levels_list[nbr_lvl] == null)
+        {
+            nbr_lvl = 0;
+            ProgressionManager.Instance.SetLevel(0);
+        }
 
         GameObject lvl = Instantiate(levels_list[nbr_lvl],transform);
 

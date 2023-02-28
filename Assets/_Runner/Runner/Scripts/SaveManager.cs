@@ -22,7 +22,7 @@ namespace HyperCasual.Runner
 
         const string k_Currency = "Currency";
         const string k_Keys = "Keys";
-        const string k_Xp = "Xp";
+        const string k_Progression = "Progression";
         
         const string k_AudioSettings = "AudioSettings";
         const string k_QualityLevel = "QualityLevel";
@@ -61,8 +61,8 @@ namespace HyperCasual.Runner
 
         public float XP
         {
-            get => PlayerPrefs.GetFloat(k_Xp); 
-            set => PlayerPrefs.SetFloat(k_Xp, value);
+            get => PlayerPrefs.GetFloat(k_Progression); 
+            set => PlayerPrefs.SetFloat(k_Progression, value);
         }
 
         public bool IsQualityLevelSaved => PlayerPrefs.HasKey(k_QualityLevel);

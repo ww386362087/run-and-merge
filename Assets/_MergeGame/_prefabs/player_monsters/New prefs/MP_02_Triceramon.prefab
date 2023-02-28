@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7550908630034020608}
-  - component: {fileID: 7550908630034020613}
   - component: {fileID: 7550908630034020610}
   - component: {fileID: 7550908630034020611}
   m_Layer: 0
@@ -18,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7550908630034020608
 Transform:
   m_ObjectHideFlags: 0
@@ -36,26 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &7550908630034020613
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7550908630034020609}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2ff605b1490f5d844a359c6ead89e1c0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &7550908630034020610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +54,7 @@ MonoBehaviour:
   bar_field: {fileID: 7550908630104422572}
   target: {fileID: 0}
   time_between_hit: 1
-  anim: {fileID: 0}
+  anim: {fileID: 7728495146385545066}
   agent: {fileID: 7550908630034020611}
   active: 1
   fight: 0
@@ -581,6 +560,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05a08021704e1024190b95b489c5c3bf, type: 3}
+--- !u!95 &7728495146385545066 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6471274092026695898, guid: 05a08021704e1024190b95b489c5c3bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 3643329512559904688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9134992288022232492 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5497127084195838492, guid: 05a08021704e1024190b95b489c5c3bf,

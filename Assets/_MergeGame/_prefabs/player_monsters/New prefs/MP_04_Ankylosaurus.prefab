@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1199337923053638613}
-  - component: {fileID: 1199337923053638616}
   - component: {fileID: 1199337923053638619}
   - component: {fileID: 1199337923053638618}
   m_Layer: 0
@@ -36,26 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1199337923053638616
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1199337923053638612}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ecb2916a7368e064094a685f31c94599, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &1199337923053638619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +54,7 @@ MonoBehaviour:
   bar_field: {fileID: 1199337923102173714}
   target: {fileID: 0}
   time_between_hit: 1
-  anim: {fileID: 0}
+  anim: {fileID: 1468827747624263701}
   agent: {fileID: 1199337923053638618}
   active: 1
   fight: 0
@@ -581,6 +560,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9c2184a1db532d4997c550a89acf7e7, type: 3}
+--- !u!95 &1468827747624263701 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -5468499079060944704, guid: a9c2184a1db532d4997c550a89acf7e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2340092807146121429}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1896467571619826971 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4190657964162852302, guid: a9c2184a1db532d4997c550a89acf7e7,

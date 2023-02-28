@@ -126,6 +126,16 @@ public class Monster : MonoBehaviour
             
         }
     }
+
+    [ContextMenu("Update anim")]
+    private void UpdateAnim()
+    {
+        if (anim == null)
+        {
+            anim = GetComponentInChildren<Animator>();
+        }
+    }
+
     public void decrease_health(int nbr)
     {
         health -= nbr;

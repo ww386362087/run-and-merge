@@ -38,11 +38,8 @@ public class Warrior : MonoBehaviour
         //hit_coin = 10;
 
         active = true;
-        if(anim == null)
-        {
-            anim = GetComponent<Animator>();
-        }
 
+        UpdateAnim();
         max_health = health;
 
         game_controller_script = FindObjectOfType<GameController>();
@@ -72,6 +69,16 @@ public class Warrior : MonoBehaviour
         }
 
     }
+
+    [ContextMenu("Update anim")]
+    private void UpdateAnim()
+    {
+        if (anim == null)
+        {
+            anim = GetComponentInChildren<Animator>();
+        }
+    }
+
     public void decrease_health(int nbr)
     {
         health -= nbr;

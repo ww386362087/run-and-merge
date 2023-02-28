@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6738359776478576720}
-  - component: {fileID: 7650680179878416373}
-  - component: {fileID: 5604829101435566911}
+  - component: {fileID: 7904747058857854941}
+  - component: {fileID: 3615592703886516233}
   m_Layer: 0
   m_Name: Boom
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7650680179878416373
+--- !u!33 &7904747058857854941
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6253430805402032874}
   m_Mesh: {fileID: -4343428707626476441, guid: 36f253c06d888f04080057fc70461c05, type: 3}
---- !u!23 &5604829101435566911
+--- !u!23 &3615592703886516233
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

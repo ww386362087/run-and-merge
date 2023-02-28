@@ -8,10 +8,12 @@ public class Switch : MonoBehaviour
     SoundID m_Sound = SoundID.ButtonSound;*/
     [SerializeField]
     ISwitchable target;
+    [SerializeField]
+    GameObject m_Button;
 
     bool m_Triggered;
 
-    readonly float m_ObjectHeight = 2; // button prefab is created from cylinder mesh with height 2.
+    readonly float m_ObjectHeight = .46f; // button prefab is created from cylinder mesh with height 2.
     protected Transform m_Transform;
     Vector3 m_OriginalPosition;
     Vector3 m_TargetPosition;
@@ -22,7 +24,7 @@ public class Switch : MonoBehaviour
 
     private void Awake()
     {
-        m_Transform = transform;
+        m_Transform = m_Button.transform;
         m_OriginalPosition = m_Transform.position;
         m_OriginalScale = m_Transform.localScale;
     }

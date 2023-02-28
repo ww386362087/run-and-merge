@@ -29,11 +29,7 @@ namespace HyperCasual.Runner
 
             yield return m_SceneController.LoadNewScene(nameof(m_LevelDefinition));
             
-            if(m_LevelDefinition.Area != null)
-            {
-                RenderSettings.skybox = m_LevelDefinition.Area.Skybox;
-                DynamicGI.UpdateEnvironment();
-            }
+            
 
             Debug.Log("Load level: " + m_LevelDefinition.name);
             // Load managers specific to the level

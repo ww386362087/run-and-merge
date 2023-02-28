@@ -170,7 +170,7 @@ MonoBehaviour:
   m_CustomPlayerSpeed: 5
   m_AccelerationSpeed: 5
   m_DecelerationSpeed: 5
-  m_HorizontalSpeedFactor: 0.8
+  m_HorizontalSpeedFactor: 3
   m_ScaleVelocity: 2
   m_AutoMoveForward: 1
   m_Characters: []

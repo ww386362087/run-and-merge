@@ -382,7 +382,7 @@ namespace HyperCasual.Runner
                 }
                 else if (i == bridgeList.Count)
                 {
-                    endPosition = levelDefinition.LevelLength + levelDefinition.LevelLengthBufferEnd+5;
+                    endPosition = levelDefinition.LevelLength + levelDefinition.LevelLengthBufferEnd+6;
                 }
 
                 if (i == 0)
@@ -402,8 +402,8 @@ namespace HyperCasual.Runner
                 var terrain = TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.Area?.Road?? levelDefinition.TerrainMaterial);
                 terrain.transform.position = new Vector3(0, 0, startPosition);
 
-                var step = 8;
-                for (int j = 0; j < len- step; j += step)
+                var step = 18f;
+                for (var j = 0f; j <= len - step; j += step)
                 {
                     var positionTarget = j - 10;
                     var positionSpawn = new Vector3(-levelDefinition.LevelWidth / 2, 0, positionTarget);
@@ -436,7 +436,12 @@ namespace HyperCasual.Runner
             {
                 var diff = 20f;
                 var board = Instantiate(levelDefinition.Area.BoardBattleScene, parent);
-                board.transform.position = new Vector3(0,0,levelDefinition.LevelLength+ diff);
+                board.transform.position = new Vector3(0,.6f,levelDefinition.LevelLength+ diff);
+
+                var positionSpawn = new Vector3(-levelDefinition.LevelWidth / 2, 0, levelDefinition.LevelLength- 7f);
+                Instantiate(levelDefinition.Area.Fence_left, positionSpawn, Quaternion.identity, parent);
+                positionSpawn.x = -positionSpawn.x;
+                Instantiate(levelDefinition.Area.Fence_right, positionSpawn, Quaternion.identity, parent);
             }
         }
 

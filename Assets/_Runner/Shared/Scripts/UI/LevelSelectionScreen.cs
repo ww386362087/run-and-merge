@@ -77,6 +77,7 @@ namespace HyperCasual.Gameplay
                 throw new Exception("Button is not initialized");
 
             SequenceManager.Instance.SetStartingLevel(startingIndex);
+            ProgressionManager.Instance.SetLevel(startingIndex);
             m_NextLevelEvent.Raise();
         }
         

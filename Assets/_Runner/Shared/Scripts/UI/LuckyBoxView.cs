@@ -9,60 +9,49 @@ using TMPro;
 namespace HyperCasual.Gameplay
 {
     /// <summary>
-    /// This View contains Lucky Box minigame functionality.
+    /// This View contains Lucky Box minigame functionality. Check at 
+    /// end of a run, when the player wins, if the player has 3 keys in
+    /// inventory then trigger lucky box window -> Player must use all 
+    /// 3 keys before they can continue with the game.
+    /// 
+    /// TODO: Modify level win event to check for total keys in SaveManager, if equals to 3 -> activate LuckyBoxWindow.
     /// </summary>
     public class LuckyBoxView : View
     {
         #region Variable Declaration
         [Header("Refference")]
-        [SerializeField]
-        GameObject m_BoxPrizeHolder;
-        [SerializeField]
-        BoxPrize[] m_BoxPrizes;
-        [SerializeField]
-        TextMeshProUGUI m_MaxPrice;
+        [SerializeField] private TextMeshProUGUI m_MaxPrice;
+        [SerializeField] private GameObject m_BoxPrizeHolder;
+        [SerializeField] private BoxPrize[] m_BoxPrizes;
+        [SerializeField] private GameObject m_Overlay;
+        [Space]
 
-        [SerializeField]
-        HyperCasualButton m_ButtonGetKeys;
-        [SerializeField]
-        HyperCasualButton m_ButtonContinue;
-        [SerializeField]
-        HyperCasualButton m_ButtonNext;
+        [SerializeField] private HyperCasualButton m_ButtonGetKeys;
+        [SerializeField] private HyperCasualButton m_ButtonContinue;
+        [SerializeField] private HyperCasualButton m_ButtonNext;
+        [Space]
 
-        [SerializeField]
-        GameObject[] m_ActiveKeys;
-        [SerializeField]
-        int m_KeyCount = 3;
-        [SerializeField]
-        int m_AdsWatchedTimes = 0;
+        [SerializeField] private GameObject[] m_ActiveKeys;
+        [SerializeField] private int m_KeyCount = 3;
+        [SerializeField] private bool m_AdsWatched = false;
+        int m_PrizePoolSum = 0;
+        PrizeData[] m_PrizeDatas;
+        [Space]
 
         [Header("Event")]
-        [SerializeField]
-        AbstractGameEvent m_BoxEvent;
-        [SerializeField]
-        AbstractGameEvent m_CloseViewEvent;
+        [SerializeField] private AbstractGameEvent m_BoxEvent;
+        [SerializeField] private AbstractGameEvent m_CloseViewEvent;
+        [Space]
+
+        [Header("Color")]
+        [SerializeField] private Color m_DarkerGreen = new Color(158, 202, 142, 255);
+        [SerializeField] private Color m_LighterGreen = new Color(185, 224, 165, 255);
         #endregion
-
-        private void Awake()
-        {
-            // Check at end of a run, when the player wins, if the player has 3 keys in inventory then trigger lucky box window -> Player must use all 3 keys
-            //before they can continue with the game.
-
-            //TODO:
-            // 1. Add overlay to prevent players from opening boxes while they have no keys left.
-            // 2. Modify level win event to check for total keys in SaveManager, if equals to 3 -> activate LuckyBoxWindow.
-
-            DefaultState();
-        }
 
         private void OnEnable()
         {
-            GetBoxPrizes();
-            SetupBoxPrizes();
-            LoadUITextData();
-
-            ResetActiveKeys();
-            ResetAdsWatchTime();
+            m_AdsWatched = false;
+            ResetLuckyBox();
 
             //
             m_ButtonGetKeys.AddListener(OnButtonGetKeysClicked);
@@ -77,9 +66,32 @@ namespace HyperCasual.Gameplay
             m_ButtonContinue.RemoveListener(OnButtonContinueClicked);
         }
 
+        void ResetLuckyBox()
+        {
+            m_PrizePoolSum = 0;
+            RandomizePrizePool();
+            GetBoxPrizes();
+            SetupBoxPrizes();
+            LoadUITextData();
+            SetOverlay(false);
+            DefaultState();
+            ResetActiveKeys();
+        }
+
+        void RandomizePrizePool()
+        {
+            // Get folder.
+            // randomize order.
+            // add to array.
+            //m_PrizeDatas += ;
+        }
+
         void GetBoxPrizes()
         {
-            m_BoxPrizes = m_BoxPrizeHolder.GetComponentsInChildren<BoxPrize>();
+            if (m_BoxPrizes == null || m_BoxPrizes.Length == 0)
+            {
+                m_BoxPrizes = m_BoxPrizeHolder.GetComponentsInChildren<BoxPrize>();
+            }
         }
 
         void SetupBoxPrizes()
@@ -87,26 +99,30 @@ namespace HyperCasual.Gameplay
             for (int i = 0; i < m_BoxPrizes.Length; i++)
             {
                 var box = m_BoxPrizes[i];
+                box.IntitializeData();
+                box.ResetBoxState();
                 box.AddEvent(() => 
                 {
                     box.OnButtonBoxClicked();
                     InactivateKey();
-                    
-                    if (m_KeyCount <= 0)
-                    {
-                        m_KeyCount = 0;
 
+                    if (m_KeyCount == 0)
+                    {
+                        SetOverlay(true);
                         NoKeysLeftState();
                     }
+                    else if (m_KeyCount < 0)
+                        Debug.LogError("Key Count can't go below 0!");
 
-                    if (m_KeyCount <= 0 && m_AdsWatchedTimes >= 2)
+                    if (m_KeyCount == 0 && m_AdsWatched)
                     {
-                        m_AdsWatchedTimes = 2;
-                        m_KeyCount = 0;
-
-                        NoChestLeftState();
+                        SetOverlay(true);
+                        AdsWatchedState();
                     }
                 });
+
+                //
+                m_PrizePoolSum += box.PrizeBox.Quantity;
             }
         }
 
@@ -116,15 +132,14 @@ namespace HyperCasual.Gameplay
             m_KeyCount -= 1;
         }
 
+        void SetOverlay(bool _state)
+        {
+            m_Overlay.SetActive(_state);
+        }
+
         void LoadUITextData()
         {
-            int sum = 0;
-            for (int i = 0; i < m_BoxPrizes.Length; i++)
-            {
-                var box = m_BoxPrizes[i];
-                sum += box.PrizeBox.Quantity;
-            }
-            m_MaxPrice.text = sum.ToString();
+            m_MaxPrice.text = m_PrizePoolSum.ToString();
         }
 
         void ResetActiveKeys()
@@ -137,19 +152,14 @@ namespace HyperCasual.Gameplay
             }
         }
 
-        void ResetAdsWatchTime()
-        {
-            m_AdsWatchedTimes = 0;
-        }
-
         #region Button Onclick events
         void OnButtonGetKeysClicked()
         {
-            // Show ads here.
+            //StartCoroutine(ShowAds()); // Show ads here.
 
-            m_AdsWatchedTimes += 1;
-            ResetActiveKeys();
-            DefaultState();
+            m_AdsWatched = true;
+
+            ResetLuckyBox();
         }
 
         void OnButtonNextClicked()
@@ -172,7 +182,7 @@ namespace HyperCasual.Gameplay
         #endregion
 
         #region Button active states
-        void NoChestLeftState()
+        void AdsWatchedState()
         {
             SetButtonState(false, true);
         }
@@ -193,6 +203,17 @@ namespace HyperCasual.Gameplay
             m_ButtonNext.gameObject.SetActive(_otherBtns);
 
             m_ButtonContinue.gameObject.SetActive(_continueBtn);
+        }
+        #endregion
+
+        #region Context Menu
+        [ContextMenu("Change bg so le")]
+        void ChangeColorBG()
+        {
+            for (int i = 0; i < m_BoxPrizes.Length; i++)
+            {
+                m_BoxPrizes[i].SetColorBG(i % 2 == 0 ? m_DarkerGreen : m_LighterGreen);
+            }
         }
         #endregion
     }

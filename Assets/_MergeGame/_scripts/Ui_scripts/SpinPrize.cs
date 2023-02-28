@@ -107,7 +107,7 @@ public class SpinPrize : MonoBehaviour
         StartCoroutine(wait_ads_video());
     }
 
-    public void button_NoThanks()
+    public void button_NoThanks(bool isWon)
     {
         /*//if (!active) return;
 
@@ -124,12 +124,19 @@ public class SpinPrize : MonoBehaviour
         SequenceManager.Instance.SetStartingLevel(SaveManager.Instance.LevelProgress);
         m_NextLevelEvent.Raise();*/
         ///
-        StartCoroutine(btn_NoThanksOnClick());
+        StartCoroutine(btn_NoThanksOnClick(isWon));
     }
 
-    IEnumerator btn_NoThanksOnClick()
+    IEnumerator btn_NoThanksOnClick(bool isWon)
     {
-        HyperCasual.Runner.GameManager.Instance.Win();
+        if (isWon)
+        {
+            HyperCasual.Runner.GameManager.Instance.Win();
+        }
+        else
+        {
+            HyperCasual.Runner.GameManager.Instance.Lose();
+        }
 
         yield return null;
         yield return null;
@@ -137,7 +144,8 @@ public class SpinPrize : MonoBehaviour
 
         GameSceneLoad.Instance.RestartMergeGameObj();
 
-        SequenceManager.Instance.SetStartingLevel(SaveManager.Instance.LevelProgress);
+        //SequenceManager.Instance.SetStartingLevel(SaveManager.Instance.LevelProgress);
+
         m_NextLevelEvent.Raise();
     }
 

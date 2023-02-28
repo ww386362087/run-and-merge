@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc98a02990876014aac8c0f7b9af35bb, type: 3}
+  m_Name: Great City
+  m_EditorClassIdentifier: 
+  skybox: {fileID: 2100000, guid: 66cae165acdf72747a831696f21bc932, type: 2}
+  road: {fileID: 2100000, guid: 5e3e6119acaa9fa4d84b7f6ef2a08d3c, type: 2}
+  fence_left: {fileID: 2937899463291711406, guid: 8fb46993c712c0d478950c775a39f71b,
+    type: 3}
+  fence_right: {fileID: 9215510681630156070, guid: c5be20dadd55c7f44bf0a8f49b765d44,
+    type: 3}
+  boardBattleScene: {fileID: 615130637548322476, guid: fcbc435780ee3d84d98ad003646f498d,
+    type: 3}

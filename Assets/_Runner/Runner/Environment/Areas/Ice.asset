@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc98a02990876014aac8c0f7b9af35bb, type: 3}
+  m_Name: Ice
+  m_EditorClassIdentifier: 
+  skybox: {fileID: 2100000, guid: d3569c5f1b072104088a8e0457e7c981, type: 2}
+  road: {fileID: 2100000, guid: 7a2b3ee7010f0324e8b729d3d168fa10, type: 2}
+  fence_left: {fileID: 3476662312495031223, guid: b8f91c871eb6fdb4b924611c1e6ffcff,
+    type: 3}
+  fence_right: {fileID: 1574043314986818980, guid: 1ede10ffb3f23f2498c6a9d476990050,
+    type: 3}
+  boardBattleScene: {fileID: 3672490357273600571, guid: 4782367190486f2429fe655c222eea9b,
+    type: 3}

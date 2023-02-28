@@ -48,7 +48,16 @@ namespace HyperCasual.Runner
         {
             m_Action -= handler;
         }
-        
+
+        /// <summary>
+        /// Removes a listener from the button event.
+        /// </summary>
+        /// <param name="handler">callback function</param>
+        public void RemoveAllListener()
+        {
+            m_Action = null;
+        }
+
         protected virtual void OnClick()
         {
             m_Action?.Invoke();

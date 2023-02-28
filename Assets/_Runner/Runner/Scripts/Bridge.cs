@@ -29,7 +29,7 @@ namespace HyperCasual.Runner
             bridge.transform.localScale = Vector3.zero;
         }
 
-
+        [ContextMenu("Reset")]
         public override void ResetSpawnable()
         {
             base.ResetSpawnable();
@@ -41,6 +41,7 @@ namespace HyperCasual.Runner
             ScaleBridge();
         }
 
+        [ContextMenu("Scale Bridge")]
         void ScaleBridge()
         {
             DOVirtual.Float(0, Length, duration, value => {

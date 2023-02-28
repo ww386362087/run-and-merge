@@ -168,7 +168,7 @@ public class Monster : MonoBehaviour
         agent.enabled = true;
         // make animation
         animate_monster(run);
-
+        Debug.Log(agent.enabled);
         target = tar;
         agent.SetDestination(target.position);
     }

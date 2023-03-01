@@ -18,6 +18,7 @@ public class GameSceneLoad : Singleton<GameSceneLoad>
     public Camera mainCam;
     public Transform camTarget;
     public bool isFinishRun = false;
+    public bool isPlaying = false;
 
     Vector3 posToSet;
 
@@ -98,5 +99,10 @@ public class GameSceneLoad : Singleton<GameSceneLoad>
     public void SetMissingRefOnRestartMergeGame(List<GameObject> objs)
     {
         sceneMerges = objs;
+    }
+
+    public void SetGameIsPlaying(bool playing)
+    {
+        isPlaying = playing;
     }
 }

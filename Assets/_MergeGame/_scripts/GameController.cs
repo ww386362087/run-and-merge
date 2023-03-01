@@ -897,7 +897,7 @@ public class GameController : Singleton<GameController> , IGameEventListener
     {
         int nbr_lvl = GameManager.instance.getlevel();
 
-        if (levels_list[nbr_lvl] == null)
+        if (nbr_lvl > levels_list.Count)
         {
             nbr_lvl = 0;
             ProgressionManager.Instance.SetLevel(0);

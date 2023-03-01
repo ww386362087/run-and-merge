@@ -84,6 +84,7 @@ public class GameSceneLoad : Singleton<GameSceneLoad>
     public void RestartMergeGameObj()
     {
         Destroy(currentMergeGameObj);
+        isPlaying = false;
         DOVirtual.DelayedCall(0.1f, () =>
         {
             currentMergeGameObj = Instantiate(MergeGamePref, transform);

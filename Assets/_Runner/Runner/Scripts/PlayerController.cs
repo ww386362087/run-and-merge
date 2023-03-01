@@ -405,6 +405,11 @@ namespace HyperCasual.Runner
 
         void Update()
         {
+            if (!GameSceneLoad.Instance.isPlaying)
+            {
+                return;
+            }
+
             float deltaTime = Time.deltaTime;
 
             // Update Scale

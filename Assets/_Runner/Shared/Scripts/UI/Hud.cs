@@ -30,6 +30,7 @@ namespace HyperCasual.Gameplay
         HyperCasualButton m_ButtonLuckySpin;
         [SerializeField]
         AbstractGameEvent m_PauseEvent;
+        [SerializeField] ButtonDrag btn_startPlaying;
 
         public ProgressionBar Progression => m_ProgressionBar;
 
@@ -74,6 +75,7 @@ namespace HyperCasual.Gameplay
         void OnEnable()
         {
             m_ButtonLuckySpin.AddListener(OnLuckySpinButtonClick);
+            btn_startPlaying.SetUpOneEvent(SetPlaying);
         }
 
         void OnDisable()
@@ -84,6 +86,11 @@ namespace HyperCasual.Gameplay
         void OnLuckySpinButtonClick()
         {
             UIManager.Instance.Show<LuckySpinView>();
+        }
+
+        void SetPlaying()
+        {
+            GameSceneLoad.Instance.SetGameIsPlaying(true);
         }
     }
 }

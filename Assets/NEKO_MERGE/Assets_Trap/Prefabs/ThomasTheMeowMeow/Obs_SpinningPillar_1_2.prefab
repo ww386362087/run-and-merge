@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198947403370027207}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 2.2902339, z: 0}
+  m_LocalPosition: {x: -1.6, y: 2.2902339, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -104,7 +104,7 @@ MonoBehaviour:
   BobHeight: 0.2
   Spin: 1
   m_Axis: 4
-  SpinSpeed: 200
+  SpinSpeed: 400
 --- !u!1 &1328956948824176628
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328956948824176628}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 1.0834441, z: 0}
+  m_LocalPosition: {x: 1.6, y: 1.0834441, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -209,7 +209,7 @@ MonoBehaviour:
   BobHeight: 0.2
   Spin: 1
   m_Axis: 4
-  SpinSpeed: 200
+  SpinSpeed: 400
 --- !u!1 &2560433057477885378
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2560433057477885378}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 8.326673e-17, z: 0}
+  m_LocalPosition: {x: -1.6, y: 8.326673e-17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -302,9 +302,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2940926453354915382}
-  - component: {fileID: 1179200257530238965}
-  - component: {fileID: 3958869027035917728}
   - component: {fileID: 5391886084031515684}
+  - component: {fileID: 4134818535049153994}
   m_Layer: 0
   m_Name: Obs_SpinningPillar_1_2
   m_TagString: Untagged
@@ -333,34 +332,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1179200257530238965
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2565808976678927500}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 1.5
-  m_Height: 5.4
-  m_Direction: 1
-  m_Center: {x: -2, y: 1.4, z: 0}
---- !u!136 &3958869027035917728
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2565808976678927500}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1.5
-  m_Height: 5.4
-  m_Direction: 1
-  m_Center: {x: 2, y: 1.4, z: 0}
 --- !u!114 &5391886084031515684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +346,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SnapToGrid: 1
   m_Sound: 0
-  m_Event: {fileID: 11400000, guid: ae8554b39378aef44923581b03f32cdf, type: 2}
+  m_Event: {fileID: 11400000, guid: 24de58d8b3cc902489e444100225168c, type: 2}
+--- !u!65 &4134818535049153994
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2565808976678927500}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.2, y: 4, z: 0.2}
+  m_Center: {x: 0, y: 2, z: -1}
 --- !u!1 &5360722939518755629
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5360722939518755629}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 8.326673e-17, z: 0}
+  m_LocalPosition: {x: 1.6, y: 8.326673e-17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -486,7 +470,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6805717431429348534}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 1.0834441, z: 0}
+  m_LocalPosition: {x: -1.6, y: 1.0834441, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -563,7 +547,7 @@ MonoBehaviour:
   BobHeight: 0.2
   Spin: 1
   m_Axis: 4
-  SpinSpeed: 200
+  SpinSpeed: 400
 --- !u!1 &8904769970655715134
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +575,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8904769970655715134}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 2.2902339, z: 0}
+  m_LocalPosition: {x: 1.6, y: 2.2902339, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -668,4 +652,4 @@ MonoBehaviour:
   BobHeight: 0.2
   Spin: 1
   m_Axis: 4
-  SpinSpeed: 200
+  SpinSpeed: 400

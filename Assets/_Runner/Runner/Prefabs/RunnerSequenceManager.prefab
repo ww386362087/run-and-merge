@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2e0d11b92744820b428599073d1874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_NextLevelEvent: {fileID: 11400000, guid: b892538bd49f3487bbedf5106c094739, type: 2}
   m_PreloadedAssets:
   - {fileID: 2404344050537117820, guid: 48e60f0845bd446d1962e2da252b92ea, type: 3}
   - {fileID: 4575908568916051441, guid: 3634157dd07b141c2aaa950dd4771f81, type: 3}

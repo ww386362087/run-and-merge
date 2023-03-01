@@ -48,7 +48,7 @@ namespace HyperCasual.Runner
 
         void Update()
         {
-            if (PlayerController.Instance == null)
+            if (PlayerController.Instance == null || !GameSceneLoad.Instance.isPlaying)
             {
                 return;
             }

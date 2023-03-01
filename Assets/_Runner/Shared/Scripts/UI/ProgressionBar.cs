@@ -16,5 +16,10 @@ namespace HyperCasual.Gameplay
         [Header("Color")]
         [SerializeField] private Color m_DarkerGreen = new Color(77, 183, 22, 255);
         [SerializeField] private Color m_LighterGreen = new Color(129, 235, 35, 255);
+
+        private void Update()
+        {
+            Debug.Log("value: " + Value + " max: " + MaxValue + " min: " + MinValue);
+        }
     }
 }

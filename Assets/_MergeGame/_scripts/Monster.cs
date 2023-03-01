@@ -329,6 +329,11 @@ public class Monster : MonoBehaviour
         }
     }
 
+    public void ChangeSpeed(float speed)
+    {
+        anim.SetFloat("Velocity", speed);
+    }
+
     public void instantiate_text_coin(Transform enemy , TMPro.TextMeshPro pref)
     {
         print("coins");

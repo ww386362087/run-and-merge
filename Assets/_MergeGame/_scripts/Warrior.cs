@@ -118,6 +118,11 @@ public class Warrior : MonoBehaviour
         }
     }
 
+    public void ChangeSpeed(float speed)
+    {
+        anim.SetFloat("Velocity", speed);
+    }
+
     public void active_arrow()
     {
         arrow_animation.SetActive(true);
@@ -147,26 +152,26 @@ public class Warrior : MonoBehaviour
 
                 Vector3 tmp_pos = target.position;
                 tmp_pos.y = transform.position.y;
-
+                var weapon = arrows[current_arrow_index].GetComponent<Weapon>();
                 //set enemy
-                arrows[current_arrow_index].GetComponent<Weapon>().enemy = Players_script.get_active_monster().gameObject;
+                weapon.enemy = Players_script.get_active_monster().gameObject;
                 //set damage
-                arrows[current_arrow_index].GetComponent<Weapon>().damage = damage;
+                weapon.damage = damage;
                 //arrows[current_arrow_index].GetComponent<Weapon>().is_active = true;
                 ////set coin
                 //arrows[current_arrow_index].GetComponent<Weapon>().coin = hit_coin;
                 //set bool isenemy
-                arrows[current_arrow_index].GetComponent<Weapon>().is_enemy = is_enemy;
+                weapon.is_enemy = is_enemy;
 
                 if (Vector3.Distance(tmp_pos, transform.position) < 4)
                 {
-                    arrows[current_arrow_index].GetComponent<Weapon>().speed_weapon = .05f;
+                    weapon.speed_weapon = .05f;
                 }
                 //else
                 //{
                 //    arrows[current_arrow_index].GetComponent<Weapon>().speed_weapon = 3f;
                 //}
-                arrows[current_arrow_index].GetComponent<Weapon>().start_follow(target);
+                weapon.start_follow(target);
 
                 if (current_arrow_index < arrows.Length - 1)
                 {
@@ -188,27 +193,27 @@ public class Warrior : MonoBehaviour
                     arrow_animation.SetActive(false);
                 }
                 arrows[current_arrow_index].SetActive(true);
-
+                var weapon = arrows[current_arrow_index].GetComponent<Weapon>();
                 Vector3 tmp_pos = target.position;
                 tmp_pos.y = transform.position.y;
 
                 //set enemy
-                arrows[current_arrow_index].GetComponent<Weapon>().enemy = Players_script.get_active_warrior().gameObject;
+                weapon.enemy = Players_script.get_active_warrior().gameObject;
                 //set damage
-                arrows[current_arrow_index].GetComponent<Weapon>().damage = damage;
+                weapon.damage = damage;
 
                 //arrows[current_arrow_index].GetComponent<Weapon>().is_active = true;
 
                 ////set coin
                 //arrows[current_arrow_index].GetComponent<Weapon>().hit_coin = hit_coin;
                 //set bool isenemy
-                arrows[current_arrow_index].GetComponent<Weapon>().is_enemy = is_enemy;
+                weapon.is_enemy = is_enemy;
 
                 if (Vector3.Distance(tmp_pos, transform.position) < 4)
                 {
-                    arrows[current_arrow_index].GetComponent<Weapon>().speed_weapon = .05f;
+                    weapon.speed_weapon = .05f;
                 }
-                arrows[current_arrow_index].GetComponent<Weapon>().start_follow(target);
+                weapon.start_follow(target);
 
                 if (current_arrow_index < arrows.Length - 1)
                 {
@@ -242,28 +247,28 @@ public class Warrior : MonoBehaviour
 
                 Vector3 tmp_pos = target.position;
                 tmp_pos.y = transform.position.y;
-
+                var weapon = arrows[current_arrow_index].GetComponent<Weapon>();
                 //set enemy
-                arrows[current_arrow_index].GetComponent<Weapon>().enemy = enemies_script.get_active_monster().gameObject;
+                weapon.enemy = enemies_script.get_active_monster().gameObject;
                 //set damage
-                arrows[current_arrow_index].GetComponent<Weapon>().damage = damage;
+                weapon.damage = damage;
 
                 //arrows[current_arrow_index].GetComponent<Weapon>().is_active = true;
 
                 //set coin
-                arrows[current_arrow_index].GetComponent<Weapon>().hit_coin = hit_coin;
+                weapon.hit_coin = hit_coin;
                 //set bool isenemy
-                arrows[current_arrow_index].GetComponent<Weapon>().is_enemy = is_enemy;
+                weapon.is_enemy = is_enemy;
 
                 if (Vector3.Distance(tmp_pos, transform.position) < 4)
                 {
-                    arrows[current_arrow_index].GetComponent<Weapon>().speed_weapon = .05f;
+                    weapon.speed_weapon = .05f;
                 }
                 //else
                 //{
                 //    arrows[current_arrow_index].GetComponent<Weapon>().speed_weapon = 3f;
                 //}
-                arrows[current_arrow_index].GetComponent<Weapon>().start_follow(target);
+                weapon.start_follow(target);
 
                 if (current_arrow_index < arrows.Length - 1)
                 {
@@ -289,24 +294,24 @@ public class Warrior : MonoBehaviour
 
                 Vector3 tmp_pos = target.position;
                 tmp_pos.y = transform.position.y;
-
+                var weapon = arrows[current_arrow_index].GetComponent<Weapon>();
                 //set enemy
-                arrows[current_arrow_index].GetComponent<Weapon>().enemy = enemies_script.get_active_warrior().gameObject;
+                weapon.enemy = enemies_script.get_active_warrior().gameObject;
                 //set damage
-                arrows[current_arrow_index].GetComponent<Weapon>().damage = damage;
+                weapon.damage = damage;
 
-                //arrows[current_arrow_index].GetComponent<Weapon>().is_active = true;
+                //weapon.is_active = true;
 
                 //set coin
-                arrows[current_arrow_index].GetComponent<Weapon>().hit_coin = hit_coin;
+                weapon.hit_coin = hit_coin;
                 //set bool isenemy
-                arrows[current_arrow_index].GetComponent<Weapon>().is_enemy = is_enemy;
+                weapon.is_enemy = is_enemy;
 
                 if (Vector3.Distance(tmp_pos, transform.position) < 4)
                 {
-                    arrows[current_arrow_index].GetComponent<Weapon>().speed_weapon = .05f;
+                    weapon.speed_weapon = .05f;
                 }
-                arrows[current_arrow_index].GetComponent<Weapon>().start_follow(target);
+                weapon.start_follow(target);
 
                 if (current_arrow_index < arrows.Length - 1)
                 {

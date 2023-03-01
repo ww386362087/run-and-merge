@@ -26,8 +26,8 @@ namespace HyperCasual.Runner
         int m_TotalGold;
         int m_TempKeys;
         int m_TotalKeys;
-        float m_TempXp;
-        float m_TotalXp;
+        float m_TempProgression;
+        float m_TotalProgression;
 
         /// <summary>
         /// Temporary const
@@ -52,8 +52,8 @@ namespace HyperCasual.Runner
             m_TotalGold = SaveManager.Instance.Currency;
             m_TempKeys = 0;
             m_TotalKeys = SaveManager.Instance.Keys;
-            m_TempXp = 0;
-            m_TotalXp = SaveManager.Instance.XP;
+            m_TempProgression = 0;
+            m_TotalProgression = SaveManager.Instance.XP;
 
             m_LevelCompleteScreen = UIManager.Instance.GetView<LevelCompleteScreen>();
             m_Hud = UIManager.Instance.GetView<Hud>();
@@ -93,7 +93,7 @@ namespace HyperCasual.Runner
             if (m_KeyEventListener.m_Event is ItemPickedEvent keyPickedEvent)
             {
                 m_TempKeys += keyPickedEvent.Count;
-                m_Hud.KeysValue = m_TempKeys;
+                //m_Hud.KeysValue = m_TempKeys;
             }
             else
             {
@@ -114,16 +114,17 @@ namespace HyperCasual.Runner
             SaveManager.Instance.Keys = m_TotalKeys;
 
             // EXP.
-            m_TotalXp += m_TempXp;
-            m_TempXp = 0f;
-            SaveManager.Instance.XP = m_TotalXp;
+            m_TotalProgression += m_TempProgression;
+            m_TempProgression = 0f;
+            SaveManager.Instance.XP = m_TotalProgression;
 
-            m_LevelCompleteScreen.GoldValue = m_TotalGold;
-            m_LevelCompleteScreen.XpSlider.minValue = m_TotalXp;
-            m_LevelCompleteScreen.XpSlider.maxValue = k_MilestoneFactor * (m_TotalXp + m_TempXp);
-            m_LevelCompleteScreen.XpValue = m_TotalXp + m_TempXp;
+            // Remove levelcompletescreen
+            /*m_LevelCompleteScreen.GoldValue = m_TotalGold;
+            m_LevelCompleteScreen.XpSlider.minValue = m_TotalProgression;
+            m_LevelCompleteScreen.XpSlider.maxValue = k_MilestoneFactor * (m_TotalProgression + m_TempProgression);
+            m_LevelCompleteScreen.XpValue = m_TotalProgression + m_TempProgression;
 
-            m_LevelCompleteScreen.StarCount = m_TempKeys;
+            m_LevelCompleteScreen.StarCount = m_TempKeys;*/
         }
 
         void OnLose()
@@ -137,22 +138,22 @@ namespace HyperCasual.Runner
             m_TempKeys = 0;
 
             // EXP aquired during run is saved
-            m_TotalXp += m_TempXp;
-            m_TempXp = 0f;
-            SaveManager.Instance.XP = m_TotalXp;
+            m_TotalProgression += m_TempProgression;
+            m_TempProgression = 0f;
+            SaveManager.Instance.XP = m_TotalProgression;
         }
 
         void Update()
         {
             if (m_Hud.gameObject.activeSelf)
             {
-                m_TempXp += PlayerController.Instance.Speed * Time.deltaTime;
-                m_Hud.XpValue = m_TempXp;
+                m_TempProgression += PlayerController.Instance.Speed * Time.deltaTime;
+                m_Hud.Progress = m_TempProgression;
                 
                 if (SequenceManager.Instance.m_CurrentLevel is LoadLevelFromDef loadLevelFromDef)
                 {
-                    m_Hud.XpSlider.minValue = 0;
-                    m_Hud.XpSlider.maxValue = loadLevelFromDef.m_LevelDefinition.LevelLength;
+                    m_Hud.Progression.MinValue = 0;
+                    m_Hud.Progression.MaxValue = loadLevelFromDef.m_LevelDefinition.LevelLength;
                 }
             }
         }

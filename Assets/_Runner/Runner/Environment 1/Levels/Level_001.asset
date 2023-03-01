@@ -24,4 +24,5 @@ MonoBehaviour:
     type: 3}
   EndPrefab: {fileID: 8751349750269054652, guid: 32fa2c6232c2842b9ab5998a592d00bf,
     type: 3}
+  Area: {fileID: 11400000, guid: 3a39fcf09405d94458c15821f6e1968d, type: 2}
   Spawnables: []

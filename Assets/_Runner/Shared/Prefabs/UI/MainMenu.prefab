@@ -363,6 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b383f63252a1a467a84258d957fac79f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ContinueEvent: {fileID: 11400000, guid: b892538bd49f3487bbedf5106c094739, type: 2}
   m_StartButton: {fileID: 2691304556920018293}
   m_SettingsButton: {fileID: 9179871967287141984}
   m_ShopButton: {fileID: 3824136401208076516}

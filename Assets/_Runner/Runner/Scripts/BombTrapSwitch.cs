@@ -21,6 +21,7 @@ namespace HyperCasual.Runner
         // Switch action.
         public void Active()
         {
+            //Debug.Log("active");
             SetState(true, false);
         }
     }

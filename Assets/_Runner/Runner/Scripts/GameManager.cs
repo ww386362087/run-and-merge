@@ -70,6 +70,11 @@ namespace HyperCasual.Runner
 #endif
         }
 
+        public LevelDefinition GetCurrentLevelDef()
+        {
+            return m_CurrentLevel;
+        }
+
         /// <summary>
         /// This method calls all methods necessary to load and
         /// instantiate a level from a level definition.
@@ -207,6 +212,11 @@ namespace HyperCasual.Runner
                 if (go != null)
                 {
                     go.transform.SetParent(levelParent);
+                }
+
+                if (go.GetComponent<MonoBehaviour>() is IBridge)
+                {
+                    go.GetComponent<Bridge>().SetTerrainWidth(levelDefinition.LevelWidth);
                 }
             }
         }

@@ -17,20 +17,21 @@ namespace HyperCasual.Gameplay
         [SerializeField]
         TextMeshProUGUI m_GoldText;
         [SerializeField]
-        TextMeshProUGUI m_KeysText;
+        ProgressionBar m_ProgressionBar;
         [SerializeField]
-        Slider m_XpSlider;
+        HyperCasualButton m_SettingsButton;
         [SerializeField]
-        HyperCasualButton m_ButtonPause;
+        HyperCasualButton m_CardsButton;
+        [SerializeField]
+        HyperCasualButton m_AdsFreeButton;
+        [SerializeField]
+        HyperCasualButton m_DragToMoveOverlay;
         [SerializeField]
         HyperCasualButton m_ButtonLuckySpin;
         [SerializeField]
         AbstractGameEvent m_PauseEvent;
 
-        /// <summary>
-        /// The slider that displays the XP value 
-        /// </summary>
-        public Slider XpSlider => m_XpSlider;
+        public ProgressionBar Progression => m_ProgressionBar;
 
         int m_GoldValue;
         
@@ -51,59 +52,33 @@ namespace HyperCasual.Gameplay
             }
         }
 
-        int m_KeysValue;
-
-        /// <summary>
-        /// The amount of gold to display on the hud.
-        /// The setter method also sets the hud text.
-        /// </summary>
-        public int KeysValue
-        {
-            get => m_KeysValue;
-            set
-            {
-                if (m_KeysValue != value)
-                {
-                    m_KeysValue = value;
-                    m_KeysText.text = KeysValue.ToString();
-                }
-            }
-        }
-
-        float m_XpValue;
+        float m_Progress;
         
         /// <summary>
         /// The amount of XP to display on the hud.
         /// The setter method also sets the hud slider value.
         /// </summary>
-        public float XpValue
+        public float Progress
         {
-            get => m_XpValue;
+            get => m_Progress;
             set
             {
-                if (!Mathf.Approximately(m_XpValue, value))
+                if (!Mathf.Approximately(m_Progress, value))
                 {
-                    m_XpValue = value;
-                    m_XpSlider.value = m_XpValue;
+                    m_Progress = value;
+                    m_ProgressionBar.Value = m_Progress;
                 }
             }
         }
 
         void OnEnable()
         {
-            m_ButtonPause.AddListener(OnPauseButtonClick);
             m_ButtonLuckySpin.AddListener(OnLuckySpinButtonClick);
         }
 
         void OnDisable()
         {
-            m_ButtonPause.RemoveListener(OnPauseButtonClick);
             m_ButtonLuckySpin.RemoveListener(OnLuckySpinButtonClick);
-        }
-
-        void OnPauseButtonClick()
-        {
-            m_PauseEvent.Raise();
         }
 
         void OnLuckySpinButtonClick()

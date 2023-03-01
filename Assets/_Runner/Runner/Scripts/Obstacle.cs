@@ -11,8 +11,8 @@ namespace HyperCasual.Runner
     /// with this object, the "Player" GameObject
     /// will be destroyed.
     /// </summary>
-    [ExecuteInEditMode]
-    [RequireComponent(typeof(Collider))]
+    /*[ExecuteInEditMode]
+    [RequireComponent(typeof(Collider))]*/
     public class Obstacle : Spawnable
     {
         [SerializeField]

@@ -427,7 +427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5353882481100519616}
   - component: {fileID: -4180344953306045570}
-  - component: {fileID: 8058238901739308453}
+  - component: {fileID: 2023794972050415532}
   m_Layer: 0
   m_Name: Gunner_Tier8
   m_TagString: Untagged
@@ -472,7 +472,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &8058238901739308453
+--- !u!114 &2023794972050415532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4685748488260985466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d5e600bce3e70342975e66248b67f1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6eb5f6d06e3e96340943cb6cc0429027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4834520073148165832

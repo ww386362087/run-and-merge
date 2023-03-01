@@ -166,8 +166,8 @@ MonoBehaviour:
     type: 3}
   m_StartingPoint: {fileID: 6100761937119429223}
   m_CharacterHolder: {fileID: 8826457232975501152}
-  m_PlayerSpeed: 1
-  m_CustomPlayerSpeed: 5
+  m_PlayerSpeed: 3
+  m_CustomPlayerSpeed: 6
   m_AccelerationSpeed: 5
   m_DecelerationSpeed: 5
   m_HorizontalSpeedFactor: 3

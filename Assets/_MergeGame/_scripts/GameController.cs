@@ -154,7 +154,7 @@ public class GameController : Singleton<GameController> , IGameEventListener
                     else if (current_object.GetComponent<Cadre>().monster_type == clicked_object.GetComponent<Cadre>().monster_type)
                     {
                         // play effect
-                        current_object.GetComponent<Cadre>().effect_two.Play();
+                        current_object.GetComponent<Cadre>().effect_two.Play(true);
 
                         // set false to bool has_din
                         clicked_object.GetComponent<Cadre>().has_din = false;
@@ -242,7 +242,7 @@ public class GameController : Singleton<GameController> , IGameEventListener
                     else if (current_object.GetComponent<Cadre>().warrior_type == clicked_object.GetComponent<Cadre>().warrior_type)
                     {
                         // play effect
-                        current_object.GetComponent<Cadre>().effect_two.Play();
+                        current_object.GetComponent<Cadre>().effect_two.Play(true);
 
                         // set false to bool has_warrior
                         clicked_object.GetComponent<Cadre>().has_warrior = false;

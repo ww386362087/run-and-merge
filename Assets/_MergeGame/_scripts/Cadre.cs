@@ -183,7 +183,7 @@ public class Cadre : MonoBehaviour
 
         go.transform.DOJump(originPos, 5f, 1, 0.5f).OnComplete(() => 
         {
-            effect_one.Play();
+            effect_one.Play(true);
         });
     }
 

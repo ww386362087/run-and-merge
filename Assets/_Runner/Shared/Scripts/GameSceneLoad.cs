@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using HyperCasual.Gameplay;
 using HyperCasual.Core;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 
 public class GameSceneLoad : Singleton<GameSceneLoad>
 {
@@ -25,7 +26,7 @@ public class GameSceneLoad : Singleton<GameSceneLoad>
         SetSceneRuns(false);
 
         SetSceneMerges(true);
-
+        RemoveFog();
 
         mainCam.transform.DOMove(camTarget.position,2);
         mainCam.transform.DORotateQuaternion(camTarget.rotation,2);
@@ -33,6 +34,17 @@ public class GameSceneLoad : Singleton<GameSceneLoad>
 
         evt.NumberCharacterAdd = noOfPlayer;
         evt.Raise();
+    }
+
+    private void RemoveFog()
+    {
+        DOVirtual.Float(RenderSettings.fogDensity, 0f, 2f, value =>
+        {
+            RenderSettings.fogDensity = value;
+        }).OnComplete(() => {
+            RenderSettings.fogDensity = 0f;
+            DynamicGI.UpdateEnvironment();
+        });
     }
 
     public void SetSceneRuns(bool set)
@@ -62,7 +74,7 @@ public class GameSceneLoad : Singleton<GameSceneLoad>
         isFinishRun = false;
         if (currentMergeGameObj != null)
         {
-            currentMergeGameObj.transform.position = new Vector3(0, 0, _vt.z + 20f);
+            currentMergeGameObj.transform.position = new Vector3(0, .61f, _vt.z + 20f);
         }
 
         posToSet = _vt;

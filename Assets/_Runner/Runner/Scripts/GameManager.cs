@@ -90,6 +90,9 @@ namespace HyperCasual.Runner
             if (m_CurrentLevel.Area != null)
             {
                 RenderSettings.skybox = m_CurrentLevel.Area.Skybox;
+                RenderSettings.fog = true;
+                RenderSettings.fogColor = new Color(122f/255, 189f / 255, 221f / 255);
+                RenderSettings.fogDensity = .03f;
                 DynamicGI.UpdateEnvironment();
             }
         }

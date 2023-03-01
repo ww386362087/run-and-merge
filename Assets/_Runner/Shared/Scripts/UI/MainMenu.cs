@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using HyperCasual.Core;
+using HyperCasual.Gameplay;
 using UnityEngine;
 
 namespace HyperCasual.Runner
@@ -10,6 +11,8 @@ namespace HyperCasual.Runner
     /// </summary>
     public class MainMenu : View
     {
+        [SerializeField]
+        AbstractGameEvent m_ContinueEvent;
         [SerializeField]
         HyperCasualButton m_StartButton;
         [SerializeField]
@@ -24,6 +27,10 @@ namespace HyperCasual.Runner
             m_StartButton.AddListener(OnStartButtonClick);
             m_SettingsButton.AddListener(OnSettingsButtonClick);
             m_ShopButton.AddListener(OnShopButtonClick);
+
+            SequenceManager.Instance.SetStartingLevel(SaveManager.Instance.LevelProgress);
+            ProgressionManager.Instance.SetLevel(SaveManager.Instance.LevelProgress);
+            m_ContinueEvent.Raise();
         }
         
         void OnDisable()

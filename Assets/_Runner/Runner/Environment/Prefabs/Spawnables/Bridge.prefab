@@ -53,6 +53,7 @@ MonoBehaviour:
   scale: {x: 0.85, y: 1, z: 0}
   lengthBridge: 5
   duration: 1
+  lengthScaleFactor: 13.89
 --- !u!23 &5821308229260463233
 MeshRenderer:
   m_ObjectHideFlags: 0

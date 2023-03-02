@@ -623,6 +623,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cyborg projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 2020459114583711439, guid: adbb30426e7ba6e45bb62c4c66156376,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adbb30426e7ba6e45bb62c4c66156376, type: 3}
 --- !u!4 &2389443020317089419 stripped
@@ -637,26 +642,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2461344312180300515}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8935337783769334768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4477263302016697388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e5dc3a82ffff04e91607923e36cbd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed_weapon: 0
-  target: {x: 0, y: 0, z: 0}
-  enemy: {fileID: 0}
-  damage: 0
-  hit_coin: 0
-  is_active: 0
-  is_enemy: 0
-  ease: 0
 --- !u!1001 &2819937231143699719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -724,6 +709,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cyborg projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 2020459114583711439, guid: adbb30426e7ba6e45bb62c4c66156376,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adbb30426e7ba6e45bb62c4c66156376, type: 3}
 --- !u!4 &2603959783876591983 stripped
@@ -738,26 +728,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2819937231143699719}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &419122331107116346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4262781449034161096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e5dc3a82ffff04e91607923e36cbd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed_weapon: 0
-  target: {x: 0, y: 0, z: 0}
-  enemy: {fileID: 0}
-  damage: 0
-  hit_coin: 0
-  is_active: 0
-  is_enemy: 0
-  ease: 0
 --- !u!1001 &5977481064125399315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -825,6 +795,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cyborg projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 2020459114583711439, guid: adbb30426e7ba6e45bb62c4c66156376,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adbb30426e7ba6e45bb62c4c66156376, type: 3}
 --- !u!1 &5692087616722690012 stripped
@@ -833,26 +808,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5977481064125399315}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9135518684581729454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5692087616722690012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e5dc3a82ffff04e91607923e36cbd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed_weapon: 0
-  target: {x: 0, y: 0, z: 0}
-  enemy: {fileID: 0}
-  damage: 0
-  hit_coin: 0
-  is_active: 0
-  is_enemy: 0
-  ease: 0
 --- !u!4 &5905684775627621755 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 216579979648304232, guid: adbb30426e7ba6e45bb62c4c66156376,

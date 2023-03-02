@@ -169,6 +169,16 @@ public class Monster : MonoBehaviour
         newVFX?.Play(true);
     }
 
+    public void SpawnVfx(float lenght)
+    {
+        if (!vfx)
+            return;
+
+        var newVFX = Instantiate(vfx, transform);
+        newVFX.transform.localPosition = new Vector3(0, .45f, lenght);
+        newVFX?.Play(true);
+    }
+
     public void decrease_health(int nbr)
     {
         health -= nbr;

@@ -256,7 +256,7 @@ MonoBehaviour:
   is_enemy: 1
   text_pref: {fileID: 1467384889649466113, guid: 9f4283024f824c640a4f8fcb761d94f7,
     type: 3}
-  vfx: {fileID: 0}
+  vfx: {fileID: 1886029967935066585, guid: fa9f9c01ee8b8974d8935c2c4b85d5e8, type: 3}
   font: {fileID: 0}
   hit_coin: 0
   current_anim: _idle

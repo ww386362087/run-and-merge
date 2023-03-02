@@ -47,6 +47,7 @@ namespace HyperCasual.Gameplay
         private void Awake()
         {
             m_Prizes = m_PrizeHolder.GetComponentsInChildren<Prize>();
+            
         }
 
         private void OnEnable()

@@ -6,7 +6,7 @@ public class EnableGame : MonoBehaviour
 {
     private void OnEnable()
     {
-        GameController.Instance.game_play = false;
-
+        if(GameController.Instance)
+            GameController.Instance.game_play = false;
     }
 }

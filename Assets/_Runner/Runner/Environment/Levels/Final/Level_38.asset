@@ -32,11 +32,39 @@ MonoBehaviour:
     Scale: {x: 8, y: 1, z: 1}
     BaseColor: {r: 0, g: 0, b: 0, a: 0}
     SnapToGrid: 1
+  - SpawnablePrefab: {fileID: 314387739941697089, guid: acd837f41a8884938b93ac8a2814fa51,
+      type: 3}
+    Position: {x: -0.066880584, y: 0, z: 68.08125}
+    EulerAngles: {x: -0, y: -0, z: 90}
+    Scale: {x: 0.50000155, y: 1.0000031, z: 0.5}
+    BaseColor: {r: 0, g: 0, b: 0, a: 0}
+    SnapToGrid: 1
+  - SpawnablePrefab: {fileID: 314387739941697089, guid: d90630932fd2e40309f535b66fc4bcd4,
+      type: 3}
+    Position: {x: -0.01228863, y: 0, z: 70.393135}
+    EulerAngles: {x: -0, y: -0, z: 90}
+    Scale: {x: 1.0000031, y: 3.0000124, z: 1}
+    BaseColor: {r: 0, g: 0, b: 0, a: 0}
+    SnapToGrid: 1
+  - SpawnablePrefab: {fileID: 314387739941697089, guid: a483e5a1dbc3741afb31d542da34481a,
+      type: 3}
+    Position: {x: 0.04426688, y: 0, z: 72.91773}
+    EulerAngles: {x: -0, y: -0, z: 90}
+    Scale: {x: 1.0000031, y: 3.0000124, z: 1}
+    BaseColor: {r: 0, g: 0, b: 0, a: 0}
+    SnapToGrid: 1
+  - SpawnablePrefab: {fileID: 314387739941697089, guid: 89330c6ed0d154ac9b6dd56ef0dd97b5,
+      type: 3}
+    Position: {x: 0.021518588, y: 0, z: 75.944885}
+    EulerAngles: {x: -0, y: -0, z: 90}
+    Scale: {x: 1.0000031, y: 4.0000124, z: 1}
+    BaseColor: {r: 0, g: 0, b: 0, a: 0}
+    SnapToGrid: 1
   - SpawnablePrefab: {fileID: 314387739941697089, guid: f0f2785efe0d04731a20a22380cbf895,
       type: 3}
     Position: {x: 0, y: 0, z: 80}
     EulerAngles: {x: -0, y: 0, z: 0}
-    Scale: {x: 0.8, y: 1, z: 1}
+    Scale: {x: 1, y: 1, z: 1}
     BaseColor: {r: 0, g: 0, b: 0, a: 0}
     SnapToGrid: 1
   - SpawnablePrefab: {fileID: 338386587789255804, guid: 18d55acb06d2d1e4799c9f66649071f3,
@@ -48,7 +76,7 @@ MonoBehaviour:
     SnapToGrid: 1
   - SpawnablePrefab: {fileID: 314387739941697089, guid: 44f7340b2de7c8745b085c6578071fbb,
       type: 3}
-    Position: {x: 0, y: 0.85, z: 35}
+    Position: {x: 0, y: 0, z: 35}
     EulerAngles: {x: -0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     BaseColor: {r: 0, g: 0, b: 0, a: 0}

@@ -348,7 +348,7 @@ public class UiManager : MonoBehaviour
             txt_mmoney.text = GameManager.instance.getcoin().ToString();
 
             // increase actual coin warrior
-            GameManager.instance.set_actual_coin_monster(GameManager.instance.get_actual_coin_monster() + 128);
+            GameManager.instance.set_actual_coin_monster(GameManager.instance.get_actual_coin_monster() *2);
 
             // show text coin monster
             txt_coin_monster.text = GameManager.instance.get_actual_coin_monster().ToString();
@@ -410,7 +410,7 @@ public class UiManager : MonoBehaviour
             txt_mmoney.text = GameManager.instance.getcoin().ToString();
 
             // increase actual coin warrior
-            GameManager.instance.set_actual_coin_warrior(GameManager.instance.get_actual_coin_warrior() + 128);
+            GameManager.instance.set_actual_coin_warrior(GameManager.instance.get_actual_coin_warrior() * 2);
 
             // show text coin warrior
             txt_coin_warrior.text = GameManager.instance.get_actual_coin_warrior().ToString();

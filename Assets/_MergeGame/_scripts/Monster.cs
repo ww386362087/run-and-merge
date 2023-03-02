@@ -113,11 +113,12 @@ public class Monster : MonoBehaviour
 
             
 
-            if (agent.remainingDistance < 2f && !fight)
+            if (agent.remainingDistance < 3f && !fight)
             {
                 fight = true;
                 print("reached");
                 agent.enabled = false;
+                transform.LookAt(target,Vector3.up);
                 StartCoroutine(fighting(target.gameObject));
                 //anim.SetFloat("Velocity", 0);
             }
@@ -160,6 +161,9 @@ public class Monster : MonoBehaviour
 
     public void SpawnVfx()
     {
+        if (!vfx)
+            return;
+
         var newVFX = Instantiate(vfx, transform);
         newVFX.transform.localPosition = new Vector3(0, .45f, 1.75f);
         newVFX?.Play(true);

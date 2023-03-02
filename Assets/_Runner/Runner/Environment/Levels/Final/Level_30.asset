@@ -35,7 +35,7 @@ MonoBehaviour:
   - SpawnablePrefab: {fileID: 6962412447760293378, guid: f70faaedb814e7946827541ed1ded9c4,
       type: 3}
     Position: {x: 0, y: 0, z: 55}
-    EulerAngles: {x: -0, y: 0, z: 0}
+    EulerAngles: {x: 0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     BaseColor: {r: 0, g: 0, b: 0, a: 0}
     SnapToGrid: 1

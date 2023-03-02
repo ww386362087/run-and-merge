@@ -4,3 +4,4 @@ file.wav filter=lfs diff=lfs merge=lfs -text
 levels.unity filter=lfs diff=lfs merge=lfs -text
 MergeGame.prefab filter=lfs diff=lfs merge=lfs -text
 RunnerLevelTEST.unity filter=lfs diff=lfs merge=lfs -text
+FirebaseCppApp-10_3_0.bundle filter=lfs diff=lfs merge=lfs -text

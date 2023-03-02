@@ -49,6 +49,8 @@ namespace HyperCasual.Gameplay
             
             m_QuickPlayButton.AddListener(OnQuickPlayButtonClicked);
             m_BackButton.AddListener(OnBackButtonClicked);
+
+            OnQuickPlayButtonClicked();
         }
 
         void OnDisable()

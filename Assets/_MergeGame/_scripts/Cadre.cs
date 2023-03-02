@@ -35,6 +35,10 @@ public enum warrior_type_enum
 
 public class Cadre : MonoBehaviour
 {
+    public const string BRING = "_pick";
+    public const string IDLE = "Locomotion";
+    public const string MERGE = "_spawn";
+
     public Transform pos;
     public bool has_din, has_warrior , active;
     public monster_type_enum monster_type;
@@ -102,7 +106,13 @@ public class Cadre : MonoBehaviour
 
     }
 
-
+    public void PlayAnimation(string anim)
+    {
+        active_monster?.animate_monster(anim);
+        active_monster?.ChangeSpeed(0);
+        active_warrior?.animate_warrior(anim);
+        active_warrior?.ChangeSpeed(0);
+    }
 
     public void color_cadre()
     {
@@ -173,7 +183,7 @@ public class Cadre : MonoBehaviour
 
         go.transform.DOJump(originPos, 5f, 1, 0.5f).OnComplete(() => 
         {
-            effect_one.Play();
+            effect_one.Play(true);
         });
     }
 
@@ -240,6 +250,7 @@ public class Cadre : MonoBehaviour
             list_dinosaurs[1].SetActive(true);
             active_monster = list_dinosaurs[1].GetComponent<Monster>();
             monster_type = monster_type_enum.level_2;
+            PlayAnimation(MERGE);
 
             // show panel new character monster
             if (GameManager.instance.get_count_active_monster() == 1)
@@ -254,6 +265,7 @@ public class Cadre : MonoBehaviour
             list_dinosaurs[2].SetActive(true);
             active_monster = list_dinosaurs[2].GetComponent<Monster>();
             monster_type = monster_type_enum.level_3;
+            PlayAnimation(MERGE);
 
             // show panel new character monster
             if (GameManager.instance.get_count_active_monster() == 2)
@@ -268,6 +280,7 @@ public class Cadre : MonoBehaviour
             list_dinosaurs[3].SetActive(true);
             active_monster = list_dinosaurs[3].GetComponent<Monster>();
             monster_type = monster_type_enum.level_4;
+            PlayAnimation(MERGE);
 
             // show panel new character monster
             if (GameManager.instance.get_count_active_monster() == 3)
@@ -282,6 +295,7 @@ public class Cadre : MonoBehaviour
             list_dinosaurs[4].SetActive(true);
             active_monster = list_dinosaurs[4].GetComponent<Monster>();
             monster_type = monster_type_enum.level_5;
+            PlayAnimation(MERGE);
 
             // show panel new character monster
             if (GameManager.instance.get_count_active_monster() == 4)
@@ -296,6 +310,7 @@ public class Cadre : MonoBehaviour
             list_dinosaurs[5].SetActive(true);
             active_monster = list_dinosaurs[5].GetComponent<Monster>();
             monster_type = monster_type_enum.level_6;
+            PlayAnimation(MERGE);
 
             // show panel new character monster
             if (GameManager.instance.get_count_active_monster() == 5)
@@ -311,6 +326,7 @@ public class Cadre : MonoBehaviour
             list_dinosaurs[6].SetActive(true);
             active_monster = list_dinosaurs[6].GetComponent<Monster>();
             monster_type = monster_type_enum.level_7;
+            PlayAnimation(MERGE);
 
             // show panel new character monster
             if (GameManager.instance.get_count_active_monster() == 6)
@@ -325,6 +341,7 @@ public class Cadre : MonoBehaviour
             list_dinosaurs[7].SetActive(true);
             active_monster = list_dinosaurs[7].GetComponent<Monster>();
             monster_type = monster_type_enum.level_8;
+            PlayAnimation(MERGE);
 
             // show panel new character monster
             if (GameManager.instance.get_count_active_monster() == 7)
@@ -339,6 +356,7 @@ public class Cadre : MonoBehaviour
             list_dinosaurs[8].SetActive(true);
             active_monster = list_dinosaurs[8].GetComponent<Monster>();
             monster_type = monster_type_enum.level_9;
+            PlayAnimation(MERGE);
 
             // show panel new character monster
             if (GameManager.instance.get_count_active_monster() == 8)
@@ -353,6 +371,7 @@ public class Cadre : MonoBehaviour
             list_dinosaurs[9].SetActive(true);
             active_monster = list_dinosaurs[9].GetComponent<Monster>();
             monster_type = monster_type_enum.level_10;
+            PlayAnimation(MERGE);
 
             // show panel new character monster
             if (GameManager.instance.get_count_active_monster() == 9)
@@ -407,180 +426,230 @@ public class Cadre : MonoBehaviour
 
     public void active_by_type_warrior(warrior_type_enum tp)
     {
-        if (tp == warrior_type_enum.level_1)
+        if(warrior_type_enum.level_1 <= tp && tp <= warrior_type_enum.level_9)
         {
-            list_warriors[0].SetActive(true);
-            active_warrior = list_warriors[0].GetComponent<Warrior>();
+            var num = tp - warrior_type_enum.level_1;
+            list_warriors[num].SetActive(true);
+            active_warrior = list_warriors[num].GetComponent<Warrior>();
+            PlayAnimation(MERGE);
         }
-        else if (tp == warrior_type_enum.level_2)
+        else
         {
-            list_warriors[1].SetActive(true);
-            active_warrior = list_warriors[1].GetComponent<Warrior>();
+            Debug.LogError($"Spawn fail case: {tp}");
         }
-        else if (tp == warrior_type_enum.level_3)
-        {
-            list_warriors[2].SetActive(true);
-            active_warrior = list_warriors[2].GetComponent<Warrior>();
-        }
-        else if (tp == warrior_type_enum.level_4)
-        {
-            list_warriors[3].SetActive(true);
-            active_warrior = list_warriors[3].GetComponent<Warrior>();
-        }
-        else if (tp == warrior_type_enum.level_5)
-        {
-            list_warriors[4].SetActive(true);
-            active_warrior = list_warriors[4].GetComponent<Warrior>();
-        }
-        else if (tp == warrior_type_enum.level_6)
-        {
-            list_warriors[5].SetActive(true);
-            active_warrior = list_warriors[5].GetComponent<Warrior>();
-        }
-        else if (tp == warrior_type_enum.level_7)
-        {
-            list_warriors[6].SetActive(true);
-            active_warrior = list_warriors[6].GetComponent<Warrior>();
-        }
-        else if (tp == warrior_type_enum.level_8)
-        {
-            list_warriors[7].SetActive(true);
-            active_warrior = list_warriors[7].GetComponent<Warrior>();
-        }
-        else if (tp == warrior_type_enum.level_9)
-        {
-            list_warriors[8].SetActive(true);
-            active_warrior = list_warriors[8].GetComponent<Warrior>();
-        }
+        //if (tp == warrior_type_enum.level_1)
+        //{
+        //    list_warriors[0].SetActive(true);
+        //    active_warrior = list_warriors[0].GetComponent<Warrior>();
+        //    PlayAnimation(MERGE);
+        //}
+        //else if (tp == warrior_type_enum.level_2)
+        //{
+        //    list_warriors[1].SetActive(true);
+        //    active_warrior = list_warriors[1].GetComponent<Warrior>();
+        //    PlayAnimation(MERGE);
+        //}
+        //else if (tp == warrior_type_enum.level_3)
+        //{
+        //    list_warriors[2].SetActive(true);
+        //    active_warrior = list_warriors[2].GetComponent<Warrior>();
+        //    PlayAnimation(MERGE);
+        //}
+        //else if (tp == warrior_type_enum.level_4)
+        //{
+        //    list_warriors[3].SetActive(true);
+        //    active_warrior = list_warriors[3].GetComponent<Warrior>();
+        //    PlayAnimation(MERGE);
+        //}
+        //else if (tp == warrior_type_enum.level_5)
+        //{
+        //    list_warriors[4].SetActive(true);
+        //    active_warrior = list_warriors[4].GetComponent<Warrior>();
+        //    PlayAnimation(MERGE);
+        //}
+        //else if (tp == warrior_type_enum.level_6)
+        //{
+        //    list_warriors[5].SetActive(true);
+        //    active_warrior = list_warriors[5].GetComponent<Warrior>();
+        //    PlayAnimation(MERGE);
+        //}
+        //else if (tp == warrior_type_enum.level_7)
+        //{
+        //    list_warriors[6].SetActive(true);
+        //    active_warrior = list_warriors[6].GetComponent<Warrior>();
+        //    PlayAnimation(MERGE);
+        //}
+        //else if (tp == warrior_type_enum.level_8)
+        //{
+        //    list_warriors[7].SetActive(true);
+        //    active_warrior = list_warriors[7].GetComponent<Warrior>();
+        //    PlayAnimation(MERGE);
+        //}
+        //else if (tp == warrior_type_enum.level_9)
+        //{
+        //    list_warriors[8].SetActive(true);
+        //    active_warrior = list_warriors[8].GetComponent<Warrior>();
+        //    PlayAnimation(MERGE);
+        //}
     }
 
     public void upgrate_level_and_active__warrior(warrior_type_enum tp)
     {
-        if (tp == warrior_type_enum.level_1)
+        if (warrior_type_enum.level_1 <= tp && tp <= warrior_type_enum.level_9)
         {
+            var num = tp - warrior_type_enum.level_1 +1 ;
+
             hide_all_warriors();
-            list_warriors[1].SetActive(true);
+            list_warriors[num].SetActive(true);
             active_warrior = list_warriors[1].GetComponent<Warrior>();
-            warrior_type = warrior_type_enum.level_2;
+            warrior_type = tp+1;
+            PlayAnimation(MERGE);
 
             // show panel new character warrior
-            if(GameManager.instance.get_count_active_warrior() == 1)
+            if (GameManager.instance.get_count_active_warrior() == num)
             {
                 GameManager.instance.set_count_active_warrior(GameManager.instance.get_count_active_warrior() + 1);
                 UiManager.instance.show_panel_new_character_warrior();
-
             }
+
         }
-        else if (tp == warrior_type_enum.level_2)
-        {
-            hide_all_warriors();
-            list_warriors[2].SetActive(true);
-            active_warrior = list_warriors[2].GetComponent<Warrior>();
-            warrior_type = warrior_type_enum.level_3;
-
-            // show panel new character warrior
-            if (GameManager.instance.get_count_active_warrior() == 2)
-            {
-                GameManager.instance.set_count_active_warrior(GameManager.instance.get_count_active_warrior() + 1);
-                UiManager.instance.show_panel_new_character_warrior();
-
-            }
-        }
-        else if (tp == warrior_type_enum.level_3)
-        {
-            hide_all_warriors();
-            list_warriors[3].SetActive(true);
-            active_warrior = list_warriors[3].GetComponent<Warrior>();
-            warrior_type = warrior_type_enum.level_4;
-
-            // show panel new character warrior
-            if (GameManager.instance.get_count_active_warrior() == 3)
-            {
-                GameManager.instance.set_count_active_warrior(GameManager.instance.get_count_active_warrior() + 1);
-                UiManager.instance.show_panel_new_character_warrior();
-
-            }
-        }
-        else if (tp == warrior_type_enum.level_4)
-        {
-            hide_all_warriors();
-            list_warriors[4].SetActive(true);
-            active_warrior = list_warriors[4].GetComponent<Warrior>();
-            warrior_type = warrior_type_enum.level_5;
-
-            // show panel new character warrior
-            if (GameManager.instance.get_count_active_warrior() == 4)
-            {
-                GameManager.instance.set_count_active_warrior(GameManager.instance.get_count_active_warrior() + 1);
-                UiManager.instance.show_panel_new_character_warrior();
-
-            }
-        }
-        else if (tp == warrior_type_enum.level_5)
-        {
-            hide_all_warriors();
-            list_warriors[5].SetActive(true);
-            active_warrior = list_warriors[5].GetComponent<Warrior>();
-            warrior_type = warrior_type_enum.level_6;
-
-            // show panel new character warrior
-            if (GameManager.instance.get_count_active_warrior() == 5)
-            {
-                GameManager.instance.set_count_active_warrior(GameManager.instance.get_count_active_warrior() + 1);
-                UiManager.instance.show_panel_new_character_warrior();
-
-            }
-        }
-        else if (tp == warrior_type_enum.level_6)
-        {
-            hide_all_warriors();
-            list_warriors[6].SetActive(true);
-            active_warrior = list_warriors[6].GetComponent<Warrior>();
-            warrior_type = warrior_type_enum.level_7;
-
-            // show panel new character warrior
-            if (GameManager.instance.get_count_active_warrior() == 6)
-            {
-                GameManager.instance.set_count_active_warrior(GameManager.instance.get_count_active_warrior() + 1);
-                UiManager.instance.show_panel_new_character_warrior();
-
-            }
-        }
-        else if (tp == warrior_type_enum.level_7)
-        {
-            hide_all_warriors();
-            list_warriors[7].SetActive(true);
-            active_warrior = list_warriors[7].GetComponent<Warrior>();
-            warrior_type = warrior_type_enum.level_8;
-
-            // show panel new character warrior
-            if (GameManager.instance.get_count_active_warrior() == 7)
-            {
-                GameManager.instance.set_count_active_warrior(GameManager.instance.get_count_active_warrior() + 1);
-                UiManager.instance.show_panel_new_character_warrior();
-
-            }
-        }
-        else if (tp == warrior_type_enum.level_8)
-        {
-            hide_all_warriors();
-            list_warriors[8].SetActive(true);
-            active_warrior = list_warriors[8].GetComponent<Warrior>();
-            warrior_type = warrior_type_enum.level_9;
-
-            // show panel new character warrior
-            if (GameManager.instance.get_count_active_warrior() == 8)
-            {
-                GameManager.instance.set_count_active_warrior(GameManager.instance.get_count_active_warrior() + 1);
-                UiManager.instance.show_panel_new_character_warrior();
-
-            }
-        }
-        
         else
         {
-            // no more upgrate 
-            print("end upgrate");
+            Debug.LogError($"upgrate fail case: {tp}");
         }
+
+        //if (tp == warrior_type_enum.level_1)
+        //{
+        //    hide_all_warriors();
+        //    list_warriors[1].SetActive(true);
+        //    active_warrior = list_warriors[1].GetComponent<Warrior>();
+        //    warrior_type = warrior_type_enum.level_2;
+        //    PlayAnimation(MERGE);
+
+        //    // show panel new character warrior
+        //    if (GameManager.instance.get_count_active_warrior() == 1)
+        //    {
+        //        GameManager.instance.set_count_active_warrior(GameManager.instance.get_count_active_warrior() + 1);
+        //        UiManager.instance.show_panel_new_character_warrior();
+        //    }
+        //}
+        //else if (tp == warrior_type_enum.level_2)
+        //{
+        //    hide_all_warriors();
+        //    list_warriors[2].SetActive(true);
+        //    active_warrior = list_warriors[2].GetComponent<Warrior>();
+        //    warrior_type = warrior_type_enum.level_3;
+        //    PlayAnimation(MERGE);
+
+        //    // show panel new character warrior
+        //    if (GameManager.instance.get_count_active_warrior() == 2)
+        //    {
+        //        GameManager.instance.set_count_active_warrior(GameManager.instance.get_count_active_warrior() + 1);
+        //        UiManager.instance.show_panel_new_character_warrior();
+
+        //    }
+        //}
+        //else if (tp == warrior_type_enum.level_3)
+        //{
+        //    hide_all_warriors();
+        //    list_warriors[3].SetActive(true);
+        //    active_warrior = list_warriors[3].GetComponent<Warrior>();
+        //    warrior_type = warrior_type_enum.level_4;
+        //    PlayAnimation(MERGE);
+
+        //    // show panel new character warrior
+        //    if (GameManager.instance.get_count_active_warrior() == 3)
+        //    {
+        //        GameManager.instance.set_count_active_warrior(GameManager.instance.get_count_active_warrior() + 1);
+        //        UiManager.instance.show_panel_new_character_warrior();
+
+        //    }
+        //}
+        //else if (tp == warrior_type_enum.level_4)
+        //{
+        //    hide_all_warriors();
+        //    list_warriors[4].SetActive(true);
+        //    active_warrior = list_warriors[4].GetComponent<Warrior>();
+        //    warrior_type = warrior_type_enum.level_5;
+        //    PlayAnimation(MERGE);
+
+        //    // show panel new character warrior
+        //    if (GameManager.instance.get_count_active_warrior() == 4)
+        //    {
+        //        GameManager.instance.set_count_active_warrior(GameManager.instance.get_count_active_warrior() + 1);
+        //        UiManager.instance.show_panel_new_character_warrior();
+
+        //    }
+        //}
+        //else if (tp == warrior_type_enum.level_5)
+        //{
+        //    hide_all_warriors();
+        //    list_warriors[5].SetActive(true);
+        //    active_warrior = list_warriors[5].GetComponent<Warrior>();
+        //    warrior_type = warrior_type_enum.level_6;
+        //    PlayAnimation(MERGE);
+
+        //    // show panel new character warrior
+        //    if (GameManager.instance.get_count_active_warrior() == 5)
+        //    {
+        //        GameManager.instance.set_count_active_warrior(GameManager.instance.get_count_active_warrior() + 1);
+        //        UiManager.instance.show_panel_new_character_warrior();
+
+        //    }
+        //}
+        //else if (tp == warrior_type_enum.level_6)
+        //{
+        //    hide_all_warriors();
+        //    list_warriors[6].SetActive(true);
+        //    active_warrior = list_warriors[6].GetComponent<Warrior>();
+        //    warrior_type = warrior_type_enum.level_7;
+        //    PlayAnimation(MERGE);
+
+        //    // show panel new character warrior
+        //    if (GameManager.instance.get_count_active_warrior() == 6)
+        //    {
+        //        GameManager.instance.set_count_active_warrior(GameManager.instance.get_count_active_warrior() + 1);
+        //        UiManager.instance.show_panel_new_character_warrior();
+
+        //    }
+        //}
+        //else if (tp == warrior_type_enum.level_7)
+        //{
+        //    hide_all_warriors();
+        //    list_warriors[7].SetActive(true);
+        //    active_warrior = list_warriors[7].GetComponent<Warrior>();
+        //    warrior_type = warrior_type_enum.level_8;
+        //    PlayAnimation(MERGE);
+
+        //    // show panel new character warrior
+        //    if (GameManager.instance.get_count_active_warrior() == 7)
+        //    {
+        //        GameManager.instance.set_count_active_warrior(GameManager.instance.get_count_active_warrior() + 1);
+        //        UiManager.instance.show_panel_new_character_warrior();
+
+        //    }
+        //}
+        //else if (tp == warrior_type_enum.level_8)
+        //{
+        //    hide_all_warriors();
+        //    list_warriors[8].SetActive(true);
+        //    active_warrior = list_warriors[8].GetComponent<Warrior>();
+        //    warrior_type = warrior_type_enum.level_9;
+        //    PlayAnimation(MERGE);
+
+        //    // show panel new character warrior
+        //    if (GameManager.instance.get_count_active_warrior() == 8)
+        //    {
+        //        GameManager.instance.set_count_active_warrior(GameManager.instance.get_count_active_warrior() + 1);
+        //        UiManager.instance.show_panel_new_character_warrior();
+
+        //    }
+        //}
+        
+        //else
+        //{
+        //    // no more upgrate 
+        //    print("end upgrate");
+        //}
     }
 }

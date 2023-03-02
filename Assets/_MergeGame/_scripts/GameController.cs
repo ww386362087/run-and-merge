@@ -110,7 +110,6 @@ public class GameController : Singleton<GameController> , IGameEventListener
                     // if same cadre --> don't change anything
                     if (current_object == clicked_object)
                     {
-                        //print("zzzzzzzzzzzz");
                         // return clicked object to place
                         clicked_object.GetComponent<Cadre>().dinosaur_parent.transform.position = clicked_object.GetComponent<Cadre>().pos.position;
                     }
@@ -155,7 +154,7 @@ public class GameController : Singleton<GameController> , IGameEventListener
                     else if (current_object.GetComponent<Cadre>().monster_type == clicked_object.GetComponent<Cadre>().monster_type)
                     {
                         // play effect
-                        current_object.GetComponent<Cadre>().effect_two.Play();
+                        current_object.GetComponent<Cadre>().effect_two.Play(true);
 
                         // set false to bool has_din
                         clicked_object.GetComponent<Cadre>().has_din = false;
@@ -243,7 +242,7 @@ public class GameController : Singleton<GameController> , IGameEventListener
                     else if (current_object.GetComponent<Cadre>().warrior_type == clicked_object.GetComponent<Cadre>().warrior_type)
                     {
                         // play effect
-                        current_object.GetComponent<Cadre>().effect_two.Play();
+                        current_object.GetComponent<Cadre>().effect_two.Play(true);
 
                         // set false to bool has_warrior
                         clicked_object.GetComponent<Cadre>().has_warrior = false;
@@ -285,7 +284,7 @@ public class GameController : Singleton<GameController> , IGameEventListener
 
                 //reset active for current
                 current_object.GetComponent<Cadre>().set_active_false();
-
+                clicked_object?.GetComponent<Cadre>()?.PlayAnimation(Cadre.IDLE);
                 //reset
                 clicked_object = current_object = previous_object = null;
                 character = null;
@@ -382,7 +381,7 @@ public class GameController : Singleton<GameController> , IGameEventListener
 
             //print(hit.point);
             current_position_ray = hit.point;
-            current_position_ray.y = .5f;
+            current_position_ray.y += 1f;
 
             character.position = current_position_ray;
 
@@ -397,24 +396,27 @@ public class GameController : Singleton<GameController> , IGameEventListener
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, cadre_layer))
         {
             //for monster
-            if (hit.collider.GetComponent<Cadre>().has_din)
+            var cadre = hit.collider.GetComponent<Cadre>();
+            if (cadre.has_din)
             {
                 type_move = "monster";
                 can_move = true;
                 clicked_object = hit.collider.gameObject;
-                character = hit.collider.GetComponent<Cadre>().select_object_to_move().transform;
+                character = cadre.select_object_to_move().transform;
 
-                hit.collider.GetComponent<Cadre>().set_active_true();
+                cadre.PlayAnimation(Cadre.BRING);
+                cadre.set_active_true();
             }
             //for warrior
-            else if (hit.collider.GetComponent<Cadre>().has_warrior)
+            else if (cadre.has_warrior)
             {
                 type_move = "warrior";
                 can_move = true;
                 clicked_object = hit.collider.gameObject;
-                character = hit.collider.GetComponent<Cadre>().select_object_to_move_warrior().transform;
+                character = cadre.select_object_to_move_warrior().transform;
 
-                hit.collider.GetComponent<Cadre>().set_active_true();
+                cadre.PlayAnimation(Cadre.BRING);
+                cadre.set_active_true();
             }
         }
     }
@@ -895,7 +897,7 @@ public class GameController : Singleton<GameController> , IGameEventListener
     {
         int nbr_lvl = GameManager.instance.getlevel();
 
-        if (levels_list[nbr_lvl] == null)
+        if (nbr_lvl > levels_list.Count)
         {
             nbr_lvl = 0;
             ProgressionManager.Instance.SetLevel(0);

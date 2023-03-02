@@ -17,7 +17,8 @@ namespace HyperCasual.Core
         /// Returns the current pause state of the application
         /// </summary>
         public bool IsPaused { get; private set; }
-        
+
+#if !UNITY_EDITOR
         void OnApplicationFocus(bool hasFocus)
         {
             IsPaused = !hasFocus;
@@ -33,5 +34,6 @@ namespace HyperCasual.Core
             if (IsPaused)
                 m_PauseEvent.Raise();
         }
+#endif
     }
 }

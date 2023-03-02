@@ -54,6 +54,7 @@ MonoBehaviour:
   list_monster:
   - {fileID: 3673962904766658994}
   - {fileID: 7753970082530253965}
+  - {fileID: 3045529367435785033}
   list_warrior:
   - {fileID: 4731204854388993053}
   - {fileID: 8767837829630546880}
@@ -650,6 +651,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eadd22325f23608409ca12334a2ef6b3, type: 3}
+--- !u!114 &3045529367435785033 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6809047376747890853, guid: eadd22325f23608409ca12334a2ef6b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8375987571575667692}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d0e316438dd1e40ac3aef787e6833c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3045529367435785078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6809047376747890842, guid: eadd22325f23608409ca12334a2ef6b3,

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8941950789524178158}
   - component: {fileID: 5401553151547190386}
   - component: {fileID: 4324196874200790009}
-  - component: {fileID: 565529290390505540}
   - component: {fileID: 6041735645293509466}
   m_Layer: 0
   m_Name: Obstacle_05_01
@@ -85,27 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &565529290390505540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1608713766852261955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba4ae32a6c4e4559afadd205d679bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UsePositionBasedOffset: 1
-  PositionBasedScale: 2
-  Bob: 0
-  m_Direction: 0
-  BobSpeed: 5
-  BobHeight: 0.2
-  Spin: 1
-  m_Axis: 4
-  SpinSpeed: 400
 --- !u!65 &6041735645293509466
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -215,7 +193,7 @@ GameObject:
   - component: {fileID: 1565227399540043401}
   - component: {fileID: 6143050356017734125}
   m_Layer: 0
-  m_Name: Obs_SpinningPillar_3_1 1
+  m_Name: Obs_SpinningPillar_3_1_stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -365,10 +343,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.15
-  m_Height: 9.5
+  m_Radius: 0.1
+  m_Height: 8.5
   m_Direction: 2
-  m_Center: {x: 0, y: 0.8, z: 4}
+  m_Center: {x: 0, y: 0.8, z: 3.3}
 --- !u!114 &8138853567707022914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,7 +367,7 @@ MonoBehaviour:
   BobHeight: 0.2
   Spin: 1
   m_Axis: 4
-  SpinSpeed: 500
+  SpinSpeed: 140
 --- !u!1 &8465722083026689516
 GameObject:
   m_ObjectHideFlags: 0

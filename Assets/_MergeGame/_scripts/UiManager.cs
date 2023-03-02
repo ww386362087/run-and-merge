@@ -459,6 +459,7 @@ public class UiManager : MonoBehaviour
         gamecontroller_script.players_scripts.choose_enemy_for_fight_start();
 
         gamecontroller_script.enemies_script.choose_player_for_fight_start();
+        GameController.Instance.game_play = true;
     }
 
     

@@ -19,7 +19,7 @@ namespace HyperCasual.Gameplay
 
         private void Update()
         {
-            Debug.Log("value: " + Value + " max: " + MaxValue + " min: " + MinValue);
+            //Debug.Log("value: " + Value + " max: " + MaxValue + " min: " + MinValue);
         }
     }
 }

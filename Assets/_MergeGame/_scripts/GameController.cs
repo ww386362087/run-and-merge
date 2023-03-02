@@ -13,7 +13,7 @@ public class GameController : Singleton<GameController> , IGameEventListener
     public LayerMask cadre_layer , ground_layer;
     public Camera cam;
     public Vector3 current_position_ray;
-    public bool can_move , game_run;
+    public bool can_move , game_run, game_play;
     public List<Cadre> list_cadres, list_empty_cadres;
 
     public string type_move;
@@ -65,6 +65,9 @@ public class GameController : Singleton<GameController> , IGameEventListener
                 return;
         }
         if (!game_run) return;
+
+        if (game_play)
+            return;
 
         // test add monster
         //if (Input.GetKeyDown(KeyCode.A))

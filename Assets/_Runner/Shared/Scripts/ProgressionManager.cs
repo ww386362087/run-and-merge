@@ -7,6 +7,8 @@ public class ProgressionManager : Singleton<ProgressionManager>
 {
     public readonly string MERGE_LEVEL_PROGRESSION = "level_general";
 
+    [SerializeField] int levelToSet;
+
     [ContextMenu("progress")]
     public void Progress()
     {
@@ -48,9 +50,7 @@ public class ProgressionManager : Singleton<ProgressionManager>
     [ContextMenu("set")]
     public void Set()
     {
-        int lv = 26;
-
-        PlayerPrefs.SetInt(MERGE_LEVEL_PROGRESSION, lv);
-        SaveManager.Instance.LevelProgress = lv;
+        PlayerPrefs.SetInt(MERGE_LEVEL_PROGRESSION, levelToSet);
+        SaveManager.Instance.LevelProgress = levelToSet;
     }
 }

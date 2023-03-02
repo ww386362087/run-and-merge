@@ -31,6 +31,7 @@ namespace HyperCasual.Runner
             SequenceManager.Instance.SetStartingLevel(SaveManager.Instance.LevelProgress);
             ProgressionManager.Instance.SetLevel(SaveManager.Instance.LevelProgress);
             m_ContinueEvent.Raise();
+           
         }
         
         void OnDisable()

@@ -97,11 +97,21 @@ namespace HyperCasual.Core
             m_CurrentView = view;
         }
 
+        public void ClearHistory()
+        {
+            m_History.Clear();
+        }
+
         /// <summary>
         /// Goes to the page visible previously
         /// </summary>
         public void GoBack()
         {
+            foreach(var k in m_History)
+            {
+                Debug.LogError(k.name);
+            }
+            Debug.LogError(m_History.Count + "--" + m_History.Pop().name);
             if (m_History.Count != 0)
             {
                 Show(m_History.Pop(), false);

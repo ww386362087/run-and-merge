@@ -85,6 +85,7 @@ namespace HyperCasual.Gameplay
         
         void OnQuickPlayButtonClicked()
         {
+            m_BackEvent.Raise();
             OnClick(SaveManager.Instance.LevelProgress);
         }
         

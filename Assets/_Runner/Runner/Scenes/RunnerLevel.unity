@@ -285,85 +285,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2174204488989849401, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2174204489036810739, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2174204489046371946, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2174204489217093954, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2174204489222046116, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2174204489253658441, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2174204489857741219, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2174204490111866081, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2174204490185045186, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2174204490213538117, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2174204490275869968, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2174204490370671909, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2174204490430385302, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2174204490580564761, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2174204490640376400, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 3809634687786561032, guid: ffe017938ef75e944a4e5d2976c0bc32,
         type: 3}
       propertyPath: m_Name
       value: MergeGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 9160803576491935136, guid: ffe017938ef75e944a4e5d2976c0bc32,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9160803576491935138, guid: ffe017938ef75e944a4e5d2976c0bc32,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9160803576608508356, guid: ffe017938ef75e944a4e5d2976c0bc32,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffe017938ef75e944a4e5d2976c0bc32, type: 3}
@@ -432,7 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1559a9596d6564c4a970bb921bde1e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToSet: 9
+  levelToSet: 0
 --- !u!1 &1392527161
 GameObject:
   m_ObjectHideFlags: 0

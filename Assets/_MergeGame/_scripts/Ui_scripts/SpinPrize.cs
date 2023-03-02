@@ -68,7 +68,7 @@ public class SpinPrize : MonoBehaviour
 
     public void multi_number_spin()
     {
-        total_earning = UiManager.instance.total_coin_in_level;
+        total_earning = UiManager.instance.total_coin_in_level_merge + Inventory.Instance.TempGold;
 
         if (arrow.localPosition.x >= -450f && arrow.localPosition.x < -290f)
         {

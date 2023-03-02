@@ -55,6 +55,33 @@ namespace HyperCasual.Runner
             }
         }
 
+        private void Start()
+        {
+            //pair = col
+            StartCoroutine(DelayRay());
+        }
+
+        IEnumerator DelayRay()
+        {
+            yield return new WaitForSeconds(.2f);
+
+            var ray = new Ray(transform.position, transform.right);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                //Debug.Log($"from {transform.name} to {hit.transform.name}", hit.transform);
+                pair = hit.transform.gameObject.GetComponent<Gate>();
+            }
+
+            ray = new Ray(transform.position, -transform.right);
+            if (Physics.Raycast(ray, out hit))
+            {
+                //Debug.Log($"from {transform.name} to {hit.transform.name}", hit.transform);
+                pair = hit.transform.gameObject.GetComponent<Gate>();
+            }
+        }
+
         /// <summary>
         /// Reset the gate to its initial state. Called when a level
         /// is restarted by the GameManager.

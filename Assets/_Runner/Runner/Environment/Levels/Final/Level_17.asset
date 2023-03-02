@@ -55,44 +55,44 @@ MonoBehaviour:
     SnapToGrid: 1
   - SpawnablePrefab: {fileID: 314387739941697089, guid: fb3f09fbfb1644381a699a87b164fbb5,
       type: 3}
-    Position: {x: 0, y: 1, z: 33}
-    EulerAngles: {x: -0, y: 0, z: 0}
+    Position: {x: 0, y: 0, z: 33}
+    EulerAngles: {x: 0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     BaseColor: {r: 1, g: 1, b: 1, a: 1}
     SnapToGrid: 1
   - SpawnablePrefab: {fileID: 314387739941697089, guid: c341240a093724d89a126ce5297657da,
       type: 3}
-    Position: {x: 0, y: 1, z: 38}
-    EulerAngles: {x: -0, y: 0, z: 0}
+    Position: {x: 0, y: 0, z: 38}
+    EulerAngles: {x: 0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     BaseColor: {r: 0.9433962, g: 0.9397839, b: 0.90334636, a: 1}
     SnapToGrid: 1
   - SpawnablePrefab: {fileID: 314387739941697089, guid: fb3f09fbfb1644381a699a87b164fbb5,
       type: 3}
-    Position: {x: 0, y: 1, z: 43}
-    EulerAngles: {x: -0, y: 0, z: 0}
+    Position: {x: 0, y: 0, z: 43}
+    EulerAngles: {x: 0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     BaseColor: {r: 1, g: 1, b: 1, a: 1}
     SnapToGrid: 1
   - SpawnablePrefab: {fileID: 314387739941697089, guid: d13d05d6ceef91e4d9f0bebbf08224e8,
       type: 3}
     Position: {x: -2, y: 1, z: 50}
-    EulerAngles: {x: -0, y: 0, z: 0}
+    EulerAngles: {x: 0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     BaseColor: {r: 1, g: 1, b: 1, a: 1}
     SnapToGrid: 1
   - SpawnablePrefab: {fileID: 314387739941697089, guid: d13d05d6ceef91e4d9f0bebbf08224e8,
       type: 3}
     Position: {x: 2, y: 1, z: 50}
-    EulerAngles: {x: -0, y: 0, z: 0}
+    EulerAngles: {x: 0, y: 0, z: 0}
     Scale: {x: 1, y: 1, z: 1}
     BaseColor: {r: 1, g: 1, b: 1, a: 1}
     SnapToGrid: 1
   - SpawnablePrefab: {fileID: 314387739941697089, guid: d90630932fd2e40309f535b66fc4bcd4,
       type: 3}
     Position: {x: 0, y: 0, z: 60}
-    EulerAngles: {x: -0, y: -0, z: 90}
-    Scale: {x: 1.0000038, y: 3.0000153, z: 1}
+    EulerAngles: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
     BaseColor: {r: 1, g: 1, b: 1, a: 1}
     SnapToGrid: 1
   - SpawnablePrefab: {fileID: 314387739941697089, guid: 806519e72bdec48db8131589c83fafac,

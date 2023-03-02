@@ -420,26 +420,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1765550111891826360}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6497944082992451909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 327182383403038839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e5dc3a82ffff04e91607923e36cbd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed_weapon: 0
-  target: {x: 0, y: 0, z: 0}
-  enemy: {fileID: 0}
-  damage: 0
-  hit_coin: 0
-  is_active: 0
-  is_enemy: 0
-  ease: 0
 --- !u!4 &1981878646424511184 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 216579979648304232, guid: adbb30426e7ba6e45bb62c4c66156376,
@@ -532,26 +512,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4902362395069274497}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3701561677002246279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6341820632302356302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e5dc3a82ffff04e91607923e36cbd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed_weapon: 0
-  target: {x: 0, y: 0, z: 0}
-  enemy: {fileID: 0}
-  damage: 0
-  hit_coin: 0
-  is_active: 0
-  is_enemy: 0
-  ease: 0
 --- !u!1001 &5777191538439840793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -719,23 +679,3 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7702740088044497294}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6630386876429759458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8570277044346943297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e5dc3a82ffff04e91607923e36cbd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed_weapon: 0
-  target: {x: 0, y: 0, z: 0}
-  enemy: {fileID: 0}
-  damage: 0
-  hit_coin: 0
-  is_active: 0
-  is_enemy: 0
-  ease: 0

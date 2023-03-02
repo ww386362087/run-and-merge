@@ -426,26 +426,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3256798468059868362}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &355524950838583513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3546694861967651333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e5dc3a82ffff04e91607923e36cbd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed_weapon: 0
-  target: {x: 0, y: 0, z: 0}
-  enemy: {fileID: 0}
-  damage: 0
-  hit_coin: 0
-  is_active: 0
-  is_enemy: 0
-  ease: 0
 --- !u!1001 &4926456104269816851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -613,26 +593,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5429056215912925664}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1930768950509395790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6295466035691362095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e5dc3a82ffff04e91607923e36cbd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed_weapon: 0
-  target: {x: 0, y: 0, z: 0}
-  enemy: {fileID: 0}
-  damage: 0
-  hit_coin: 0
-  is_active: 0
-  is_enemy: 0
-  ease: 0
 --- !u!1001 &7319455679872264626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -719,23 +679,3 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7319455679872264626}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7119873220446482624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8762301685112911741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e5dc3a82ffff04e91607923e36cbd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed_weapon: 0
-  target: {x: 0, y: 0, z: 0}
-  enemy: {fileID: 0}
-  damage: 0
-  hit_coin: 0
-  is_active: 0
-  is_enemy: 0
-  ease: 0

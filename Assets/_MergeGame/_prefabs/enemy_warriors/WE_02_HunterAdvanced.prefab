@@ -501,26 +501,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6900405474482197209}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2289412981464452165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4884495623863815190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e5dc3a82ffff04e91607923e36cbd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed_weapon: 0
-  target: {x: 0, y: 0, z: 0}
-  enemy: {fileID: 0}
-  damage: 0
-  hit_coin: 0
-  is_active: 0
-  is_enemy: 0
-  ease: 0
 --- !u!4 &6684001966458803889 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 216579979648304232, guid: adbb30426e7ba6e45bb62c4c66156376,
@@ -613,26 +593,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7006835994878322345}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8834044051161021077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9022773745509660774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e5dc3a82ffff04e91607923e36cbd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed_weapon: 0
-  target: {x: 0, y: 0, z: 0}
-  enemy: {fileID: 0}
-  damage: 0
-  hit_coin: 0
-  is_active: 0
-  is_enemy: 0
-  ease: 0
 --- !u!1001 &7849997624444860066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -719,23 +679,3 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7849997624444860066}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5614378964527678320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8141056648719657069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e5dc3a82ffff04e91607923e36cbd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed_weapon: 0
-  target: {x: 0, y: 0, z: 0}
-  enemy: {fileID: 0}
-  damage: 0
-  hit_coin: 0
-  is_active: 0
-  is_enemy: 0
-  ease: 0

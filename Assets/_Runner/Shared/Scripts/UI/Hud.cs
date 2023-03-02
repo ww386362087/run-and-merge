@@ -17,6 +17,10 @@ namespace HyperCasual.Gameplay
         [SerializeField]
         TextMeshProUGUI m_GoldText;
         [SerializeField]
+        TextMeshProUGUI m_NumOfPlayerText;
+        [SerializeField]
+        TextMeshProUGUI m_LevelText;
+        [SerializeField]
         ProgressionBar m_ProgressionBar;
         [SerializeField]
         HyperCasualButton m_SettingsButton;
@@ -76,21 +80,34 @@ namespace HyperCasual.Gameplay
         {
             m_ButtonLuckySpin.AddListener(OnLuckySpinButtonClick);
             btn_startPlaying.SetUpOneEvent(SetPlaying);
+            SetUI(false);
+            m_LevelText.text = "Level " + (SaveManager.Instance.LevelProgress + 1);
         }
 
         void OnDisable()
         {
-            m_ButtonLuckySpin.RemoveListener(OnLuckySpinButtonClick);
+            //m_ButtonLuckySpin.RemoveListener(OnLuckySpinButtonClick);
         }
 
-        void OnLuckySpinButtonClick()
+        public void OnLuckySpinButtonClick()
         {
+            Debug.LogError("Show lucky");
             UIManager.Instance.Show<LuckySpinView>();
         }
 
         void SetPlaying()
         {
             GameSceneLoad.Instance.SetGameIsPlaying(true);
+            SetUI(true);
+        }
+
+        public void SetUI(bool isPlaying)
+        {
+            m_SettingsButton.gameObject.SetActive(!isPlaying);
+            m_CardsButton.gameObject.SetActive(!isPlaying);
+            m_AdsFreeButton.gameObject.SetActive(!isPlaying);
+            m_DragToMoveOverlay.gameObject.SetActive(!isPlaying);
+            m_ButtonLuckySpin.gameObject.SetActive(!isPlaying);
         }
     }
 }

@@ -149,7 +149,7 @@ namespace HyperCasual.Runner
             {
                 m_TempProgression += PlayerController.Instance.Speed * Time.deltaTime;
                 m_Hud.Progress = m_TempProgression;
-                
+
                 if (SequenceManager.Instance.m_CurrentLevel is LoadLevelFromDef loadLevelFromDef)
                 {
                     m_Hud.Progression.MinValue = 0;

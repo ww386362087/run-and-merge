@@ -28,6 +28,11 @@ public class GameController : Singleton<GameController> , IGameEventListener
     // Start is called before the first frame update
     void Start()
     {
+        foreach (GameObject go in missingRef)
+        {
+            go.SetActive(false);
+        }
+
         GameSceneLoad.Instance.SetCamTarget(cam);
         GameSceneLoad.Instance.SetMissingRefOnRestartMergeGame(missingRef);
 

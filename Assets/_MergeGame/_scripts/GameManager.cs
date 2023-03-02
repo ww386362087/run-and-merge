@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("level_general", 0);
             PlayerPrefs.SetInt("firsttime_genaral", 0);
-            PlayerPrefs.SetInt("coin", 0);
+            PlayerPrefs.SetInt("Currency", 0);
             PlayerPrefs.SetInt("count_warrior", 1);
             PlayerPrefs.SetInt("count_monster", 1);
             PlayerPrefs.SetInt("coin_warrior", 4);
@@ -136,11 +136,11 @@ public class GameManager : MonoBehaviour
     // coin
     public int getcoin()
     {
-        return PlayerPrefs.GetInt("coin");
+        return PlayerPrefs.GetInt("Currency");
     }
     public void setcoin(int nbr)
     {
-        PlayerPrefs.SetInt("coin", nbr);
+        PlayerPrefs.SetInt("Currency", nbr);
     }
 
     // actual coin to buy monster

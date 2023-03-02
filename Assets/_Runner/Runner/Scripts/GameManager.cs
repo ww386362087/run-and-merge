@@ -96,8 +96,11 @@ namespace HyperCasual.Runner
             {
                 RenderSettings.skybox = m_CurrentLevel.Area.Skybox;
                 RenderSettings.fog = true;
-                RenderSettings.fogColor = new Color(122f/255, 189f / 255, 221f / 255);
-                RenderSettings.fogDensity = .03f;
+                RenderSettings.fogMode = FogMode.Linear;
+                RenderSettings.fogColor = new Color(122f / 255, 189f / 255, 221f / 255);
+                //RenderSettings.fogDensity = .03f;
+                RenderSettings.fogStartDistance = 40f;
+                RenderSettings.fogEndDistance = 60f;
                 DynamicGI.UpdateEnvironment();
             }
         }

@@ -6,7 +6,6 @@ using HyperCasual.Runner;
 public class ProgressionManager : Singleton<ProgressionManager>
 {
     public readonly string MERGE_LEVEL_PROGRESSION = "level_general";
-    [SerializeField] int levelSet = 13;
 
     [ContextMenu("progress")]
     public void Progress()
@@ -49,6 +48,9 @@ public class ProgressionManager : Singleton<ProgressionManager>
     [ContextMenu("set")]
     public void Set()
     {
-        SetLevel(levelSet);
+        int lv = 26;
+
+        PlayerPrefs.SetInt(MERGE_LEVEL_PROGRESSION, lv);
+        SaveManager.Instance.LevelProgress = lv;
     }
 }

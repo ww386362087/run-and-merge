@@ -82,6 +82,7 @@ namespace HyperCasual.Gameplay
             btn_startPlaying.SetUpOneEvent(SetPlaying);
             SetUI(false);
             m_LevelText.text = "Level " + (SaveManager.Instance.LevelProgress + 1);
+            GoldValue = PlayerPrefs.GetInt("Currency");
         }
 
         void OnDisable()
@@ -91,7 +92,6 @@ namespace HyperCasual.Gameplay
 
         public void OnLuckySpinButtonClick()
         {
-            Debug.LogError("Show lucky");
             UIManager.Instance.Show<LuckySpinView>();
         }
 
@@ -104,10 +104,15 @@ namespace HyperCasual.Gameplay
         public void SetUI(bool isPlaying)
         {
             m_SettingsButton.gameObject.SetActive(!isPlaying);
-            m_CardsButton.gameObject.SetActive(!isPlaying);
-            m_AdsFreeButton.gameObject.SetActive(!isPlaying);
+            //m_CardsButton.gameObject.SetActive(!isPlaying);
+            //m_AdsFreeButton.gameObject.SetActive(!isPlaying);
             m_DragToMoveOverlay.gameObject.SetActive(!isPlaying);
             m_ButtonLuckySpin.gameObject.SetActive(!isPlaying);
+        }
+
+        public void SetNumberOfChar(int num)
+        {
+            m_NumOfPlayerText.text = num.ToString();
         }
     }
 }

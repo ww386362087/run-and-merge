@@ -79,8 +79,11 @@ namespace HyperCasual.Runner
         {
             if (m_GoldEventListener.m_Event is ItemPickedEvent goldPickedEvent)
             {
-                m_TempGold += goldPickedEvent.Count;
-                m_Hud.GoldValue = m_TempGold;
+                //m_TempGold += goldPickedEvent.Count;
+
+                PlayerPrefs.SetInt("Currency", PlayerPrefs.GetInt("Currency") + goldPickedEvent.Count);
+
+                m_Hud.GoldValue = PlayerPrefs.GetInt("Currency");
             }
             else
             {
@@ -104,9 +107,9 @@ namespace HyperCasual.Runner
         void OnWin()
         {
             // Gold.
-            m_TotalGold += m_TempGold;
+            /*m_TotalGold += m_TempGold;
             m_TempGold = 0;
-            SaveManager.Instance.Currency = m_TotalGold;
+            SaveManager.Instance.Currency = m_TotalGold;*/
 
             // Keys.
             m_TotalKeys += m_TempKeys;
@@ -130,9 +133,9 @@ namespace HyperCasual.Runner
         void OnLose()
         {
             // Gold aquired during run is saved
-            m_TotalGold += m_TempGold;
+            /*m_TotalGold += m_TempGold;
             m_TempGold = 0;
-            SaveManager.Instance.Currency = m_TotalGold;
+            SaveManager.Instance.Currency = m_TotalGold;*/
 
             // Key aquired during run is reset on lost
             m_TempKeys = 0;
@@ -149,6 +152,7 @@ namespace HyperCasual.Runner
             {
                 m_TempProgression += PlayerController.Instance.Speed * Time.deltaTime;
                 m_Hud.Progress = m_TempProgression;
+                m_Hud.SetNumberOfChar(PlayerController.Instance.Characters.Count);
 
                 if (SequenceManager.Instance.m_CurrentLevel is LoadLevelFromDef loadLevelFromDef)
                 {

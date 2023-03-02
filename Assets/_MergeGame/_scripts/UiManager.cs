@@ -46,6 +46,11 @@ public class UiManager : MonoBehaviour
         SetAddFreeStatus();
     }
 
+    private void OnEnable()
+    {
+        txt_mmoney.text = GameManager.instance.getcoin().ToString();
+    }
+
     public void SetAddFreeStatus()
     {
         btn_add_mons_free.SetActive(PlayerPrefs.GetInt(GameManager.instance.Num_Free_Mons) > 0);

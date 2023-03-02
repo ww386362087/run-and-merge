@@ -57,6 +57,7 @@ MonoBehaviour:
   - {fileID: 3269034403069283268}
   - {fileID: 3877862967979559025}
   - {fileID: 6387816532724363404}
+  - {fileID: 8246814209896735532}
   list_warrior:
   - {fileID: 4142859545086253104}
   - {fileID: 175199631359074588}
@@ -310,6 +311,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3173922110688258953}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8246814209896735532 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6809047376747890853, guid: eadd22325f23608409ca12334a2ef6b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 3173922110688258953}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d0e316438dd1e40ac3aef787e6833c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3457818533924139574
 PrefabInstance:
   m_ObjectHideFlags: 0

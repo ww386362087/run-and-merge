@@ -46,13 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   list_monster:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 6772484100193662646}
-  list_warrior:
-  - {fileID: 0}
-  - {fileID: 0}
+  list_warrior: []
 --- !u!1001 &4549505156005007960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -143,12 +138,12 @@ PrefabInstance:
     - target: {fileID: 7124594271079539950, guid: be779ce7a9213e5449377ae7c2db80f7,
         type: 3}
       propertyPath: damage
-      value: 630
+      value: 1750
       objectReference: {fileID: 0}
     - target: {fileID: 7124594271079539950, guid: be779ce7a9213e5449377ae7c2db80f7,
         type: 3}
       propertyPath: health
-      value: 6240
+      value: 17500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be779ce7a9213e5449377ae7c2db80f7, type: 3}

@@ -872,7 +872,7 @@ Transform:
   m_GameObject: {fileID: 6255920687064525479}
   m_LocalRotation: {x: -0.047794394, y: -0.7054897, z: 0.047794394, w: 0.7054897}
   m_LocalPosition: {x: 2.328236e-10, y: 0.45933944, z: -0.6143459}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4111114827661625952}
@@ -1304,6 +1304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8211041129903405438}
   - component: {fileID: 6720395827808234041}
+  - component: {fileID: 1788095049214808185}
   m_Layer: 0
   m_Name: Warrior_Tier5
   m_TagString: Untagged
@@ -1348,6 +1349,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1788095049214808185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843005660463621060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eb5f6d06e3e96340943cb6cc0429027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9150227622562143604
 GameObject:
   m_ObjectHideFlags: 0

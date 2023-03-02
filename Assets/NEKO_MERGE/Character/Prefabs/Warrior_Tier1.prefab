@@ -73,6 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 416065952615357451}
   - component: {fileID: -3410848535022333949}
+  - component: {fileID: -7125727171841289}
   m_Layer: 0
   m_Name: Warrior_Tier1
   m_TagString: Untagged
@@ -117,6 +118,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &-7125727171841289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048768526580811441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eb5f6d06e3e96340943cb6cc0429027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1174358013149969384
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +375,7 @@ Transform:
   m_GameObject: {fileID: 2514184076902649810}
   m_LocalRotation: {x: -0.047794394, y: -0.7054897, z: 0.047794394, w: 0.7054897}
   m_LocalPosition: {x: 2.328236e-10, y: 0.45933944, z: -0.6143459}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5564424421539229461}

@@ -31319,7 +31319,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5629388431954940689
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -31336,7 +31336,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &5629388431954940694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31367,6 +31367,7 @@ MonoBehaviour:
   fight: 0
   is_enemy: 0
   text_pref: {fileID: 0}
+  font: {fileID: 0}
   hit_coin: 64
 --- !u!1 &5676686112204444144
 GameObject:

@@ -24,7 +24,7 @@ public class UiManager : MonoBehaviour
     //------ cards
     public GameObject scroll_monster, scroll_warrior;
     public Image line_monster, line_warrior;
-    public int total_coin_in_level;
+    public int total_coin_in_level_merge;
     public ParticleSystem confetti;
 
     private void Awake()
@@ -118,7 +118,7 @@ public class UiManager : MonoBehaviour
     }
     IEnumerator show_lose_panel()
     {
-        txt_earning_lose.text = "+" + total_coin_in_level + "M";
+        txt_earning_lose.text = "+" + total_coin_in_level_merge + "M";
 
         yield return new WaitForSeconds(1.5f);
         lose_panel.SetActive(true);
@@ -134,7 +134,7 @@ public class UiManager : MonoBehaviour
         ProgressionManager.Instance.SetLevel(PlayerPrefs.GetInt(ProgressionManager.Instance.MERGE_LEVEL_PROGRESSION) + 1);
         SequenceManager.Instance.SetStartingLevel(SaveManager.Instance.LevelProgress);
 
-        txt_earning_win.text = "+" + total_coin_in_level + "M";
+        txt_earning_win.text = "+" + (total_coin_in_level_merge + Inventory.Instance.TempGold) + "M";
         yield return new WaitForSeconds(2.5f);
         winpanel.SetActive(true);
 
@@ -172,7 +172,7 @@ public class UiManager : MonoBehaviour
 
     public void calcul_total_coin_in_level(int nbr)
     {
-        total_coin_in_level += nbr;
+        total_coin_in_level_merge += nbr;
     }
     public void increase_money(int nbr)
     {
@@ -348,7 +348,7 @@ public class UiManager : MonoBehaviour
             txt_mmoney.text = GameManager.instance.getcoin().ToString();
 
             // increase actual coin warrior
-            GameManager.instance.set_actual_coin_monster(GameManager.instance.get_actual_coin_monster() + 128);
+            GameManager.instance.set_actual_coin_monster(GameManager.instance.get_actual_coin_monster() *2);
 
             // show text coin monster
             txt_coin_monster.text = GameManager.instance.get_actual_coin_monster().ToString();
@@ -410,7 +410,7 @@ public class UiManager : MonoBehaviour
             txt_mmoney.text = GameManager.instance.getcoin().ToString();
 
             // increase actual coin warrior
-            GameManager.instance.set_actual_coin_warrior(GameManager.instance.get_actual_coin_warrior() + 128);
+            GameManager.instance.set_actual_coin_warrior(GameManager.instance.get_actual_coin_warrior() * 2);
 
             // show text coin warrior
             txt_coin_warrior.text = GameManager.instance.get_actual_coin_warrior().ToString();
@@ -464,6 +464,7 @@ public class UiManager : MonoBehaviour
         gamecontroller_script.players_scripts.choose_enemy_for_fight_start();
 
         gamecontroller_script.enemies_script.choose_player_for_fight_start();
+        GameController.Instance.game_play = true;
     }
 
     

@@ -256,6 +256,8 @@ MonoBehaviour:
   is_enemy: 1
   text_pref: {fileID: 1467384889649466113, guid: 9f4283024f824c640a4f8fcb761d94f7,
     type: 3}
+  vfx: {fileID: 8153268410196303609, guid: e47adeb52a8dc6249b9e21ddab8bec50, type: 3}
+  font: {fileID: 0}
   hit_coin: 0
   current_anim: _idle
 --- !u!195 &6897973825504568525
@@ -267,7 +269,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6897973825504568520}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1.5
   m_Speed: 3
   m_Acceleration: 10
   avoidancePriority: 50

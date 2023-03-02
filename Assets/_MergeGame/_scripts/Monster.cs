@@ -20,7 +20,9 @@ public class Monster : MonoBehaviour
     GameController game_controller_script;
 
     public TMPro.TextMeshPro text_pref;
+    public ParticleSystem vfx;
 
+    public TMPro.TMP_FontAsset font;
     public int hit_coin;
     public string current_anim = "_idle";
 
@@ -111,11 +113,12 @@ public class Monster : MonoBehaviour
 
             
 
-            if (agent.remainingDistance < 2f && !fight)
+            if (agent.remainingDistance < 3f && !fight)
             {
                 fight = true;
                 print("reached");
                 agent.enabled = false;
+                transform.LookAt(target,Vector3.up);
                 StartCoroutine(fighting(target.gameObject));
                 //anim.SetFloat("Velocity", 0);
             }
@@ -134,6 +137,46 @@ public class Monster : MonoBehaviour
         {
             anim = GetComponentInChildren<Animator>();
         }
+    }
+
+
+    [ContextMenu("Update font")]
+    private void Updatefont()
+    {
+        var t = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        t.font = font;
+        t.text = $"Warrior {transform.name.Split('_')[1]}";
+        t.fontSize = 30;
+    }
+
+    [ContextMenu("FindFfx")]
+    private void FindFfx()
+    {
+        if (vfx == null)
+        {
+            vfx = GetComponentInChildren<ParticleSystem>();
+            vfx.transform.localPosition = new Vector3(0, .45f, 1.45f);
+        }
+    }
+
+    public void SpawnVfx()
+    {
+        if (!vfx)
+            return;
+
+        var newVFX = Instantiate(vfx, transform);
+        newVFX.transform.localPosition = new Vector3(0, .45f, 1.75f);
+        newVFX?.Play(true);
+    }
+
+    public void SpawnVfx(float lenght)
+    {
+        if (!vfx)
+            return;
+
+        var newVFX = Instantiate(vfx, transform);
+        newVFX.transform.localPosition = new Vector3(0, .45f, lenght);
+        newVFX?.Play(true);
     }
 
     public void decrease_health(int nbr)
@@ -180,7 +223,6 @@ public class Monster : MonoBehaviour
         // make animation
         animate_monster(hit);
         print("hit");
-        
         
         do
         {

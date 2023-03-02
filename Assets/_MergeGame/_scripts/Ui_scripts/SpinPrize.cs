@@ -68,32 +68,32 @@ public class SpinPrize : MonoBehaviour
 
     public void multi_number_spin()
     {
-        total_earning = UiManager.instance.total_coin_in_level;
+        total_earning = UiManager.instance.total_coin_in_level_merge + Inventory.Instance.TempGold;
 
-        if (arrow.localPosition.x >= -250f && arrow.localPosition.x < -160f)
+        if (arrow.localPosition.x >= -450f && arrow.localPosition.x < -290f)
         {
             coin_text.text = (total_earning * 2) + "M";
             multi = 2;
         }
-        else if (arrow.localPosition.x >= -160f && arrow.localPosition.x < -52f)
+        else if (arrow.localPosition.x >= -290f && arrow.localPosition.x < -95f)
         {
             coin_text.text = (total_earning * 3) + "M";
             multi = 3;
         }
-        else if (arrow.localPosition.x >= -52f && arrow.localPosition.x < 57f)
+        else if (arrow.localPosition.x >= -95f && arrow.localPosition.x < 105f)
         {
             coin_text.text = (total_earning * 5) + "M";
             multi = 5;
         }
-        else if (arrow.localPosition.x >= 57f && arrow.localPosition.x < 165f)
-        {
-            coin_text.text = (total_earning * 4) + "M";
-            multi = 4;
-        }
-        else if (arrow.localPosition.x >= 165f && arrow.localPosition.x < 250f)
+        else if (arrow.localPosition.x >= 105f && arrow.localPosition.x < 303f)
         {
             coin_text.text = (total_earning * 2) + "M";
             multi = 2;
+        }
+        else if (arrow.localPosition.x >= 303f && arrow.localPosition.x < 450f)
+        {
+            coin_text.text = (total_earning * 3) + "M";
+            multi = 3;
         }
     }
 

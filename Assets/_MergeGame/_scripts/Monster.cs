@@ -22,6 +22,7 @@ public class Monster : MonoBehaviour
     public TMPro.TextMeshPro text_pref;
     public ParticleSystem vfx;
 
+    public TMPro.TMP_FontAsset font;
     public int hit_coin;
     public string current_anim = "_idle";
 
@@ -135,6 +136,16 @@ public class Monster : MonoBehaviour
         {
             anim = GetComponentInChildren<Animator>();
         }
+    }
+
+
+    [ContextMenu("Update font")]
+    private void Updatefont()
+    {
+        var t = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        t.font = font;
+        t.text = $"Warrior {transform.name.Split('_')[1]}";
+        t.fontSize = 30;
     }
 
     [ContextMenu("FindFfx")]

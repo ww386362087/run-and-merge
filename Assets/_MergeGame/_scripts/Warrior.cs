@@ -24,6 +24,7 @@ public class Warrior : MonoBehaviour
     GameController game_controller_script;
 
     public TMPro.TextMeshPro text_pref;
+    public TMPro.TMP_FontAsset font;
     public int hit_coin;
     string current_anim = "_idle";
 
@@ -77,6 +78,16 @@ public class Warrior : MonoBehaviour
         {
             anim = GetComponentInChildren<Animator>();
         }
+    }
+
+
+    [ContextMenu("Update font")]
+    private void Updatefont()
+    {
+        var t = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        t.font = font;
+        t.text = $"Gunner {transform.name.Split('_')[1]}";
+        t.fontSize = 30;
     }
 
     public void decrease_health(int nbr)

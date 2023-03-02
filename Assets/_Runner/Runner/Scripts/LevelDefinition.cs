@@ -186,5 +186,33 @@ namespace HyperCasual.Runner
 
             return LevelLength - bufferEnd;
         }*/
+
+        #region Context Menu
+        [ContextMenu("Reset Gate.Bomb.Fence.Pillar Scale")]
+        void ResetScale()
+        {
+            for (int i = 0; i < Spawnables.Length; i++)
+            {
+                var fkingthing = Spawnables[i].SpawnablePrefab;
+                if (fkingthing != null && (fkingthing.name.Contains("Gate") || fkingthing.name.Contains("Bomb") || fkingthing.name.Contains("Fence") || fkingthing.name.Contains("Obstacle_SpinningPillar_side")))
+                {
+                    Spawnables[i].Scale = new Vector3(1, 1, 1);
+                }
+            }
+        }
+
+        [ContextMenu("Reset Pillar Rotation")]
+        void ResetRotation()
+        {
+            for (int i = 0; i < Spawnables.Length; i++)
+            {
+                var fkingthing = Spawnables[i].SpawnablePrefab;
+                if (fkingthing != null && (fkingthing.name.Contains("SpinningPillar_3")))
+                {
+                    Spawnables[i].EulerAngles = Vector3.zero;
+                }
+            }
+        }
+        #endregion
     }
 }

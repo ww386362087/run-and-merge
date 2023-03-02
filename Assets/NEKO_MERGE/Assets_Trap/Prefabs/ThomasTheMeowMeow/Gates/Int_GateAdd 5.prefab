@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2393037618442902280}
   - component: {fileID: 4959201732529741296}
   m_Layer: 0
-  m_Name: Int_GateAdd
+  m_Name: Int_GateAdd 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567000806464635386}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -48,8 +48,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.5, y: 5.4, z: 0.4}
-  m_Center: {x: 0, y: 2.7, z: 0}
+  m_Size: {x: 3.1, y: 3, z: 0.4}
+  m_Center: {x: 0, y: -0, z: 0.15}
 --- !u!54 &2393037618442902280
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78,9 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a890f040ce644b659b25022abb86938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SnapToGrid: 1
+  m_SnapToGrid: 0
   m_GateType: 2
-  m_Value: 3
+  m_Value: 5
   m_Text: {fileID: 1841360140200085941}
 --- !u!1 &1340726307460634547
 GameObject:
@@ -108,9 +108,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340726307460634547}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 2.6851466, z: -0.00000009536743}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 0.53, y: 0.53, z: 0.53}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 906829456895580992}
   m_RootOrder: 1
@@ -191,9 +191,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7541649297567526586}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 2.6851466, z: -0.00000009536743}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 0.53, y: 0.53, z: 0.53}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 906829456895580992}
   m_RootOrder: 0
@@ -259,7 +259,6 @@ GameObject:
   - component: {fileID: 1841360140200085941}
   - component: {fileID: 3562606524231066054}
   - component: {fileID: 7505449879187351415}
-  - component: {fileID: 4386098258641634212}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -284,8 +283,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0091, y: 2.6827}
-  m_SizeDelta: {x: 5.4129, y: 5.3285}
+  m_AnchoredPosition: {x: 0, y: 0.65}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &3562606524231066054
 MeshRenderer:
@@ -349,7 +348,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +3
+  m_text: +5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e6bf95f60c66d45439cc16cddba1abd3, type: 2}
   m_sharedMaterial: {fileID: -2180730340221332417, guid: e6bf95f60c66d45439cc16cddba1abd3,
@@ -359,8 +358,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280850944
-  m_fontColor: {r: 0, g: 0.6037736, b: 0.15587112, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -377,8 +376,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 7
+  m_fontSizeBase: 7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -422,24 +421,3 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 3562606524231066054}
   m_maskType: 0
---- !u!114 &4386098258641634212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7804513107153345264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba4ae32a6c4e4559afadd205d679bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UsePositionBasedOffset: 1
-  PositionBasedScale: 2
-  Bob: 1
-  m_Direction: 1
-  BobSpeed: 5
-  BobHeight: 0.2
-  Spin: 0
-  m_Axis: 4
-  SpinSpeed: 180

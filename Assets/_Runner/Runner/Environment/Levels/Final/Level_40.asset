@@ -15,7 +15,7 @@ MonoBehaviour:
   LevelLength: 100
   LevelLengthBufferStart: 5
   LevelLengthBufferEnd: 5
-  LevelWidth: 8
+  LevelWidth: 10
   LevelThickness: 0.1
   SnapToGrid: 1
   GridSize: 1
@@ -197,7 +197,7 @@ MonoBehaviour:
       type: 3}
     Position: {x: -2.5, y: 1, z: 12}
     EulerAngles: {x: -0, y: 0, z: 0}
-    Scale: {x: 3, y: 2, z: 0.1}
+    Scale: {x: 1, y: 1, z: 1}
     BaseColor: {r: 0, g: 0, b: 0, a: 0}
     SnapToGrid: 1
   - SpawnablePrefab: {fileID: 4491878537401891285, guid: 620b585f4ae1c6641a6ef81d9dcc6d0e,

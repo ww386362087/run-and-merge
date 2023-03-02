@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 using UnityEngine;
 
@@ -9,6 +12,7 @@ public class AddArrow : MonoBehaviour
     [SerializeField] Warrior[] warriors;
     [SerializeField] GameObject newArrow;
 
+#if UNITY_EDITOR
     [ContextMenu("Change model arrow")]
     void UpdateArrow()
     {
@@ -42,4 +46,5 @@ public class AddArrow : MonoBehaviour
             
         }
     }
+#endif
 }

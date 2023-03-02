@@ -213,6 +213,19 @@ namespace HyperCasual.Runner
                 }
             }
         }
+
+        [ContextMenu("Reset MovingSpinningPillar.Bomb Height")]
+        void ResetHeight()
+        {
+            for (int i = 0; i < Spawnables.Length; i++)
+            {
+                var fkingthing = Spawnables[i].SpawnablePrefab;
+                if (fkingthing != null && (fkingthing.name.Contains("MovingSpinningPillar") || fkingthing.name.Contains("Bomb")))
+                {
+                    Spawnables[i].Position.y = 0;
+                }
+            }
+        }
         #endregion
     }
 }

@@ -295,11 +295,19 @@ namespace HyperCasual.Runner
             {
                 newCharacter.layer = LayerMask.NameToLayer(characterLayer);
                 newCharacter.transform.SetParent(m_CharacterHolder.transform);
+                
                 var anim = newCharacter.GetComponentInChildren<Animator>();
                 if (anim)
                 {
                     anim.SetFloat("Velocity", 1);
                 }
+
+                var rigbod = newCharacter.GetComponent<Rigidbody>();
+                if (rigbod)
+                {
+                    rigbod.freezeRotation = true;
+                }
+
                 Characters.Add(newCharacter);
             }
         }

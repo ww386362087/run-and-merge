@@ -222,6 +222,14 @@ namespace HyperCasual.Runner
                     go.GetComponent<Bridge>().SetTerrainWidth(levelDefinition.LevelWidth);
                 }
             }
+
+            var block = new GameObject("Block");
+            block.transform.SetParent(levelGameObject.transform);
+            var b = block.AddComponent<BoxCollider>();
+            b.isTrigger = true;
+            b.size = new Vector3(levelDefinition.LevelWidth, levelDefinition.LevelLength, 1);
+            block.transform.localPosition = new Vector3(0, -3f, b.size.z / 2);
+            block.AddComponent<Obstacle>();
         }
 
         public void UnloadCurrentLevel()
@@ -413,7 +421,7 @@ namespace HyperCasual.Runner
                     Length = len,
                     StartBuffer = 0,
                     EndBuffer = 0,
-                    Thickness = levelDefinition.LevelThickness
+                    Thickness = 1f
                 };
                 var terrain = TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.Area?.Road?? levelDefinition.TerrainMaterial);
                 terrain.transform.position = new Vector3(0, 0, startPosition);

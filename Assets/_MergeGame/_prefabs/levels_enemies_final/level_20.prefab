@@ -63,12 +63,12 @@ PrefabInstance:
     - target: {fileID: 6897973825504568526, guid: 8954b8a619676d54f8922d8a14e42b26,
         type: 3}
       propertyPath: damage
-      value: 840
+      value: 1440
       objectReference: {fileID: 0}
     - target: {fileID: 6897973825504568526, guid: 8954b8a619676d54f8922d8a14e42b26,
         type: 3}
       propertyPath: health
-      value: 8400
+      value: 14400
       objectReference: {fileID: 0}
     - target: {fileID: 6897973825504568527, guid: 8954b8a619676d54f8922d8a14e42b26,
         type: 3}
@@ -93,7 +93,7 @@ PrefabInstance:
     - target: {fileID: 6897973825504568527, guid: 8954b8a619676d54f8922d8a14e42b26,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6709489
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6897973825504568527, guid: 8954b8a619676d54f8922d8a14e42b26,
         type: 3}

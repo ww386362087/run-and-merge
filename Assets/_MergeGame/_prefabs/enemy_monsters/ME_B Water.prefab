@@ -242,8 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d0e316438dd1e40ac3aef787e6833c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1440
-  health: 14400
+  damage: 1200
+  health: 12000
   max_health: 0
   canvas_parrent: {fileID: 6897973825454772837}
   bar_field: {fileID: 6897973825630127662}

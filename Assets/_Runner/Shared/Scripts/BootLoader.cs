@@ -18,6 +18,7 @@ namespace HyperCasual.Gameplay
         {
             Instantiate(m_SequenceManagerPrefab);
             SequenceManager.Instance.Initialize();
+            Application.targetFrameRate = 60;
         }
     }
 }

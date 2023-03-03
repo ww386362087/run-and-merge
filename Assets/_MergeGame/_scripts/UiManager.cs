@@ -385,6 +385,7 @@ public class UiManager : MonoBehaviour
 
         // ads video
         //Advertisements.Instance.ShowRewardedVideo(Complete_ads_video_mosnter);
+        AdsMAXManager.Instance.ShowRewardedAd(() => Complete_ads_video_mosnter(true, ""));
     }
 
 
@@ -446,7 +447,7 @@ public class UiManager : MonoBehaviour
 
         // ads video
         //Advertisements.Instance.ShowRewardedVideo(Complete_ads_video_warrior);
-        
+        AdsMAXManager.Instance.ShowRewardedAd(()=>Complete_ads_video_warrior(true,""));
     }
 
     // button fight

@@ -63,12 +63,12 @@ PrefabInstance:
     - target: {fileID: 6897973825504568526, guid: 9fc6e5e0e85a12d4e847c45b6651adc6,
         type: 3}
       propertyPath: damage
-      value: 2592
+      value: 3600
       objectReference: {fileID: 0}
     - target: {fileID: 6897973825504568526, guid: 9fc6e5e0e85a12d4e847c45b6651adc6,
         type: 3}
       propertyPath: health
-      value: 25920
+      value: 36000
       objectReference: {fileID: 0}
     - target: {fileID: 6897973825504568527, guid: 9fc6e5e0e85a12d4e847c45b6651adc6,
         type: 3}

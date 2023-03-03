@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using HyperCasual.Core;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace HyperCasual.Runner
 {
@@ -14,22 +15,23 @@ namespace HyperCasual.Runner
         [SerializeField]
         HyperCasualButton m_PlayAgainButton;
         [SerializeField]
-        HyperCasualButton m_GoToMainMenuButton;
-        [SerializeField]
         AbstractGameEvent m_PlayAgainEvent;
         [SerializeField]
         AbstractGameEvent m_GoToMainMenuEvent;
+        [SerializeField] TextMeshProUGUI m_txt_level;
 
         void OnEnable()
         {
             m_PlayAgainButton.AddListener(OnPlayAgainButtonClick);
-            m_GoToMainMenuButton.AddListener(OnGoToMainMenuButtonClick);
+
+            m_txt_level.text = "Level " + (SaveManager.Instance.LevelProgress + 1);
+
+            GameSceneLoad.Instance.SetGameIsPlaying(false);
         }
 
         void OnDisable()
         {
             m_PlayAgainButton.RemoveListener(OnPlayAgainButtonClick);
-            m_GoToMainMenuButton.RemoveListener(OnGoToMainMenuButtonClick);
         }
 
         void OnPlayAgainButtonClick()

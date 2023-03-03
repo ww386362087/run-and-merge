@@ -68,6 +68,8 @@ MonoBehaviour:
   - {fileID: 5177038789345726059}
   m_VFX:
   - {fileID: 1000034760791686809}
+  m_Explosion: {fileID: 344303410371521734, guid: cf02bab2e02a79440b5e9cce3f990fd5,
+    type: 3}
   m_ColliderType: 2
   m_TargetBoxColliderSize: {x: 1.7, y: 1.7, z: 1.7}
   m_TargetSphereColliderRadius: 1.6
@@ -117,14 +119,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000034760791686809}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1021949262770465885}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!23 &7043254882302571139
 MeshRenderer:
   m_ObjectHideFlags: 0

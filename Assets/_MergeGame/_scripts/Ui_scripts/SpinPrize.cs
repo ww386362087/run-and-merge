@@ -181,6 +181,6 @@ public class SpinPrize : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        Advertisements.Instance.ShowRewardedVideo(Complete_ads_video);
+        //Advertisements.Instance.ShowRewardedVideo(Complete_ads_video);
     }
 }

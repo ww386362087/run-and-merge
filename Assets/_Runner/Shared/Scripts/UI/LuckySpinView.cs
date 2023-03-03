@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using HyperCasual.Core;
 using HyperCasual.Runner;
 using UnityEngine;
@@ -21,6 +22,8 @@ namespace HyperCasual.Gameplay
         HyperCasualButton m_ButtonSpinAds;
         [SerializeField]
         GameObject m_Countdown;
+        [SerializeField]
+        GameObject m_ButtonOverlay;
 
         [Header("Event")]
         [SerializeField]
@@ -28,21 +31,36 @@ namespace HyperCasual.Gameplay
         [SerializeField]
         AbstractGameEvent m_CloseViewEvent;
 
-        [Header("Stuff")]
+        [Header("Spin")]
         [SerializeField]
-        GameObject m_PrizeHolder;
+        Transform m_Disk;
         [SerializeField]
         Prize[] m_Prizes;
+        [SerializeField]
         Prize m_SelectedPrize;
 
         [SerializeField]
-        bool m_SpinClockwise = true;
-        const int m_ClockwiseValue = -1;
+        int m_PrizeIndexHistory = 0;
+        [SerializeField]
+        bool m_Spinned = false;
+
+        //
+        int length;
+        float percentage;
+        readonly float offset = -12f / 2; //because art team gave us shit asset.
 
         [Header("Context Menu")]
         [SerializeField]
         float m_DistanceFromCenter = 175f;
         #endregion
+
+        private void Awake()
+        {
+            m_Spinned = false; //To set initial spin values.
+
+            length = m_Prizes.Length;
+            percentage = 360f / length;
+        }
 
         private void OnEnable()
         {
@@ -69,6 +87,7 @@ namespace HyperCasual.Gameplay
             RandomizePrizePool();
             GetSpinPrizes();
             SetupSpinPrizes();
+            m_ButtonOverlay.SetActive(false);
         }
 
         void RandomizePrizePool()
@@ -83,7 +102,7 @@ namespace HyperCasual.Gameplay
         {
             if (m_Prizes == null || m_Prizes.Length == 0)
             {
-                m_Prizes = m_PrizeHolder.GetComponentsInChildren<Prize>();
+                m_Prizes = m_Disk.gameObject.GetComponentsInChildren<Prize>();
             }
         }
 
@@ -98,15 +117,20 @@ namespace HyperCasual.Gameplay
 
         void ResetPointerPosition()
         {
-            var disk = m_PrizeHolder.transform;
-            disk.eulerAngles = new Vector3(0, 0, -11.3f);
+            if (m_Spinned)
+            {
+                var percentage = 360 / m_Prizes.Length;
+                float targetValue = (percentage * m_PrizeIndexHistory) - offset - (percentage / 2);
+                m_Disk.eulerAngles = new Vector3(0, 0, targetValue);
+
+                m_Spinned = false;
+            }
         }
 
         #region On Button Click
         void OnButtonSpinFreeClicked()
         {
-            ResetPointerPosition();
-            Spin();
+            StartCoroutine(Spin());
 
             //ActivateTimerOverlay();
         }
@@ -115,24 +139,41 @@ namespace HyperCasual.Gameplay
         {
             //StartCoroutine(ShowAds()); // Show ads here.
 
-            ResetPointerPosition();
-            Spin();
+            StartCoroutine(Spin());
         }
 
-        void Spin()
+        IEnumerator Spin()
         {
             //Note: the wheel always spin counter-clockwise, figure out a way to spin it clockwise.
+            m_ButtonOverlay.SetActive(true);
+
             m_SpinEvent.Raise();
+            
+            int PrizeIndex = UnityEngine.Random.Range(0, length);
+            float targetValue = 360 * 4 + percentage * (length - m_PrizeIndexHistory) + percentage * PrizeIndex;
+            if (!m_Spinned)
+            {
+                targetValue += percentage / 2;
+            }
+            //float targetValue = (m_Spinned ? (360 * 3 + percentage * (length - m_PrizeIndexHistory)) : (360 * 4)) + percentage * PrizeIndex + percentage*( m_Spinned ? 0 : 1 / 2);
 
-            int PrizeIndex = UnityEngine.Random.Range(0, m_Prizes.Length);
-            int percentage = 360 / m_Prizes.Length;
-            int targetValue = 360 * 4 + percentage * PrizeIndex + percentage / 2;
+            m_Disk.DORotate(new Vector3(0, 0, targetValue), 3f, RotateMode.LocalAxisAdd).SetRelative(true).SetEase(Ease.InOutCubic);
 
-            m_PrizeHolder.transform.DORotate(new Vector3(0, 0, targetValue), 3f, RotateMode.LocalAxisAdd).SetRelative(true).SetEase(Ease.InOutCubic);
-
+            m_PrizeIndexHistory = PrizeIndex;
             m_SelectedPrize = m_Prizes[PrizeIndex];
 
-            Debug.Log("Coins won: " + m_SelectedPrize.Quantity); // Data for MAD <3
+            var oldCurrency = PlayerPrefs.GetInt("Currency");
+            var newCurrency = oldCurrency + m_SelectedPrize.Quantity;
+            PlayerPrefs.SetInt("Currency", newCurrency);
+            //Debug.LogError("vvvvv" + newCurrency);
+
+            if (!m_Spinned)
+                m_Spinned = true;
+
+            //Debug.Log("Coins won: " + m_SelectedPrize.Quantity); // Data for MAD <3
+            yield return new WaitForSeconds(3.5f);
+
+            m_ButtonOverlay.SetActive(false);
         }
 
         void OnButtonCloseClicked()
@@ -148,8 +189,6 @@ namespace HyperCasual.Gameplay
         [ContextMenu("Reorder")]
         void ReOrderItemReward()
         {
-            var offset = (float) -11.3 / 2;
-            var per = 360f / m_Prizes.Length;
             var startAngle = 90f + offset;
 
             for(int i = 0; i < m_Prizes.Length; i++)
@@ -157,9 +196,9 @@ namespace HyperCasual.Gameplay
                 var pos = new Vector2(Mathf.Cos(startAngle*Mathf.Deg2Rad), Mathf.Sin(startAngle * Mathf.Deg2Rad))*m_DistanceFromCenter;
                 m_Prizes[i].transform.localPosition = pos;
                 //Debug.Log(startAngle);
-                startAngle -= per;
+                startAngle -= percentage;
 
-                var z_rotation = per * (m_ClockwiseValue * i) + offset;
+                var z_rotation = percentage * i + offset;
                 m_Prizes[i].transform.localEulerAngles = new Vector3(0, 0, z_rotation);
             }
         }

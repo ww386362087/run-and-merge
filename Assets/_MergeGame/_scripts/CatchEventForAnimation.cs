@@ -26,6 +26,6 @@ public class CatchEventForAnimation : MonoBehaviour
 
     void VFX(float space)
     {
-        monster.SpawnVfx();
+        monster.SpawnVfx(space);
     }
 }

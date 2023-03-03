@@ -149,7 +149,7 @@ public class UiManager : MonoBehaviour
 
     public void btn_retry()
     {
-        Advertisements.Instance.ShowInterstitial();
+        //Advertisements.Instance.ShowInterstitial();
 
         // sound
         SoundManager.instance.Play("button");
@@ -384,7 +384,7 @@ public class UiManager : MonoBehaviour
 
 
         // ads video
-        Advertisements.Instance.ShowRewardedVideo(Complete_ads_video_mosnter);
+        //Advertisements.Instance.ShowRewardedVideo(Complete_ads_video_mosnter);
     }
 
 
@@ -445,7 +445,7 @@ public class UiManager : MonoBehaviour
 
 
         // ads video
-        Advertisements.Instance.ShowRewardedVideo(Complete_ads_video_warrior);
+        //Advertisements.Instance.ShowRewardedVideo(Complete_ads_video_warrior);
         
     }
 

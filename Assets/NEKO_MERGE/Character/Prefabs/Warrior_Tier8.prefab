@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 641726097639908945}
   - component: {fileID: 4402202621447716888}
+  - component: {fileID: 2117276497856540978}
   m_Layer: 0
   m_Name: Warrior_Tier8
   m_TagString: Untagged
@@ -86,6 +87,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &2117276497856540978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264602767951985899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eb5f6d06e3e96340943cb6cc0429027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &592899279456432044
 GameObject:
   m_ObjectHideFlags: 0

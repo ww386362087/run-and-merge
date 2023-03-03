@@ -20,6 +20,7 @@ public class Monster : MonoBehaviour
     GameController game_controller_script;
 
     public TMPro.TextMeshPro text_pref;
+    public ParticleSystem vfx;
 
     public int hit_coin;
     public string current_anim = "_idle";
@@ -136,6 +137,23 @@ public class Monster : MonoBehaviour
         }
     }
 
+    [ContextMenu("FindFfx")]
+    private void FindFfx()
+    {
+        if (vfx == null)
+        {
+            vfx = GetComponentInChildren<ParticleSystem>();
+            vfx.transform.localPosition = new Vector3(0, .45f, 1.45f);
+        }
+    }
+
+    public void SpawnVfx()
+    {
+        var newVFX = Instantiate(vfx, transform);
+        newVFX.transform.localPosition = new Vector3(0, .45f, 1.75f);
+        newVFX?.Play(true);
+    }
+
     public void decrease_health(int nbr)
     {
         health -= nbr;
@@ -180,7 +198,6 @@ public class Monster : MonoBehaviour
         // make animation
         animate_monster(hit);
         print("hit");
-        
         
         do
         {

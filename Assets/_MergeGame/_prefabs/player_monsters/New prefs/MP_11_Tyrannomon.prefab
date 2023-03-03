@@ -346,6 +346,7 @@ MonoBehaviour:
   fight: 0
   is_enemy: 0
   text_pref: {fileID: 0}
+  vfx: {fileID: 3228102444645764881, guid: 972033472a31a0d46a0a84db1f5cba7c, type: 3}
   hit_coin: 750
   current_anim: idle
 --- !u!195 &7067284544494499707

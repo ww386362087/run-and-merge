@@ -227,7 +227,7 @@ namespace HyperCasual.Runner
             block.transform.SetParent(levelGameObject.transform);
             var b = block.AddComponent<BoxCollider>();
             b.isTrigger = true;
-            b.size = new Vector3(levelDefinition.LevelWidth, levelDefinition.LevelLength, 1);
+            b.size = new Vector3(levelDefinition.LevelWidth, 1, levelDefinition.LevelLength);
             block.transform.localPosition = new Vector3(0, -3f, b.size.z / 2);
             block.AddComponent<Obstacle>();
         }

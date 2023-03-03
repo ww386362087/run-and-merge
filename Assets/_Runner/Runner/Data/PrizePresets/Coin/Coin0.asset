@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbc934fb357adf4dad85a8337741395, type: 3}
   m_Name: Coin0
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 49ddda2f30692f749bc3c0a1c1dbe0b6, type: 3}
+  Sprite: {fileID: 21300000, guid: 6241fca4c87747b4d95b06926e17e112, type: 3}
   Quantity: 0

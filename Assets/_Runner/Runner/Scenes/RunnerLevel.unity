@@ -290,21 +290,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MergeGame
       objectReference: {fileID: 0}
-    - target: {fileID: 9160803576491935136, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9160803576491935138, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9160803576608508356, guid: ffe017938ef75e944a4e5d2976c0bc32,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffe017938ef75e944a4e5d2976c0bc32, type: 3}
 --- !u!4 &647894575 stripped

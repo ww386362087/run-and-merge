@@ -134,14 +134,14 @@ public class UiManager : MonoBehaviour
         ProgressionManager.Instance.SetLevel(PlayerPrefs.GetInt(ProgressionManager.Instance.MERGE_LEVEL_PROGRESSION) + 1);
         SequenceManager.Instance.SetStartingLevel(SaveManager.Instance.LevelProgress);
 
-        txt_earning_win.text = "+" + (total_coin_in_level_merge + Inventory.Instance.TempGold) + "M";
+        
         yield return new WaitForSeconds(2.5f);
         winpanel.SetActive(true);
 
         //HyperCasual.Runner.GameManager.Instance.Win();
         //GameSceneLoad.Instance.Action_PrepareNextRunGame();
         ingame.SetActive(false);
-
+        txt_earning_win.text = "+" + (total_coin_in_level_merge + Inventory.Instance.TempGold);
         //Advertisements.Instance.ShowInterstitial();
     }
 

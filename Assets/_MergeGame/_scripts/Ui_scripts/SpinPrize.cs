@@ -72,27 +72,27 @@ public class SpinPrize : MonoBehaviour
 
         if (arrow.localPosition.x >= -450f && arrow.localPosition.x < -290f)
         {
-            coin_text.text = (total_earning * 2) + "M";
+            coin_text.text = (total_earning * 2).ToString() ;
             multi = 2;
         }
         else if (arrow.localPosition.x >= -290f && arrow.localPosition.x < -95f)
         {
-            coin_text.text = (total_earning * 3) + "M";
+            coin_text.text = (total_earning * 3).ToString();
             multi = 3;
         }
         else if (arrow.localPosition.x >= -95f && arrow.localPosition.x < 105f)
         {
-            coin_text.text = (total_earning * 5) + "M";
+            coin_text.text = (total_earning * 5).ToString();
             multi = 5;
         }
         else if (arrow.localPosition.x >= 105f && arrow.localPosition.x < 303f)
         {
-            coin_text.text = (total_earning * 2) + "M";
+            coin_text.text = (total_earning * 2).ToString();
             multi = 2;
         }
         else if (arrow.localPosition.x >= 303f && arrow.localPosition.x < 450f)
         {
-            coin_text.text = (total_earning * 3) + "M";
+            coin_text.text = (total_earning * 3).ToString();
             multi = 3;
         }
     }

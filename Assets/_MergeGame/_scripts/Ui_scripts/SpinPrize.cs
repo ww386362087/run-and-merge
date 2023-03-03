@@ -23,9 +23,14 @@ public class SpinPrize : MonoBehaviour
     void Start()
     {
         direction = Vector2.right;
-
+       
         // active button no thanks
         StartCoroutine(no_thanks_wait());
+    }
+
+    public void OnEnable()
+    {
+        AdsMAXManager.Instance.ShowInterstitial();
     }
 
     // Update is called once per frame
@@ -142,8 +147,8 @@ public class SpinPrize : MonoBehaviour
         yield return null;
         yield return null;
 
-        if(_isAds)
-            AdsMAXManager.Instance.ShowInterstitial();
+        //if(_isAds)
+            
 
         GameSceneLoad.Instance.RestartMergeGameObj();
         

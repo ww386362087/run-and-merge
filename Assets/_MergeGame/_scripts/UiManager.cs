@@ -358,7 +358,7 @@ public class UiManager : MonoBehaviour
             {
                 // active button ads video
                 btn_monster_ads.SetActive(true);
-                btn_monster_.SetActive(false);
+                //btn_monster_.SetActive(false);
             }
 
             // check if coins not enough warrior
@@ -366,7 +366,7 @@ public class UiManager : MonoBehaviour
             {
                 // active button ads video
                 btn_warrior_ads.SetActive(true);
-                btn_warrior_.SetActive(false);
+               // btn_warrior_.SetActive(false);
             }
 
         }
@@ -421,7 +421,7 @@ public class UiManager : MonoBehaviour
             {
                 // active button ads video
                 btn_warrior_ads.SetActive(true);
-                btn_warrior_.SetActive(false);
+                //btn_warrior_.SetActive(false);
             }
 
             // check if coins not enough monster
@@ -429,7 +429,7 @@ public class UiManager : MonoBehaviour
             {
                 // active button ads video
                 btn_monster_ads.SetActive(true);
-                btn_monster_.SetActive(false);
+                //btn_monster_.SetActive(false);
             }
         }
         
@@ -484,7 +484,7 @@ public class UiManager : MonoBehaviour
         {
             // active button ads video
             btn_monster_ads.SetActive(true);
-            btn_monster_.SetActive(false);
+            //btn_monster_.SetActive(false);
         }
 
         //warrior
@@ -497,7 +497,7 @@ public class UiManager : MonoBehaviour
         {
             // active button ads video
             btn_warrior_ads.SetActive(true);
-            btn_warrior_.SetActive(false);
+            //btn_warrior_.SetActive(false);
         }
     }
 

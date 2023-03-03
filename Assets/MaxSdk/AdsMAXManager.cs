@@ -19,6 +19,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
     private int interstitialRetryAttempt;
     private int rewardedRetryAttempt;
     private int rewardedInterstitialRetryAttempt;
+    private int countAdsInter=0;
 
     protected override void Awake()
     {
@@ -28,7 +29,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
 
     void Start()
     {
-
+        countAdsInter = -1;
         MaxSdkCallbacks.OnSdkInitializedEvent += sdkConfiguration =>
         {
             // AppLovin SDK is initialized, configure and start loading ads.
@@ -88,6 +89,11 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
 
     public void ShowInterstitial()
     {
+        countAdsInter++;
+        Debug.LogError(countAdsInter);
+        if (countAdsInter % 3 != 0)
+            return;
+        
         if (MaxSdk.IsInterstitialReady(InterstitialAdUnitId))
         {
             MaxSdk.ShowInterstitial(InterstitialAdUnitId);

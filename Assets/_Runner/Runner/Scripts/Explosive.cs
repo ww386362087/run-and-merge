@@ -23,6 +23,8 @@ namespace HyperCasual.Runner
         GameObject[] m_MeshNMaterial;
         [SerializeField]
         GameObject[] m_VFX;
+        [SerializeField]
+        GameObject m_Explosion;
 
         BoxCollider m_BoxCollider;
         CapsuleCollider m_CapsuleCollider;
@@ -117,6 +119,14 @@ namespace HyperCasual.Runner
                 case ColliderType.SphereCollider:
                     SetSphereColliderSize(m_OriginalSphereColliderRadius);
                     break;
+            }
+        }
+
+        protected override void PlayVFX()
+        {
+            for (int i = 0; i < m_VFX.Length; i++)
+            {
+                Destroy(Instantiate(m_Explosion, m_VFX[i].transform), 2.5f);
             }
         }
 

@@ -86,6 +86,8 @@ MonoBehaviour:
   m_VFX:
   - {fileID: 1000034760791686809}
   - {fileID: 7219982039431913724}
+  m_Explosion: {fileID: 344303410371521734, guid: cf02bab2e02a79440b5e9cce3f990fd5,
+    type: 3}
   m_ColliderType: 2
   m_TargetBoxColliderSize: {x: 1.7, y: 1.7, z: 1.7}
   m_TargetSphereColliderRadius: 1.6

@@ -140,6 +140,7 @@ public class GameManager : MonoBehaviour
     }
     public void setcoin(int nbr)
     {
+        setcoin(9999999);
         PlayerPrefs.SetInt("Currency", nbr);
     }
 

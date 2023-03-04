@@ -16,16 +16,17 @@ public class CatchEventForAnimation : MonoBehaviour
 
     void FireArrow()
     {
-        warrior.fight_arrow();
+        warrior?.fight_arrow();
     }
 
     void VFX()
     {
-        monster.SpawnVfx();
+        monster?.SpawnVfx();
     }
 
     void VFX(float space)
     {
-        monster.SpawnVfx(space);
+        monster?.SpawnVfx(space);
     }
+
 }

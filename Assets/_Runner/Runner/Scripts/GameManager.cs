@@ -167,8 +167,7 @@ namespace HyperCasual.Runner
             for (int i = 0; i < levelDefinition.Spawnables.Length; i++)
             {
                 LevelDefinition.SpawnableObject spawnableObject = levelDefinition.Spawnables[i];
-
-                if (spawnableObject.SpawnablePrefab == null)
+                if (spawnableObject.SpawnablePrefab == null || spawnableObject.SpawnablePrefab.name.Contains("Key"))
                 {
                     continue;
                 }

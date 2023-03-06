@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameController : Singleton<GameController> , IGameEventListener
 {
@@ -71,6 +72,13 @@ public class GameController : Singleton<GameController> , IGameEventListener
 
         if (game_play)
             return;
+
+        if (Input.touchCount > 0 && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+        {
+            // Block the touch event
+            return;
+        }
+
 
         // test add monster
         //if (Input.GetKeyDown(KeyCode.A))

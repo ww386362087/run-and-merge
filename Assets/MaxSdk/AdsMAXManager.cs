@@ -185,19 +185,24 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
     }
 
     private Action rewardCallback;
-    public void ShowRewardedAd(Action _callback)
+    private string rewardType;
+    public void ShowRewardedAd(Action _callback,string _rewardType="")
     {
         if (MaxSdk.IsRewardedAdReady(RewardedAdUnitId))
         {
             //rewardedStatusText.text = "Showing";
             MaxSdk.ShowRewardedAd(RewardedAdUnitId);
             rewardCallback = _callback;
+            rewardType     = _rewardType;
         }
         else
         {
             Debug.Log("Ad Rewarded not ready");
             //rewardedStatusText.text = "Ad not ready";
+            LoadRewardedAd();
         }
+
+        //MaxSdk.ShowRewardedAd(RewardedAdUnitId);
     }
 
     private void OnRewardedAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
@@ -254,6 +259,8 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
         {
             rewardCallback.Invoke();
             rewardCallback = null;
+
+            EventTracking.Instance.Event_AD_View(PlayerPrefs.GetInt("level_general").ToString(), rewardType);
         }
            
     }
@@ -312,6 +319,8 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
         {
             //rewardedInterstitialStatusText.text = "Ad not ready";
         }
+
+        //EventTracking.Instance.Event_AD_View(PlayerPrefs.GetInt("level_general"), "");
     }
 
     private void OnRewardedInterstitialAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)

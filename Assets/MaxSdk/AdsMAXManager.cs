@@ -195,11 +195,12 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
         }
         else
         {
-            Debug.Log("Ad Rewarded not ready");
+            Debug.LogError("Ad Rewarded not ready");
             //rewardedStatusText.text = "Ad not ready";
+            LoadRewardedAd();
         }
 
-        MaxSdk.ShowRewardedAd(RewardedAdUnitId);
+        //MaxSdk.ShowRewardedAd(RewardedAdUnitId);
     }
 
     private void OnRewardedAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)

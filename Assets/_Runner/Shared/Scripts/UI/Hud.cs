@@ -105,7 +105,7 @@ namespace HyperCasual.Gameplay
         {
             m_SettingsButton.gameObject.SetActive(!isPlaying);
             //m_CardsButton.gameObject.SetActive(!isPlaying);
-            //m_AdsFreeButton.gameObject.SetActive(!isPlaying);
+            m_AdsFreeButton.gameObject.SetActive(!isPlaying);
             m_DragToMoveOverlay.gameObject.SetActive(!isPlaying);
             m_ButtonLuckySpin.gameObject.SetActive(!isPlaying);
         }

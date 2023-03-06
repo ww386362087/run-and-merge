@@ -17,6 +17,9 @@ namespace HyperCasual.Runner
         const string k_GateTag = "Gate";
 
         [SerializeField]
+        SoundID m_Sound = SoundID.None;
+
+        [SerializeField]
         GateType m_GateType;
         [SerializeField]
         float m_Value;
@@ -105,6 +108,8 @@ namespace HyperCasual.Runner
         {
             if (col.CompareTag(k_PlayerTag) && !m_Applied)
             {
+                AudioManager.Instance.PlayEffect(m_Sound);
+
                 ActivateGate();
             }
 

@@ -78,6 +78,7 @@ namespace HyperCasual.Gameplay
 
         void OnEnable()
         {
+            m_AdsFreeButton.AddListener(OnAdsFreeButtonClick);
             m_ButtonLuckySpin.AddListener(OnLuckySpinButtonClick);
             btn_startPlaying.SetUpOneEvent(SetPlaying);
             SetUI(false);
@@ -87,12 +88,18 @@ namespace HyperCasual.Gameplay
 
         void OnDisable()
         {
-            //m_ButtonLuckySpin.RemoveListener(OnLuckySpinButtonClick);
+            m_AdsFreeButton.RemoveListener(OnAdsFreeButtonClick);
+            m_ButtonLuckySpin.RemoveListener(OnLuckySpinButtonClick);
         }
 
         public void OnLuckySpinButtonClick()
         {
             UIManager.Instance.Show<LuckySpinView>();
+        }
+
+        public void OnAdsFreeButtonClick()
+        {
+            UIManager.Instance.Show<AdsFreeView>();
         }
 
         void SetPlaying()
@@ -105,7 +112,7 @@ namespace HyperCasual.Gameplay
         {
             m_SettingsButton.gameObject.SetActive(!isPlaying);
             //m_CardsButton.gameObject.SetActive(!isPlaying);
-            //m_AdsFreeButton.gameObject.SetActive(!isPlaying);
+            m_AdsFreeButton.gameObject.SetActive(!isPlaying);
             m_DragToMoveOverlay.gameObject.SetActive(!isPlaying);
             m_ButtonLuckySpin.gameObject.SetActive(!isPlaying);
         }

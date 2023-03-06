@@ -8,7 +8,11 @@ using UnityEngine;
 
 public class CharacterEnemySpawnable : Spawnable, ISwitchable
 {
-    [SerializeField]private GameObject enemy;
+    [SerializeField]
+    SoundID m_Sound = SoundID.None;
+
+    [SerializeField]
+    GameObject enemy;
 
     bool m_active = false;
 
@@ -22,6 +26,7 @@ public class CharacterEnemySpawnable : Spawnable, ISwitchable
         character.transform.SetParent(null);
         character.transform.DOMove(enemy.transform.position, .25f).OnComplete(() =>
         {
+            AudioManager.Instance.PlayEffect(m_Sound);
             Destroy(character);
             Destroy(gameObject);
         }).SetEase(Ease.Linear);

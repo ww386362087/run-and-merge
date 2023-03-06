@@ -22,9 +22,7 @@ namespace HyperCasual.Runner
         [SerializeField]
         GameObject[] m_MeshNMaterial;
         [SerializeField]
-        GameObject[] m_VFX;
-        [SerializeField]
-        GameObject m_Explosion;
+        GameObject[] m_VfxHolder;
 
         BoxCollider m_BoxCollider;
         CapsuleCollider m_CapsuleCollider;
@@ -122,11 +120,11 @@ namespace HyperCasual.Runner
             }
         }
 
-        protected override void PlayVFX()
+        public override void PlayVFX(Vector3 ImpactPosition, GameObject VFX)
         {
-            for (int i = 0; i < m_VFX.Length; i++)
+            for (int i = 0; i < m_VfxHolder.Length; i++)
             {
-                Destroy(Instantiate(m_Explosion, m_VFX[i].transform), 2.5f);
+                Destroy(Instantiate(VFX, m_VfxHolder[i].transform), 2.5f);
             }
         }
 
@@ -206,7 +204,7 @@ namespace HyperCasual.Runner
             for (var i = 0; i < m_MeshNMaterial.Length; i++)
             {
                 m_MeshNMaterial[i].SetActive(_mat);
-                m_VFX[i].SetActive(_vfx);
+                m_VfxHolder[i].SetActive(_vfx);
             }
         }
     }

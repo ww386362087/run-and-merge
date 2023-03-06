@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SnapToGrid: 0
-  m_Sound: 0
+  m_Sound: 7
+  m_VFX: {fileID: 7212495880214250120, guid: 2b8318759d8ecf048aeaf1da4aa98482, type: 3}
   m_Event: {fileID: 11400000, guid: ae8554b39378aef44923581b03f32cdf, type: 2}
 --- !u!54 &-764291989977419636
 Rigidbody:

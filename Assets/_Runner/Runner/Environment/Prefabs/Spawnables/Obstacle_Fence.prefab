@@ -114,8 +114,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1021949262770465885}
-  - component: {fileID: 915978298818265044}
   - component: {fileID: 3528223521238185579}
+  - component: {fileID: 915978298818265044}
   m_Layer: 0
   m_Name: Obstacle_Fence
   m_TagString: Untagged
@@ -144,21 +144,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &915978298818265044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 314387739941697089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3c2e46c573954e7aaeab312afe10062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SnapToGrid: 0
-  m_Sound: 0
-  m_Event: {fileID: 11400000, guid: 24de58d8b3cc902489e444100225168c, type: 2}
 --- !u!65 &3528223521238185579
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -172,6 +157,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 0.2}
   m_Center: {x: 0, y: 0.5, z: -0.697}
+--- !u!114 &915978298818265044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314387739941697089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c2e46c573954e7aaeab312afe10062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SnapToGrid: 0
+  m_Sound: 7
+  m_VFX: {fileID: 7212495880214250120, guid: 2b8318759d8ecf048aeaf1da4aa98482, type: 3}
+  m_Event: {fileID: 11400000, guid: 24de58d8b3cc902489e444100225168c, type: 2}
 --- !u!1 &1328956948824176628
 GameObject:
   m_ObjectHideFlags: 0

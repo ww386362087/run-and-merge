@@ -308,10 +308,14 @@ MonoBehaviour:
   m_ButtonClose: {fileID: 5094789054257899381}
   m_ButtonSpinFree: {fileID: 5562239281461460595}
   m_ButtonSpinAds: {fileID: 4935703554467890947}
-  m_Countdown: {fileID: 3222126128127731615}
+  m_CountdownOverlay: {fileID: 3222126128127731615}
+  m_CountdownText: {fileID: 346322750365895028}
   m_ButtonOverlay: {fileID: 2164173307190998440}
   m_SpinEvent: {fileID: 11400000, guid: b892538bd49f3487bbedf5106c094739, type: 2}
   m_CloseViewEvent: {fileID: 11400000, guid: 58f804667e2cb4eb789b6d2dfb3c4ce3, type: 2}
+  m_Minutes: 0
+  m_Seconds: 20
+  m_CountingDown: 0
   m_Disk: {fileID: 952003250050276182}
   m_Prizes:
   - {fileID: 7229450540149233137}
@@ -415,14 +419,13 @@ GameObject:
   - component: {fileID: 8576468952148853255}
   - component: {fileID: 8181710349516862855}
   - component: {fileID: 333598949423655699}
-  - component: {fileID: 3946952529313859067}
   m_Layer: 5
   m_Name: Countdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8576468952148853255
 RectTransform:
   m_ObjectHideFlags: 0
@@ -482,22 +485,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3946952529313859067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3222126128127731615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98c1c412970c37c48aa1f85f3dd04fca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Minutes: 10
-  m_Seconds: 0
-  m_CountdownText: {fileID: 346322750365895028}
-  m_IsCountingDown: 0
 --- !u!1 &4631042759142957845
 GameObject:
   m_ObjectHideFlags: 0

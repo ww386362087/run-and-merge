@@ -358,7 +358,7 @@ public class UiManager : MonoBehaviour
             {
                 // active button ads video
                 btn_monster_ads.SetActive(true);
-                btn_monster_.SetActive(false);
+                //btn_monster_.SetActive(false);
             }
 
             // check if coins not enough warrior
@@ -366,7 +366,7 @@ public class UiManager : MonoBehaviour
             {
                 // active button ads video
                 btn_warrior_ads.SetActive(true);
-                btn_warrior_.SetActive(false);
+               // btn_warrior_.SetActive(false);
             }
 
         }
@@ -385,6 +385,7 @@ public class UiManager : MonoBehaviour
 
         // ads video
         //Advertisements.Instance.ShowRewardedVideo(Complete_ads_video_mosnter);
+        AdsMAXManager.Instance.ShowRewardedAd(() => Complete_ads_video_mosnter(true, ""));
     }
 
 
@@ -420,7 +421,7 @@ public class UiManager : MonoBehaviour
             {
                 // active button ads video
                 btn_warrior_ads.SetActive(true);
-                btn_warrior_.SetActive(false);
+                //btn_warrior_.SetActive(false);
             }
 
             // check if coins not enough monster
@@ -428,7 +429,7 @@ public class UiManager : MonoBehaviour
             {
                 // active button ads video
                 btn_monster_ads.SetActive(true);
-                btn_monster_.SetActive(false);
+                //btn_monster_.SetActive(false);
             }
         }
         
@@ -446,7 +447,7 @@ public class UiManager : MonoBehaviour
 
         // ads video
         //Advertisements.Instance.ShowRewardedVideo(Complete_ads_video_warrior);
-        
+        AdsMAXManager.Instance.ShowRewardedAd(()=>Complete_ads_video_warrior(true,""));
     }
 
     // button fight
@@ -483,7 +484,7 @@ public class UiManager : MonoBehaviour
         {
             // active button ads video
             btn_monster_ads.SetActive(true);
-            btn_monster_.SetActive(false);
+            //btn_monster_.SetActive(false);
         }
 
         //warrior
@@ -496,7 +497,7 @@ public class UiManager : MonoBehaviour
         {
             // active button ads video
             btn_warrior_ads.SetActive(true);
-            btn_warrior_.SetActive(false);
+            //btn_warrior_.SetActive(false);
         }
     }
 

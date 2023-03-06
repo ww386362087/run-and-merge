@@ -20,3 +20,4 @@ MonoBehaviour:
     type: 3}
   boardBattleScene: {fileID: 2080470991657839841, guid: 1856790a226594947946642cfe201f6c,
     type: 3}
+  colorFog: {r: 0.98039216, g: 0.5372549, b: 0.12156863, a: 1}

@@ -2,7 +2,7 @@
 using HyperCasual.Gameplay;
 using System.Collections;
 using System.Collections.Generic;
-
+using DG.Tweening;
 using UnityEngine;
 
 public class GameController : Singleton<GameController> , IGameEventListener
@@ -39,6 +39,9 @@ public class GameController : Singleton<GameController> , IGameEventListener
         LoadNextLevel();
         
         evt.AddListener(this);
+
+        DOVirtual.DelayedCall(2, () => AdsMAXManager.Instance.ShowBanner()); 
+        
     }
 
     private void OnDestroy()

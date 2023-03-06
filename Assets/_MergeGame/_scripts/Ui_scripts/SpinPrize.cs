@@ -23,9 +23,14 @@ public class SpinPrize : MonoBehaviour
     void Start()
     {
         direction = Vector2.right;
-
+       
         // active button no thanks
         StartCoroutine(no_thanks_wait());
+    }
+
+    public void OnEnable()
+    {
+        AdsMAXManager.Instance.ShowInterstitial();
     }
 
     // Update is called once per frame
@@ -104,7 +109,7 @@ public class SpinPrize : MonoBehaviour
         active = false;
         // ads video
 
-        StartCoroutine(wait_ads_video());
+        AdsMAXManager.Instance.ShowRewardedAd(() => Complete_ads_video(true,""));
     }
 
     public void button_NoThanks(bool isWon)
@@ -127,7 +132,7 @@ public class SpinPrize : MonoBehaviour
         StartCoroutine(btn_NoThanksOnClick(isWon));
     }
 
-    IEnumerator btn_NoThanksOnClick(bool isWon)
+    IEnumerator btn_NoThanksOnClick(bool isWon,bool _isAds=true)
     {
         if (isWon)
         {
@@ -142,7 +147,11 @@ public class SpinPrize : MonoBehaviour
         yield return null;
         yield return null;
 
+        //if(_isAds)
+            
+
         GameSceneLoad.Instance.RestartMergeGameObj();
+        
 
         //SequenceManager.Instance.SetStartingLevel(SaveManager.Instance.LevelProgress);
 
@@ -167,20 +176,23 @@ public class SpinPrize : MonoBehaviour
 
             UiManager.instance.increase_money(tt);
 
-            // next level
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+          
+            //// next level
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         else
         {
             // no reward
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
+        StartCoroutine(btn_NoThanksOnClick(true,false));
     }
 
     IEnumerator wait_ads_video()
     {
         yield return new WaitForSeconds(1f);
-
+        Complete_ads_video(true, "");
         //Advertisements.Instance.ShowRewardedVideo(Complete_ads_video);
     }
 }

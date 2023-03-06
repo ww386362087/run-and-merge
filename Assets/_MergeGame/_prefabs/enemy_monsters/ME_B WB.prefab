@@ -242,8 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d0e316438dd1e40ac3aef787e6833c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 17000
-  health: 120000
+  damage: 5400
+  health: 54000
   max_health: 0
   canvas_parrent: {fileID: 6897973825454772837}
   bar_field: {fileID: 6897973825630127662}
@@ -270,7 +270,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.5
-  m_Speed: 3
+  m_Speed: 10
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 180

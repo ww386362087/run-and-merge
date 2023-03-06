@@ -3,6 +3,8 @@ using System.Collections;
 using HyperCasual.Core;
 using HyperCasual.Runner;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using DG.Tweening;
 
 namespace HyperCasual.Gameplay
@@ -21,7 +23,9 @@ namespace HyperCasual.Gameplay
         [SerializeField]
         HyperCasualButton m_ButtonSpinAds;
         [SerializeField]
-        GameObject m_Countdown;
+        GameObject m_CountdownOverlay;
+        [SerializeField]
+        TextMeshProUGUI m_CountdownText;
         [SerializeField]
         GameObject m_ButtonOverlay;
 
@@ -30,6 +34,11 @@ namespace HyperCasual.Gameplay
         AbstractGameEvent m_SpinEvent;
         [SerializeField]
         AbstractGameEvent m_CloseViewEvent;
+
+        [Header("Countdown")]
+        TimeSpan m_CountdownTime = new TimeSpan(0, 0, 10, 0);
+        [SerializeField]
+        bool m_CountingDown = false;
 
         [Header("Spin")]
         [SerializeField]
@@ -54,12 +63,28 @@ namespace HyperCasual.Gameplay
         float m_DistanceFromCenter = 175f;
         #endregion
 
+        #region Main
         private void Awake()
         {
-            m_Spinned = false; //To set initial spin values.
+            SetupCountdown();
+            SetupSpin();
+        }
 
-            length = m_Prizes.Length;
-            percentage = 360f / length;
+        private void OnApplicationPause()
+        {
+            SaveCountdownTimeLeft();
+        }
+
+#if UNITY_EDITOR
+        private void OnApplicationQuit()
+        {
+            SaveCountdownTimeLeft();
+        }
+#endif
+
+        private void Update()
+        {
+            DisplayCountdown();
         }
 
         private void OnEnable()
@@ -82,12 +107,58 @@ namespace HyperCasual.Gameplay
             m_ButtonSpinAds.RemoveListener(OnButtonSpinAdsClicked);
         }
 
+        //=========================================================================================================
+        void SetupCountdown()
+        {
+            // Continue countdown if available.
+            if (PlayerPrefs.HasKey("CountdownTime"))
+            {
+                m_CountingDown = true;
+
+                var savedTime = PlayerPrefs.GetInt("CountdownTime");
+                var timer = new TimeSpan(0, 0, (int)savedTime / 60, savedTime % 60);
+                TimerCountdown.StartCountDown(timer);
+            }
+        }
+
+        void SetupSpin()
+        {
+            m_Spinned = false; //To set initial spin values.
+            length = m_Prizes.Length;
+            percentage = 360f / length;
+        }
+
+        void SaveCountdownTimeLeft()
+        {
+            var countdownTime = (int)TimerCountdown.TimeLeft.TotalSeconds;
+            if (countdownTime > 0)
+            {
+                PlayerPrefs.SetInt("CountdownTime", countdownTime);
+            }
+        }
+
+        void DisplayCountdown()
+        {
+            if (m_CountingDown)
+            {
+                var outputString = $"{(int)TimerCountdown.TimeLeft.TotalMinutes}:{TimerCountdown.TimeLeft.Seconds:00}";
+                m_CountdownText.text = outputString;
+
+                if (TimerCountdown.TimeLeft == TimeSpan.Zero)
+                {
+                    m_CountingDown = false;
+                    m_CountdownOverlay.SetActive(m_CountingDown);
+                    PlayerPrefs.DeleteKey("CountdownTime");
+                }
+            }
+        }
+
         void ResetLuckySpin()
         {
             RandomizePrizePool();
             GetSpinPrizes();
             SetupSpinPrizes();
-            m_ButtonOverlay.SetActive(false);
+            SetButtonOverlayState(false);
         }
 
         void RandomizePrizePool()
@@ -126,54 +197,19 @@ namespace HyperCasual.Gameplay
                 m_Spinned = false;
             }
         }
+        #endregion
 
         #region On Button Click
         void OnButtonSpinFreeClicked()
         {
             StartCoroutine(Spin());
-
-            //ActivateTimerOverlay();
+            ActivateTimerOverlay();
         }
 
         void OnButtonSpinAdsClicked()
         {
             //StartCoroutine(ShowAds()); // Show ads here.
-
             StartCoroutine(Spin());
-        }
-
-        IEnumerator Spin()
-        {
-            //Note: the wheel always spin counter-clockwise, figure out a way to spin it clockwise.
-            m_ButtonOverlay.SetActive(true);
-
-            m_SpinEvent.Raise();
-            
-            int PrizeIndex = UnityEngine.Random.Range(0, length);
-            float targetValue = 360 * 4 + percentage * (length - m_PrizeIndexHistory) + percentage * PrizeIndex;
-            if (!m_Spinned)
-            {
-                targetValue += percentage / 2;
-            }
-            //float targetValue = (m_Spinned ? (360 * 3 + percentage * (length - m_PrizeIndexHistory)) : (360 * 4)) + percentage * PrizeIndex + percentage*( m_Spinned ? 0 : 1 / 2);
-
-            m_Disk.DORotate(new Vector3(0, 0, targetValue), 3f, RotateMode.LocalAxisAdd).SetRelative(true).SetEase(Ease.InOutCubic);
-
-            m_PrizeIndexHistory = PrizeIndex;
-            m_SelectedPrize = m_Prizes[PrizeIndex];
-
-            var oldCurrency = PlayerPrefs.GetInt("Currency");
-            var newCurrency = oldCurrency + m_SelectedPrize.Quantity;
-            PlayerPrefs.SetInt("Currency", newCurrency);
-            //Debug.LogError("vvvvv" + newCurrency);
-
-            if (!m_Spinned)
-                m_Spinned = true;
-
-            //Debug.Log("Coins won: " + m_SelectedPrize.Quantity); // Data for MAD <3
-            yield return new WaitForSeconds(3.5f);
-
-            m_ButtonOverlay.SetActive(false);
         }
 
         void OnButtonCloseClicked()
@@ -182,6 +218,60 @@ namespace HyperCasual.Gameplay
             UIManager.Instance.ClearHistory();
             m_CloseViewEvent.Raise();
             UIManager.Instance.Show<Hud>();
+        }
+
+        //=========================================================================================================
+        IEnumerator Spin()
+        {
+            //Note: the wheel always spin counter-clockwise, figure out a way to spin it clockwise.
+            SetButtonOverlayState(true);
+
+            m_SpinEvent.Raise();
+
+            RotateDisk();
+            AddToInventory();
+            if (!m_Spinned)
+                m_Spinned = true;
+
+            yield return new WaitForSeconds(3.5f);
+            SetButtonOverlayState(false);
+        }
+
+        void RotateDisk()
+        {
+            // Rotate.
+            int PrizeIndex = UnityEngine.Random.Range(0, length);
+            float targetValue = 360 * 4 + percentage * (length - m_PrizeIndexHistory) + percentage * PrizeIndex;
+            if (!m_Spinned)
+            {
+                targetValue += percentage / 2;
+            }
+            m_Disk.DORotate(new Vector3(0, 0, targetValue), 3f, RotateMode.LocalAxisAdd).SetRelative(true).SetEase(Ease.InOutCubic);
+
+            // Save values.
+            m_PrizeIndexHistory = PrizeIndex;
+            m_SelectedPrize = m_Prizes[PrizeIndex];
+
+            //Debug.Log("Coins won: " + m_SelectedPrize.Quantity); // Data for MAD <3
+        }
+
+        void AddToInventory()
+        {
+            var oldCurrency = PlayerPrefs.GetInt("Currency");
+            var newCurrency = oldCurrency + m_SelectedPrize.Quantity;
+            PlayerPrefs.SetInt("Currency", newCurrency);
+        }
+
+        void ActivateTimerOverlay()
+        {
+            m_CountdownOverlay.SetActive(true);
+            TimerCountdown.StartCountDown(m_CountdownTime);
+            m_CountingDown = true;
+        }
+
+        void SetButtonOverlayState(bool _state)
+        {
+            m_ButtonOverlay.SetActive(_state);
         }
         #endregion
 

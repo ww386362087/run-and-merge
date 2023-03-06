@@ -349,7 +349,7 @@ public class UiManager : MonoBehaviour
 
             // increase actual coin warrior
             GameManager.instance.set_actual_coin_monster(GameManager.instance.get_actual_coin_monster() *2);
-
+            Debug.Log("Coin mua moi: " + GameManager.instance.get_actual_coin_monster());
             // show text coin monster
             txt_coin_monster.text = GameManager.instance.get_actual_coin_monster().ToString();
 

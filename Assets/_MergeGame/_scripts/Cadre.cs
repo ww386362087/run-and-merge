@@ -501,7 +501,7 @@ public class Cadre : MonoBehaviour
 
             hide_all_warriors();
             list_warriors[num].SetActive(true);
-            active_warrior = list_warriors[1].GetComponent<Warrior>();
+            active_warrior = list_warriors[num].GetComponent<Warrior>();
             warrior_type = tp+1;
             PlayAnimation(MERGE);
 

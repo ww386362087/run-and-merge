@@ -78,7 +78,7 @@ namespace HyperCasual.Gameplay
 
         void OnEnable()
         {
-            //m_ButtonLuckySpin.AddListener(OnLuckySpinButtonClick);
+            m_ButtonLuckySpin.AddListener(OnLuckySpinButtonClick);
             btn_startPlaying.SetUpOneEvent(SetPlaying);
             SetUI(false);
             m_LevelText.text = "Level " + (SaveManager.Instance.LevelProgress + 1);
@@ -107,7 +107,7 @@ namespace HyperCasual.Gameplay
             //m_CardsButton.gameObject.SetActive(!isPlaying);
             //m_AdsFreeButton.gameObject.SetActive(!isPlaying);
             m_DragToMoveOverlay.gameObject.SetActive(!isPlaying);
-            //m_ButtonLuckySpin.gameObject.SetActive(!isPlaying);
+            m_ButtonLuckySpin.gameObject.SetActive(!isPlaying);
         }
 
         public void SetNumberOfChar(int num)

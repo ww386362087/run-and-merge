@@ -27,7 +27,7 @@ public class EventTracking : Singleton<EventTracking>
 
         //#elif UNITY_ANDROID
 
-        AppsFlyer.setAppInviteOneLinkID("BTx32xGv4UiaS6gNYsf5Gj");
+        //AppsFlyer.setAppInviteOneLinkID("BTx32xGv4UiaS6gNYsf5Gj");
 
         //AppsFlyer.setAppID ("YOUR_APP_ID"); 
 

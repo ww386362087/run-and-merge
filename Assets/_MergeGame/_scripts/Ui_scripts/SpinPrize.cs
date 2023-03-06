@@ -109,7 +109,7 @@ public class SpinPrize : MonoBehaviour
         active = false;
         // ads video
 
-        AdsMAXManager.Instance.ShowRewardedAd(() => Complete_ads_video(true,""));
+        AdsMAXManager.Instance.ShowRewardedAd(() => Complete_ads_video(true,""),"spin_prize");
     }
 
     public void button_NoThanks(bool isWon)

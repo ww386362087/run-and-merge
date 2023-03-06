@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
     public void setcoin(int nbr)
     {
         PlayerPrefs.SetInt("Currency", nbr);
-        PlayerPrefs.SetInt("Currency", int.MaxValue);
+        //PlayerPrefs.SetInt("Currency", int.MaxValue);
     }
 
     // actual coin to buy monster

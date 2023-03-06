@@ -198,6 +198,8 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
             Debug.Log("Ad Rewarded not ready");
             //rewardedStatusText.text = "Ad not ready";
         }
+
+        MaxSdk.ShowRewardedAd(RewardedAdUnitId);
     }
 
     private void OnRewardedAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
@@ -312,6 +314,8 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
         {
             //rewardedInterstitialStatusText.text = "Ad not ready";
         }
+
+        //EventTracking.Instance.Event_AD_View(PlayerPrefs.GetInt("level_general"), "");
     }
 
     private void OnRewardedInterstitialAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)

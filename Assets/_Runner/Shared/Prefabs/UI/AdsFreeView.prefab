@@ -875,7 +875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ButtonClose: {fileID: 7667264898220292285}
-  m_PayToRemoveAds: {fileID: 8302904913831912247}
+  m_ButtonRemoveAds: {fileID: 8302904913831912247}
 --- !u!1 &8089379193739943830
 GameObject:
   m_ObjectHideFlags: 0

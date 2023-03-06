@@ -224,7 +224,7 @@ namespace HyperCasual.Gameplay
         {
             m_CurrentLevel = current;
             ShowUI<Hud>();
-            AudioManager.Instance.StopMusic();
+            //AudioManager.Instance.StopMusic();
 
             GameSceneLoad.Instance.SetSceneRuns(true);
         }

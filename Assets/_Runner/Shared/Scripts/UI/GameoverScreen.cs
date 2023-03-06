@@ -25,7 +25,7 @@ namespace HyperCasual.Runner
             m_PlayAgainButton.AddListener(OnPlayAgainButtonClick);
 
             m_txt_level.text = "Level " + (SaveManager.Instance.LevelProgress + 1);
-
+            AudioManager.Instance.StopMusic();
             GameSceneLoad.Instance.SetGameIsPlaying(false);
         }
 
@@ -37,6 +37,7 @@ namespace HyperCasual.Runner
         void OnPlayAgainButtonClick()
         {
             m_PlayAgainEvent.Raise();
+            AudioManager.Instance.PlayMusic(SoundID.MenuMusic);
         }
 
         void OnGoToMainMenuButtonClick()

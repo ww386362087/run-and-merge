@@ -90,7 +90,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
     public void ShowInterstitial()
     {
         countAdsInter++;
-        Debug.LogError(countAdsInter);
+        //Debug.LogError(countAdsInter);
         if (countAdsInter % 3 != 0)
             return;
         

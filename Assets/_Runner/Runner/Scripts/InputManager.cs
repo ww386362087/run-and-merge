@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using UnityEngine.SceneManagement;
 
 namespace HyperCasual.Runner
 {
@@ -48,9 +48,17 @@ namespace HyperCasual.Runner
 
         void Update()
         {
-            if (PlayerController.Instance == null || !GameSceneLoad.Instance.isPlaying)
+            if (PlayerController.Instance == null)
             {
                 return;
+            }
+
+            if (SceneManager.GetActiveScene().name != "RunnerLevelEditor")
+            {
+                if (!GameSceneLoad.Instance.isPlaying)
+                {
+                    return;
+                }
             }
 
 #if UNITY_EDITOR

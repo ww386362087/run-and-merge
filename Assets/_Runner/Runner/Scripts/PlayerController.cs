@@ -4,6 +4,7 @@ using System.Linq;
 
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace HyperCasual.Runner
 {
@@ -413,9 +414,12 @@ namespace HyperCasual.Runner
 
         void Update()
         {
-            if (!GameSceneLoad.Instance.isPlaying)
+            if (SceneManager.GetActiveScene().name != "RunnerLevelEditor")
             {
-                return;
+                if (!GameSceneLoad.Instance.isPlaying)
+                {
+                    return;
+                }
             }
 
             float deltaTime = Time.deltaTime;

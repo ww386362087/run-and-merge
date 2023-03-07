@@ -107,7 +107,7 @@ public class EventTracking : Singleton<EventTracking>
 		eventValues.Add(AFInAppEvents.EVENT_START, str_Start);
 		eventValues.Add(AFInAppEvents.EVENT_END, str_End);
 
-		AppsFlyer.sendEvent(AFInAppEvents.LEVEL_ACHIEVED, eventValues);
+		AppsFlyer.sendEvent(AFInAppEvents.LEVEL_ACHIEVED +"_"+ _level, eventValues);
 	}
 
 	

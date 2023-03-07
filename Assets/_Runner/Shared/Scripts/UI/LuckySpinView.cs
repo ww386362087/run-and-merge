@@ -197,7 +197,8 @@ namespace HyperCasual.Gameplay
         void OnButtonSpinAdsClicked()
         {
             //StartCoroutine(ShowAds()); // Show ads here.
-            StartCoroutine(Spin());
+            AdsMAXManager.Instance.ShowRewardedAd(() => { StartCoroutine(Spin()); },"spin");
+          
         }
 
         void OnButtonCloseClicked()

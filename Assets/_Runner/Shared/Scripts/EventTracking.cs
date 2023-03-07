@@ -11,7 +11,7 @@ public class EventTracking : Singleton<EventTracking>
 
 	public string str_Start = "";
 	public string str_End	= "";
-	string idDevice = SystemInfo.deviceUniqueIdentifier;
+	string idDevice;
 
 	// Use this for initialization
 	void Start()

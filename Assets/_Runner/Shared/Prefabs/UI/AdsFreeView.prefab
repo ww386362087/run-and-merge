@@ -876,6 +876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ButtonClose: {fileID: 7667264898220292285}
   m_ButtonRemoveAds: {fileID: 8302904913831912247}
+  m_CloseViewEvent: {fileID: 11400000, guid: 58f804667e2cb4eb789b6d2dfb3c4ce3, type: 2}
 --- !u!1 &8089379193739943830
 GameObject:
   m_ObjectHideFlags: 0

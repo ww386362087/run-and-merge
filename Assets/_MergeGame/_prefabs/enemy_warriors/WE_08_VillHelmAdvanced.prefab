@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddee7df499e653d4a82a60a9367e623c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1800
-  health: 3500
+  damage: 4860
+  health: 9720
   max_health: 0
   canvas_parrent: {fileID: 6499666130006961241}
   bar_field: {fileID: 6499666129834756377}
@@ -68,6 +68,7 @@ MonoBehaviour:
   is_enemy: 1
   text_pref: {fileID: 1467384889649466113, guid: 9f4283024f824c640a4f8fcb761d94f7,
     type: 3}
+  font: {fileID: 0}
   hit_coin: 4
 --- !u!1 &6499666129834756375
 GameObject:

@@ -27,6 +27,8 @@ namespace HyperCasual.Gameplay
         [SerializeField]
         TextMeshProUGUI m_CountdownText;
         [SerializeField]
+        TextMeshProUGUI m_PrizeWonText;
+        [SerializeField]
         GameObject m_ButtonOverlay;
 
         [Header("Event")]
@@ -137,14 +139,12 @@ namespace HyperCasual.Gameplay
             m_ButtonSpinAds.RemoveListener(OnButtonSpinAdsClicked);
         }
 
-        //=========================================================================================================
-
-
         void ResetLuckySpin()
         {
             RandomizePrizePool();
             GetSpinPrizes();
             SetupSpinPrizes();
+            SetPrizeWonTextState(false);
             SetButtonOverlayState(false);
         }
 
@@ -171,6 +171,11 @@ namespace HyperCasual.Gameplay
                 var prize = m_Prizes[i];
                 prize.IntitializeData();
             }
+        }
+
+        void SetPrizeWonTextState(bool _state)
+        {
+            m_PrizeWonText.gameObject.SetActive(_state);
         }
 
         void ResetPointerPosition()
@@ -235,9 +240,18 @@ namespace HyperCasual.Gameplay
             PlayerPrefs.SetInt("Currency", PlayerPrefs.GetInt("Currency") + m_SelectedPrize.Quantity);
             if (!m_Spinned)
                 m_Spinned = true;
-
+            
             yield return new WaitForSeconds(3.5f);
+            yield return StartCoroutine(DisplayPrizeWonText());
             SetButtonOverlayState(false);
+        }
+
+        IEnumerator DisplayPrizeWonText()
+        {
+            m_PrizeWonText.text = "You won: " + m_SelectedPrize.Quantity.ToString() + " NKC";
+            SetPrizeWonTextState(true);
+            yield return new WaitForSeconds(2.2f);
+            SetPrizeWonTextState(false);
         }
 
         void SetButtonOverlayState(bool _state)

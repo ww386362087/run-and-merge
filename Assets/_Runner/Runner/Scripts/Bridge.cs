@@ -43,6 +43,10 @@ namespace HyperCasual.Runner
 
         public void Active()
         {
+            // Play button activation sound.
+            AudioManager.Instance.PlayEffect(SoundID.ButtonSound);
+
+            //
             ScaleBridge();
         }
 

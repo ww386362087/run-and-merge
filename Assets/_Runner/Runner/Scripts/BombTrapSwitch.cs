@@ -18,11 +18,26 @@ namespace HyperCasual.Runner
             SetState(false, false);
         }
 
+        protected override void ResetColliderState()
+        {
+            if (m_CacheRoutine != null)
+                StopCoroutine(m_CacheRoutine);
+            StartCoroutine(SetColliders(false));
+        }
+
         // Switch action.
         public void Active()
         {
-            //Debug.Log("active");
+            // Play button activation sound.
+            AudioManager.Instance.PlayEffect(SoundID.ButtonSound);
+
+            // Set bomb state.
             SetState(true, false);
+            
+            // Activate bomb colliders.
+            if (m_CacheRoutine != null)
+                StopCoroutine(m_CacheRoutine);
+            StartCoroutine(SetColliders());
         }
     }
 }

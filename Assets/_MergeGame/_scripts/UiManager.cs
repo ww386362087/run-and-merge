@@ -128,6 +128,7 @@ public class UiManager : MonoBehaviour
         //Advertisements.Instance.ShowInterstitial();
 
         EventTracking.Instance.str_End = DateTime.Now.ToString();
+        FirebaseManager.Instance.LogEvent_FailLevel();
     }
 
     IEnumerator show_win_panel()
@@ -148,6 +149,7 @@ public class UiManager : MonoBehaviour
 
         EventTracking.Instance.str_End = DateTime.Now.ToString();
         EventTracking.Instance.Event_LEVEL_ACHIEVED(ProgressionManager.Instance.MERGE_LEVEL_PROGRESSION.ToString());
+        FirebaseManager.Instance.LogEvent_FinishLevel();
     }
 
 

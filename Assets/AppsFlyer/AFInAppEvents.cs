@@ -28,9 +28,17 @@ public class AFInAppEvents {
 	public const string LOCATION_CHANGED = "af_location_changed";
 	public const string LOCATION_COORDINATES = "af_location_coordinates";
 	public const string ORDER_ID = "af_order_id";
+	public const string AD_CLICK = "af_ad_click";
+	public const string AD_VIEW = "af_ad_view";
+
+
+
 	/**
 	 * Event Parameter Name
 	 * **/
+	public const string ADREV_TYPE = "af_adrev_ad_type";
+	public const string REWARD_TYPE = "af_type_reward";
+
 	public const string LEVEL = "af_level";
 	public const string SCORE = "af_score";
 	public const string SUCCESS = "af_success";

@@ -6,6 +6,7 @@ using MoreMountains.NiceVibrations;
 using TMPro;
 using HyperCasual.Runner;
 using HyperCasual.Gameplay;
+using System;
 
 public class UiManager : MonoBehaviour
 {
@@ -125,12 +126,14 @@ public class UiManager : MonoBehaviour
         ingame.SetActive(false);
 
         //Advertisements.Instance.ShowInterstitial();
+
+        EventTracking.Instance.str_End = DateTime.Now.ToString();
+        FirebaseManager.Instance.LogEvent_FailLevel();
     }
 
     IEnumerator show_win_panel()
     {
         //GameManager.instance.setLevel(GameManager.instance.getlevel() + 1);
-
         ProgressionManager.Instance.SetLevel(PlayerPrefs.GetInt(ProgressionManager.Instance.MERGE_LEVEL_PROGRESSION) + 1);
         SequenceManager.Instance.SetStartingLevel(SaveManager.Instance.LevelProgress);
 
@@ -143,6 +146,10 @@ public class UiManager : MonoBehaviour
         ingame.SetActive(false);
         txt_earning_win.text = "+" + (total_coin_in_level_merge + Inventory.Instance.TempGold);
         //Advertisements.Instance.ShowInterstitial();
+
+        EventTracking.Instance.str_End = DateTime.Now.ToString();
+        EventTracking.Instance.Event_LEVEL_ACHIEVED(ProgressionManager.Instance.MERGE_LEVEL_PROGRESSION.ToString());
+        FirebaseManager.Instance.LogEvent_FinishLevel();
     }
 
 
@@ -349,7 +356,7 @@ public class UiManager : MonoBehaviour
 
             // increase actual coin warrior
             GameManager.instance.set_actual_coin_monster(GameManager.instance.get_actual_coin_monster() *2);
-
+            Debug.Log("Coin mua moi: " + GameManager.instance.get_actual_coin_monster());
             // show text coin monster
             txt_coin_monster.text = GameManager.instance.get_actual_coin_monster().ToString();
 
@@ -385,7 +392,7 @@ public class UiManager : MonoBehaviour
 
         // ads video
         //Advertisements.Instance.ShowRewardedVideo(Complete_ads_video_mosnter);
-        AdsMAXManager.Instance.ShowRewardedAd(() => Complete_ads_video_mosnter(true, ""));
+        AdsMAXManager.Instance.ShowRewardedAd(() => Complete_ads_video_mosnter(true, ""),"reward_moster");
     }
 
 
@@ -447,7 +454,7 @@ public class UiManager : MonoBehaviour
 
         // ads video
         //Advertisements.Instance.ShowRewardedVideo(Complete_ads_video_warrior);
-        AdsMAXManager.Instance.ShowRewardedAd(()=>Complete_ads_video_warrior(true,""));
+        AdsMAXManager.Instance.ShowRewardedAd(()=>Complete_ads_video_warrior(true,""),"reward_warrior");
     }
 
     // button fight
@@ -508,6 +515,7 @@ public class UiManager : MonoBehaviour
         if (completed == true)
         {
             gamecontroller_script.add_monster_to_scene();
+            gamecontroller_script.add_monster_to_scene();
 
             //save data
             gamecontroller_script.save_details_cadres();
@@ -524,6 +532,7 @@ public class UiManager : MonoBehaviour
 
         if (completed == true)
         {
+            gamecontroller_script.add_warrior_to_scene();
             gamecontroller_script.add_warrior_to_scene();
 
             //save data

@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SnapToGrid: 0
+  m_Sound: 4
   enemy: {fileID: 4123309720937473022}
 --- !u!1001 &4014124759012943183
 PrefabInstance:
@@ -59,6 +60,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416065952615357451, guid: 6b8606d5c3a9c9d4a97052b1a066ba4e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 416065952615357451, guid: 6b8606d5c3a9c9d4a97052b1a066ba4e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 416065952615357451, guid: 6b8606d5c3a9c9d4a97052b1a066ba4e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 416065952615357451, guid: 6b8606d5c3a9c9d4a97052b1a066ba4e,
         type: 3}

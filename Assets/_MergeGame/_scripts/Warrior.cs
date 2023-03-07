@@ -116,7 +116,15 @@ public class Warrior : MonoBehaviour
             }
 
             animate_warrior(death);
+
+            StartCoroutine(HideDeadBody());
         }
+    }
+
+    public IEnumerator HideDeadBody(float _time = 2.2f)
+    {
+        yield return new WaitForSeconds(_time);
+        gameObject.SetActive(false);
     }
 
     public void animate_warrior(string name_anim)

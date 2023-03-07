@@ -9,6 +9,28 @@ namespace HyperCasual.Runner
         CoinSound,
         KeySound,
         ButtonSound,
-        MenuMusic
+        
+        DecreaseNekoSound,
+        IncreaseNekoSound,
+        BombImpactSound,
+        SawImpactSound,
+
+        MeleeAttackSound1,
+        MeleeAttackSound2,
+        RangeAttackSound,
+        NekoMergingSound,
+        NewNekoSound,
+        SummonNekoSound,
+
+        BossAttack1,
+        BossAttack2,
+
+        LostGameSound,
+        WonGameSound,
+
+        BackgroundMusic,
+        CombatMusic1,
+        CombatMusic2,
+        MenuMusic,
     }
 }

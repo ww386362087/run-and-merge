@@ -62,14 +62,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SnapToGrid: 0
-  m_Sound: 0
+  m_Sound: 6
+  m_VFX: {fileID: 344303410371521734, guid: cf02bab2e02a79440b5e9cce3f990fd5, type: 3}
   m_Event: {fileID: 11400000, guid: 461b03f0bf79c0b49a82d57263f3f1d4, type: 2}
   m_MeshNMaterial:
   - {fileID: 5177038789345726059}
-  m_VFX:
+  m_VfxHolder:
   - {fileID: 1000034760791686809}
-  m_Explosion: {fileID: 344303410371521734, guid: cf02bab2e02a79440b5e9cce3f990fd5,
-    type: 3}
   m_ColliderType: 2
   m_TargetBoxColliderSize: {x: 1.7, y: 1.7, z: 1.7}
   m_TargetSphereColliderRadius: 1.6

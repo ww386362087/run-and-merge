@@ -97,7 +97,7 @@ namespace HyperCasual.Runner
                 RenderSettings.skybox = m_CurrentLevel.Area.Skybox;
                 RenderSettings.fog = true;
                 RenderSettings.fogMode = FogMode.Linear;
-                RenderSettings.fogColor = new Color(122f / 255, 189f / 255, 221f / 255);
+                RenderSettings.fogColor = m_CurrentLevel.Area.ColorFog;
                 //RenderSettings.fogDensity = .03f;
                 RenderSettings.fogStartDistance = 40f;
                 RenderSettings.fogEndDistance = 60f;
@@ -167,8 +167,7 @@ namespace HyperCasual.Runner
             for (int i = 0; i < levelDefinition.Spawnables.Length; i++)
             {
                 LevelDefinition.SpawnableObject spawnableObject = levelDefinition.Spawnables[i];
-
-                if (spawnableObject.SpawnablePrefab == null)
+                if (spawnableObject.SpawnablePrefab == null || spawnableObject.SpawnablePrefab.name.Contains("Key"))
                 {
                     continue;
                 }

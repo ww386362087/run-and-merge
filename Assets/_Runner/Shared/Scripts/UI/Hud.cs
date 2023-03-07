@@ -78,7 +78,8 @@ namespace HyperCasual.Gameplay
 
         void OnEnable()
         {
-            //m_ButtonLuckySpin.AddListener(OnLuckySpinButtonClick);
+            m_AdsFreeButton.AddListener(OnAdsFreeButtonClick);
+            m_ButtonLuckySpin.AddListener(OnLuckySpinButtonClick);
             btn_startPlaying.SetUpOneEvent(SetPlaying);
             SetUI(false);
             m_LevelText.text = "Level " + (SaveManager.Instance.LevelProgress + 1);
@@ -87,7 +88,8 @@ namespace HyperCasual.Gameplay
 
         void OnDisable()
         {
-            //m_ButtonLuckySpin.RemoveListener(OnLuckySpinButtonClick);
+            m_AdsFreeButton.RemoveListener(OnAdsFreeButtonClick);
+            m_ButtonLuckySpin.RemoveListener(OnLuckySpinButtonClick);
         }
 
         public void OnLuckySpinButtonClick()
@@ -95,19 +97,27 @@ namespace HyperCasual.Gameplay
             UIManager.Instance.Show<LuckySpinView>();
         }
 
+        public void OnAdsFreeButtonClick()
+        {
+            UIManager.Instance.Show<AdsFreeView>();
+        }
+
         void SetPlaying()
         {
             GameSceneLoad.Instance.SetGameIsPlaying(true);
             SetUI(true);
+
+            EventTracking.Instance.str_Start = DateTime.Now.ToString();
+            Module.Action_StartGame();
         }
 
         public void SetUI(bool isPlaying)
         {
             m_SettingsButton.gameObject.SetActive(!isPlaying);
             //m_CardsButton.gameObject.SetActive(!isPlaying);
-            //m_AdsFreeButton.gameObject.SetActive(!isPlaying);
+            m_AdsFreeButton.gameObject.SetActive(!isPlaying);
             m_DragToMoveOverlay.gameObject.SetActive(!isPlaying);
-            //m_ButtonLuckySpin.gameObject.SetActive(!isPlaying);
+            m_ButtonLuckySpin.gameObject.SetActive(!isPlaying);
         }
 
         public void SetNumberOfChar(int num)

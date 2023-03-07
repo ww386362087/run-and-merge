@@ -109,7 +109,7 @@ public class SpinPrize : MonoBehaviour
         active = false;
         // ads video
 
-        AdsMAXManager.Instance.ShowRewardedAd(() => Complete_ads_video(true,""));
+        AdsMAXManager.Instance.ShowRewardedAd(() => Complete_ads_video(true,""),"spin_prize");
     }
 
     public void button_NoThanks(bool isWon)
@@ -161,7 +161,11 @@ public class SpinPrize : MonoBehaviour
     IEnumerator no_thanks_wait()
     {
         yield return new WaitForSeconds(1.5f);
-        no_thanks_btn.SetActive(true);
+        if (no_thanks_btn != null)
+        {
+            no_thanks_btn.SetActive(true);
+        }
+        
         //HyperCasual.Runner.GameManager.Instance.Win();
         //GameSceneLoad.Instance.SetSceneRuns(true);
     }

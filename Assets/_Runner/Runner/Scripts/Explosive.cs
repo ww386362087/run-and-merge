@@ -22,9 +22,7 @@ namespace HyperCasual.Runner
         [SerializeField]
         GameObject[] m_MeshNMaterial;
         [SerializeField]
-        GameObject[] m_VFX;
-        [SerializeField]
-        GameObject m_Explosion;
+        GameObject[] m_VfxHolder;
 
         BoxCollider m_BoxCollider;
         CapsuleCollider m_CapsuleCollider;
@@ -43,7 +41,7 @@ namespace HyperCasual.Runner
         [SerializeField]
         float m_ExplosionDuration = .69f;
 
-        Coroutine m_CacheRoutine;
+        public Coroutine m_CacheRoutine;
 
         enum ColliderType
         {
@@ -58,10 +56,7 @@ namespace HyperCasual.Runner
             base.ResetSpawnable();
 
             DefaultState();
-
-            if (m_CacheRoutine != null)
-                StopCoroutine(m_CacheRoutine);
-            StartCoroutine(SetColliders());
+            ResetColliderState();
         }
 
         protected override void Awake()
@@ -106,6 +101,13 @@ namespace HyperCasual.Runner
                 m_CacheRoutine = StartCoroutine(SetColliders(false, m_ExplosionDuration));
         }
 
+        protected virtual void ResetColliderState()
+        {
+            if (m_CacheRoutine != null)
+                StopCoroutine(m_CacheRoutine);
+            StartCoroutine(SetColliders());
+        }
+
         protected override void ResetColliderSize()
         {
             switch (m_ColliderType)
@@ -122,18 +124,18 @@ namespace HyperCasual.Runner
             }
         }
 
-        protected override void PlayVFX()
+        public override void PlayVFX(Vector3 ImpactPosition, GameObject VFX)
         {
-            for (int i = 0; i < m_VFX.Length; i++)
+            for (int i = 0; i < m_VfxHolder.Length; i++)
             {
-                Destroy(Instantiate(m_Explosion, m_VFX[i].transform), 2.5f);
+                Destroy(Instantiate(VFX, m_VfxHolder[i].transform), 2.5f);
             }
         }
 
         /// <summary>
         /// ...
         /// </summary>
-        IEnumerator SetColliders(bool _active = true, float _duration = 0f)
+        public IEnumerator SetColliders(bool _active = true, float _duration = 0f)
         {
             var colliders = gameObject.GetComponents<Collider>();
             yield return new WaitForSeconds(_duration);
@@ -206,7 +208,7 @@ namespace HyperCasual.Runner
             for (var i = 0; i < m_MeshNMaterial.Length; i++)
             {
                 m_MeshNMaterial[i].SetActive(_mat);
-                m_VFX[i].SetActive(_vfx);
+                m_VfxHolder[i].SetActive(_vfx);
             }
         }
     }

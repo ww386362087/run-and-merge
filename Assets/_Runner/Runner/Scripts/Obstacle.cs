@@ -18,6 +18,9 @@ namespace HyperCasual.Runner
         [SerializeField]
         SoundID m_Sound = SoundID.None;
 
+        [SerializeField]
+        GameObject m_VFX;
+
         const string k_PlayerTag = "Player";
 
         public ObstacleHitEvent m_Event;
@@ -61,7 +64,7 @@ namespace HyperCasual.Runner
             }
 
             AudioManager.Instance.PlayEffect(m_Sound);
-            PlayVFX();
+            PlayVFX(col.gameObject.transform.position, m_VFX);
 
             ChangeColliderSize();
             PlayerController.Instance.RemoveCharacter(col.gameObject);
@@ -78,9 +81,14 @@ namespace HyperCasual.Runner
             // override this in Explosive.cs to reset size on reload.
         }
 
-        protected virtual void PlayVFX()
+        virtual public void PlayVFX(Vector3 ImpactPosition, GameObject VFX)
         {
-            // override this in Explosive.cs to play vfx.
+            if (m_VFX != null)
+            {
+                Destroy(Instantiate(VFX, new Vector3(ImpactPosition.x, ImpactPosition.y + .5f, ImpactPosition.z), Quaternion.identity), 2.5f);
+            }
+            else
+                return;
         }
     }
 }

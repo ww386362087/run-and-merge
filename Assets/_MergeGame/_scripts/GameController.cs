@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameController : Singleton<GameController> , IGameEventListener
 {
@@ -71,6 +72,13 @@ public class GameController : Singleton<GameController> , IGameEventListener
 
         if (game_play)
             return;
+
+        if (Input.touchCount > 0 && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+        {
+            // Block the touch event
+            return;
+        }
+
 
         // test add monster
         //if (Input.GetKeyDown(KeyCode.A))
@@ -162,7 +170,8 @@ public class GameController : Singleton<GameController> , IGameEventListener
                         save_details_cadres();
                     }
                     //merge if they have same type
-                    else if (current_object.GetComponent<Cadre>().monster_type == clicked_object.GetComponent<Cadre>().monster_type)
+                    else if (current_object.GetComponent<Cadre>().monster_type == clicked_object.GetComponent<Cadre>().monster_type &&
+                             current_object.GetComponent<Cadre>().monster_type != monster_type_enum.level_9)
                     {
                         // play effect
                         current_object.GetComponent<Cadre>().effect_two.Play(true);
@@ -250,7 +259,8 @@ public class GameController : Singleton<GameController> , IGameEventListener
                         save_details_cadres();
                     }
                     //merge if they have same type
-                    else if (current_object.GetComponent<Cadre>().warrior_type == clicked_object.GetComponent<Cadre>().warrior_type)
+                    else if (current_object.GetComponent<Cadre>().warrior_type == clicked_object.GetComponent<Cadre>().warrior_type &&
+                             current_object.GetComponent<Cadre>().warrior_type != warrior_type_enum.level_9)
                     {
                         // play effect
                         current_object.GetComponent<Cadre>().effect_two.Play(true);
@@ -315,8 +325,8 @@ public class GameController : Singleton<GameController> , IGameEventListener
         if(Physics.Raycast(ray, out hit, Mathf.Infinity, cadre_layer) && can_move)
         {
             if ((!hit.collider.GetComponent<Cadre>().has_din && !hit.collider.GetComponent<Cadre>().has_warrior) || hit.collider.GetComponent<Cadre>().active 
-                || (hit.collider.GetComponent<Cadre>().monster_type == clicked_object.GetComponent<Cadre>().monster_type && type_move == "monster")
-                || (hit.collider.GetComponent<Cadre>().warrior_type == clicked_object.GetComponent<Cadre>().warrior_type && type_move == "warrior")
+                || (hit.collider.GetComponent<Cadre>().monster_type == clicked_object.GetComponent<Cadre>().monster_type && type_move == "monster" && hit.collider.GetComponent<Cadre>().monster_type != monster_type_enum.level_9)
+                || (hit.collider.GetComponent<Cadre>().warrior_type == clicked_object.GetComponent<Cadre>().warrior_type && type_move == "warrior" && hit.collider.GetComponent<Cadre>().warrior_type != warrior_type_enum.level_9)
                 )
             {
                 
@@ -473,6 +483,38 @@ public class GameController : Singleton<GameController> , IGameEventListener
         }
     }
 
+    [ContextMenu("add monster to test")]
+    public void AddMonsterToTest()
+    {
+        if (list_empty_cadres.Count > 0)
+        {
+            //add monster to scene
+            list_empty_cadres[0].add_monster_test();
+
+            //play effect
+            //list_empty_cadres[0].effect_one.Play();
+
+            // remove fro list
+            delete_from_list_cadres(list_empty_cadres[0]);
+        }
+    }
+
+    [ContextMenu("add warrior to test")]
+    public void AddWarriorToTest()
+    {
+        if (list_empty_cadres.Count > 0)
+        {
+            //add monster to scene
+            list_empty_cadres[0].add_warrior_test();
+
+            //play effect
+            //list_empty_cadres[0].effect_one.Play();
+
+            // remove fro list
+            delete_from_list_cadres(list_empty_cadres[0]);
+        }
+    }
+
     void AddUnusedFreeMonster()
     {
         int freeMons = PlayerPrefs.GetInt(GameManager.instance.Num_Free_Mons) + 1;
@@ -625,11 +667,11 @@ public class GameController : Singleton<GameController> , IGameEventListener
                     GameManager.instance.set_save_monster(i, 9);
                     continue;
                 }
-                else if (list_cadres[i].monster_type == monster_type_enum.level_10)
+                /*else if (list_cadres[i].monster_type == monster_type_enum.level_10)
                 {
                     GameManager.instance.set_save_monster(i, 10);
                     continue;
-                }
+                }*/
                 
             }
             else
@@ -778,7 +820,7 @@ public class GameController : Singleton<GameController> , IGameEventListener
                 players_scripts.list_active_monsters.Add(list_cadres[i].active_monster);
                 continue;
             }
-            else if (GameManager.instance.get_save_monster(i) == 10)
+            /*else if (GameManager.instance.get_save_monster(i) == 10)
             {
                 list_cadres[i].monster_type = monster_type_enum.level_10;
                 list_cadres[i].active_monster = list_cadres[i].list_dinosaurs[9].GetComponent<Monster>();
@@ -789,7 +831,7 @@ public class GameController : Singleton<GameController> , IGameEventListener
 
                 players_scripts.list_active_monsters.Add(list_cadres[i].active_monster);
                 continue;
-            }
+            }*/
 
             //------------------ warrior-------------------------------------
             if (GameManager.instance.get_save_warrior(i) == 1)

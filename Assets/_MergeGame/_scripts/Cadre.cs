@@ -15,7 +15,7 @@ public enum monster_type_enum
     level_7,
     level_8,
     level_9,
-    level_10
+    //level_10
 }
 
 public enum warrior_type_enum
@@ -30,7 +30,7 @@ public enum warrior_type_enum
     level_7,
     level_8,
     level_9,
-    level_10
+    //level_10
 }
 
 public class Cadre : MonoBehaviour
@@ -171,6 +171,20 @@ public class Cadre : MonoBehaviour
 
     }
 
+    public void add_monster_test()
+    {
+        has_din = true;
+        //list_dinosaurs[0].SetActive(true);
+
+        StartCoroutine(JumpInSeq(list_dinosaurs[7]));
+        active_monster = list_dinosaurs[7].GetComponent<Monster>();
+        monster_type = monster_type_enum.level_8;
+
+        //add to list players
+        Players_script.list_active_monsters.Add(active_monster);
+
+    }
+
     IEnumerator JumpInSeq(GameObject go)
     {
         Vector3 originPos = go.transform.position;
@@ -234,11 +248,11 @@ public class Cadre : MonoBehaviour
             list_dinosaurs[8].SetActive(true);
             active_monster = list_dinosaurs[8].GetComponent<Monster>();
         }
-        else if (tp == monster_type_enum.level_10)
+        /*else if (tp == monster_type_enum.level_10)
         {
             list_dinosaurs[9].SetActive(true);
             active_monster = list_dinosaurs[9].GetComponent<Monster>();
-        }
+        }*/
         
     }
 
@@ -365,7 +379,7 @@ public class Cadre : MonoBehaviour
                 UiManager.instance.show_panel_new_character_monster();
             }
         }
-        else if (tp == monster_type_enum.level_9)
+        /*else if (tp == monster_type_enum.level_9)
         {
             hide_all_monster();
             list_dinosaurs[9].SetActive(true);
@@ -379,7 +393,7 @@ public class Cadre : MonoBehaviour
                 GameManager.instance.set_count_active_monster(GameManager.instance.get_count_active_monster() + 1);
                 UiManager.instance.show_panel_new_character_monster();
             }
-        }
+        }*/
         else 
         {
             // no more upgrate 
@@ -419,6 +433,18 @@ public class Cadre : MonoBehaviour
         StartCoroutine(JumpInSeq(list_warriors[0]));
         warrior_type = warrior_type_enum.level_1;
         active_warrior = list_warriors[0].GetComponent<Warrior>();
+
+        //add to list players
+        Players_script.list_active_warriors.Add(active_warrior);
+    }
+
+    public void add_warrior_test()
+    {
+        has_warrior = true;
+        //list_warriors[0].SetActive(true);
+        StartCoroutine(JumpInSeq(list_warriors[7]));
+        warrior_type = warrior_type_enum.level_8;
+        active_warrior = list_warriors[7].GetComponent<Warrior>();
 
         //add to list players
         Players_script.list_active_warriors.Add(active_warrior);
@@ -495,7 +521,7 @@ public class Cadre : MonoBehaviour
 
     public void upgrate_level_and_active__warrior(warrior_type_enum tp)
     {
-        if (warrior_type_enum.level_1 <= tp && tp <= warrior_type_enum.level_9)
+        if (warrior_type_enum.level_1 <= tp && tp <= warrior_type_enum.level_8)
         {
             var num = tp - warrior_type_enum.level_1 +1 ;
 

@@ -106,6 +106,8 @@ namespace HyperCasual.Gameplay
         {
             GameSceneLoad.Instance.SetGameIsPlaying(true);
             SetUI(true);
+
+            EventTracking.Instance.str_Start = DateTime.Now.ToString();
         }
 
         public void SetUI(bool isPlaying)

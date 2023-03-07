@@ -101,6 +101,7 @@ public class EventTracking : Singleton<EventTracking>
 
 	public void Event_LEVEL_ACHIEVED(string _level)
     {
+		Debug.Log("Event_LEVEL_ACHIEVED " + _level);
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, idDevice);
 		eventValues.Add(AFInAppEvents.LEVEL, _level);

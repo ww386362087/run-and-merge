@@ -58,4 +58,9 @@ public class FirebaseManager : Singleton<FirebaseManager>
         Debug.Log("Logging a login event.");
         FirebaseAnalytics.LogEvent(FirebaseAnalytics.EventLogin);
     }
+
+    public void Event_Log(string _id,string _value)
+    {
+
+    }
 }

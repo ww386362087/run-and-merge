@@ -96,6 +96,7 @@ public class EventTracking : Singleton<EventTracking>
 		eventValues.Add(AFInAppEvents.REVENUE, "0.99");
 		eventValues.Add("af_quantity", "1");
 		AppsFlyer.sendEvent(AFInAppEvents.PURCHASE, eventValues);
+
 	}
 
 	public void Event_LEVEL_ACHIEVED(string _level)
@@ -106,7 +107,7 @@ public class EventTracking : Singleton<EventTracking>
 		eventValues.Add(AFInAppEvents.EVENT_START, str_Start);
 		eventValues.Add(AFInAppEvents.EVENT_END, str_End);
 
-		AppsFlyer.sendEvent(AFInAppEvents.LEVEL_ACHIEVED, eventValues);
+		AppsFlyer.sendEvent(AFInAppEvents.LEVEL_ACHIEVED +"_"+ _level, eventValues);
 	}
 
 	

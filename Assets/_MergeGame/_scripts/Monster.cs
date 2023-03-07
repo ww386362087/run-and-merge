@@ -203,7 +203,15 @@ public class Monster : MonoBehaviour
             }
             agent.enabled = false;
             animate_monster(death);
+
+            StartCoroutine(HideDeadBody());
         }
+    }
+
+    public IEnumerator HideDeadBody(float _time = 2.2f)
+    {
+        yield return new WaitForSeconds(_time);
+        gameObject.SetActive(false);
     }
 
     public void set_destination(Transform tar)

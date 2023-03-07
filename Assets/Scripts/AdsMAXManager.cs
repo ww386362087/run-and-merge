@@ -49,6 +49,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
       
     }
 
+#if UNITY_EDITOR
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -66,6 +67,8 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
             ShowRewardedAd(() => { Debug.LogError("Reward"); });
         }
     }
+#endif
+
 
     #region Interstitial Ad Methods
 

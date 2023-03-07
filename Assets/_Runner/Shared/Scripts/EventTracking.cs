@@ -8,41 +8,47 @@ using System;
 
 public class EventTracking : Singleton<EventTracking>
 {
-    // Use this for initialization
-    void Start()
+
+	public string str_Start = "";
+	public string str_End	= "";
+	string idDevice;
+
+	// Use this for initialization
+	void Start()
 	{
 		AppsFlyer.setIsDebug(true);
 		Application.runInBackground = true;
-        //#if UNITY_IOS
+		idDevice = SystemInfo.deviceUniqueIdentifier;
+		//#if UNITY_IOS
 
-        //		AppsFlyer.setAppsFlyerKey ("YOUR_DEV_KEY");
-        //		AppsFlyer.setAppID ("YOUR_APP_ID");
-        //		AppsFlyer.setIsDebug (true);
-        //		AppsFlyer.getConversionData ();
-        //		AppsFlyer.trackAppLaunch ();
+		//		AppsFlyer.setAppsFlyerKey ("YOUR_DEV_KEY");
+		//		AppsFlyer.setAppID ("YOUR_APP_ID");
+		//		AppsFlyer.setIsDebug (true);
+		//		AppsFlyer.getConversionData ();
+		//		AppsFlyer.trackAppLaunch ();
 
-        //		// register to push notifications for iOS uninstall
-        //		UnityEngine.iOS.NotificationServices.RegisterForNotifications (UnityEngine.iOS.NotificationType.Alert | UnityEngine.iOS.NotificationType.Badge | UnityEngine.iOS.NotificationType.Sound);
-        //		Screen.orientation = ScreenOrientation.Portrait;
+		//		// register to push notifications for iOS uninstall
+		//		UnityEngine.iOS.NotificationServices.RegisterForNotifications (UnityEngine.iOS.NotificationType.Alert | UnityEngine.iOS.NotificationType.Badge | UnityEngine.iOS.NotificationType.Sound);
+		//		Screen.orientation = ScreenOrientation.Portrait;
 
-        //#elif UNITY_ANDROID
+		//#elif UNITY_ANDROID
 
-        //AppsFlyer.setAppInviteOneLinkID("BTx32xGv4UiaS6gNYsf5Gj");
+		//AppsFlyer.setAppInviteOneLinkID("BTx32xGv4UiaS6gNYsf5Gj");
 
-        //AppsFlyer.setAppID ("YOUR_APP_ID"); 
+		//AppsFlyer.setAppID ("YOUR_APP_ID"); 
 
-        // for getting the conversion data
-        //AppsFlyer.loadConversionData("StartUp");
+		// for getting the conversion data
+		//AppsFlyer.loadConversionData("StartUp");
 
-        // for in app billing validation
-        //		 AppsFlyer.createValidateInAppListener ("AppsFlyerTrackerCallbacks", "onInAppBillingSuccess", "onInAppBillingFailure"); 
+		// for in app billing validation
+		//		 AppsFlyer.createValidateInAppListener ("AppsFlyerTrackerCallbacks", "onInAppBillingSuccess", "onInAppBillingFailure"); 
 
-        //For Android Uninstall
-        //AppsFlyer.setGCMProjectNumber ("YOUR_GCM_PROJECT_NUMBER");
+		//For Android Uninstall
+		//AppsFlyer.setGCMProjectNumber ("YOUR_GCM_PROJECT_NUMBER");
 
 
-        //#endif
-    }
+		//#endif
+	}
 
 
     // Update is called once per frame
@@ -92,21 +98,22 @@ public class EventTracking : Singleton<EventTracking>
 		AppsFlyer.sendEvent(AFInAppEvents.PURCHASE, eventValues);
 	}
 
-	public void Event_LEVEL_ACHIEVED(string _level,string _start,string _end)
+	public void Event_LEVEL_ACHIEVED(string _level)
     {
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, "");
+		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, idDevice);
 		eventValues.Add(AFInAppEvents.LEVEL, _level);
-		eventValues.Add(AFInAppEvents.EVENT_START, _start);
-		eventValues.Add(AFInAppEvents.EVENT_END, _end);
+		eventValues.Add(AFInAppEvents.EVENT_START, str_Start);
+		eventValues.Add(AFInAppEvents.EVENT_END, str_End);
 
 		AppsFlyer.sendEvent(AFInAppEvents.LEVEL_ACHIEVED, eventValues);
 	}
 
+	
 	public void Event_AD_CLICK(string _level,string _rewradType)
     {
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, "");
+		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, idDevice);
 		eventValues.Add(AFInAppEvents.LEVEL, _level);
 		eventValues.Add(AFInAppEvents.ADREV_TYPE, "rewarded");
 		eventValues.Add(AFInAppEvents.REWARD_TYPE, _rewradType);
@@ -114,12 +121,12 @@ public class EventTracking : Singleton<EventTracking>
 		AppsFlyer.sendEvent(AFInAppEvents.AD_CLICK, eventValues);
 	}
 
-	public void Event_AD_View(string _level, string _rewradType)
+	public void Event_AD_View(string _level, string _rewradType, string _rewarded= "rewarded")
 	{
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, "");
+		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, idDevice);
 		eventValues.Add(AFInAppEvents.LEVEL, _level);
-		eventValues.Add(AFInAppEvents.ADREV_TYPE, "rewarded");
+		eventValues.Add(AFInAppEvents.ADREV_TYPE, _rewarded);
 		eventValues.Add(AFInAppEvents.REWARD_TYPE, _rewradType);
 
 		AppsFlyer.sendEvent(AFInAppEvents.AD_VIEW, eventValues);

@@ -41,7 +41,7 @@ namespace HyperCasual.Runner
         [SerializeField]
         float m_ExplosionDuration = .69f;
 
-        Coroutine m_CacheRoutine;
+        public Coroutine m_CacheRoutine;
 
         enum ColliderType
         {
@@ -56,10 +56,7 @@ namespace HyperCasual.Runner
             base.ResetSpawnable();
 
             DefaultState();
-
-            if (m_CacheRoutine != null)
-                StopCoroutine(m_CacheRoutine);
-            StartCoroutine(SetColliders());
+            ResetColliderState();
         }
 
         protected override void Awake()
@@ -104,6 +101,13 @@ namespace HyperCasual.Runner
                 m_CacheRoutine = StartCoroutine(SetColliders(false, m_ExplosionDuration));
         }
 
+        protected virtual void ResetColliderState()
+        {
+            if (m_CacheRoutine != null)
+                StopCoroutine(m_CacheRoutine);
+            StartCoroutine(SetColliders());
+        }
+
         protected override void ResetColliderSize()
         {
             switch (m_ColliderType)
@@ -131,7 +135,7 @@ namespace HyperCasual.Runner
         /// <summary>
         /// ...
         /// </summary>
-        IEnumerator SetColliders(bool _active = true, float _duration = 0f)
+        public IEnumerator SetColliders(bool _active = true, float _duration = 0f)
         {
             var colliders = gameObject.GetComponents<Collider>();
             yield return new WaitForSeconds(_duration);

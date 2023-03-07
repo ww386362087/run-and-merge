@@ -6,6 +6,7 @@ using MoreMountains.NiceVibrations;
 using TMPro;
 using HyperCasual.Runner;
 using HyperCasual.Gameplay;
+using System;
 
 public class UiManager : MonoBehaviour
 {
@@ -125,12 +126,13 @@ public class UiManager : MonoBehaviour
         ingame.SetActive(false);
 
         //Advertisements.Instance.ShowInterstitial();
+
+        EventTracking.Instance.str_End = DateTime.Now.ToString();
     }
 
     IEnumerator show_win_panel()
     {
         //GameManager.instance.setLevel(GameManager.instance.getlevel() + 1);
-
         ProgressionManager.Instance.SetLevel(PlayerPrefs.GetInt(ProgressionManager.Instance.MERGE_LEVEL_PROGRESSION) + 1);
         SequenceManager.Instance.SetStartingLevel(SaveManager.Instance.LevelProgress);
 
@@ -143,6 +145,9 @@ public class UiManager : MonoBehaviour
         ingame.SetActive(false);
         txt_earning_win.text = "+" + (total_coin_in_level_merge + Inventory.Instance.TempGold);
         //Advertisements.Instance.ShowInterstitial();
+
+        EventTracking.Instance.str_End = DateTime.Now.ToString();
+        EventTracking.Instance.Event_LEVEL_ACHIEVED(ProgressionManager.Instance.MERGE_LEVEL_PROGRESSION.ToString());
     }
 
 
@@ -508,6 +513,7 @@ public class UiManager : MonoBehaviour
         if (completed == true)
         {
             gamecontroller_script.add_monster_to_scene();
+            gamecontroller_script.add_monster_to_scene();
 
             //save data
             gamecontroller_script.save_details_cadres();
@@ -524,6 +530,7 @@ public class UiManager : MonoBehaviour
 
         if (completed == true)
         {
+            gamecontroller_script.add_warrior_to_scene();
             gamecontroller_script.add_warrior_to_scene();
 
             //save data

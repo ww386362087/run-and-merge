@@ -97,6 +97,8 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
         if (MaxSdk.IsInterstitialReady(InterstitialAdUnitId))
         {
             MaxSdk.ShowInterstitial(InterstitialAdUnitId);
+
+            EventTracking.Instance.Event_AD_View(PlayerPrefs.GetInt("level_general").ToString(),"","interstitial");
         }
         else
         {
@@ -202,7 +204,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
             LoadRewardedAd();
         }
 
-        //MaxSdk.ShowRewardedAd(RewardedAdUnitId);
+        EventTracking.Instance.Event_AD_CLICK(PlayerPrefs.GetInt("level_general").ToString(), rewardType);
     }
 
     private void OnRewardedAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)

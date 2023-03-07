@@ -1,4 +1,5 @@
 using HyperCasual.Core;
+using HyperCasual.Gameplay;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,9 @@ namespace HyperCasual.Runner
         HyperCasualButton m_ButtonClose;
         [SerializeField]
         HyperCasualButton m_ButtonRemoveAds;
+
+        [SerializeField]
+        AbstractGameEvent m_CloseViewEvent;
 
         private void OnEnable()
         {

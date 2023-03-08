@@ -96,10 +96,9 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
             return;
 
         countAdsInter++;
-        //Debug.LogError(countAdsInter);
         if (countAdsInter % 3 != 0)
             return;
-        
+
         if (MaxSdk.IsInterstitialReady(InterstitialAdUnitId))
         {
             MaxSdk.ShowInterstitial(InterstitialAdUnitId);
@@ -110,6 +109,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
         {
             Debug.Log("Ad Interstitial not ready");
             //interstitialStatusText.text = "Ad not ready";
+            LoadInterstitial();
         }
     }
 

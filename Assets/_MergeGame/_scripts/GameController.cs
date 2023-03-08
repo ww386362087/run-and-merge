@@ -532,6 +532,19 @@ public class GameController : Singleton<GameController> , IGameEventListener
         Debug.Log("saved free monster: " + freeMons);
 
         PlayerPrefs.SetInt(GameManager.instance.Num_Free_Mons, freeMons);
+
+        UiManager.instance.SetAddFreeStatus();
+    }
+
+    void AddUnusedFreeWarrior()
+    {
+        int freeWars = PlayerPrefs.GetInt(GameManager.instance.Num_Free_Wars) + 1;
+
+        Debug.Log("saved free warrior: " + freeWars);
+
+        PlayerPrefs.SetInt(GameManager.instance.Num_Free_Wars, freeWars);
+
+        UiManager.instance.SetAddFreeStatus();
     }
 
     public void add_monster_needed_to_add(int numberOfMonsterToAdd)
@@ -567,6 +580,8 @@ public class GameController : Singleton<GameController> , IGameEventListener
         {
             //empty
             print("list is empty");
+
+            AddUnusedFreeWarrior();
         }
     }
     

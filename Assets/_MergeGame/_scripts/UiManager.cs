@@ -11,6 +11,7 @@ using System;
 public class UiManager : MonoBehaviour
 {
     public int price_increase_per_buy;
+    public int neko_receive_per_ad;
     public static UiManager instance;
     public GameObject new_character_monster_panel , new_character_warrior_panel,
                       card_panel , remove_ad , ingame , winpanel , lose_panel , game_control , btn_retr , btn_cadre , btn_setting , setting_panel;
@@ -515,8 +516,10 @@ public class UiManager : MonoBehaviour
 
         if (completed == true)
         {
-            gamecontroller_script.add_monster_to_scene();
-            gamecontroller_script.add_monster_to_scene();
+            for (int i = 0; i < neko_receive_per_ad; i++)
+            {
+                gamecontroller_script.add_monster_to_scene();
+            }
 
             //save data
             gamecontroller_script.save_details_cadres();
@@ -525,6 +528,8 @@ public class UiManager : MonoBehaviour
         {
             // no reward
         }
+
+        SetAddFreeStatus();
     }
 
     private void Complete_ads_video_warrior(bool completed, string advertiser)
@@ -533,8 +538,10 @@ public class UiManager : MonoBehaviour
 
         if (completed == true)
         {
-            gamecontroller_script.add_warrior_to_scene();
-            gamecontroller_script.add_warrior_to_scene();
+            for (int i = 0; i < neko_receive_per_ad; i++)
+            {
+                gamecontroller_script.add_warrior_to_scene();
+            }
 
             //save data
             gamecontroller_script.save_details_cadres();
@@ -543,6 +550,7 @@ public class UiManager : MonoBehaviour
         {
             // no reward
         }
+        SetAddFreeStatus();
     }
 
     //IEnumerator save_data_wait()

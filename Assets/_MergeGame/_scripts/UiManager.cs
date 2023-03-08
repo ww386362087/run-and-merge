@@ -10,6 +10,7 @@ using System;
 
 public class UiManager : MonoBehaviour
 {
+    public int price_increase_per_buy;
     public static UiManager instance;
     public GameObject new_character_monster_panel , new_character_warrior_panel,
                       card_panel , remove_ad , ingame , winpanel , lose_panel , game_control , btn_retr , btn_cadre , btn_setting , setting_panel;
@@ -355,7 +356,7 @@ public class UiManager : MonoBehaviour
             txt_mmoney.text = GameManager.instance.getcoin().ToString();
 
             // increase actual coin warrior
-            GameManager.instance.set_actual_coin_monster(GameManager.instance.get_actual_coin_monster() *2);
+            GameManager.instance.set_actual_coin_monster(GameManager.instance.get_actual_coin_monster() + price_increase_per_buy);
             Debug.Log("Coin mua moi: " + GameManager.instance.get_actual_coin_monster());
             // show text coin monster
             txt_coin_monster.text = GameManager.instance.get_actual_coin_monster().ToString();
@@ -418,7 +419,7 @@ public class UiManager : MonoBehaviour
             txt_mmoney.text = GameManager.instance.getcoin().ToString();
 
             // increase actual coin warrior
-            GameManager.instance.set_actual_coin_warrior(GameManager.instance.get_actual_coin_warrior() * 2);
+            GameManager.instance.set_actual_coin_warrior(GameManager.instance.get_actual_coin_warrior() + price_increase_per_buy);
 
             // show text coin warrior
             txt_coin_warrior.text = GameManager.instance.get_actual_coin_warrior().ToString();

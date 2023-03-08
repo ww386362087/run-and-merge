@@ -16,4 +16,6 @@ public static class Module
      
     }
 
+
+    public static bool isGodMod = false;
 }

@@ -49,8 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   list_monster:
   - {fileID: 3888986081431111203}
-  - {fileID: 3888986081431111203}
-  - {fileID: 3888986081431111203}
+  - {fileID: 8590891540222354519}
+  - {fileID: 2489953447850057050}
   list_warrior: []
 --- !u!1001 &2919032893453418649
 PrefabInstance:
@@ -67,7 +67,7 @@ PrefabInstance:
     - target: {fileID: 6897973825504568526, guid: 7d61478536f34e04daeeda91b05892ba,
         type: 3}
       propertyPath: damage
-      value: 2000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6897973825504568526, guid: 7d61478536f34e04daeeda91b05892ba,
         type: 3}
@@ -157,6 +157,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2919032893453418649}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8590891540222354519 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6897973825504568526, guid: 7d61478536f34e04daeeda91b05892ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 2919032893453418649}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d0e316438dd1e40ac3aef787e6833c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7656949056283321069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -172,12 +184,12 @@ PrefabInstance:
     - target: {fileID: 6897973825504568526, guid: 9fc6e5e0e85a12d4e847c45b6651adc6,
         type: 3}
       propertyPath: damage
-      value: 10500
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 6897973825504568526, guid: 9fc6e5e0e85a12d4e847c45b6651adc6,
         type: 3}
       propertyPath: health
-      value: 105000
+      value: 25000
       objectReference: {fileID: 0}
     - target: {fileID: 6897973825504568527, guid: 9fc6e5e0e85a12d4e847c45b6651adc6,
         type: 3}
@@ -289,12 +301,12 @@ PrefabInstance:
     - target: {fileID: 6897973825504568526, guid: 8954b8a619676d54f8922d8a14e42b26,
         type: 3}
       propertyPath: damage
-      value: 2000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6897973825504568526, guid: 8954b8a619676d54f8922d8a14e42b26,
         type: 3}
       propertyPath: health
-      value: 20000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 6897973825504568527, guid: 8954b8a619676d54f8922d8a14e42b26,
         type: 3}
@@ -373,6 +385,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8954b8a619676d54f8922d8a14e42b26, type: 3}
+--- !u!114 &2489953447850057050 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6897973825504568526, guid: 8954b8a619676d54f8922d8a14e42b26,
+    type: 3}
+  m_PrefabInstance: {fileID: 9021996286227315092}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d0e316438dd1e40ac3aef787e6833c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2489953447850057051 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6897973825504568527, guid: 8954b8a619676d54f8922d8a14e42b26,

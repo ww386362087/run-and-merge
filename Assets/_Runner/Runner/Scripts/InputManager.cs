@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.SceneManagement;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 namespace HyperCasual.Runner
 {

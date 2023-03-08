@@ -71,12 +71,12 @@ PrefabInstance:
     - target: {fileID: 6897973825504568526, guid: 8954b8a619676d54f8922d8a14e42b26,
         type: 3}
       propertyPath: damage
-      value: 2100
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 6897973825504568526, guid: 8954b8a619676d54f8922d8a14e42b26,
         type: 3}
       propertyPath: health
-      value: 21000
+      value: 12000
       objectReference: {fileID: 0}
     - target: {fileID: 6897973825504568527, guid: 8954b8a619676d54f8922d8a14e42b26,
         type: 3}
@@ -235,6 +235,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3283911928629465898, guid: 76510cf6f74c74847b4475c417af728c,
+        type: 3}
+      propertyPath: damage
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 3283911928629465899, guid: 76510cf6f74c74847b4475c417af728c,
         type: 3}
       propertyPath: m_Name
@@ -321,6 +326,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283911928629465898, guid: 76510cf6f74c74847b4475c417af728c,
+        type: 3}
+      propertyPath: damage
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3283911928629465899, guid: 76510cf6f74c74847b4475c417af728c,
         type: 3}
@@ -409,6 +419,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3283911928629465898, guid: 76510cf6f74c74847b4475c417af728c,
+        type: 3}
+      propertyPath: damage
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 3283911928629465899, guid: 76510cf6f74c74847b4475c417af728c,
         type: 3}
       propertyPath: m_Name
@@ -495,6 +510,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283911928629465898, guid: 76510cf6f74c74847b4475c417af728c,
+        type: 3}
+      propertyPath: damage
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3283911928629465899, guid: 76510cf6f74c74847b4475c417af728c,
         type: 3}

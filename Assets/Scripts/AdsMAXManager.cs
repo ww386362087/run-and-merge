@@ -92,6 +92,9 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
 
     public void ShowInterstitial()
     {
+        if (Module.isGodMod)
+            return;
+
         countAdsInter++;
         //Debug.LogError(countAdsInter);
         if (countAdsInter % 3 != 0)
@@ -193,6 +196,9 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
     public string rewardType;
     public void ShowRewardedAd(Action _callback,string _rewardType="")
     {
+        if (Module.isGodMod)
+            return;
+
         if (MaxSdk.IsRewardedAdReady(RewardedAdUnitId))
         {
             //rewardedStatusText.text = "Showing";
@@ -207,7 +213,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
             LoadRewardedAd();
         }
 
-        EventTracking.Instance.Event_AD_CLICK(PlayerPrefs.GetInt("level_general").ToString(), rewardType);
+        //EventTracking.Instance.Event_AD_CLICK(PlayerPrefs.GetInt("level_general").ToString(), rewardType);
     }
 
     private void OnRewardedAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
@@ -269,7 +275,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
             rewardCallback.Invoke();
             rewardCallback = null;
 
-            EventTracking.Instance.Event_AD_View(PlayerPrefs.GetInt("level_general").ToString(), rewardType);
+            //EventTracking.Instance.Event_AD_View(PlayerPrefs.GetInt("level_general").ToString(), rewardType);
             FirebaseManager.Instance.LogEvent_firebase_ads_reward_complete(adInfo);
         }
            
@@ -430,6 +436,9 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
 
     public void ShowBanner()
     {
+        if (Module.isGodMod)
+            return;
+
         MaxSdk.ShowBanner(BannerAdUnitId);
         //if (!isBannerShowing)
         //{

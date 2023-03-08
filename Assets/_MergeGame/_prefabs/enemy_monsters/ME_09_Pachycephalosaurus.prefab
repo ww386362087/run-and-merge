@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d0e316438dd1e40ac3aef787e6833c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3100
-  health: 21000
+  damage: 3417
+  health: 17086
   max_health: 0
   canvas_parrent: {fileID: 682469165449270196}
   bar_field: {fileID: 682469166962360682}

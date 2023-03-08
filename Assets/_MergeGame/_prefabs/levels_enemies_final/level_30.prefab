@@ -126,12 +126,12 @@ PrefabInstance:
     - target: {fileID: 6809047376747890853, guid: eadd22325f23608409ca12334a2ef6b3,
         type: 3}
       propertyPath: damage
-      value: 300
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 6809047376747890853, guid: eadd22325f23608409ca12334a2ef6b3,
         type: 3}
       propertyPath: health
-      value: 3000
+      value: 3375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eadd22325f23608409ca12334a2ef6b3, type: 3}
@@ -218,12 +218,12 @@ PrefabInstance:
     - target: {fileID: 8032558170260315242, guid: aeb9613b59a01a24e9e594147f628beb,
         type: 3}
       propertyPath: damage
-      value: 120
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8032558170260315242, guid: aeb9613b59a01a24e9e594147f628beb,
         type: 3}
       propertyPath: health
-      value: 250
+      value: 720
       objectReference: {fileID: 0}
     - target: {fileID: 8032558170260315243, guid: aeb9613b59a01a24e9e594147f628beb,
         type: 3}
@@ -320,12 +320,12 @@ PrefabInstance:
     - target: {fileID: 6809047376747890853, guid: eadd22325f23608409ca12334a2ef6b3,
         type: 3}
       propertyPath: damage
-      value: 300
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 6809047376747890853, guid: eadd22325f23608409ca12334a2ef6b3,
         type: 3}
       propertyPath: health
-      value: 3000
+      value: 3375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eadd22325f23608409ca12334a2ef6b3, type: 3}
@@ -362,12 +362,12 @@ PrefabInstance:
     - target: {fileID: 6897973825504568526, guid: 4787d964b84cac24098bce91f9ee1c47,
         type: 3}
       propertyPath: damage
-      value: 1800
+      value: 1700
       objectReference: {fileID: 0}
     - target: {fileID: 6897973825504568526, guid: 4787d964b84cac24098bce91f9ee1c47,
         type: 3}
       propertyPath: health
-      value: 18000
+      value: 25000
       objectReference: {fileID: 0}
     - target: {fileID: 6897973825504568527, guid: 4787d964b84cac24098bce91f9ee1c47,
         type: 3}
@@ -529,12 +529,12 @@ PrefabInstance:
     - target: {fileID: 8032558170260315242, guid: aeb9613b59a01a24e9e594147f628beb,
         type: 3}
       propertyPath: damage
-      value: 120
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8032558170260315242, guid: aeb9613b59a01a24e9e594147f628beb,
         type: 3}
       propertyPath: health
-      value: 250
+      value: 720
       objectReference: {fileID: 0}
     - target: {fileID: 8032558170260315243, guid: aeb9613b59a01a24e9e594147f628beb,
         type: 3}

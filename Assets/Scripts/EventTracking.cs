@@ -21,7 +21,6 @@ public class EventTracking : Singleton<EventTracking>
 		idDevice = SystemInfo.deviceUniqueIdentifier;
 
 		Event_af_login();
-
 		#region Demo
 		//#if UNITY_IOS
 
@@ -96,6 +95,9 @@ public class EventTracking : Singleton<EventTracking>
 
 	public void SentEvent()
     {
+
+		if (!AppsFlyer.instance.isInit)
+			return;
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add(AFInAppEvents.CURRENCY, "USD");
 		eventValues.Add(AFInAppEvents.REVENUE, "0.99");
@@ -106,6 +108,8 @@ public class EventTracking : Singleton<EventTracking>
 
 	public void Event_LEVEL_ACHIEVED(string _level)
     {
+		if (!AppsFlyer.instance.isInit)
+			return;
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, idDevice);
 		eventValues.Add(AFInAppEvents.LEVEL, _level);
@@ -118,6 +122,8 @@ public class EventTracking : Singleton<EventTracking>
 	
 	public void Event_AD_CLICK(string _level,string _rewradType)
     {
+		if (!AppsFlyer.instance.isInit)
+			return;
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, idDevice);
 		eventValues.Add(AFInAppEvents.LEVEL, _level);
@@ -129,6 +135,8 @@ public class EventTracking : Singleton<EventTracking>
 
 	public void Event_AD_View(string _level, string _rewradType, string _rewarded= "rewarded")
 	{
+		if (!AppsFlyer.instance.isInit)
+			return;
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, idDevice);
 		eventValues.Add(AFInAppEvents.LEVEL, _level);
@@ -141,6 +149,8 @@ public class EventTracking : Singleton<EventTracking>
 
 	public void Event_af_login()
     {
+		if (!AppsFlyer.instance.isInit)
+			return;
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, idDevice);
 		eventValues.Add("login_time", DateTime.Now.ToString());
@@ -155,12 +165,19 @@ public class EventTracking : Singleton<EventTracking>
 
 	public void Event_af_ads_reward_offer()
     {
+		if (!AppsFlyer.instance.isInit)
+			return;
+		Dictionary<string, string> eventValues = new Dictionary<string, string>();
+		eventValues.Add("customer_user_id", device_id());
+		eventValues.Add("type_reward", AdsMAXManager.Instance.rewardType);
+		eventValues.Add("level", levelCurrent());
 
-    }
+		AppsFlyer.sendEvent("af_ads_reward_offer", eventValues);
+	}
 
 	private string levelCurrent()
 	{
-		return PlayerPrefs.GetInt("level_general").ToString();
+		return PlayerPrefs.GetInt("level_general",1).ToString();
 	}
 
 	private string device_id()
@@ -169,6 +186,8 @@ public class EventTracking : Singleton<EventTracking>
 	}
 	public void Event_af_ads_reward_click(MaxSdkBase.AdInfo adInfo)
     {
+		if (!AppsFlyer.instance.isInit)
+			return;
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("type_reward", AdsMAXManager.Instance.rewardType);
@@ -180,6 +199,8 @@ public class EventTracking : Singleton<EventTracking>
 	
 	public void Event_af_ads_reward_show(MaxSdkBase.AdInfo adInfo)
     {
+		if (!AppsFlyer.instance.isInit)
+			return;
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("type_reward", AdsMAXManager.Instance.rewardType);
@@ -191,6 +212,8 @@ public class EventTracking : Singleton<EventTracking>
 	
 	public void Event_af_ads_reward_fail(MaxSdkBase.ErrorInfo adInfo, string placement_id)
     {
+		if (!AppsFlyer.instance.isInit)
+			return;
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("type_reward", AdsMAXManager.Instance.rewardType);
@@ -202,6 +225,8 @@ public class EventTracking : Singleton<EventTracking>
 
 	public void Event_af_ads_reward_complete(MaxSdkBase.AdInfo adInfo)
 	{
+		if (!AppsFlyer.instance.isInit)
+			return;
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("type_reward", AdsMAXManager.Instance.rewardType);
@@ -213,6 +238,8 @@ public class EventTracking : Singleton<EventTracking>
 
 	public void Event_af_ads_inter_load(MaxSdkBase.AdInfo adInfo)
     {
+		if (!AppsFlyer.instance.isInit)
+			return;
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("placement_id", adInfo.AdUnitIdentifier);
@@ -223,6 +250,8 @@ public class EventTracking : Singleton<EventTracking>
 	
 	public void Event_af_ads_inter_show(MaxSdkBase.AdInfo adInfo)
     {
+		if (!AppsFlyer.instance.isInit)
+			return;
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("placement_id", adInfo.AdUnitIdentifier);
@@ -233,6 +262,8 @@ public class EventTracking : Singleton<EventTracking>
 	
 	public void Event_af_ads_inter_fail(MaxSdkBase.ErrorInfo adInfo, string placement_id)
     {
+		if (!AppsFlyer.instance.isInit)
+			return;
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("errormsg", adInfo.Message);
@@ -243,6 +274,8 @@ public class EventTracking : Singleton<EventTracking>
 
 	public void Event_af_ads_inter_click(MaxSdkBase.AdInfo adInfo)
     {
+		if (!AppsFlyer.instance.isInit)
+			return;
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("placement_id", adInfo.AdUnitIdentifier);

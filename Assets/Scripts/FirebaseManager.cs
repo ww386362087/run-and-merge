@@ -69,7 +69,7 @@ public class FirebaseManager : Singleton<FirebaseManager>
 
     private string levelCurrent()
     {
-        return PlayerPrefs.GetInt("level_general").ToString();
+        return PlayerPrefs.GetInt("level_general",1).ToString();
     }
 
     private string device_id()

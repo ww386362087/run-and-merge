@@ -1,4 +1,4 @@
-using Firebase;
+﻿using Firebase;
 using Firebase.Analytics;
 using Firebase.Extensions;
 using System;
@@ -67,12 +67,22 @@ public class FirebaseManager : Singleton<FirebaseManager>
     }
     #region Event Game Analytic
 
+    private string levelCurrent()
+    {
+        return PlayerPrefs.GetInt("level_general").ToString();
+    }
+
+    private string device_id()
+    {
+        return SystemInfo.deviceUniqueIdentifier!=null? SystemInfo.deviceUniqueIdentifier:string.Empty;
+    }
+
     public void LogEvent_StartLevel()
     {
         if (firebaseInitialized)
         {
-            string str = "level_start_firebase";
-            FirebaseAnalytics.LogEvent(str, new Parameter(FirebaseAnalytics.ParameterLevel, PlayerPrefs.GetInt("level_general")));
+            string str = "firebase_level_start_" + levelCurrent();
+            FirebaseAnalytics.LogEvent(str, new Parameter("level", levelCurrent()));
         }
     }
 
@@ -80,8 +90,8 @@ public class FirebaseManager : Singleton<FirebaseManager>
     {
         if (firebaseInitialized)
         {
-            string str = "level_complete_firebase";
-            FirebaseAnalytics.LogEvent(str, new Parameter(FirebaseAnalytics.ParameterLevel, PlayerPrefs.GetInt("level_general")));
+            string str = "firebase_level_complete_" + levelCurrent();
+            FirebaseAnalytics.LogEvent(str, new Parameter("level", levelCurrent()));
         }
     }
 
@@ -89,18 +99,169 @@ public class FirebaseManager : Singleton<FirebaseManager>
     {
         if (firebaseInitialized)
         {
-            string str = "level_fail_firebase";
-            FirebaseAnalytics.LogEvent(str, new Parameter(FirebaseAnalytics.ParameterLevel, PlayerPrefs.GetInt("level_general")));
+            string str = "firebase_level_fail_" + levelCurrent();
+            FirebaseAnalytics.LogEvent(str, new Parameter("level", levelCurrent()));
         }
     }
+
 
     public void LogEvent_Ad(string _name,string _param)
     {
         if (firebaseInitialized)
         {
             string str = _name;
-            FirebaseAnalytics.LogEvent(str, new Parameter(FirebaseAnalytics.ParameterAdNetworkClickID, _param));
+            FirebaseAnalytics.LogEvent(str, new Parameter(FirebaseAnalytics.ParameterAdNetworkClickID, _param),
+                                            new Parameter(FirebaseAnalytics.ParameterLevel, levelCurrent()));
         }
+    }
+
+
+    //Có bao nhiêu lượt hiển thị ads?
+    public void LogEvent_firebase_ad_impression()
+    {
+
+    }
+
+    //số lần nút reward ad xuất hiện
+    public void LogEvent_firebase_ads_reward_offer()
+    {
+        if (firebaseInitialized)
+        {
+            string str = "firebase_ads_reward_offer";
+            FirebaseAnalytics.LogEvent(str, new Parameter("type_reward",AdsMAXManager.Instance.rewardType),
+                                            new Parameter("level", levelCurrent()));
+        }
+
+        EventTracking.Instance.Event_af_ads_reward_offer();
+    }
+
+    //Số lần click vào ads khi ads đang hiển thị
+    public void LogEvent_firebase_ads_reward_click(MaxSdkBase.AdInfo adInfo)
+    {
+        if (firebaseInitialized)
+        {
+            string str = "firebase_ads_reward_offer";
+            FirebaseAnalytics.LogEvent(str, new Parameter("type_reward", AdsMAXManager.Instance.rewardType),
+                                            new Parameter("placement_id", adInfo.AdUnitIdentifier),
+                                            new Parameter("customer_user_id", device_id()),
+                                            new Parameter("level", levelCurrent()));
+        }
+
+        EventTracking.Instance.Event_af_ads_reward_click(adInfo);
+    }
+
+    //số lần ad show thành công
+    public void LogEvent_firebase_ads_reward_show(MaxSdkBase.AdInfo adInfo)
+    {
+        if (firebaseInitialized)
+        {
+            string str = "firebase_ads_reward_show";
+            FirebaseAnalytics.LogEvent(str, new Parameter("type_reward", AdsMAXManager.Instance.rewardType),                                    
+                                            new Parameter("customer_user_id", device_id()),
+                                            new Parameter("placement_id", adInfo.AdUnitIdentifier),
+                                            new Parameter("level", levelCurrent()));
+        }
+
+        EventTracking.Instance.Event_af_ads_reward_show(adInfo);
+    }
+
+    //số lần ad show thành công
+    public void LogEvent_firebase_ads_reward_complete(MaxSdkBase.AdInfo adInfo)
+    {
+        if (firebaseInitialized)
+        {
+            string str = "firebase_ads_reward_complete";
+            FirebaseAnalytics.LogEvent(str, new Parameter("type_reward", AdsMAXManager.Instance.rewardType),
+                                            new Parameter("customer_user_id", device_id()),
+                                            new Parameter("placement_id", adInfo.AdUnitIdentifier),
+                                            new Parameter("level", levelCurrent()));
+        }
+
+        EventTracking.Instance.Event_af_ads_reward_complete(adInfo);
+    }
+
+
+    //số lần ad show bị fail
+    public void LogEvent_firebase_ads_reward_fail(MaxSdkBase.ErrorInfo adInfo,string placement_id)
+    {
+        if (firebaseInitialized)
+        {
+            string str = "firebase_ads_reward_show";
+            FirebaseAnalytics.LogEvent(str, new Parameter("type_reward", AdsMAXManager.Instance.rewardType),
+                                            new Parameter("customer_user_id", device_id()),
+                                            new Parameter("errormsg", adInfo.Message),
+                                            new Parameter("placement_id", placement_id),
+                                            new Parameter("level", levelCurrent()));
+        }
+
+        EventTracking.Instance.Event_af_ads_reward_fail(adInfo, placement_id);
+    }
+
+    //số lần ads_inter load về máy người chơi
+    public void LogEvent_firebase_ads_inter_load(MaxSdkBase.AdInfo adInfo)
+    {
+        if (firebaseInitialized)
+        {
+            string str = "firebase_ads_inter_load";
+            FirebaseAnalytics.LogEvent(str, new Parameter("type_reward", "inter"),
+                                            new Parameter("customer_user_id", device_id()),
+                                            new Parameter("placement_id", adInfo.AdUnitIdentifier),
+                                            new Parameter("level", levelCurrent()));
+        }
+        EventTracking.Instance.Event_af_ads_inter_load(adInfo);
+    }
+
+    //số lần ad_inter show thành công
+    public void LogEvent_firebase_ads_inter_show(MaxSdkBase.AdInfo adInfo)
+    {
+        if (firebaseInitialized)
+        {
+            string str = "firebase_ads_inter_show";
+            FirebaseAnalytics.LogEvent(str, new Parameter("type_reward", "inter"),
+                                            new Parameter("customer_user_id", device_id()),
+                                            new Parameter("placement_id", adInfo.AdUnitIdentifier),
+                                            new Parameter("level", levelCurrent()));
+        }
+
+        EventTracking.Instance.Event_af_ads_inter_show(adInfo);
+    }
+
+    //số lần ad_inter show bị fail
+    public void LogEvent_firebase_ads_inter_fail(MaxSdkBase.ErrorInfo adInfo, string placement_id)
+    {
+        if (firebaseInitialized)
+        {
+            string str = "firebase_ads_inter_fail";
+            FirebaseAnalytics.LogEvent(str, new Parameter("type_reward", "inter"),
+                                            new Parameter("customer_user_id", device_id()),
+                                            new Parameter("errormsg", adInfo.Message),
+                                            new Parameter("placement_id", placement_id),
+                                            new Parameter("level", levelCurrent()));
+        }
+
+        EventTracking.Instance.Event_af_ads_inter_fail(adInfo,placement_id);
+    }
+
+    //Số lần click vào ads khi ads đang hiển thị
+    public void LogEvent_firebase_ads_inter_click(MaxSdkBase.AdInfo adInfo)
+    {
+        if (firebaseInitialized)
+        {
+            string str = "firebase_ads_inter_click";
+            FirebaseAnalytics.LogEvent(str, new Parameter("type_reward", "inter"),
+                                            new Parameter("customer_user_id", device_id()),
+                                            new Parameter("placement_id", adInfo.AdUnitIdentifier),
+                                            new Parameter("level", levelCurrent()));
+        }
+
+        EventTracking.Instance.Event_af_ads_inter_click(adInfo);
+    }
+
+    // Có bao nhiêu lượt mua cho từng sản phẩm?
+    // Có bao nhiêu user mua hàng
+    public void LogEvent_firebase_purchase()
+    {
+
     }
 
     // Reset analytics data for this app instance.

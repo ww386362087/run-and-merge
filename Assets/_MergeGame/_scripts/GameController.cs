@@ -484,12 +484,17 @@ public class GameController : Singleton<GameController> , IGameEventListener
     }
 
     [ContextMenu("add monster to test")]
-    public void AddMonsterToTest()
+    public void AddMonsterToTest(int level)
     {
+        if (level < 1 || level > 9)
+        {
+            return;
+        }
+
         if (list_empty_cadres.Count > 0)
         {
             //add monster to scene
-            list_empty_cadres[0].add_monster_test();
+            list_empty_cadres[0].add_monster_test(level);
 
             //play effect
             //list_empty_cadres[0].effect_one.Play();
@@ -500,12 +505,17 @@ public class GameController : Singleton<GameController> , IGameEventListener
     }
 
     [ContextMenu("add warrior to test")]
-    public void AddWarriorToTest()
+    public void AddWarriorToTest(int level)
     {
+        if (level < 1 || level > 9)
+        {
+            return;
+        }
+
         if (list_empty_cadres.Count > 0)
         {
             //add monster to scene
-            list_empty_cadres[0].add_warrior_test();
+            list_empty_cadres[0].add_warrior_test(level);
 
             //play effect
             //list_empty_cadres[0].effect_one.Play();

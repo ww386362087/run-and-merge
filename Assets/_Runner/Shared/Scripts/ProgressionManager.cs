@@ -53,13 +53,4 @@ public class ProgressionManager : Singleton<ProgressionManager>
         PlayerPrefs.SetInt(MERGE_LEVEL_PROGRESSION, levelToSet);
         SaveManager.Instance.LevelProgress = levelToSet;
     }
-
-
-    [ContextMenu("God mod")]
-    public void SetGodBuild()
-    {
-        //e build giúp a lại god mode, bỏ quảng cáo, full tiền, full Neko, unlock hết các level, chọn được level.
-        PlayerPrefs.SetInt(MERGE_LEVEL_PROGRESSION, levelToSet);
-
-    }
 }

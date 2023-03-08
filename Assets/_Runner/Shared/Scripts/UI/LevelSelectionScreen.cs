@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using HyperCasual.Core;
 using HyperCasual.Runner;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace HyperCasual.Gameplay
 {
@@ -47,7 +48,7 @@ namespace HyperCasual.Gameplay
         {
             ResetButtonData();
             
-            m_QuickPlayButton.AddListener(OnQuickPlayButtonClicked);
+            //m_QuickPlayButton.AddListener(OnQuickPlayButtonClicked);
             m_BackButton.AddListener(OnBackButtonClicked);
 
             OnQuickPlayButtonClicked();
@@ -55,7 +56,7 @@ namespace HyperCasual.Gameplay
 
         void OnDisable()
         {
-            m_QuickPlayButton.RemoveListener(OnQuickPlayButtonClicked);
+            //m_QuickPlayButton.RemoveListener(OnQuickPlayButtonClicked);
             m_BackButton.RemoveListener(OnBackButtonClicked);
         }
 
@@ -65,15 +66,28 @@ namespace HyperCasual.Gameplay
             for (int i = 0; i < m_Buttons.Count; i++)
             {
                 var button = m_Buttons[i];
-                var unlocked = i <= levelProgress;
+                /*var unlocked = i <= levelProgress;
 #if UNITY_EDITOR
                 unlocked = unlocked || m_UnlockAllLevels;
-#endif
-                button.SetData(i, unlocked, OnClick);
+#endif*/
+                button.SetData(i, true, OnClickBtn);
             }
         }
         
-        void OnClick(int startingIndex)
+        void OnClickBtn(int startingIndex)
+        {
+            if (startingIndex < 0)
+                throw new Exception("Button is not initialized");
+
+            SequenceManager.Instance.SetStartingLevel(startingIndex);
+            ProgressionManager.Instance.SetLevel(startingIndex);
+            m_NextLevelEvent.Raise();
+
+            gameObject.SetActive(false);
+            SceneManager.LoadScene("RunnerLevel");
+        }
+
+        void OnClickQuickplay(int startingIndex)
         {
             if (startingIndex < 0)
                 throw new Exception("Button is not initialized");
@@ -82,16 +96,17 @@ namespace HyperCasual.Gameplay
             ProgressionManager.Instance.SetLevel(startingIndex);
             m_NextLevelEvent.Raise();
         }
-        
+
         void OnQuickPlayButtonClicked()
         {
             m_BackEvent.Raise();
-            OnClick(SaveManager.Instance.LevelProgress);
+            OnClickQuickplay(SaveManager.Instance.LevelProgress);
         }
         
         void OnBackButtonClicked()
         {
-            m_BackEvent.Raise();
+            //m_BackEvent.Raise();
+            gameObject.SetActive(false);
         }
     }
 }

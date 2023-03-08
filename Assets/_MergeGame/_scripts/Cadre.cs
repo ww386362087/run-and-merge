@@ -171,18 +171,30 @@ public class Cadre : MonoBehaviour
 
     }
 
-    public void add_monster_test()
+    public void add_monster_test(int level)
     {
         has_din = true;
         //list_dinosaurs[0].SetActive(true);
 
-        StartCoroutine(JumpInSeq(list_dinosaurs[7]));
-        active_monster = list_dinosaurs[7].GetComponent<Monster>();
-        monster_type = monster_type_enum.level_8;
+        StartCoroutine(JumpInSeq(list_dinosaurs[level - 1]));
+        active_monster = list_dinosaurs[level - 1].GetComponent<Monster>();
+        monster_type = (monster_type_enum)level;
 
         //add to list players
         Players_script.list_active_monsters.Add(active_monster);
 
+    }
+
+    public void add_warrior_test(int level)
+    {
+        has_warrior = true;
+        //list_warriors[0].SetActive(true);
+        StartCoroutine(JumpInSeq(list_warriors[level - 1]));
+        active_warrior = list_warriors[level - 1].GetComponent<Warrior>();
+        warrior_type = (warrior_type_enum)level;
+
+        //add to list players
+        Players_script.list_active_warriors.Add(active_warrior);
     }
 
     IEnumerator JumpInSeq(GameObject go)
@@ -433,18 +445,6 @@ public class Cadre : MonoBehaviour
         StartCoroutine(JumpInSeq(list_warriors[0]));
         warrior_type = warrior_type_enum.level_1;
         active_warrior = list_warriors[0].GetComponent<Warrior>();
-
-        //add to list players
-        Players_script.list_active_warriors.Add(active_warrior);
-    }
-
-    public void add_warrior_test()
-    {
-        has_warrior = true;
-        //list_warriors[0].SetActive(true);
-        StartCoroutine(JumpInSeq(list_warriors[7]));
-        warrior_type = warrior_type_enum.level_8;
-        active_warrior = list_warriors[7].GetComponent<Warrior>();
 
         //add to list players
         Players_script.list_active_warriors.Add(active_warrior);

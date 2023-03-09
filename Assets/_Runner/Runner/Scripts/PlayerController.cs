@@ -277,6 +277,26 @@ namespace HyperCasual.Runner
             //m_TargetScale = Vector3.Max(m_TargetScale, Vector3.one * k_MinimumScale);
         }
 
+        public void AdjustQuantity_Multiply(int _num)
+        {
+            var addNum = Characters.Count * (_num - 1);
+            AdjustQuantity(addNum);
+        }
+
+        public void AdjustQuantity_Divide(int _num)
+        {
+            int value = System.Convert.ToInt32(System.Math.Floor((float)Characters.Count / _num));
+            int addNum = - (Characters.Count - value);
+            AdjustQuantity(addNum);
+        }
+
+        public void AdjustQuantity_NthRoot(int _num)
+        {
+            var value = System.Convert.ToInt32(System.Math.Floor(System.Math.Pow(Characters.Count, 1 / _num)));
+            int addNum = -(Characters.Count - value);
+            AdjustQuantity(addNum);
+        }
+
         public GameObject GetClosest(Vector3 positionTarget)
         {
             var target = Characters.OrderBy(go => Vector3.Distance(go.transform.position, positionTarget)).FirstOrDefault();

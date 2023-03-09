@@ -35,6 +35,9 @@ namespace HyperCasual.Runner
             ChangeSpeed,
             ChangeSize,
             ChangeQuantity,
+            Multiply,
+            Divide,
+            Root,
         }
 
         /// <summary>
@@ -138,6 +141,15 @@ namespace HyperCasual.Runner
 
                 case GateType.ChangeQuantity:
                     PlayerController.Instance.AdjustQuantity((int)m_Value);
+                    break;
+                case GateType.Multiply:
+                    PlayerController.Instance.AdjustQuantity_Multiply((int)m_Value);
+                    break;
+                case GateType.Divide:
+                    PlayerController.Instance.AdjustQuantity_Divide((int)m_Value);
+                    break;
+                case GateType.Root:
+                    PlayerController.Instance.AdjustQuantity_NthRoot((int)m_Value);
                     break;
             }
 

@@ -17,7 +17,7 @@ public class UiManager : MonoBehaviour
                       card_panel , remove_ad , ingame , winpanel , lose_panel , game_control , btn_retr , btn_cadre , btn_setting , setting_panel;
     public GameObject btn_warrior_ads , btn_warrior_, btn_monster_ads , btn_monster_ , btn_add_mons_free, btn_add_wars_free;
 
-    public TMPro.TextMeshProUGUI level_nbr_txt , txt_mmoney , txt_coin_monster , txt_coin_warrior , txt_earning_lose , txt_earning_win;
+    public TMPro.TextMeshProUGUI level_nbr_txt, txt_level_win_panel, txt_mmoney , txt_coin_monster , txt_coin_warrior , txt_earning_lose , txt_earning_win;
     
     GameController gamecontroller_script;
 
@@ -42,6 +42,7 @@ public class UiManager : MonoBehaviour
         //Advertisements.Instance.ShowBanner(BannerPosition.BOTTOM);
 
         level_nbr_txt.text = "LEVEL" + (GameManager.instance.getlevel() + 1);
+        txt_level_win_panel.text = "LEVEL" + (GameManager.instance.getlevel() + 1);
 
         // coins text
         manage_coins_start();

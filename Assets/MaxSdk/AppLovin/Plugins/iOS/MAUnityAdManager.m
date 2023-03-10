@@ -5,7 +5,7 @@
 
 #import "MAUnityAdManager.h"
 
-#define VERSION @"5.8.0"
+#define VERSION @"5.8.1"
 
 #define KEY_WINDOW [UIApplication sharedApplication].keyWindow
 #define DEVICE_SPECIFIC_ADVIEW_AD_FORMAT ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) ? MAAdFormat.leader : MAAdFormat.banner
@@ -176,7 +176,15 @@ static ALUnityBackgroundCallback backgroundCallback;
     backgroundCallback = unityBackgroundCallback;
     NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
     NSString *sdkKey = infoDict[@"AppLovinSdkKey"];
-    self.sdk = [ALSdk sharedWithKey: sdkKey settings: [self generateSDKSettingsForAdUnitIdentifiers: serializedAdUnitIdentifiers metaData: serializedMetaData]];
+    if ( [sdkKey al_isValidString] )
+    {
+        self.sdk = [ALSdk sharedWithKey: sdkKey settings: [self generateSDKSettingsForAdUnitIdentifiers: serializedAdUnitIdentifiers metaData: serializedMetaData]];
+    }
+    else
+    {
+        self.sdk = [ALSdk sharedWithSettings:[self generateSDKSettingsForAdUnitIdentifiers:serializedAdUnitIdentifiers metaData:serializedMetaData]];
+    }
+    
     self.sdk.variableService.delegate = self;
     [self.sdk setPluginVersion: [@"Max-Unity-" stringByAppendingString: VERSION]];
     self.sdk.mediationProvider = @"max";
@@ -1998,23 +2006,11 @@ static ALUnityBackgroundCallback backgroundCallback;
     return settings;
 }
 
-#pragma mark - Consent Flow
+#pragma mark - User Service
 
-- (void)startConsentFlow
+- (void)didDismissUserConsentDialog
 {
-    [self.sdk.cfService scfWithCompletionHander:^(ALCFError * _Nullable error) {
-        
-        NSMutableDictionary<NSString *, id> *args = [NSMutableDictionary dictionaryWithCapacity: 3];
-        args[@"name"] = @"OnSdkConsentFlowCompletedEvent";
-        
-        if ( error )
-        {
-            args[@"code"] = @(error.code);
-            args[@"message"] = error.message;
-        }
-        
-        [MAUnityAdManager forwardUnityEventWithArgs: args];
-    }];
+    [MAUnityAdManager forwardUnityEventWithArgs: @{@"name" : @"OnSdkConsentDialogDismissedEvent"}];
 }
 
 #pragma mark - Variable Service (Deprecated)

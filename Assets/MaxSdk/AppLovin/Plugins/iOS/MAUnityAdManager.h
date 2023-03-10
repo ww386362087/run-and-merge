@@ -90,8 +90,8 @@ typedef void (*ALUnityBackgroundCallback)(const char* args);
 // Ad Value
 - (NSString *)adValueForAdUnitIdentifier:(NSString *)adUnitIdentifier withKey:(NSString *)key;
 
-// Consent Flow
-- (void)startConsentFlow;
+// User Service
+- (void)didDismissUserConsentDialog;
 
 // Utils
 + (NSString *)serializeParameters:(NSDictionary<NSString *, NSString *> *)dict;

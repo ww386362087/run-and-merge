@@ -15,6 +15,17 @@ MonoBehaviour:
   qualityServiceEnabled: 1
   sdkKey: _bw-wyd5WPWUPnKH1yT2QLao2BnV75q7hl5bgkgC7CgWz0o-yG1Mbc9eox8w0z1hi7INr-azAFT7FG6CX7Z8ki
   setAttributionReportEndpoint: 0
-  adMobAndroidAppId: 
-  adMobIosAppId: 
-  showInternalSettingsInIntegrationManager: 0
+  consentFlowEnabled: 0
+  consentFlowPrivacyPolicyUrl: 
+  consentFlowTermsOfServiceUrl: 
+  userTrackingUsageDescriptionEn: 
+  userTrackingUsageLocalizationEnabled: 0
+  userTrackingUsageDescriptionDe: 
+  userTrackingUsageDescriptionEs: 
+  userTrackingUsageDescriptionFr: 
+  userTrackingUsageDescriptionJa: 
+  userTrackingUsageDescriptionKo: 
+  userTrackingUsageDescriptionZhHans: 
+  userTrackingUsageDescriptionZhHant: 
+  adMobAndroidAppId: ca-app-pub-8499831181291584~8368582598
+  adMobIosAppId: ca-app-pub-8499831181291584~3034287442

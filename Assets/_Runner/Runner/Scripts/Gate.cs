@@ -38,6 +38,7 @@ namespace HyperCasual.Runner
             Multiply,
             Divide,
             Root,
+            Pow,
         }
 
         /// <summary>
@@ -150,6 +151,9 @@ namespace HyperCasual.Runner
                     break;
                 case GateType.Root:
                     PlayerController.Instance.AdjustQuantity_NthRoot((int)m_Value);
+                    break;
+                case GateType.Pow:
+                    PlayerController.Instance.AdjustQuantity_Power((int)m_Value);
                     break;
             }
 

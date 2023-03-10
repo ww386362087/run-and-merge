@@ -297,6 +297,13 @@ namespace HyperCasual.Runner
             AdjustQuantity(addNum);
         }
 
+        public void AdjustQuantity_Power(int _num)
+        {
+            var value = System.Convert.ToInt32(System.Math.Floor(System.Math.Pow(Characters.Count, _num)));
+            int addNum = -(Characters.Count - value);
+            AdjustQuantity(addNum);
+        }
+
         public GameObject GetClosest(Vector3 positionTarget)
         {
             var target = Characters.OrderBy(go => Vector3.Distance(go.transform.position, positionTarget)).FirstOrDefault();

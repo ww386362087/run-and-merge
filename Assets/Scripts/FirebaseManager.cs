@@ -142,6 +142,7 @@ public class FirebaseManager : Singleton<FirebaseManager>
         {
             string str = "firebase_ads_reward_offer";
             FirebaseAnalytics.LogEvent(str, new Parameter("type_reward",AdsMAXManager.Instance.rewardType),
+                                            new Parameter("customer_user_id", device_id()),
                                             new Parameter("level", levelCurrent()));
 
             Debug.Log(str);
@@ -193,6 +194,7 @@ public class FirebaseManager : Singleton<FirebaseManager>
             FirebaseAnalytics.LogEvent(str, new Parameter("type_reward", AdsMAXManager.Instance.rewardType),
                                             new Parameter("customer_user_id", device_id()),
                                             new Parameter("placement_id", adInfo.AdUnitIdentifier),
+                                            new Parameter("revenue", adInfo.Revenue),
                                             new Parameter("level", levelCurrent()));
 
             Debug.Log(str);
@@ -245,6 +247,7 @@ public class FirebaseManager : Singleton<FirebaseManager>
             FirebaseAnalytics.LogEvent(str, new Parameter("type_reward", "inter"),
                                             new Parameter("customer_user_id", device_id()),
                                             new Parameter("placement_id", adInfo.AdUnitIdentifier),
+                                            new Parameter("revenue", adInfo.Revenue),
                                             new Parameter("level", levelCurrent()));
 
             Debug.Log(str);

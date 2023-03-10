@@ -151,7 +151,7 @@ public class UiManager : MonoBehaviour
         //Advertisements.Instance.ShowInterstitial();
 
         EventTracking.Instance.str_End = DateTime.Now.ToString();
-        EventTracking.Instance.Event_LEVEL_ACHIEVED(PlayerPrefs.GetInt(ProgressionManager.Instance.MERGE_LEVEL_PROGRESSION).ToString());
+
         FirebaseManager.Instance.LogEvent_FinishLevel();
     }
 

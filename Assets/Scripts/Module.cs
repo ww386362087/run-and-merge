@@ -18,4 +18,10 @@ public static class Module
 
 
     public static bool isGodMod = false;
+
+    public static int remove_ads
+    {
+        get {return PlayerPrefs.GetInt("remove_ads", 0); }
+        set { PlayerPrefs.SetInt("remove_ads", value); }
+    }
 }

@@ -44,6 +44,10 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
         };
 
         MaxSdk.SetSdkKey(MaxSdkKey);
+
+        MaxSdk.SetUserId(SystemInfo.deviceUniqueIdentifier);
+        MaxSdk.SetTestDeviceAdvertisingIdentifiers(new string[] { "1678334281016-3635291884973103458" });
+
         MaxSdk.InitializeSdk();
 
       
@@ -93,18 +97,18 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
 
     public void ShowInterstitial()
     {
-        //if (Module.isGodMod)
-        //    return;
+        if (Module.isGodMod||Module.remove_ads!=0)
+            return;
 
-        //countAdsInter++;
-        //if (countAdsInter % 3 != 0)
-        //    return;
+        countAdsInter++;
+        if (countAdsInter % 3 != 0)
+            return;
 
         if (MaxSdk.IsInterstitialReady(InterstitialAdUnitId))
         {
             MaxSdk.ShowInterstitial(InterstitialAdUnitId);
 
-            EventTracking.Instance.Event_AD_View(PlayerPrefs.GetInt("level_general").ToString(),"","interstitial");
+            //EventTracking.Instance.Event_AD_View(PlayerPrefs.GetInt("level_general").ToString(),"","interstitial");
         }
         else
         {

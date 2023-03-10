@@ -1,6 +1,7 @@
 ﻿using Firebase;
 using Firebase.Analytics;
 using Firebase.Extensions;
+using Firebase.Messaging;
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -31,7 +32,7 @@ public class FirebaseManager : Singleton<FirebaseManager>
             }
         });
 
-        Module.Event_StartGame += Module_Event_StartGame;
+    
     }
 
     private void Module_Event_StartGame()
@@ -50,13 +51,15 @@ public class FirebaseManager : Singleton<FirebaseManager>
           FirebaseAnalytics.UserPropertySignUpMethod,
           "Google");
         // Set the user ID.
-        FirebaseAnalytics.SetUserId("uber_user_510");
+        FirebaseAnalytics.SetUserId(device_id());
         // Set default session duration values.
         FirebaseAnalytics.SetSessionTimeoutDuration(new TimeSpan(0, 30, 0));
         firebaseInitialized = true;
 
 
         AnalyticsLogin();
+        MessengeCallStart();
+        Module.Event_StartGame += Module_Event_StartGame;
     }
 
     public void AnalyticsLogin()
@@ -81,8 +84,10 @@ public class FirebaseManager : Singleton<FirebaseManager>
     {
         if (firebaseInitialized)
         {
+            
             string str = "firebase_level_start_" + levelCurrent();
             FirebaseAnalytics.LogEvent(str, new Parameter("level", levelCurrent()));
+            Debug.Log(str);
         }
     }
 
@@ -92,7 +97,10 @@ public class FirebaseManager : Singleton<FirebaseManager>
         {
             string str = "firebase_level_complete_" + levelCurrent();
             FirebaseAnalytics.LogEvent(str, new Parameter("level", levelCurrent()));
+            Debug.Log(str);
         }
+
+        EventTracking.Instance.Event_af_level_complete();
     }
 
     public void LogEvent_FailLevel()
@@ -101,7 +109,10 @@ public class FirebaseManager : Singleton<FirebaseManager>
         {
             string str = "firebase_level_fail_" + levelCurrent();
             FirebaseAnalytics.LogEvent(str, new Parameter("level", levelCurrent()));
+            Debug.Log(str);
         }
+
+        EventTracking.Instance.Event_af_level_fail();
     }
 
 
@@ -112,6 +123,8 @@ public class FirebaseManager : Singleton<FirebaseManager>
             string str = _name;
             FirebaseAnalytics.LogEvent(str, new Parameter(FirebaseAnalytics.ParameterAdNetworkClickID, _param),
                                             new Parameter(FirebaseAnalytics.ParameterLevel, levelCurrent()));
+
+            Debug.Log(str);
         }
     }
 
@@ -130,6 +143,8 @@ public class FirebaseManager : Singleton<FirebaseManager>
             string str = "firebase_ads_reward_offer";
             FirebaseAnalytics.LogEvent(str, new Parameter("type_reward",AdsMAXManager.Instance.rewardType),
                                             new Parameter("level", levelCurrent()));
+
+            Debug.Log(str);
         }
 
         EventTracking.Instance.Event_af_ads_reward_offer();
@@ -145,6 +160,8 @@ public class FirebaseManager : Singleton<FirebaseManager>
                                             new Parameter("placement_id", adInfo.AdUnitIdentifier),
                                             new Parameter("customer_user_id", device_id()),
                                             new Parameter("level", levelCurrent()));
+
+            Debug.Log(str);
         }
 
         EventTracking.Instance.Event_af_ads_reward_click(adInfo);
@@ -160,6 +177,8 @@ public class FirebaseManager : Singleton<FirebaseManager>
                                             new Parameter("customer_user_id", device_id()),
                                             new Parameter("placement_id", adInfo.AdUnitIdentifier),
                                             new Parameter("level", levelCurrent()));
+
+            Debug.Log(str);
         }
 
         EventTracking.Instance.Event_af_ads_reward_show(adInfo);
@@ -175,6 +194,8 @@ public class FirebaseManager : Singleton<FirebaseManager>
                                             new Parameter("customer_user_id", device_id()),
                                             new Parameter("placement_id", adInfo.AdUnitIdentifier),
                                             new Parameter("level", levelCurrent()));
+
+            Debug.Log(str);
         }
 
         EventTracking.Instance.Event_af_ads_reward_complete(adInfo);
@@ -192,6 +213,8 @@ public class FirebaseManager : Singleton<FirebaseManager>
                                             new Parameter("errormsg", adInfo.Message),
                                             new Parameter("placement_id", placement_id),
                                             new Parameter("level", levelCurrent()));
+
+            Debug.Log(str);
         }
 
         EventTracking.Instance.Event_af_ads_reward_fail(adInfo, placement_id);
@@ -207,6 +230,8 @@ public class FirebaseManager : Singleton<FirebaseManager>
                                             new Parameter("customer_user_id", device_id()),
                                             new Parameter("placement_id", adInfo.AdUnitIdentifier),
                                             new Parameter("level", levelCurrent()));
+
+            Debug.Log(str);
         }
         EventTracking.Instance.Event_af_ads_inter_load(adInfo);
     }
@@ -221,6 +246,8 @@ public class FirebaseManager : Singleton<FirebaseManager>
                                             new Parameter("customer_user_id", device_id()),
                                             new Parameter("placement_id", adInfo.AdUnitIdentifier),
                                             new Parameter("level", levelCurrent()));
+
+            Debug.Log(str);
         }
 
         EventTracking.Instance.Event_af_ads_inter_show(adInfo);
@@ -237,6 +264,7 @@ public class FirebaseManager : Singleton<FirebaseManager>
                                             new Parameter("errormsg", adInfo.Message),
                                             new Parameter("placement_id", placement_id),
                                             new Parameter("level", levelCurrent()));
+            Debug.Log(str);
         }
 
         EventTracking.Instance.Event_af_ads_inter_fail(adInfo,placement_id);
@@ -252,6 +280,7 @@ public class FirebaseManager : Singleton<FirebaseManager>
                                             new Parameter("customer_user_id", device_id()),
                                             new Parameter("placement_id", adInfo.AdUnitIdentifier),
                                             new Parameter("level", levelCurrent()));
+            Debug.Log(str);
         }
 
         EventTracking.Instance.Event_af_ads_inter_click(adInfo);
@@ -261,7 +290,15 @@ public class FirebaseManager : Singleton<FirebaseManager>
     // Có bao nhiêu user mua hàng
     public void LogEvent_firebase_purchase()
     {
+        if (firebaseInitialized)
+        {
+            string str = "firebase_purchase";
+            FirebaseAnalytics.LogEvent(str, new Parameter("customer_user_id", device_id()),
+                                            new Parameter("level", levelCurrent()));
+            Debug.Log(str);
+        }
 
+        EventTracking.Instance.Event_af_purchase();
     }
 
     // Reset analytics data for this app instance.
@@ -271,26 +308,26 @@ public class FirebaseManager : Singleton<FirebaseManager>
         FirebaseAnalytics.ResetAnalyticsData();
     }
 
-   
+
 
     #endregion
 
     #region Messaging
-    //public void MessengeCallStart()
-    //{
-    //    FirebaseMessaging.TokenReceived += OnTokenReceived;
-    //    FirebaseMessaging.MessageReceived += OnMessageReceived;
-    //}
+    public void MessengeCallStart()
+    {
+        FirebaseMessaging.TokenReceived += OnTokenReceived;
+        FirebaseMessaging.MessageReceived += OnMessageReceived;
+    }
 
-    //public void OnTokenReceived(object sender, TokenReceivedEventArgs token)
-    //{
-    //    Debug.Log("Received Registration Token: " + token.Token);
-    //}
+    public void OnTokenReceived(object sender, TokenReceivedEventArgs token)
+    {
+        Debug.Log("Received Registration Token: " + token.Token);
+    }
 
-    //public void OnMessageReceived(object sender, MessageReceivedEventArgs e)
-    //{
-    //    Debug.Log("Received a new message from: " + e.Message.From);
-    //}
+    public void OnMessageReceived(object sender, MessageReceivedEventArgs e)
+    {
+        Debug.Log("Received a new message from: " + e.Message.From);
+    }
     #endregion
 
 }

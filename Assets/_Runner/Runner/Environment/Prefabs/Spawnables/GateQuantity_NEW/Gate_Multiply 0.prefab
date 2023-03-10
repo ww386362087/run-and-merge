@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -905214840532266520}
   - component: {fileID: 4877652770548064436}
   m_Layer: 0
-  m_Name: Gate_Power
+  m_Name: Gate_Multiply 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,8 +80,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SnapToGrid: 0
   m_Sound: 5
-  m_GateType: 6
-  m_Value: 2
+  m_GateType: 3
+  m_Value: 0
   m_Text: {fileID: 1841360140200085941}
 --- !u!1 &1340726307460634547
 GameObject:
@@ -349,7 +349,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ^2
+  m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}

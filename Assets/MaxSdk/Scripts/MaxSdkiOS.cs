@@ -23,6 +23,11 @@ public class MaxSdkiOS : MaxSdkBase
         get { return MaxVariableServiceiOS.Instance; }
     }
 
+    public static MaxUserServiceiOS UserService
+    {
+        get { return MaxUserServiceiOS.Instance; }
+    }
+
     #region Initialization
 
     [DllImport("__Internal")]

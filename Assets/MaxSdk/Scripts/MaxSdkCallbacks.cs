@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
-using AppLovinMax.Internal.API;
 using AppLovinMax.ThirdParty.MiniJson;
 
 public class MaxSdkCallbacks : MonoBehaviour
@@ -62,6 +61,22 @@ public class MaxSdkCallbacks : MonoBehaviour
         {
             LogUnsubscribedToEvent("OnVariablesUpdatedEvent");
             _onVariablesUpdatedEvent -= value;
+        }
+    }
+
+    // Fire when the Consent Dialog has been dismissed.
+    private static Action _onSdkConsentDialogDismissedEvent;
+    public static event Action OnSdkConsentDialogDismissedEvent
+    {
+        add
+        {
+            LogSubscribedToEvent("OnSdkConsentDialogDismissedEvent");
+            _onSdkConsentDialogDismissedEvent += value;
+        }
+        remove
+        {
+            LogUnsubscribedToEvent("OnSdkConsentDialogDismissedEvent");
+            _onSdkConsentDialogDismissedEvent -= value;
         }
     }
 
@@ -166,7 +181,7 @@ public class MaxSdkCallbacks : MonoBehaviour
                 _onInterstitialAdRevenuePaidEvent -= value;
             }
         }
-
+        
         /// <summary>
         /// Fired when an Ad Review Creative ID has been generated.
         /// The parameters returned are the adUnitIdentifier, adReviewCreativeId, and adInfo in that respective order.
@@ -184,7 +199,7 @@ public class MaxSdkCallbacks : MonoBehaviour
                 _onInterstitialAdReviewCreativeIdGeneratedEvent -= value;
             }
         }
-
+        
         public static event Action<string, MaxSdkBase.AdInfo> OnAdHiddenEvent
         {
             add
@@ -418,7 +433,7 @@ public class MaxSdkCallbacks : MonoBehaviour
                 _onRewardedAdRevenuePaidEvent -= value;
             }
         }
-
+        
         /// <summary>
         /// Fired when an Ad Review Creative ID has been generated.
         /// The parameters returned are the adUnitIdentifier, adReviewCreativeId, and adInfo in that respective order.
@@ -569,7 +584,7 @@ public class MaxSdkCallbacks : MonoBehaviour
                 _onRewardedInterstitialAdRevenuePaidEvent -= value;
             }
         }
-
+        
         /// <summary>
         /// Fired when an Ad Review Creative ID has been generated.
         /// The parameters returned are the adUnitIdentifier, adReviewCreativeId, and adInfo in that respective order.
@@ -682,7 +697,7 @@ public class MaxSdkCallbacks : MonoBehaviour
                 _onBannerAdRevenuePaidEvent -= value;
             }
         }
-
+        
         /// <summary>
         /// Fired when an Ad Review Creative ID has been generated.
         /// The parameters returned are the adUnitIdentifier, adReviewCreativeId, and adInfo in that respective order.
@@ -795,7 +810,7 @@ public class MaxSdkCallbacks : MonoBehaviour
                 _onMRecAdRevenuePaidEvent -= value;
             }
         }
-
+        
         /// <summary>
         /// Fired when an Ad Review Creative ID has been generated.
         /// The parameters returned are the adUnitIdentifier, adReviewCreativeId, and adInfo in that respective order.
@@ -842,7 +857,7 @@ public class MaxSdkCallbacks : MonoBehaviour
             }
         }
     }
-
+    
     private static Action<string, MaxSdkBase.AdInfo> _onCrossPromoAdLoadedEvent;
     private static Action<string, MaxSdkBase.ErrorInfo> _onCrossPromoAdLoadFailedEvent;
     private static Action<string, MaxSdkBase.AdInfo> _onCrossPromoAdClickedEvent;
@@ -1341,9 +1356,9 @@ public class MaxSdkCallbacks : MonoBehaviour
         {
             InvokeEvent(_onVariablesUpdatedEvent, eventName);
         }
-        else if (eventName == "OnSdkConsentFlowCompletedEvent")
+        else if (eventName == "OnSdkConsentDialogDismissedEvent")
         {
-            CFService.NotifyConsentFlowCompletedIfNeeded(eventProps);
+            InvokeEvent(_onSdkConsentDialogDismissedEvent, eventName);
         }
         // Ad Events
         else

@@ -37,9 +37,9 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
 
             InitializeInterstitialAds();
             InitializeRewardedAds();
-            InitializeRewardedInterstitialAds();
+            //InitializeRewardedInterstitialAds();
             InitializeBannerAds();
-            InitializeMRecAds();
+            //InitializeMRecAds();
 
         };
 
@@ -88,16 +88,17 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
     void LoadInterstitial()
     {
         MaxSdk.LoadInterstitial(InterstitialAdUnitId);
+        Debug.Log("LoadInterstitial");
     }
 
     public void ShowInterstitial()
     {
-        if (Module.isGodMod)
-            return;
+        //if (Module.isGodMod)
+        //    return;
 
-        countAdsInter++;
-        if (countAdsInter % 3 != 0)
-            return;
+        //countAdsInter++;
+        //if (countAdsInter % 3 != 0)
+        //    return;
 
         if (MaxSdk.IsInterstitialReady(InterstitialAdUnitId))
         {

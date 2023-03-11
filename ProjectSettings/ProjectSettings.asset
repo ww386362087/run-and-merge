@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 003
+  bundleVersion: 1
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -157,11 +157,12 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.Nekoverse.NekoBattleMergeRun
     Standalone: com.company.Merge-Master
+    iPhone: com.Nekoverse.Neko-Battle-Merge-Run
   buildNumber:
     Standalone: 0
-    iPhone: 0
+    iPhone: 1
     tvOS: 0
-  overrideDefaultApplicationIdentifier: 1
+  overrideDefaultApplicationIdentifier: 0
   AndroidBundleVersionCode: 3
   AndroidMinSdkVersion: 22
   AndroidTargetSdkVersion: 32
@@ -809,7 +810,7 @@ PlayerSettings:
     Android: MOREMOUNTAINS_NICEVIBRATIONS;USE_UNITYADS;MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
     Standalone: MOREMOUNTAINS_NICEVIBRATIONS;MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
     Windows Store Apps: 
-    iPhone: 
+    iPhone: MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE;MOREMOUNTAINS_NICEVIBRATIONS
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
@@ -821,7 +822,7 @@ PlayerSettings:
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
   enableRoslynAnalyzers: 1
-  selectedPlatform: 2
+  selectedPlatform: 3
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 1

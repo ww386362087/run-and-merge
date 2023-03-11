@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
 public class AdsMAXManager : Singleton<AdsMAXManager>
 {
@@ -50,8 +51,10 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
 
         MaxSdk.InitializeSdk();
 
-      
+        DOVirtual.DelayedCall(3, EventTracking.Instance.Event_af_login);
     }
+
+
 
 #if UNITY_EDITOR
     public void Update()

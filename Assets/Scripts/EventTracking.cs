@@ -28,9 +28,7 @@ public class EventTracking : Singleton<EventTracking>
 		AppsFlyer.setIsDebug(true);
 
 		FirebaseMessaging.TokenReceived += OnTokenReceived;
-		DOVirtual.DelayedCall(5, () => Event_af_login());
-	
-
+		
 		#region Demo
 		//#if UNITY_IOS
 
@@ -177,8 +175,9 @@ public class EventTracking : Singleton<EventTracking>
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		//eventValues.Add("login_time", DateTime.Now.ToString());
-
+		
 		AppsFlyer.sendEvent("af_login", eventValues);
+		Debug.Log("Traccking Login_________________________________________________");
 	}
 
 

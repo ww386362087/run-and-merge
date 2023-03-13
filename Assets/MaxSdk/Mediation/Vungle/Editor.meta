@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 780819632c7324fe4aa48674fca743de
+guid: 77b6ea05736a9458f8ef8762ee9b64bb
 labels:
 - al_max
-- al_max_export_path-MaxSdk/Mediation/AdColony/Editor
+- al_max_export_path-MaxSdk/Mediation/Vungle/Editor
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

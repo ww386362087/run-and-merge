@@ -16,7 +16,6 @@ public static class Module
      
     }
 
-
     public static bool isGodMod = false;
 
     public static int remove_ads

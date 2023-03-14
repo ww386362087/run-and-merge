@@ -396,10 +396,10 @@ namespace AppsFlyerSDK
         public static void setUserEmails(EmailCryptType cryptType, params string[] userEmails)
         {
 
-            if (instance != null)
-            {
-                instance.setUserEmails(cryptType, userEmails);
-            }
+            //if (instance != null)
+            //{
+            //    instance.setUserEmails(cryptType, userEmails);
+            //}
 
         }
 
@@ -419,10 +419,10 @@ namespace AppsFlyerSDK
         public static void setPhoneNumber(string phoneNumber)
         {
 
-            if (instance != null)
-            {
-                instance.setPhoneNumber(phoneNumber);
-            }
+            //if (instance != null)
+            //{
+            //    instance.setPhoneNumber(phoneNumber);
+            //}
 
         }
 

@@ -837,6 +837,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffe017938ef75e944a4e5d2976c0bc32, type: 3}
+--- !u!1 &609169265 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7092761114698505856, guid: ffe017938ef75e944a4e5d2976c0bc32,
+    type: 3}
+  m_PrefabInstance: {fileID: 609169264}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &609169266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609169265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6badf289f4de24487dcdcba5fc0b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &647894575 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9160803576265303383, guid: ffe017938ef75e944a4e5d2976c0bc32,
@@ -1235,7 +1253,7 @@ PrefabInstance:
     - target: {fileID: 2444719345600352368, guid: e1e2404baa957c64ea68ce612378026b,
         type: 3}
       propertyPath: getConversionData
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2602806481108204133, guid: e1e2404baa957c64ea68ce612378026b,
         type: 3}

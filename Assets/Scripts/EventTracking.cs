@@ -14,14 +14,13 @@ public class EventTracking : Singleton<EventTracking>
 
 	public string str_Start = "";
 	public string str_End	= "";
-	string idDevice;
+	string idDevice => device_id();
 
 	// Use this for initialization
 	void Start()
 	{
 		
 		Application.runInBackground = true;
-		idDevice = SystemInfo.deviceUniqueIdentifier;
 
 		AppsFlyer.initSDK("BTx32xGv4UiaS6gNYsf5Gj", "app_id");
 		AppsFlyer.startSDK();
@@ -71,16 +70,16 @@ public class EventTracking : Singleton<EventTracking>
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			//go to background when pressing back button
-#if UNITY_ANDROID
-			AndroidJavaObject activity =
-				new AndroidJavaClass("com.unity3d.player.UnityPlayer")
-					.GetStatic<AndroidJavaObject>("currentActivity");
-			activity.Call<bool>("moveTaskToBack", true);
-#endif
-		}
+//		if (Input.GetKeyDown(KeyCode.Escape))
+//		{
+//			//go to background when pressing back button
+//#if UNITY_ANDROID
+//			AndroidJavaObject activity =
+//				new AndroidJavaClass("com.unity3d.player.UnityPlayer")
+//					.GetStatic<AndroidJavaObject>("currentActivity");
+//			activity.Call<bool>("moveTaskToBack", true);
+//#endif
+//		}
 
 
 //#if UNITY_IOS

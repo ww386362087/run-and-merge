@@ -46,8 +46,8 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
 
         MaxSdk.SetSdkKey(MaxSdkKey);
 
-        MaxSdk.SetUserId(SystemInfo.deviceUniqueIdentifier);
-        MaxSdk.SetTestDeviceAdvertisingIdentifiers(new string[] { "1678334281016-3635291884973103458" });
+        //MaxSdk.SetUserId(SystemInfo.deviceUniqueIdentifier);
+        //MaxSdk.SetTestDeviceAdvertisingIdentifiers(new string[] { "1678334281016-3635291884973103458" });
 
         MaxSdk.InitializeSdk();
 

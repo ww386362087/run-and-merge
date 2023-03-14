@@ -5,17 +5,18 @@ using Firebase.Messaging;
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
+
 public class FirebaseManager : Singleton<FirebaseManager>
 {
 
     DependencyStatus dependencyStatus = DependencyStatus.UnavailableOther;
     protected bool firebaseInitialized = false;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        DontDestroyOnLoad(this.gameObject);
-    }
+    //protected override void Awake()
+    //{
+    //    base.Awake();
+    //    //DontDestroyOnLoad(this.gameObject);
+    //}
 
     void Start()
     {
@@ -60,7 +61,13 @@ public class FirebaseManager : Singleton<FirebaseManager>
         AnalyticsLogin();
         MessengeCallStart();
         Module.Event_StartGame += Module_Event_StartGame;
+        //Module.Event_Purchase_Complete += Module_Event_Purchase_Complete;
     }
+
+    //private void Module_Event_Purchase_Complete(UnityEngine.Purchasing.Product obj)
+    //{
+    //    throw new NotImplementedException();
+    //}
 
     public void AnalyticsLogin()
     {
@@ -296,8 +303,13 @@ public class FirebaseManager : Singleton<FirebaseManager>
         if (firebaseInitialized)
         {
             string str = "firebase_purchase";
+            //UnityEngine.Purchasing.ProductMetadata productMetadata = _product.metadata;
+            //double dm = (double)(productMetadata.localizedPrice);
             FirebaseAnalytics.LogEvent(str, new Parameter("customer_user_id", device_id()),
-                                            new Parameter("level", levelCurrent()));
+                                            new Parameter("level", levelCurrent())
+                                           // new Parameter("price", dm),
+                                            //new Parameter("content", productMetadata.localizedTitle)
+                                            );
             Debug.Log(str);
         }
 

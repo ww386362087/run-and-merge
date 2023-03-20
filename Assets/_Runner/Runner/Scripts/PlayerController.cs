@@ -286,21 +286,21 @@ namespace HyperCasual.Runner
         public void AdjustQuantity_Divide(int _num)
         {
             int value = System.Convert.ToInt32(System.Math.Floor((float)Characters.Count / _num));
-            int addNum = - (Characters.Count - value);
+            int addNum = value - Characters.Count;
             AdjustQuantity(addNum);
         }
 
         public void AdjustQuantity_NthRoot(int _num)
         {
-            var value = System.Convert.ToInt32(System.Math.Floor(System.Math.Pow(Characters.Count, 1 / _num)));
-            int addNum = -(Characters.Count - value);
+            var value = System.Convert.ToInt32(System.Math.Floor(System.Math.Pow(Characters.Count, (1f / _num))));
+            int addNum = value - Characters.Count;
             AdjustQuantity(addNum);
         }
 
         public void AdjustQuantity_Power(int _num)
         {
             var value = System.Convert.ToInt32(System.Math.Floor(System.Math.Pow(Characters.Count, _num)));
-            int addNum = -(Characters.Count - value);
+            int addNum = value - Characters.Count;
             AdjustQuantity(addNum);
         }
 

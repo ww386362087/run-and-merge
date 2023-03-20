@@ -37,13 +37,17 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
 
             InitializeInterstitialAds();
             InitializeRewardedAds();
-            InitializeRewardedInterstitialAds();
+            //InitializeRewardedInterstitialAds();
             InitializeBannerAds();
-            InitializeMRecAds();
+            //InitializeMRecAds();
 
         };
 
         MaxSdk.SetSdkKey(MaxSdkKey);
+
+        MaxSdk.SetUserId(SystemInfo.deviceUniqueIdentifier);
+        MaxSdk.SetTestDeviceAdvertisingIdentifiers(new string[] { "1678334281016-3635291884973103458" });
+
         MaxSdk.InitializeSdk();
 
       
@@ -88,11 +92,12 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
     void LoadInterstitial()
     {
         MaxSdk.LoadInterstitial(InterstitialAdUnitId);
+        Debug.Log("LoadInterstitial");
     }
 
     public void ShowInterstitial()
     {
-        if (Module.isGodMod)
+        if (Module.isGodMod||Module.remove_ads!=0)
             return;
 
         countAdsInter++;
@@ -103,7 +108,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
         {
             MaxSdk.ShowInterstitial(InterstitialAdUnitId);
 
-            EventTracking.Instance.Event_AD_View(PlayerPrefs.GetInt("level_general").ToString(),"","interstitial");
+            //EventTracking.Instance.Event_AD_View(PlayerPrefs.GetInt("level_general").ToString(),"","interstitial");
         }
         else
         {
@@ -121,6 +126,8 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
 
         // Reset retry attempt
         interstitialRetryAttempt = 0;
+
+        TrackAdRevenue(adInfo);
     }
 
     private void OnInterstitialFailedEvent(string adUnitId, MaxSdkBase.ErrorInfo errorInfo)
@@ -251,6 +258,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
     {
         Debug.Log("Rewarded ad displayed");
         FirebaseManager.Instance.LogEvent_firebase_ads_reward_show(adInfo);
+        TrackAdRevenue(adInfo);
     }
 
     private void OnRewardedAdClickedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
@@ -440,6 +448,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
             return;
 
         MaxSdk.ShowBanner(BannerAdUnitId);
+        
         //if (!isBannerShowing)
         //{
         //    MaxSdk.ShowBanner(BannerAdUnitId);
@@ -457,6 +466,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
         // Banner ad is ready to be shown.
         // If you have already called MaxSdk.ShowBanner(BannerAdUnitId) it will automatically be shown on the next ad refresh.
         Debug.Log("Banner ad loaded");
+        TrackAdRevenue(adInfo);
     }
 
     private void OnBannerAdFailedEvent(string adUnitId, MaxSdkBase.ErrorInfo errorInfo)
@@ -568,5 +578,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
             new Firebase.Analytics.Parameter("currency", "USD"), // All Applovin revenue is sent in USD
             };
             Firebase.Analytics.FirebaseAnalytics.LogEvent("firebase_ad_impression", impressionParameters);
+
+        EventTracking.Instance.Event_af_ad_impression(adInfo);
     }
 }

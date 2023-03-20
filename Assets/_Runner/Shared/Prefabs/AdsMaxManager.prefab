@@ -47,6 +47,7 @@ MonoBehaviour:
   MaxSdkKey: _bw-wyd5WPWUPnKH1yT2QLao2BnV75q7hl5bgkgC7CgWz0o-yG1Mbc9eox8w0z1hi7INr-azAFT7FG6CX7Z8ki
   InterstitialAdUnitId: 1197a3094692e253
   RewardedAdUnitId: 26f0c2f15bb3caaa
-  RewardedInterstitialAdUnitId: 26f0c2f15bb3caaa
+  RewardedInterstitialAdUnitId: 1197a3094692e253
   BannerAdUnitId: 5fb1bcd4a346ab5d
   MRecAdUnitId: 9244c8af02d552de
+  rewardType: 

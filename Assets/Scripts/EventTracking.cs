@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Firebase.Messaging;
+using Firebase;
+using DG.Tweening;
 
 
 public class EventTracking : Singleton<EventTracking>
@@ -16,11 +19,18 @@ public class EventTracking : Singleton<EventTracking>
 	// Use this for initialization
 	void Start()
 	{
-		AppsFlyer.setIsDebug(true);
+		
 		Application.runInBackground = true;
 		idDevice = SystemInfo.deviceUniqueIdentifier;
 
-		Event_af_login();
+		AppsFlyer.initSDK("BTx32xGv4UiaS6gNYsf5Gj", "app_id");
+		AppsFlyer.startSDK();
+		AppsFlyer.setIsDebug(true);
+
+		FirebaseMessaging.TokenReceived += OnTokenReceived;
+		DOVirtual.DelayedCall(5, () => Event_af_login());
+	
+
 		#region Demo
 		//#if UNITY_IOS
 
@@ -54,9 +64,14 @@ public class EventTracking : Singleton<EventTracking>
 		#endregion
 	}
 
-
-    // Update is called once per frame
-    void Update()
+	public void OnTokenReceived(object sender, TokenReceivedEventArgs token)
+	{
+#if UNITY_ANDROID
+		AppsFlyer.updateServerUninstallToken(token.Token);
+#endif
+	}
+	// Update is called once per frame
+	void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
@@ -106,20 +121,30 @@ public class EventTracking : Singleton<EventTracking>
 
 	}
 
-	public void Event_LEVEL_ACHIEVED(string _level)
+	public void Event_af_level_complete()
     {
-		if (!AppsFlyer.instance.isInit)
-			return;
+
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, idDevice);
-		eventValues.Add(AFInAppEvents.LEVEL, _level);
+		eventValues.Add(AFInAppEvents.LEVEL, levelCurrent());
 		eventValues.Add(AFInAppEvents.EVENT_START, str_Start);
 		eventValues.Add(AFInAppEvents.EVENT_END, str_End);
 
-		AppsFlyer.sendEvent(AFInAppEvents.LEVEL_ACHIEVED +"_"+ _level, eventValues);
+		AppsFlyer.sendEvent("af_level_complete_" + levelCurrent(), eventValues);
 	}
 
-	
+	public void Event_af_level_fail()
+	{
+
+		Dictionary<string, string> eventValues = new Dictionary<string, string>();
+		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, idDevice);
+		eventValues.Add(AFInAppEvents.LEVEL, levelCurrent());
+		eventValues.Add(AFInAppEvents.EVENT_START, str_Start);
+		eventValues.Add(AFInAppEvents.EVENT_END, str_End);
+
+		AppsFlyer.sendEvent("af_level_fail_" + levelCurrent(), eventValues);
+	}
+
 	public void Event_AD_CLICK(string _level,string _rewradType)
     {
 		if (!AppsFlyer.instance.isInit)
@@ -149,24 +174,27 @@ public class EventTracking : Singleton<EventTracking>
 
 	public void Event_af_login()
     {
-		if (!AppsFlyer.instance.isInit)
-			return;
+
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, idDevice);
+		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("login_time", DateTime.Now.ToString());
 
 		AppsFlyer.sendEvent("af_login", eventValues);
 	}
 
-	public void Event_af_ad_impression()
-    {
 
-    }
+	public void Event_af_ad_impression(MaxSdkBase.AdInfo adInfo)
+    {
+		Dictionary<string, string> eventValues = new Dictionary<string, string>();
+		eventValues.Add("customer_user_id", device_id());
+		eventValues.Add("revenue", adInfo.Revenue.ToString());
+
+		AppsFlyer.sendEvent("af_ad_impression", eventValues);
+	}
 
 	public void Event_af_ads_reward_offer()
     {
-		if (!AppsFlyer.instance.isInit)
-			return;
+
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("type_reward", AdsMAXManager.Instance.rewardType);
@@ -186,8 +214,7 @@ public class EventTracking : Singleton<EventTracking>
 	}
 	public void Event_af_ads_reward_click(MaxSdkBase.AdInfo adInfo)
     {
-		if (!AppsFlyer.instance.isInit)
-			return;
+
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("type_reward", AdsMAXManager.Instance.rewardType);
@@ -199,8 +226,7 @@ public class EventTracking : Singleton<EventTracking>
 	
 	public void Event_af_ads_reward_show(MaxSdkBase.AdInfo adInfo)
     {
-		if (!AppsFlyer.instance.isInit)
-			return;
+
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("type_reward", AdsMAXManager.Instance.rewardType);
@@ -212,8 +238,7 @@ public class EventTracking : Singleton<EventTracking>
 	
 	public void Event_af_ads_reward_fail(MaxSdkBase.ErrorInfo adInfo, string placement_id)
     {
-		if (!AppsFlyer.instance.isInit)
-			return;
+
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("type_reward", AdsMAXManager.Instance.rewardType);
@@ -225,21 +250,20 @@ public class EventTracking : Singleton<EventTracking>
 
 	public void Event_af_ads_reward_complete(MaxSdkBase.AdInfo adInfo)
 	{
-		if (!AppsFlyer.instance.isInit)
-			return;
+	
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("type_reward", AdsMAXManager.Instance.rewardType);
 		eventValues.Add("placement_id", adInfo.AdUnitIdentifier);
 		eventValues.Add("level", levelCurrent());
+		eventValues.Add("revenue", adInfo.Revenue.ToString());
 
 		AppsFlyer.sendEvent("af_ads_reward_complete", eventValues);
 	}
 
 	public void Event_af_ads_inter_load(MaxSdkBase.AdInfo adInfo)
     {
-		if (!AppsFlyer.instance.isInit)
-			return;
+
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("placement_id", adInfo.AdUnitIdentifier);
@@ -250,20 +274,19 @@ public class EventTracking : Singleton<EventTracking>
 	
 	public void Event_af_ads_inter_show(MaxSdkBase.AdInfo adInfo)
     {
-		if (!AppsFlyer.instance.isInit)
-			return;
+
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("placement_id", adInfo.AdUnitIdentifier);
 		eventValues.Add("level", levelCurrent());
+		eventValues.Add("revenue", adInfo.Revenue.ToString());
 
 		AppsFlyer.sendEvent("af_ads_inter_show", eventValues);
 	}
 	
 	public void Event_af_ads_inter_fail(MaxSdkBase.ErrorInfo adInfo, string placement_id)
     {
-		if (!AppsFlyer.instance.isInit)
-			return;
+
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("errormsg", adInfo.Message);
@@ -274,8 +297,6 @@ public class EventTracking : Singleton<EventTracking>
 
 	public void Event_af_ads_inter_click(MaxSdkBase.AdInfo adInfo)
     {
-		if (!AppsFlyer.instance.isInit)
-			return;
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("placement_id", adInfo.AdUnitIdentifier);
@@ -286,8 +307,12 @@ public class EventTracking : Singleton<EventTracking>
 
 	public void Event_af_purchase()
     {
+		Dictionary<string, string> eventValues = new Dictionary<string, string>();
+		eventValues.Add("customer_user_id", device_id());
+		eventValues.Add("level", levelCurrent());
 
-    }
+		AppsFlyer.sendEvent("af_purchase", eventValues);
+	}
 
 
 

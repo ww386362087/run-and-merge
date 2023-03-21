@@ -425,16 +425,6 @@ namespace HyperCasual.Runner
                 var terrain = TerrainGenerator.CreateTerrain(terrainDimensions, levelDefinition.Area?.Road?? levelDefinition.TerrainMaterial);
                 terrain.transform.position = new Vector3(0, 0, startPosition);
 
-                var step = 18f;
-                for (var j = 0f; j <= len - step; j += step)
-                {
-                    var positionTarget = j - 10;
-                    var positionSpawn = new Vector3(-levelDefinition.LevelWidth / 2, 0, positionTarget);
-                    Instantiate(levelDefinition.Area.Fence_left, positionSpawn, Quaternion.identity, terrain.transform);
-                    positionSpawn.x = -positionSpawn.x;
-                    Instantiate(levelDefinition.Area.Fence_right, positionSpawn, Quaternion.identity, terrain.transform);
-                }
-
                 if (i < bridgeList.Count)
                 {
                     var ibridge = bridgeList[i].SpawnablePrefab.GetComponent<IBridge>();
@@ -451,6 +441,16 @@ namespace HyperCasual.Runner
 
             var lastTerrian = terrainGameObjectList[terrainGameObjectList.Count - 1];
             LoadBattltField(levelDefinition, lastTerrian.transform);
+
+            var step = 18f;
+            for (var j = 0f; j <= levelDefinition.LevelLength - step; j += step)
+            {
+                //var positionTarget = j - 10;
+                var positionSpawn = new Vector3(-levelDefinition.LevelWidth / 2, 0, j /*positionTarget*/);
+                Instantiate(levelDefinition.Area.Fence_left, positionSpawn, Quaternion.identity, lastTerrian.transform);
+                positionSpawn.x = -positionSpawn.x;
+                Instantiate(levelDefinition.Area.Fence_right, positionSpawn, Quaternion.identity, lastTerrian.transform);
+            }
         }
 
         private static void LoadBattltField(LevelDefinition levelDefinition, Transform parent)

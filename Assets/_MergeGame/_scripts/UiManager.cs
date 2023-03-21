@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using MoreMountains.NiceVibrations;
 using TMPro;
 using HyperCasual.Runner;
 using HyperCasual.Gameplay;
@@ -194,10 +193,10 @@ public class UiManager : MonoBehaviour
 
     public void _vibrate()
     {
-        if(GameManager.instance.get_vibration() == 1)
-        {
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact, true, this);
-        }
+        //if(GameManager.instance.get_vibration() == 1)
+        //{
+        //    MMVibrationManager.Haptic(HapticTypes.HeavyImpact, true, this);
+        //}
         
     }
 

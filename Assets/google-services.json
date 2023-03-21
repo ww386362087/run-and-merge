@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "433096942755-vb90gm36v01bfl1c3gl64h9v1jgeavgf.apps.googleusercontent.com",
+          "client_id": "433096942755-ttp8j4hod47cru7h9fi9vqhhp38r5q4e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Nekoverse.NekoBattleMergeRun",
+            "certificate_hash": "b0c86ede663964d41adcb3d3da9c71a5152cf23b"
+          }
+        },
+        {
+          "client_id": "433096942755-6d8rnf04cqaohmad2fope6k5148i51og.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,8 +35,15 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "433096942755-vb90gm36v01bfl1c3gl64h9v1jgeavgf.apps.googleusercontent.com",
+              "client_id": "433096942755-6d8rnf04cqaohmad2fope6k5148i51og.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "433096942755-9i4kguljv8kl9qp8ftnas2f54hiu1eij.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Nekoverse.Neko-Battle-Merge-Run"
+              }
             }
           ]
         }

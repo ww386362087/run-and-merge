@@ -203,20 +203,20 @@ namespace AppsFlyerSDK
         /// <param name="emails">User emails.</param>
         public void setUserEmails(params string[] userEmails)
         {
-#if !UNITY_EDITOR
-            appsFlyerAndroid.CallStatic("setUserEmails", (object)userEmails);
-#endif
-        }
+//#if !UNITY_EDITOR
+//            appsFlyerAndroid.CallStatic("setUserEmails", (object)userEmails);
+//#endif
+//        }
 
 
-        /// <summary>
-        /// Set the user phone number.
-        /// </summary>
-        /// <param name="phoneNumber">User phoneNumber.</param>
-        public void setPhoneNumber(string phoneNumber){
-#if !UNITY_EDITOR
-            appsFlyerAndroid.CallStatic("setPhoneNumber", phoneNumber);
-#endif
+//        /// <summary>
+//        /// Set the user phone number.
+//        /// </summary>
+//        /// <param name="phoneNumber">User phoneNumber.</param>
+//        public void setPhoneNumber(string phoneNumber){
+//#if !UNITY_EDITOR
+//            appsFlyerAndroid.CallStatic("setPhoneNumber", phoneNumber);
+//#endif
         }
 
         /// <summary>
@@ -231,9 +231,9 @@ namespace AppsFlyerSDK
         /// <param name="emails">User emails.</param>
         public void setUserEmails(EmailCryptType cryptMethod, params string[] emails)
         {
-#if !UNITY_EDITOR
-            appsFlyerAndroid.CallStatic("setUserEmails", getEmailType(cryptMethod), (object)emails);
-#endif
+//#if !UNITY_EDITOR
+//            appsFlyerAndroid.CallStatic("setUserEmails", getEmailType(cryptMethod), (object)emails);
+//#endif
         }
 
         /// <summary>

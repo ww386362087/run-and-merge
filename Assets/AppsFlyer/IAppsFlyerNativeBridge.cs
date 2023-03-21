@@ -41,7 +41,7 @@ namespace AppsFlyerSDK
 
         void setHost(string hostPrefixName, string hostName);
 
-        void setPhoneNumber(string phoneNumber);
+        //void setPhoneNumber(string phoneNumber);
 
         void setSharingFilterForAllPartners();
 

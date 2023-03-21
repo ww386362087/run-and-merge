@@ -864,6 +864,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -22.71365
       objectReference: {fileID: 0}
+    - target: {fileID: 4192443461798770734, guid: 3c7a51309061d411eb5591ed1fd837f3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 545
+      objectReference: {fileID: 0}
     - target: {fileID: 4433083560412335113, guid: 3c7a51309061d411eb5591ed1fd837f3,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1167,6 +1172,24 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 59403737481401959}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7317477964539874433 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7304816682785905382, guid: 3c7a51309061d411eb5591ed1fd837f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 59403737481401959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &146798150482640320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7317477964539874433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6badf289f4de24487dcdcba5fc0b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1671808032623342929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1351,6 +1374,9 @@ MonoBehaviour:
   productId: remove_ads
   buttonType: 0
   consumePurchase: 1
+  onTransactionsRestored:
+    m_PersistentCalls:
+      m_Calls: []
   onPurchaseComplete:
     m_PersistentCalls:
       m_Calls:

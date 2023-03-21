@@ -100,6 +100,9 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
         if (Module.isGodMod||Module.remove_ads!=0)
             return;
 
+        if (PlayerPrefs.GetInt("level_general", 1) < 4) 
+            return;
+
         countAdsInter++;
         if (countAdsInter % 3 != 0)
             return;
@@ -140,6 +143,8 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
         Debug.Log("Interstitial failed to load with error code: " + errorInfo.Code);
 
         Invoke("LoadInterstitial", (float)retryDelay);
+
+        FirebaseManager.Instance.LogEvent_firebase_ads_inter_fail(null,errorInfo);
     }
 
     private void InterstitialFailedToDisplayEvent(string adUnitId, MaxSdkBase.ErrorInfo errorInfo, MaxSdkBase.AdInfo adInfo)
@@ -244,7 +249,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
 
         Invoke("LoadRewardedAd", (float)retryDelay);
 
-        FirebaseManager.Instance.LogEvent_firebase_ads_reward_fail(errorInfo,adUnitId);
+        FirebaseManager.Instance.LogEvent_firebase_ads_reward_fail(null,errorInfo);
     }
 
     private void OnRewardedAdFailedToDisplayEvent(string adUnitId, MaxSdkBase.ErrorInfo errorInfo, MaxSdkBase.AdInfo adInfo)
@@ -257,7 +262,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
     private void OnRewardedAdDisplayedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
     {
         Debug.Log("Rewarded ad displayed");
-        FirebaseManager.Instance.LogEvent_firebase_ads_reward_show(adInfo);
+        FirebaseManager.Instance.LogEvent_fbs_ads_reward_show(adInfo);
         TrackAdRevenue(adInfo);
     }
 
@@ -377,7 +382,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
         Debug.Log("Rewarded interstitial ad failed to display with error code: " + errorInfo.Code);
         LoadRewardedInterstitialAd();
 
-        FirebaseManager.Instance.LogEvent_firebase_ads_inter_fail(errorInfo, adInfo.AdUnitIdentifier);
+      
     }
 
     private void OnRewardedInterstitialAdDisplayedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
@@ -568,17 +573,21 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
 
     private void TrackAdRevenue(MaxSdkBase.AdInfo adInfo)
     {
-        double revenue = adInfo.Revenue;
-        var impressionParameters = new[] {
-            new Firebase.Analytics.Parameter("ad_platform", "AppLovin"),
-            new Firebase.Analytics.Parameter("ad_source", adInfo.NetworkName),
-            new Firebase.Analytics.Parameter("ad_unit_name", adInfo.AdUnitIdentifier),
-            new Firebase.Analytics.Parameter("ad_format", adInfo.Placement), // Please check this - as we couldn't find format refereced in your unity docs https://dash.applovin.com/documentation/mediation/unity/getting-started/advanced-settings#impression-level-user-revenue - api
-            new Firebase.Analytics.Parameter("value", revenue),
-            new Firebase.Analytics.Parameter("currency", "USD"), // All Applovin revenue is sent in USD
-            };
-            Firebase.Analytics.FirebaseAnalytics.LogEvent("firebase_ad_impression", impressionParameters);
 
-        EventTracking.Instance.Event_af_ad_impression(adInfo);
+        FirebaseManager.Instance.LogEvent_firebase_ad_impression(adInfo);
+        //double revenue = adInfo.Revenue;
+        //var impressionParameters = new[] {
+        //    new Firebase.Analytics.Parameter("ad_platform", "AppLovin"),
+        //    new Firebase.Analytics.Parameter("adFormat", adInfo.AdFormat),
+        //    new Firebase.Analytics.Parameter("networkName", adInfo.NetworkName),
+        //    new Firebase.Analytics.Parameter("ad_unit_name", adInfo.AdUnitIdentifier),
+        //    new Firebase.Analytics.Parameter("networkPlacement", adInfo.Placement), // Please check this - as we couldn't find format refereced in your unity docs https://dash.applovin.com/documentation/mediation/unity/getting-started/advanced-settings#impression-level-user-revenue - api
+        //    new Firebase.Analytics.Parameter("value", revenue),
+        //    new Firebase.Analytics.Parameter("revenuePrecision", adInfo.RevenuePrecision),
+        //    new Firebase.Analytics.Parameter("currency", "USD"), // All Applovin revenue is sent in USD
+        //    };
+        //    Firebase.Analytics.FirebaseAnalytics.LogEvent("fbs_ad_impression", impressionParameters);
+
+        //EventTracking.Instance.Event_af_ad_impression(adInfo);
     }
 }

@@ -17,6 +17,11 @@ public static class Module
     }
 
     public static bool isGodMod = false;
+    public static string id_device = string.Empty;
+    public static string lv_current
+    {
+        get { return PlayerPrefs.GetInt("level_general", 0).ToString(); }
+    }
 
     public static int remove_ads
     {

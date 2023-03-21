@@ -186,7 +186,9 @@ public class EventTracking : Singleton<EventTracking>
     {
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
-		eventValues.Add("revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		eventValues.Add("af_currency", adInfo.AdUnitIdentifier);
+		eventValues.Add("af_info", adInfo.ToString());
 
 		AppsFlyer.sendEvent("af_ad_impression", eventValues);
 	}
@@ -235,13 +237,13 @@ public class EventTracking : Singleton<EventTracking>
 		AppsFlyer.sendEvent("af_ads_reward_show", eventValues);
 	}
 	
-	public void Event_af_ads_reward_fail(MaxSdkBase.ErrorInfo adInfo, string placement_id)
+	public void Event_af_ads_reward_fail(MaxSdkBase.AdInfo adInfo, MaxSdkBase.ErrorInfo errInfo)
     {
 
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("type_reward", AdsMAXManager.Instance.rewardType);
-		eventValues.Add("errormsg", adInfo.Message);
+		eventValues.Add("errormsg", errInfo.Message);
 		eventValues.Add("level", levelCurrent()); 
 
 		AppsFlyer.sendEvent("af_ads_reward_fail", eventValues);
@@ -283,12 +285,12 @@ public class EventTracking : Singleton<EventTracking>
 		AppsFlyer.sendEvent("af_ads_inter_show", eventValues);
 	}
 	
-	public void Event_af_ads_inter_fail(MaxSdkBase.ErrorInfo adInfo, string placement_id)
-    {
+	public void Event_af_ads_inter_fail(MaxSdkBase.AdInfo adInfo, MaxSdkBase.ErrorInfo errInfo)
+	{
 
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("customer_user_id", device_id());
-		eventValues.Add("errormsg", adInfo.Message);
+		eventValues.Add("errormsg", errInfo.Message);
 		eventValues.Add("level", levelCurrent());
 
 		AppsFlyer.sendEvent("af_ads_inter_fail", eventValues);

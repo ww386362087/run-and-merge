@@ -14,7 +14,6 @@ public class EventTracking : Singleton<EventTracking>
 
 	public string str_Start = "";
 	public string str_End	= "";
-	string idDevice => device_id();
 
 	// Use this for initialization
 	void Start()
@@ -26,7 +25,6 @@ public class EventTracking : Singleton<EventTracking>
 		AppsFlyer.startSDK();
 		AppsFlyer.setIsDebug(true);
 
-		FirebaseMessaging.TokenReceived += OnTokenReceived;
 		DOVirtual.DelayedCall(5, () => Event_af_login());
 	
 
@@ -63,111 +61,27 @@ public class EventTracking : Singleton<EventTracking>
 		#endregion
 	}
 
-	public void OnTokenReceived(object sender, TokenReceivedEventArgs token)
-	{
-#if UNITY_ANDROID
-		AppsFlyer.updateServerUninstallToken(token.Token);
-#endif
-	}
-	// Update is called once per frame
-	void Update()
-	{
-//		if (Input.GetKeyDown(KeyCode.Escape))
-//		{
-//			//go to background when pressing back button
-//#if UNITY_ANDROID
-//			AndroidJavaObject activity =
-//				new AndroidJavaClass("com.unity3d.player.UnityPlayer")
-//					.GetStatic<AndroidJavaObject>("currentActivity");
-//			activity.Call<bool>("moveTaskToBack", true);
-//#endif
-//		}
-
-
-//#if UNITY_IOS
-//		if (!tokenSent) { 
-//			byte[] token = UnityEngine.iOS.NotificationServices.deviceToken;           
-//			if (token != null) {     
-//			//For iOS uninstall
-//				AppsFlyer.registerUninstall (token);
-//				tokenSent = true;
-//			}
-//		}    
-//#endif
-	}
-	//A custom event tracking
-	public void Purchase()
-	{
-		Dictionary<string, string> eventValue = new Dictionary<string, string>();
-		eventValue.Add("af_revenue", "300");
-		eventValue.Add("af_content_type", "category_a");
-		eventValue.Add("af_content_id", "1234567");
-		eventValue.Add("af_currency", "USD");
-		//AppsFlyer.trackRichEvent("af_purchase", eventValue);
-
-	}
-
-	public void SentEvent()
-    {
-
-		if (!AppsFlyer.instance.isInit)
-			return;
-		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add(AFInAppEvents.CURRENCY, "USD");
-		eventValues.Add(AFInAppEvents.REVENUE, "0.99");
-		eventValues.Add("af_quantity", "1");
-		AppsFlyer.sendEvent(AFInAppEvents.PURCHASE, eventValues);
-
-	}
 
 	public void Event_af_level_complete()
     {
 
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, idDevice);
-		eventValues.Add(AFInAppEvents.LEVEL, levelCurrent());
+		eventValues.Add(AFInAppEvents.LEVEL, Module.lv_current);
 		eventValues.Add(AFInAppEvents.EVENT_START, str_Start);
 		eventValues.Add(AFInAppEvents.EVENT_END, str_End);
 
-		AppsFlyer.sendEvent("af_level_complete_" + levelCurrent(), eventValues);
+		AppsFlyer.sendEvent("af_level_complete_" + Module.lv_current, eventValues);
 	}
 
 	public void Event_af_level_fail()
 	{
 
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, idDevice);
-		eventValues.Add(AFInAppEvents.LEVEL, levelCurrent());
+		eventValues.Add(AFInAppEvents.LEVEL, Module.lv_current);
 		eventValues.Add(AFInAppEvents.EVENT_START, str_Start);
 		eventValues.Add(AFInAppEvents.EVENT_END, str_End);
 
-		AppsFlyer.sendEvent("af_level_fail_" + levelCurrent(), eventValues);
-	}
-
-	public void Event_AD_CLICK(string _level,string _rewradType)
-    {
-		if (!AppsFlyer.instance.isInit)
-			return;
-		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, idDevice);
-		eventValues.Add(AFInAppEvents.LEVEL, _level);
-		eventValues.Add(AFInAppEvents.ADREV_TYPE, "rewarded");
-		eventValues.Add(AFInAppEvents.REWARD_TYPE, _rewradType);
-
-		AppsFlyer.sendEvent(AFInAppEvents.AD_CLICK, eventValues);
-	}
-
-	public void Event_AD_View(string _level, string _rewradType, string _rewarded= "rewarded")
-	{
-		if (!AppsFlyer.instance.isInit)
-			return;
-		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add(AFInAppEvents.CUSTOMER_USER_ID, idDevice);
-		eventValues.Add(AFInAppEvents.LEVEL, _level);
-		eventValues.Add(AFInAppEvents.ADREV_TYPE, _rewarded);
-		eventValues.Add(AFInAppEvents.REWARD_TYPE, _rewradType);
-
-		AppsFlyer.sendEvent(AFInAppEvents.AD_VIEW, eventValues);
+		AppsFlyer.sendEvent("af_level_fail_" + Module.lv_current, eventValues);
 	}
 
 
@@ -175,7 +89,6 @@ public class EventTracking : Singleton<EventTracking>
     {
 
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("login_time", DateTime.Now.ToString());
 
 		AppsFlyer.sendEvent("af_login", eventValues);
@@ -185,42 +98,102 @@ public class EventTracking : Singleton<EventTracking>
 	public void Event_af_ad_impression(MaxSdkBase.AdInfo adInfo)
     {
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
-		eventValues.Add("af_currency", adInfo.AdUnitIdentifier);
-		eventValues.Add("af_info", adInfo.ToString());
+		eventValues.Add("af_currency", "USD");
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_level", Module.lv_current);
+		eventValues.Add("networkName", adInfo.NetworkName);
+		//eventValues.Add("af_info", adInfo.ToString());
 
 		AppsFlyer.sendEvent("af_ad_impression", eventValues);
+	}
+
+	public void Event_af_ad_view(MaxSdkBase.AdInfo adInfo)
+	{
+		Dictionary<string, string> eventValues = new Dictionary<string, string>();
+		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		eventValues.Add("af_currency", "USD");
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_level", Module.lv_current);
+		eventValues.Add("networkName", adInfo.NetworkName);
+		//eventValues.Add("af_info", adInfo.ToString());
+
+		AppsFlyer.sendEvent("af_ad_view", eventValues);
+	}
+
+	public void Event_af_ad_click(MaxSdkBase.AdInfo adInfo)
+	{
+		Dictionary<string, string> eventValues = new Dictionary<string, string>();
+		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		eventValues.Add("af_currency", "USD");
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_level", Module.lv_current);
+		eventValues.Add("networkName", adInfo.NetworkName);
+		//eventValues.Add("af_info", adInfo.ToString());
+
+		AppsFlyer.sendEvent("af_ad_click", eventValues);
+	}
+
+	public void Event_af_ads_banner_show(MaxSdkBase.AdInfo adInfo)
+    {
+		Dictionary<string, string> eventValues = new Dictionary<string, string>();
+		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		eventValues.Add("af_currency", "USD");
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_level", Module.lv_current);
+		eventValues.Add("networkName", adInfo.NetworkName);
+		//eventValues.Add("af_info", adInfo.ToString());
+
+		AppsFlyer.sendEvent("af_ads_banner_show", eventValues);
+	}
+
+	public void Event_af_ads_banner_fail(MaxSdkBase.AdInfo adInfo, MaxSdkBase.ErrorInfo errInfo)
+	{
+		Dictionary<string, string> eventValues = new Dictionary<string, string>();
+		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		eventValues.Add("af_currency", "USD");
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_level", Module.lv_current);
+		eventValues.Add("networkName", adInfo.NetworkName);
+		eventValues.Add("errorMessage", errInfo.ToString());
+	
+		AppsFlyer.sendEvent("af_ads_banner_fail", eventValues);
+	}
+
+	public void Event_af_ads_banner_click(MaxSdkBase.AdInfo adInfo)
+	{
+		Dictionary<string, string> eventValues = new Dictionary<string, string>();
+		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		eventValues.Add("af_currency", "USD");
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_level", Module.lv_current);
+		eventValues.Add("networkName", adInfo.NetworkName);
+		//eventValues.Add("af_info", adInfo.ToString());
+
+		AppsFlyer.sendEvent("af_ads_banner_click", eventValues);
 	}
 
 	public void Event_af_ads_reward_offer()
     {
 
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add("customer_user_id", device_id());
 		eventValues.Add("type_reward", AdsMAXManager.Instance.rewardType);
-		eventValues.Add("level", levelCurrent());
+		eventValues.Add("af_level", Module.lv_current);
 
 		AppsFlyer.sendEvent("af_ads_reward_offer", eventValues);
 	}
 
-	private string levelCurrent()
-	{
-		return PlayerPrefs.GetInt("level_general",1).ToString();
-	}
 
-	private string device_id()
-	{
-		return /*SystemInfo.deviceUniqueIdentifier != null ? SystemInfo.deviceUniqueIdentifier :*/ string.Empty;
-	}
 	public void Event_af_ads_reward_click(MaxSdkBase.AdInfo adInfo)
     {
 
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add("customer_user_id", device_id());
-		eventValues.Add("type_reward", AdsMAXManager.Instance.rewardType);
-		eventValues.Add("placement_id", adInfo.AdUnitIdentifier);
-		eventValues.Add("level", levelCurrent()); 
+		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		eventValues.Add("af_currency", "USD");
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_level", Module.lv_current);
+		eventValues.Add("networkName", adInfo.NetworkName);
+		//eventValues.Add("af_info", adInfo.ToString());
 
 		AppsFlyer.sendEvent("af_ads_reward_click", eventValues);
 	}
@@ -229,10 +202,12 @@ public class EventTracking : Singleton<EventTracking>
     {
 
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add("customer_user_id", device_id());
-		eventValues.Add("type_reward", AdsMAXManager.Instance.rewardType);
-		eventValues.Add("placement_id", adInfo.AdUnitIdentifier);
-		eventValues.Add("level", levelCurrent()); 
+		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		eventValues.Add("af_currency", "USD");
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_level", Module.lv_current);
+		eventValues.Add("networkName", adInfo.NetworkName);
+		//eventValues.Add("af_info", adInfo.ToString());
 
 		AppsFlyer.sendEvent("af_ads_reward_show", eventValues);
 	}
@@ -241,23 +216,26 @@ public class EventTracking : Singleton<EventTracking>
     {
 
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add("customer_user_id", device_id());
-		eventValues.Add("type_reward", AdsMAXManager.Instance.rewardType);
-		eventValues.Add("errormsg", errInfo.Message);
-		eventValues.Add("level", levelCurrent()); 
+		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		eventValues.Add("af_currency", "USD");
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_level", Module.lv_current);
+		eventValues.Add("networkName", adInfo.NetworkName);
+		eventValues.Add("errorMessage", errInfo.ToString());
 
 		AppsFlyer.sendEvent("af_ads_reward_fail", eventValues);
 	}
 
 	public void Event_af_ads_reward_complete(MaxSdkBase.AdInfo adInfo)
 	{
-	
+
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add("customer_user_id", device_id());
-		eventValues.Add("type_reward", AdsMAXManager.Instance.rewardType);
-		eventValues.Add("placement_id", adInfo.AdUnitIdentifier);
-		eventValues.Add("level", levelCurrent());
-		eventValues.Add("revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		eventValues.Add("af_currency", "USD");
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_level", Module.lv_current);
+		eventValues.Add("networkName", adInfo.NetworkName);
+		//eventValues.Add("af_info", adInfo.ToString());
 
 		AppsFlyer.sendEvent("af_ads_reward_complete", eventValues);
 	}
@@ -266,9 +244,12 @@ public class EventTracking : Singleton<EventTracking>
     {
 
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add("customer_user_id", device_id());
-		eventValues.Add("placement_id", adInfo.AdUnitIdentifier);
-		eventValues.Add("level", levelCurrent());
+		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		eventValues.Add("af_currency", "USD");
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_level", Module.lv_current);
+		eventValues.Add("networkName", adInfo.NetworkName);
+		//eventValues.Add("af_info", adInfo.ToString());
 
 		AppsFlyer.sendEvent("af_ads_inter_load", eventValues);
 	}
@@ -277,10 +258,12 @@ public class EventTracking : Singleton<EventTracking>
     {
 
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add("customer_user_id", device_id());
-		eventValues.Add("placement_id", adInfo.AdUnitIdentifier);
-		eventValues.Add("level", levelCurrent());
-		eventValues.Add("revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		eventValues.Add("af_currency", "USD");
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_level", Module.lv_current);
+		eventValues.Add("networkName", adInfo.NetworkName);
+		//eventValues.Add("af_info", adInfo.ToString());
 
 		AppsFlyer.sendEvent("af_ads_inter_show", eventValues);
 	}
@@ -289,9 +272,12 @@ public class EventTracking : Singleton<EventTracking>
 	{
 
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add("customer_user_id", device_id());
-		eventValues.Add("errormsg", errInfo.Message);
-		eventValues.Add("level", levelCurrent());
+		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		eventValues.Add("af_currency", "USD");
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_level", Module.lv_current);
+		eventValues.Add("networkName", adInfo.NetworkName);
+		eventValues.Add("errorMessage", errInfo.ToString());
 
 		AppsFlyer.sendEvent("af_ads_inter_fail", eventValues);
 	}
@@ -299,9 +285,12 @@ public class EventTracking : Singleton<EventTracking>
 	public void Event_af_ads_inter_click(MaxSdkBase.AdInfo adInfo)
     {
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add("customer_user_id", device_id());
-		eventValues.Add("placement_id", adInfo.AdUnitIdentifier);
-		eventValues.Add("level", levelCurrent());
+		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		eventValues.Add("af_currency", "USD");
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_level", Module.lv_current);
+		eventValues.Add("networkName", adInfo.NetworkName);
+		//eventValues.Add("af_info", adInfo.ToString());
 
 		AppsFlyer.sendEvent("af_ads_inter_click", eventValues);
 	}
@@ -309,8 +298,12 @@ public class EventTracking : Singleton<EventTracking>
 	public void Event_af_purchase()
     {
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add("customer_user_id", device_id());
-		eventValues.Add("level", levelCurrent());
+		eventValues.Add("af_content", "ads_remove");
+		eventValues.Add("af_content_id", "ads_remove");
+		eventValues.Add("af_quantity", "1");
+		eventValues.Add("af_price", "79000");
+		eventValues.Add("aF_level", Module.lv_current);
+		eventValues.Add("af_currency", "VND");
 
 		AppsFlyer.sendEvent("af_purchase", eventValues);
 	}

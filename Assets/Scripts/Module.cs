@@ -28,4 +28,13 @@ public static class Module
         get {return PlayerPrefs.GetInt("remove_ads", 0); }
         set { PlayerPrefs.SetInt("remove_ads", value); }
     }
+
+    public static bool isNetworking()
+    {
+        bool result = true;
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+            result = false;
+        return result;
+    }
+
 }

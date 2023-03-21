@@ -50,8 +50,7 @@ public class FirebaseManager : Singleton<FirebaseManager>
         Debug.Log("Set user properties.");
         // Set the user's sign up method.
         FirebaseAnalytics.SetUserProperty(
-          FirebaseAnalytics.UserPropertySignUpMethod,
-          "Google");
+          FirebaseAnalytics.UserPropertySignUpMethod,"Google");
 
         // Set the user ID.
         //FirebaseAnalytics.SetUserId(device_id());
@@ -74,8 +73,8 @@ public class FirebaseManager : Singleton<FirebaseManager>
         FirebaseAnalytics.LogEvent(FirebaseAnalytics.EventLogin);
         FirebaseAnalytics.LogEvent("fbs_login");
     }
-    #region Event Game Analytic
 
+    #region Event Game Analytic
     private string levelCurrent()
     {
         return PlayerPrefs.GetInt("level_general",1).ToString();
@@ -116,18 +115,6 @@ public class FirebaseManager : Singleton<FirebaseManager>
     }
 
 
-    public void LogEvent_Ad(string _name,string _param)
-    {
-        if (firebaseInitialized)
-        {
-            string str = _name;
-            FirebaseAnalytics.LogEvent(str, new Parameter(FirebaseAnalytics.ParameterAdNetworkClickID, _param),
-                                            new Parameter(FirebaseAnalytics.ParameterLevel, levelCurrent()));
-
-            Debug.Log(str);
-        }
-    }
-
     //trigger: record ad views of any ads displayed in the app
     public void LogEvent_fbs_ad_view(MaxSdkBase.AdInfo adInfo)
     {
@@ -147,6 +134,8 @@ public class FirebaseManager : Singleton<FirebaseManager>
 
             Debug.Log(str);
         }
+
+        EventTracking.Instance.Event_af_ad_view(adInfo);
     }
 
     //trigger: record ad views of any ads displayed in the app
@@ -168,6 +157,8 @@ public class FirebaseManager : Singleton<FirebaseManager>
 
             Debug.Log(str);
         }
+
+        EventTracking.Instance.Event_af_ad_click(adInfo);
     }
 
 
@@ -212,6 +203,10 @@ public class FirebaseManager : Singleton<FirebaseManager>
 
             Debug.Log(str);
         }
+
+        EventTracking.Instance.Event_af_ads_banner_show(adInfo);
+
+        LogEvent_fbs_ad_view(adInfo);
     }
 
     //trigger: record when banner ads not displayed in the app
@@ -234,6 +229,8 @@ public class FirebaseManager : Singleton<FirebaseManager>
 
             Debug.Log(str);
         }
+
+        EventTracking.Instance.Event_af_ads_inter_fail(adInfo,errInfo);
     }
 
     //trigger: record when banner ads is clicked
@@ -255,6 +252,10 @@ public class FirebaseManager : Singleton<FirebaseManager>
             FirebaseAnalytics.LogEvent("fbs_ads_banner_click", impressionParameters);
 
         }
+
+        EventTracking.Instance.Event_af_ads_banner_click(adInfo);
+
+        LogEvent_fbs_ad_click(adInfo);
     }
 
 
@@ -294,6 +295,8 @@ public class FirebaseManager : Singleton<FirebaseManager>
         }
 
         EventTracking.Instance.Event_af_ads_reward_click(adInfo);
+
+        LogEvent_fbs_ad_click(adInfo);
     }
 
     //trigger: record when rewards ad is displayed
@@ -316,6 +319,7 @@ public class FirebaseManager : Singleton<FirebaseManager>
         }
 
         EventTracking.Instance.Event_af_ads_reward_show(adInfo);
+        LogEvent_fbs_ad_view(adInfo);
     }
 
     //số lần ad show thành công
@@ -383,6 +387,7 @@ public class FirebaseManager : Singleton<FirebaseManager>
             };
             FirebaseAnalytics.LogEvent("fbs_ads_inter_load", impressionParameters);
         }
+
         EventTracking.Instance.Event_af_ads_inter_load(adInfo);
     }
 
@@ -406,6 +411,7 @@ public class FirebaseManager : Singleton<FirebaseManager>
         }
 
         EventTracking.Instance.Event_af_ads_inter_show(adInfo);
+        LogEvent_fbs_ad_view(adInfo);
     }
 
     //trigger: record when intertitial ads is not displayed in app
@@ -452,6 +458,7 @@ public class FirebaseManager : Singleton<FirebaseManager>
         }
 
         EventTracking.Instance.Event_af_ads_inter_click(adInfo);
+        LogEvent_fbs_ad_click(adInfo);
     }
 
     // trigger: record purchase events 
@@ -462,10 +469,13 @@ public class FirebaseManager : Singleton<FirebaseManager>
             string str = "firebase_purchase";
             //UnityEngine.Purchasing.ProductMetadata productMetadata = _product.metadata;
             //double dm = (double)(productMetadata.localizedPrice);
-            FirebaseAnalytics.LogEvent(str, new Parameter("level", levelCurrent())
-                                           // new Parameter("price", dm),
-                                            //new Parameter("content", productMetadata.localizedTitle)
-                                            );
+            FirebaseAnalytics.LogEvent(str, 
+                    new Parameter("fbs_level", Module.lv_current),
+                    new Parameter("fbs_product", "adsremove"),
+                    new Parameter("fbs_product_id", "adsremove"),
+                    new Parameter("fbs_price", "79000"),
+                    new Parameter("fbs_currency", "VND")
+                    );
             Debug.Log(str);
         }
 

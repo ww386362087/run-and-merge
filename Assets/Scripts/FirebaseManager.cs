@@ -84,7 +84,7 @@ public class FirebaseManager : Singleton<FirebaseManager>
 
     private string device_id()
     {
-        return SystemInfo.deviceUniqueIdentifier!=null? SystemInfo.deviceUniqueIdentifier:string.Empty;
+        return /*SystemInfo.deviceUniqueIdentifier!=null? SystemInfo.deviceUniqueIdentifier:*/string.Empty;
     }
 
     public void LogEvent_StartLevel()

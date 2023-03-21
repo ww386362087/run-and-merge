@@ -207,7 +207,7 @@ public class EventTracking : Singleton<EventTracking>
 
 	private string device_id()
 	{
-		return SystemInfo.deviceUniqueIdentifier != null ? SystemInfo.deviceUniqueIdentifier : string.Empty;
+		return /*SystemInfo.deviceUniqueIdentifier != null ? SystemInfo.deviceUniqueIdentifier :*/ string.Empty;
 	}
 	public void Event_af_ads_reward_click(MaxSdkBase.AdInfo adInfo)
     {

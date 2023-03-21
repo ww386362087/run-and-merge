@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using DG.Tweening;
 
 public class AdsMAXManager : Singleton<AdsMAXManager>
 {
@@ -51,10 +50,8 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
 
         MaxSdk.InitializeSdk();
 
-        DOVirtual.DelayedCall(3, EventTracking.Instance.Event_af_login);
+      
     }
-
-
 
 #if UNITY_EDITOR
     public void Update()
@@ -85,31 +82,17 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
         MaxSdkCallbacks.Interstitial.OnAdLoadedEvent += OnInterstitialLoadedEvent;
         MaxSdkCallbacks.Interstitial.OnAdLoadFailedEvent += OnInterstitialFailedEvent;
         MaxSdkCallbacks.Interstitial.OnAdDisplayFailedEvent += InterstitialFailedToDisplayEvent;
-        MaxSdkCallbacks.Interstitial.OnAdDisplayedEvent += Interstitial_OnAdDisplayedEvent;
         MaxSdkCallbacks.Interstitial.OnAdHiddenEvent += OnInterstitialDismissedEvent;
-        MaxSdkCallbacks.Interstitial.OnAdClickedEvent += Interstitial_OnAdClickedEvent;
         MaxSdkCallbacks.Interstitial.OnAdRevenuePaidEvent += OnInterstitialRevenuePaidEvent;
 
         // Load the first interstitial
         LoadInterstitial();
     }
 
-    private void Interstitial_OnAdClickedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
-    {
-        FirebaseManager.Instance.LogEvent_firebase_ads_inter_click(adInfo);
-    }
-
-    private void Interstitial_OnAdDisplayedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
-    {
-        FirebaseManager.Instance.LogEvent_firebase_ads_inter_show(adInfo);
-    }
-
     void LoadInterstitial()
     {
         MaxSdk.LoadInterstitial(InterstitialAdUnitId);
         Debug.Log("LoadInterstitial");
-
-        
     }
 
     public void ShowInterstitial()
@@ -144,9 +127,7 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
         // Reset retry attempt
         interstitialRetryAttempt = 0;
 
-        FirebaseManager.Instance.LogEvent_firebase_ads_inter_load(adInfo);
         TrackAdRevenue(adInfo);
-
     }
 
     private void OnInterstitialFailedEvent(string adUnitId, MaxSdkBase.ErrorInfo errorInfo)
@@ -158,8 +139,6 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
         //interstitialStatusText.text = "Load failed: " + errorInfo.Code + "\nRetrying in " + retryDelay + "s...";
         Debug.Log("Interstitial failed to load with error code: " + errorInfo.Code);
 
-      
-
         Invoke("LoadInterstitial", (float)retryDelay);
     }
 
@@ -168,8 +147,6 @@ public class AdsMAXManager : Singleton<AdsMAXManager>
         // Interstitial ad failed to display. We recommend loading the next ad
         Debug.Log("Interstitial failed to display with error code: " + errorInfo.Code);
         LoadInterstitial();
-
-        FirebaseManager.Instance.LogEvent_firebase_ads_inter_fail(errorInfo, adInfo.AdUnitIdentifier);
     }
 
     private void OnInterstitialDismissedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)

@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1021949262770465885}
   - component: {fileID: 3422265874995436607}
-  - component: {fileID: 5188771275561931684}
+  - component: {fileID: -905214840532266520}
   - component: {fileID: 4877652770548064436}
   m_Layer: 0
-  m_Name: Gate_Root
+  m_Name: Gate_Multiply 50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.1, y: 3, z: 0.4}
   m_Center: {x: 0, y: -0, z: 0.15}
---- !u!54 &5188771275561931684
+--- !u!54 &-905214840532266520
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,9 +79,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SnapToGrid: 0
-  m_Sound: 4
-  m_GateType: 5
-  m_Value: 2
+  m_Sound: 5
+  m_GateType: 3
+  m_Value: 50
   m_Text: {fileID: 1841360140200085941}
 --- !u!1 &1340726307460634547
 GameObject:
@@ -144,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f9eff1ff701d8844d8dad77a717524a0, type: 2}
+  - {fileID: 2100000, guid: 391258b820a003143ac2b8518951b829, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -227,7 +227,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f9eff1ff701d8844d8dad77a717524a0, type: 2}
+  - {fileID: 2100000, guid: 391258b820a003143ac2b8518951b829, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -307,7 +307,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2180730340221332417, guid: e6bf95f60c66d45439cc16cddba1abd3, type: 2}
+  - {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -349,11 +349,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: -5
+  m_text: x50
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e6bf95f60c66d45439cc16cddba1abd3, type: 2}
-  m_sharedMaterial: {fileID: -2180730340221332417, guid: e6bf95f60c66d45439cc16cddba1abd3,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -6,6 +6,7 @@ using TMPro;
 using HyperCasual.Runner;
 using HyperCasual.Gameplay;
 using System;
+using MoreMountains.NiceVibrations;
 
 public class UiManager : MonoBehaviour
 {
@@ -196,11 +197,11 @@ public class UiManager : MonoBehaviour
 
     public void _vibrate()
     {
-        //if(GameManager.instance.get_vibration() == 1)
-        //{
-        //    MMVibrationManager.Haptic(HapticTypes.HeavyImpact, true, this);
-        //}
-        
+        if (GameManager.instance.get_vibration() == 1)
+        {
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact, true, this);
+        }
+
     }
 
     // MONSTERS BUTTON

@@ -2223,6 +2223,7 @@ GameObject:
   - component: {fileID: 5023870909695783502}
   - component: {fileID: 4755931109925460214}
   - component: {fileID: 8653323028064046524}
+  - component: {fileID: 8090493266569632532}
   m_Layer: 5
   m_Name: Pointer
   m_TagString: Untagged
@@ -2247,7 +2248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 100.53683, y: 713.9}
+  m_AnchoredPosition: {x: 21.6, y: 713.9}
   m_SizeDelta: {x: 116.7306, y: 123.6789}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &4755931109925460214
@@ -2288,6 +2289,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8090493266569632532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5314348552200650142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba4ae32a6c4e4559afadd205d679bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UsePositionBasedOffset: 1
+  PositionBasedScale: 2
+  Bob: 1
+  m_Direction: 0
+  BobSpeed: 3
+  BobHeight: 215
+  Spin: 0
+  m_Axis: 0
+  SpinSpeed: 180
 --- !u!1 &5316427235285665848
 GameObject:
   m_ObjectHideFlags: 0

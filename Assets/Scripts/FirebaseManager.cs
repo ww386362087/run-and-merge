@@ -82,12 +82,12 @@ public class FirebaseManager : Singleton<FirebaseManager>
 
     public void LogEvent_StartLevel()
     {
-        if (firebaseInitialized)
-        {
-            string str = "fbs_level_start_" + levelCurrent();
-            FirebaseAnalytics.LogEvent(str, new Parameter("level", levelCurrent()));
-            Debug.Log(str);
-        }
+        //if (firebaseInitialized)
+        //{
+        //    string str = "fbs_level_start_" + levelCurrent();
+        //    FirebaseAnalytics.LogEvent(str, new Parameter("level", levelCurrent()));
+        //    Debug.Log(str);
+        //}
     }
 
     public void LogEvent_FinishLevel()
@@ -217,12 +217,12 @@ public class FirebaseManager : Singleton<FirebaseManager>
             string str = "fbs_ads_banner_fail";
             FirebaseAnalytics.LogEvent(str,
             new Parameter("ad_platform", "AppLovin"),
-            new Parameter("adFormat", adInfo.AdFormat),
-            new Parameter("networkName", adInfo.NetworkName),
-            new Parameter("ad_unit_name", adInfo.AdUnitIdentifier),
-            new Parameter("networkPlacement", adInfo.Placement), // Please check this - as we couldn't find format refereced in your unity docs https://dash.applovin.com/documentation/mediation/unity/getting-started/advanced-settings#impression-level-user-revenue - api
-            new Parameter("value", adInfo.Revenue),
-            new Parameter("revenuePrecision", adInfo.RevenuePrecision),
+            //new Parameter("adFormat", adInfo.AdFormat),
+            //new Parameter("networkName", adInfo.NetworkName),
+            //new Parameter("ad_unit_name", adInfo.AdUnitIdentifier),
+            //new Parameter("networkPlacement", adInfo.Placement), // Please check this - as we couldn't find format refereced in your unity docs https://dash.applovin.com/documentation/mediation/unity/getting-started/advanced-settings#impression-level-user-revenue - api
+            //new Parameter("value", adInfo.Revenue),
+            //new Parameter("revenuePrecision", adInfo.RevenuePrecision),
             new Parameter("currency", "USD"), // All Applovin revenue is sent in USD
             new Parameter("fbs_level", Module.lv_current),
             new Parameter("errorMessage", errInfo.ToString()));
@@ -348,17 +348,18 @@ public class FirebaseManager : Singleton<FirebaseManager>
     //trigger: record when rewards ad is not displayed
     public void LogEvent_firebase_ads_reward_fail(MaxSdkBase.AdInfo adInfo, MaxSdkBase.ErrorInfo errInfo)
     {
+
         if (firebaseInitialized)
         {
             string str = "fbs_ads_reward_fail";
             FirebaseAnalytics.LogEvent(str,
             new Parameter("ad_platform", "AppLovin"),
-            new Parameter("adFormat", adInfo.AdFormat),
-            new Parameter("networkName", adInfo.NetworkName),
-            new Parameter("ad_unit_name", adInfo.AdUnitIdentifier),
-            new Parameter("networkPlacement", adInfo.Placement), // Please check this - as we couldn't find format refereced in your unity docs https://dash.applovin.com/documentation/mediation/unity/getting-started/advanced-settings#impression-level-user-revenue - api
-            new Parameter("value", adInfo.Revenue),
-            new Parameter("revenuePrecision", adInfo.RevenuePrecision),
+            //new Parameter("adFormat", adInfo.AdFormat),
+            //new Parameter("networkName", adInfo.NetworkName),
+            //new Parameter("ad_unit_name", adInfo.AdUnitIdentifier),
+            //new Parameter("networkPlacement", adInfo.Placement), // Please check this - as we couldn't find format refereced in your unity docs https://dash.applovin.com/documentation/mediation/unity/getting-started/advanced-settings#impression-level-user-revenue - api
+            //new Parameter("value", adInfo.Revenue),
+            //new Parameter("revenuePrecision", adInfo.RevenuePrecision),
             new Parameter("currency", "USD"), // All Applovin revenue is sent in USD
             new Parameter("fbs_level", Module.lv_current),
             new Parameter("errorMessage", errInfo.ToString()));
@@ -422,12 +423,12 @@ public class FirebaseManager : Singleton<FirebaseManager>
             string str = "fbs_ads_reward_fail";
             FirebaseAnalytics.LogEvent(str,
             new Parameter("ad_platform", "AppLovin"),
-            new Parameter("adFormat", adInfo.AdFormat),
-            new Parameter("networkName", adInfo.NetworkName),
-            new Parameter("ad_unit_name", adInfo.AdUnitIdentifier),
-            new Parameter("networkPlacement", adInfo.Placement), // Please check this - as we couldn't find format refereced in your unity docs https://dash.applovin.com/documentation/mediation/unity/getting-started/advanced-settings#impression-level-user-revenue - api
-            new Parameter("value", adInfo.Revenue),
-            new Parameter("revenuePrecision", adInfo.RevenuePrecision),
+           // new Parameter("adFormat", adInfo.AdFormat),
+           // new Parameter("networkName", adInfo.NetworkName),
+           // new Parameter("ad_unit_name", adInfo.AdUnitIdentifier),
+           // new Parameter("networkPlacement", adInfo.Placement), // Please check this - as we couldn't find format refereced in your unity docs https://dash.applovin.com/documentation/mediation/unity/getting-started/advanced-settings#impression-level-user-revenue - api
+           // new Parameter("value", adInfo.Revenue),
+           // new Parameter("revenuePrecision", adInfo.RevenuePrecision),
             new Parameter("currency", "USD"), // All Applovin revenue is sent in USD
             new Parameter("fbs_level", Module.lv_current),
             new Parameter("errorMessage", errInfo.ToString()));

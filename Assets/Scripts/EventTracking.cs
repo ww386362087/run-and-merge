@@ -100,7 +100,7 @@ public class EventTracking : Singleton<EventTracking>
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
 		eventValues.Add("af_currency", "USD");
-		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString("0." + new string('#', 339)).Replace(",","."));
 		eventValues.Add("af_level", Module.lv_current);
 		eventValues.Add("networkName", adInfo.NetworkName);
 		//eventValues.Add("af_info", adInfo.ToString());
@@ -113,7 +113,7 @@ public class EventTracking : Singleton<EventTracking>
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
 		eventValues.Add("af_currency", "USD");
-		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString("0." + new string('#', 339)).Replace(",", "."));
 		eventValues.Add("af_level", Module.lv_current);
 		eventValues.Add("networkName", adInfo.NetworkName);
 		//eventValues.Add("af_info", adInfo.ToString());
@@ -126,7 +126,7 @@ public class EventTracking : Singleton<EventTracking>
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
 		eventValues.Add("af_currency", "USD");
-		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString("0." + new string('#', 339)).Replace(",", "."));
 		eventValues.Add("af_level", Module.lv_current);
 		eventValues.Add("networkName", adInfo.NetworkName);
 		//eventValues.Add("af_info", adInfo.ToString());
@@ -139,7 +139,7 @@ public class EventTracking : Singleton<EventTracking>
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
 		eventValues.Add("af_currency", "USD");
-		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString("0." + new string('#', 339)).Replace(",", "."));
 		eventValues.Add("af_level", Module.lv_current);
 		eventValues.Add("networkName", adInfo.NetworkName);
 		//eventValues.Add("af_info", adInfo.ToString());
@@ -150,11 +150,11 @@ public class EventTracking : Singleton<EventTracking>
 	public void Event_af_ads_banner_fail(MaxSdkBase.AdInfo adInfo, MaxSdkBase.ErrorInfo errInfo)
 	{
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		//eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
 		eventValues.Add("af_currency", "USD");
-		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		//eventValues.Add("af_revenue", adInfo.Revenue.ToString("0." + new string('#', 339)).Replace(",", "."));
 		eventValues.Add("af_level", Module.lv_current);
-		eventValues.Add("networkName", adInfo.NetworkName);
+		//eventValues.Add("networkName", adInfo.NetworkName);
 		eventValues.Add("errorMessage", errInfo.ToString());
 	
 		AppsFlyer.sendEvent("af_ads_banner_fail", eventValues);
@@ -165,7 +165,7 @@ public class EventTracking : Singleton<EventTracking>
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
 		eventValues.Add("af_currency", "USD");
-		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString("0." + new string('#', 339)).Replace(",", "."));
 		eventValues.Add("af_level", Module.lv_current);
 		eventValues.Add("networkName", adInfo.NetworkName);
 		//eventValues.Add("af_info", adInfo.ToString());
@@ -190,7 +190,7 @@ public class EventTracking : Singleton<EventTracking>
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
 		eventValues.Add("af_currency", "USD");
-		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString("0." + new string('#', 339)).Replace(",", "."));
 		eventValues.Add("af_level", Module.lv_current);
 		eventValues.Add("networkName", adInfo.NetworkName);
 		//eventValues.Add("af_info", adInfo.ToString());
@@ -204,7 +204,7 @@ public class EventTracking : Singleton<EventTracking>
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
 		eventValues.Add("af_currency", "USD");
-		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString("0." + new string('#', 339)).Replace(",", "."));
 		eventValues.Add("af_level", Module.lv_current);
 		eventValues.Add("networkName", adInfo.NetworkName);
 		//eventValues.Add("af_info", adInfo.ToString());
@@ -216,11 +216,11 @@ public class EventTracking : Singleton<EventTracking>
     {
 
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		//eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
 		eventValues.Add("af_currency", "USD");
-		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		//eventValues.Add("af_revenue", adInfo.Revenue.ToString("0." + new string('#', 339)).Replace(",", "."));
 		eventValues.Add("af_level", Module.lv_current);
-		eventValues.Add("networkName", adInfo.NetworkName);
+		//eventValues.Add("networkName", adInfo.NetworkName);
 		eventValues.Add("errorMessage", errInfo.ToString());
 
 		AppsFlyer.sendEvent("af_ads_reward_fail", eventValues);
@@ -232,7 +232,7 @@ public class EventTracking : Singleton<EventTracking>
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
 		eventValues.Add("af_currency", "USD");
-		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString("0." + new string('#', 339)).Replace(",", "."));
 		eventValues.Add("af_level", Module.lv_current);
 		eventValues.Add("networkName", adInfo.NetworkName);
 		//eventValues.Add("af_info", adInfo.ToString());
@@ -246,7 +246,7 @@ public class EventTracking : Singleton<EventTracking>
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
 		eventValues.Add("af_currency", "USD");
-		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString("0." + new string('#', 339)).Replace(",", "."));
 		eventValues.Add("af_level", Module.lv_current);
 		eventValues.Add("networkName", adInfo.NetworkName);
 		//eventValues.Add("af_info", adInfo.ToString());
@@ -260,7 +260,7 @@ public class EventTracking : Singleton<EventTracking>
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
 		eventValues.Add("af_currency", "USD");
-		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString("0." + new string('#', 339)).Replace(",", "."));
 		eventValues.Add("af_level", Module.lv_current);
 		eventValues.Add("networkName", adInfo.NetworkName);
 		//eventValues.Add("af_info", adInfo.ToString());
@@ -272,11 +272,11 @@ public class EventTracking : Singleton<EventTracking>
 	{
 
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
-		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
+		//eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
 		eventValues.Add("af_currency", "USD");
-		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		//eventValues.Add("af_revenue", adInfo.Revenue.ToString("0." + new string('#', 339)).Replace(",", "."));
 		eventValues.Add("af_level", Module.lv_current);
-		eventValues.Add("networkName", adInfo.NetworkName);
+		//eventValues.Add("networkName", adInfo.NetworkName);
 		eventValues.Add("errorMessage", errInfo.ToString());
 
 		AppsFlyer.sendEvent("af_ads_inter_fail", eventValues);
@@ -287,7 +287,7 @@ public class EventTracking : Singleton<EventTracking>
 		Dictionary<string, string> eventValues = new Dictionary<string, string>();
 		eventValues.Add("af_adrev_ad_type", adInfo.NetworkPlacement);
 		eventValues.Add("af_currency", "USD");
-		eventValues.Add("af_revenue", adInfo.Revenue.ToString());
+		eventValues.Add("af_revenue", adInfo.Revenue.ToString("0." + new string('#', 339)).Replace(",", "."));
 		eventValues.Add("af_level", Module.lv_current);
 		eventValues.Add("networkName", adInfo.NetworkName);
 		//eventValues.Add("af_info", adInfo.ToString());
